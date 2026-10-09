@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  /* Kolory (tokeny z Figmy) */
+  --color-ink: #14161a;
+  --color-ink-soft: #1f2226;
+  --color-paper: #f5f1e8;
+  --color-paper-soft: #ece5d4;
+  --color-accent-green: #4a6b57;
+  --color-accent-green-dark: #33473b;
+  --color-accent-amber: #c97b3d;
+  --color-text-primary: #1a1a1a;
+  --color-text-on-dark: #f5f1e8;
+  --color-text-muted: #66645c;
+  --color-text-muted-on-dark: #a3a79c;
+  --color-border: #ddd6c4;
+  --color-border-on-dark: #33363b;
+
+  /* Typografia */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
+
+  /* Spacing: 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 96 / 128 */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+  --spacing-24: 96px;
+  --spacing-32: 128px;
+
+  /* Radius */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-lg: 16px;
+
+  /* Easing */
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-standard: cubic-bezier(0.4, 0, 1, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+::selection {
+  background: var(--color-accent-amber);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-amber);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Wejście hero / przejście stron w CSS — rusza od pierwszego malowania, bez hydracji (LCP). */
+@keyframes intro-up { from { opacity: 0; transform: translateY(16px); } }
+@keyframes intro-mask { from { transform: translateY(105%); } }
+@keyframes intro-clip { from { clip-path: inset(15% 0 0 0); } }
+@keyframes page-enter { from { transform: translateY(16px); } }
+@keyframes intro-zoom { from { scale: 1.06; } }
+.intro-up { animation: intro-up 0.7s var(--ease-out-expo) var(--d, 0ms) both; }
+.intro-mask { animation: intro-mask 0.8s var(--ease-out-expo) var(--d, 0ms) both; }
+.intro-clip { animation: intro-clip 1s var(--ease-out-expo) var(--d, 0ms) both; }
+.intro-zoom { animation: intro-zoom 1.2s var(--ease-out-expo) var(--d, 0ms) both; }
+.page-enter { animation: page-enter 0.5s var(--ease-out-expo) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-delay: 0ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
