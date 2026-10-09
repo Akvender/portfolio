@@ -7,6 +7,8 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.github.io",
   email: "robert.swieboda.dev@gmail.com",
   github: "https://github.com/Akvender",
+  /** Kod konta GoatCounter (np. „robertswieboda” z robertswieboda.goatcounter.com); pusty = licznik wyłączony. */
+  goatcounter: "",
   /** Adres profilu LinkedIn; pusty = przycisk ukryty. */
   linkedin: "",
 } as const;
