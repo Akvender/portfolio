@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { siAnthropic, siDocker, siMake, siMeta, siN8n, siOpenai, siPython, type SimpleIcon } from "simple-icons";
+import { siAnthropic, siDocker, siGrafana, siMake, siMeta, siN8n, siOpenai, siPostgresql, siPython, siStripe, siTwilio, siWhatsapp, siWordpress, type SimpleIcon } from "simple-icons";
 
 /** Narzędzia z ikonami marek (simple-icons, CC0). Monochromatyczne — kolory marek gryzłyby się z paletą. */
 // Zapier bez ikony: jego znak w simple-icons to kwadrat z drobnym napisem, nieczytelny w 24 px.
@@ -13,7 +13,14 @@ const TOOLS: { name: string; icon?: SimpleIcon }[] = [
   { name: "Docker", icon: siDocker },
   { name: "Make", icon: siMake },
   { name: "Zapier" },
-  { name: "Meta CAPI", icon: siMeta },
+  { name: "Twilio", icon: siTwilio },
+  { name: "SMSAPI" },
+  { name: "WhatsApp", icon: siWhatsapp },
+  { name: "Stripe", icon: siStripe },
+  { name: "Meta", icon: siMeta },
+  { name: "WordPress", icon: siWordpress },
+  { name: "PostgreSQL", icon: siPostgresql },
+  { name: "Grafana", icon: siGrafana },
 ];
 
 function Row({ hidden = false }: { hidden?: boolean }) {

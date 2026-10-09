@@ -7,9 +7,9 @@ export const skillGroups = [
     title: { pl: "AI i modele językowe", en: "AI and language models" },
     icon: "brain",
     skills: [
-      { id: "llm", label: { pl: "API OpenAI i Anthropic", en: "OpenAI and Anthropic APIs" } },
+      { id: "llm", label: { pl: "API OpenAI i Anthropic", en: "OpenAI and Anthropic APIs" } },
       { id: "agents", label: { pl: "Agenci AI", en: "AI agents" } },
-      { id: "bots", label: { pl: "Chatboty i voiceboty", en: "Chatbots and voicebots" } },
+      { id: "bots", label: { pl: "Chatboty i voiceboty", en: "Chatbots and voicebots" } },
       { id: "speech", label: { pl: "Transkrypcja rozmów", en: "Call transcription" } },
       { id: "imagegen", label: { pl: "Generowanie grafik", en: "Image generation" } },
     ],
@@ -19,10 +19,30 @@ export const skillGroups = [
     icon: "cycle",
     skills: [
       { id: "n8n", label: { pl: "n8n", en: "n8n" } },
-      { id: "make", label: { pl: "Make i Zapier", en: "Make and Zapier" } },
+      { id: "make", label: { pl: "Make i Zapier", en: "Make and Zapier" } },
       { id: "crm", label: { pl: "Integracje CRM", en: "CRM integrations" } },
       { id: "erp", label: { pl: "Integracje ERP", en: "ERP integrations" } },
-      { id: "leads", label: { pl: "Lejki leadów", en: "Lead funnels" } },
+      { id: "api", label: { pl: "REST API", en: "REST APIs" } },
+    ],
+  },
+  {
+    title: { pl: "Komunikacja i płatności", en: "Messaging and payments" },
+    icon: "chat",
+    skills: [
+      { id: "twilio", label: { pl: "Twilio", en: "Twilio" } },
+      { id: "smsapi", label: { pl: "SMSAPI", en: "SMSAPI" } },
+      { id: "whatsapp", label: { pl: "WhatsApp", en: "WhatsApp" } },
+      { id: "mailerlite", label: { pl: "MailerLite", en: "MailerLite" } },
+      { id: "email", label: { pl: "Integracje z pocztą (SMTP, IMAP)", en: "Email server integrations (SMTP, IMAP)" } },
+      { id: "stripe", label: { pl: "Stripe", en: "Stripe" } },
+    ],
+  },
+  {
+    title: { pl: "Strony i marketing", en: "Web and marketing" },
+    icon: "pulse",
+    skills: [
+      { id: "meta", label: { pl: "Meta (formularze, Pixel, Conversions API)", en: "Meta (lead forms, Pixel, Conversions API)" } },
+      { id: "wordpress", label: { pl: "WordPress", en: "WordPress" } },
     ],
   },
   {
@@ -30,15 +50,11 @@ export const skillGroups = [
     icon: "code",
     skills: [
       { id: "python", label: { pl: "Python", en: "Python" } },
-      { id: "api", label: { pl: "REST API", en: "REST APIs" } },
-      { id: "docker", label: { pl: "Docker i serwery", en: "Docker and servers" } },
-      { id: "monitoring", label: { pl: "Monitoring i obsługa błędów", en: "Monitoring and error handling" } },
+      { id: "docker", label: { pl: "Docker", en: "Docker" } },
+      { id: "vps", label: { pl: "Konfiguracja serwerów VPS", en: "VPS server setup" } },
+      { id: "postgres", label: { pl: "PostgreSQL", en: "PostgreSQL" } },
+      { id: "monitoring", label: { pl: "Monitoring: Prometheus i Grafana", en: "Monitoring: Prometheus and Grafana" } },
     ],
-  },
-  {
-    title: { pl: "Marketing techniczny", en: "Technical marketing" },
-    icon: "pulse",
-    skills: [{ id: "meta", label: { pl: "Meta Pixel i Conversions API", en: "Meta Pixel and Conversions API" } }],
   },
 ] as const;
 

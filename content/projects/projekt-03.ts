@@ -8,7 +8,7 @@ export const projekt03: Project = {
   lead: "Aplikacja, którą zbudowałem samodzielnie w około dwa miesiące i którą nadal utrzymuję. Łączy formularze z reklam Meta i ze strony internetowej z CRM-em, wysyłkę SMS-ów przez SMSAPI, mailingi i powiadomienia. Pod spodem jest skonfigurowany VPS, monitoring i powiadomienia o błędach.",
   year: "",
   tags: ["Integracje", "CRM"],
-  skills: ["crm", "leads", "meta", "n8n", "api", "docker", "monitoring"],
+  skills: ["crm", "meta", "smsapi", "n8n", "api", "docker", "vps", "monitoring"],
   flow: ["Formularz Meta / www", "CRM", "SMS i mailing", "Powiadomienia"],
   flowIcons: ["form", "users", "mail", "bolt"],
   featured: false,
