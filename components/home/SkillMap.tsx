@@ -6,6 +6,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { Arrow } from "@/components/site/Arrow";
 import { Icon } from "@/components/site/Icon";
 import type { Project } from "@/content/projects";
+import { type Lang, localePath, ui } from "@/content/i18n";
 import { skillGroups, type SkillId } from "@/content/skills";
 import { EASE_OUT } from "@/lib/motion";
 import { container } from "@/lib/ui";
@@ -13,13 +14,14 @@ import { container } from "@/lib/ui";
 /** Tylko to, czego potrzebuje lista — reszta case study nie trafia do paczki strony głównej. */
 export type SkillMapProject = Pick<Project, "slug" | "title" | "description" | "flow" | "skills">;
 
-const labelOf = new Map<string, string>(skillGroups.flatMap((g) => g.skills.map((s) => [s.id, s.label] as const)));
 
 /**
  * Interaktywna mapa umiejętności na czarnym pasie: wybór umiejętności przenosi pasujące
  * projekty na górę listy, pozostałe zostają przygaszone.
  */
-export function SkillMap({ projects }: { projects: SkillMapProject[] }) {
+export function SkillMap({ projects, lang }: { projects: SkillMapProject[]; lang: Lang }) {
+  const t = ui[lang].skills;
+  const labelOf = new Map<string, string>(skillGroups.flatMap((g) => g.skills.map((s) => [s.id, s.label[lang]] as const)));
   const [active, setActive] = useState<SkillId | null>(null);
   const reduce = useReducedMotion();
   const resultsRef = useRef<HTMLDivElement>(null);
@@ -43,24 +45,23 @@ export function SkillMap({ projects }: { projects: SkillMapProject[] }) {
         <div className="flex flex-col gap-10">
           <div>
             <h2 className="mark-heading font-display text-[clamp(32px,4.4vw,56px)] font-extrabold leading-[1.02] tracking-[-0.035em] text-balance">
-              Kliknij umiejętność. Pokażę, gdzie jej użyłem.
+              {t.title}
             </h2>
             <p className="mt-5 max-w-[48ch] text-[17px] leading-[155%] text-text-muted-on-dark">
-              Każdy projekt obok to coś, co zbudowałem. Wybierz technologię, a projekty, w których grała rolę, przejdą na
-              górę listy.
+              {t.lead}
             </p>
           </div>
 
           <div className="flex flex-col gap-7">
             <p className="-mb-2 flex items-center gap-2 text-[14px] font-medium text-text-muted-on-dark">
               <Icon name="pointer" className="size-[18px] text-accent" />
-              Wybierz umiejętność. Liczba obok to projekty, w których jej użyłem.
+              {t.hint}
             </p>
             {skillGroups.map((g) => (
-              <fieldset key={g.title} className="flex flex-col gap-3">
+              <fieldset key={g.title.pl} className="flex flex-col gap-3">
                 <legend className="mb-3 flex items-center gap-2 text-[14px] font-semibold text-text-muted-on-dark">
                   <Icon name={g.icon} className="size-[18px]" />
-                  {g.title}
+                  {g.title[lang]}
                 </legend>
                 <div className="flex flex-wrap gap-2">
                   {g.skills.filter((s) => used.has(s.id)).map((s) => {
@@ -73,7 +74,7 @@ export function SkillMap({ projects }: { projects: SkillMapProject[] }) {
                         type="button"
                         aria-pressed={on}
                         aria-controls="lista-projektow"
-                        aria-label={`${s.label}: ${n} ${n === 1 ? "projekt" : "projekty"}`}
+                        aria-label={`${s.label[lang]}: ${n} ${t.projects(n)}`}
                         onClick={() => choose(on ? null : s.id)}
                         className={`group/chip relative inline-flex min-h-[44px] cursor-pointer items-center gap-2.5 rounded-xs border pl-3.5 pr-2.5 text-[15px] font-medium transition-[background-color,border-color,color,transform] duration-200 active:scale-[0.97] ${
                           on
@@ -92,7 +93,7 @@ export function SkillMap({ projects }: { projects: SkillMapProject[] }) {
                             transition={{ duration: 0.9, delay: 0.4 + order * 0.07, ease: "easeInOut" }}
                           />
                         )}
-                        {s.label}
+                        {s.label[lang]}
                         <span
                           aria-hidden="true"
                           className={`grid h-5 min-w-5 place-items-center rounded-[3px] px-1 text-[12px] font-semibold tabular-nums transition-colors ${
@@ -109,11 +110,11 @@ export function SkillMap({ projects }: { projects: SkillMapProject[] }) {
             ))}
             {/* Umiejętności bez opisanego tu projektu — informacja, nie przycisk. */}
             {(() => {
-              const other = skillGroups.flatMap((g) => [...g.skills] as { id: SkillId; label: string }[]).filter((s) => !used.has(s.id));
+              const other = skillGroups.flatMap((g) => [...g.skills] as { id: SkillId; label: { pl: string; en: string } }[]).filter((s) => !used.has(s.id));
               return other.length > 0 ? (
                 <p className="border-t border-white/20 pt-5 text-[15px] leading-[155%] text-text-muted-on-dark">
-                  <span className="font-semibold text-text-on-dark">Używam też: </span>
-                  {other.map((s) => s.label).join(" · ")}
+                  <span className="font-semibold text-text-on-dark">{t.also} </span>
+                  {other.map((s) => s.label[lang]).join(" · ")}
                 </p>
               ) : null;
             })()}
@@ -125,9 +126,9 @@ export function SkillMap({ projects }: { projects: SkillMapProject[] }) {
             <p aria-live="polite" className="text-[15px] font-semibold">
               {active
                 ? matches.length > 0
-                  ? `${labelOf.get(active)}: ${matches.length} z ${projects.length} projektów`
+                  ? t.matching(labelOf.get(active) ?? "", matches.length, projects.length)
                   : labelOf.get(active)
-                : `Wszystkie projekty (${projects.length})`}
+                : t.all(projects.length)}
             </p>
             {active && (
               <button
@@ -135,7 +136,7 @@ export function SkillMap({ projects }: { projects: SkillMapProject[] }) {
                 onClick={() => choose(null)}
                 className="min-h-[44px] shrink-0 cursor-pointer text-[15px] font-medium underline decoration-white/40 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
               >
-                Pokaż wszystkie
+                {t.showAll}
               </button>
             )}
           </div>
@@ -155,13 +156,13 @@ export function SkillMap({ projects }: { projects: SkillMapProject[] }) {
                   <div className="flex flex-col gap-2">
                     <h3 className="font-display text-[22px] font-bold leading-[1.15] tracking-[-0.012em] text-balance md:text-[26px]">
                       {/* Link na tytule, klikalny cały wiersz przez ::after. */}
-                      <Link href={`/projekty/${p.slug}/`} className="transition-colors after:absolute after:inset-0 after:content-[''] group-hover:text-accent">
+                      <Link href={localePath(lang, `/projekty/${p.slug}/`)} className="transition-colors after:absolute after:inset-0 after:content-[''] group-hover:text-accent">
                         {p.title}
                       </Link>
                     </h3>
                     <p className="max-w-[56ch] text-[15px] leading-[150%] text-text-muted-on-dark">{p.description}</p>
                     <p className="mt-1 text-[14px] font-medium text-white/85">
-                      <span className="sr-only">Przepływ: </span>
+                      <span className="sr-only">{t.flow} </span>
                       {p.flow.join("  →  ")}
                     </p>
                     {active && (
@@ -176,7 +177,7 @@ export function SkillMap({ projects }: { projects: SkillMapProject[] }) {
                     )}
                   </div>
                   <span aria-hidden="true" className="inline-flex items-center gap-2 text-[15px] font-semibold text-text-muted-on-dark transition-colors group-hover:text-accent md:pt-1.5">
-                    Szczegóły
+                    {t.details}
                     <Arrow className="transition-transform duration-200 group-hover:translate-x-1" />
                   </span>
                 </motion.li>

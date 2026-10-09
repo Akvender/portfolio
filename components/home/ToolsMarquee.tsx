@@ -37,7 +37,7 @@ function Row({ hidden = false }: { hidden?: boolean }) {
  * Przewijany pas narzędzi: dwie identyczne listy w pętli (translateX −50%), wygaszone krawędzie.
  * Pauza: najechanie kursorem, fokus albo przycisk (WCAG 2.2.2). Reduced motion → stoi w miejscu.
  */
-export function ToolsMarquee() {
+export function ToolsMarquee({ pauseLabel, resumeLabel }: { pauseLabel: string; resumeLabel: string }) {
   const [paused, setPaused] = useState(false);
   return (
     <div className="flex min-w-0 flex-1 items-center gap-3">
@@ -50,7 +50,7 @@ export function ToolsMarquee() {
       <button
         type="button"
         onClick={() => setPaused((p) => !p)}
-        aria-label={paused ? "Wznów przewijanie narzędzi" : "Zatrzymaj przewijanie narzędzi"}
+        aria-label={paused ? resumeLabel : pauseLabel}
         className="grid size-11 shrink-0 cursor-pointer place-items-center rounded-xs text-text-muted-on-dark transition-colors hover:bg-ink-soft hover:text-accent motion-reduce:hidden"
       >
         <svg aria-hidden="true" viewBox="0 0 24 24" className="size-4 fill-current">

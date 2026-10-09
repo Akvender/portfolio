@@ -97,4 +97,12 @@ export type Project = {
   /** 3 metryki na kartę wyróżnioną. */
   metrics: Metric[];
   sections: CaseSection[];
+  /** Wersja angielska; brakujące pola biorą się z polskiej. */
+  en?: ProjectText;
+};
+
+/** Pola projektu, które tłumaczymy. Bez `sections` szczegóły case study zostają po polsku. */
+export type ProjectText = Pick<Project, "title" | "description" | "lead" | "tags" | "flow" | "coverAlt"> & {
+  meta?: Partial<CaseMeta>;
+  sections?: CaseSection[];
 };

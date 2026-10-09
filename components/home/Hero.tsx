@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Arrow } from "@/components/site/Arrow";
 import { ToolsMarquee } from "@/components/home/ToolsMarquee";
-import { hero, site } from "@/content/site";
+import { type Lang, localePath, ui } from "@/content/i18n";
+import { getContent, site } from "@/content/site";
 import { asset, container } from "@/lib/ui";
 
 /**
@@ -11,7 +12,9 @@ import { asset, container } from "@/lib/ui";
  * Jedyny pomarańczowy przycisk na ekranie to główna akcja (prowadzi do umiejętności).
  * Wejście w czystym CSS (klasy .intro-*), bez czekania na hydrację (LCP).
  */
-export function Hero() {
+export function Hero({ lang }: { lang: Lang }) {
+  const { hero } = getContent(lang);
+  const t = ui[lang].hero;
   const d = (ms: number) => ({ "--d": `${ms}ms` }) as React.CSSProperties;
   const hasPhoto = !hero.photo.includes("placeholder");
   const portrait = "aspect-[4/3] w-full md:aspect-[4/5] md:max-h-[42svh]";
@@ -31,17 +34,17 @@ export function Hero() {
           </p>
           <div className="intro-up flex flex-wrap items-center gap-3 pt-1" style={d(280)}>
             <Link
-              href="/#umiejetnosci"
+              href={localePath(lang, "/#umiejetnosci")}
               className="group inline-flex min-h-[52px] items-center gap-3 rounded-xs bg-accent px-6 text-[16px] font-semibold text-on-accent transition-[background-color,transform] duration-200 hover:bg-[#ff8a3d] active:scale-[0.98]"
             >
-              Zobacz, co potrafię
+              {t.primary}
               <Arrow dir="down" className="transition-transform duration-200 group-hover:translate-y-0.5" />
             </Link>
             <Link
-              href="/#kontakt"
+              href={localePath(lang, "/#kontakt")}
               className="inline-flex min-h-[52px] items-center rounded-xs border border-border-on-dark px-6 text-[16px] font-semibold transition-colors duration-200 hover:border-text-muted-on-dark active:bg-ink-soft"
             >
-              Napisz do mnie
+              {t.secondary}
             </Link>
           </div>
         </div>
@@ -74,7 +77,7 @@ export function Hero() {
             <figcaption className="flex flex-col gap-4 p-6">
               <div>
                 <p className="font-display text-[24px] font-extrabold leading-tight tracking-[-0.02em]">{site.name}</p>
-                <p className="mt-1 text-[15px] text-text-muted-on-dark">AI developer · freelancer</p>
+                <p className="mt-1 text-[15px] text-text-muted-on-dark">{t.role}</p>
               </div>
               <p className="flex items-center gap-2.5 text-[15px] font-semibold">
                 <span aria-hidden="true" className="relative flex size-2.5">
@@ -96,10 +99,10 @@ export function Hero() {
 
       <div className={`${container} intro-up pb-8`} style={d(380)}>
         <div className="flex flex-col gap-4 border-t border-border-on-dark pt-6 md:flex-row md:items-center md:gap-10">
-          <p className="shrink-0 text-[14px] font-semibold text-text-muted-on-dark">Na co dzień pracuję z</p>
-          <ToolsMarquee />
-          <Link href="/#umiejetnosci" className="group hidden min-h-[44px] shrink-0 items-center gap-2 text-[14px] font-semibold text-text-muted-on-dark hover:text-accent lg:inline-flex">
-            Przewiń dalej
+          <p className="shrink-0 text-[14px] font-semibold text-text-muted-on-dark">{t.toolsLabel}</p>
+          <ToolsMarquee pauseLabel={t.pause} resumeLabel={t.resume} />
+          <Link href={localePath(lang, "/#umiejetnosci")} className="group hidden min-h-[44px] shrink-0 items-center gap-2 text-[14px] font-semibold text-text-muted-on-dark hover:text-accent lg:inline-flex">
+            {t.scroll}
             <Arrow dir="down" className="animate-[nudge_2.4s_ease-in-out_3] transition-transform duration-200 group-hover:translate-y-0.5 motion-reduce:animate-none" />
           </Link>
         </div>

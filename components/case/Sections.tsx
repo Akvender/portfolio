@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Project } from "@/content/projects";
+import type { LocalizedProject as Project } from "@/content/projects";
+import { type Lang, localePath, ui, type UI } from "@/content/i18n";
 import type {
   ApproachSection, CaseSection, ImpactSection, ProblemSection, ResultsSection, RoadmapSection, SolutionSection,
 } from "@/content/projects/types";
@@ -15,20 +16,27 @@ import { asset, container, h1, sectionLabel, sectionY } from "@/lib/ui";
 
 const d = (ms: number) => ({ "--d": `${ms}ms` }) as React.CSSProperties;
 
-export function CaseHero({ project }: { project: Project }) {
+export function CaseHero({ project, lang }: { project: Project; lang: Lang }) {
+  const t = ui[lang].case;
   const meta = [
-    ["Klient", project.meta.client], ["Rola", project.meta.role], ["Okres", project.meta.period],
-    ["Status", project.meta.status], ["Stack", project.meta.stack],
+    [t.client, project.meta.client], [t.role, project.meta.role], [t.period, project.meta.period],
+    [t.status, project.meta.status], [t.stack, project.meta.stack],
   ];
   return (
     <section className="bg-ink pt-[104px] text-text-on-dark">
       <div className={`${container} flex flex-col gap-10 py-12 lg:py-20`}>
-        <Link href="/#umiejetnosci" className="intro-up inline-flex min-h-[44px] w-fit items-center gap-2 text-[15px] font-semibold text-text-muted-on-dark hover:text-text-on-dark" style={d(0)}>
-          <span aria-hidden="true">←</span> Wszystkie projekty
+        <Link href={localePath(lang, "/#umiejetnosci")} className="intro-up inline-flex min-h-[44px] w-fit items-center gap-2 text-[15px] font-semibold text-text-muted-on-dark hover:text-text-on-dark" style={d(0)}>
+          <span aria-hidden="true">←</span> {t.back}
         </Link>
         <div>
           <h1 className={`${h1} intro-up max-w-[22ch] text-balance`} style={d(120)}>{project.title}</h1>
           <p className="intro-up mt-5 max-w-[62ch] text-[18px] leading-[160%] text-text-muted-on-dark" style={d(220)}>{project.lead}</p>
+          {!project.translated && t.notTranslated && (
+            <p className="intro-up mt-5 inline-flex max-w-[62ch] items-start gap-2 rounded-xs border border-border-on-dark px-4 py-3 text-[14px] leading-[150%] text-text-muted-on-dark" style={d(260)}>
+              <span aria-hidden="true" className="mt-1.5 size-2 shrink-0 bg-accent" />
+              {t.notTranslated}
+            </p>
+          )}
         </div>
         <dl className="intro-up grid grid-cols-2 overflow-hidden rounded-xs border border-border-on-dark md:grid-cols-5" style={d(300)}>
           {meta.map(([k, v], i) => (
@@ -66,7 +74,7 @@ function Problem({ s }: { s: ProblemSection }) {
   );
 }
 
-function Solution({ s }: { s: SolutionSection }) {
+function Solution({ s, t }: { s: SolutionSection; t: UI["case"] }) {
   return (
     <section className={`bg-white ${sectionY}`}>
       <div className={`${container} flex flex-col gap-12`}>
@@ -74,10 +82,10 @@ function Solution({ s }: { s: SolutionSection }) {
         {s.table && (
           <Reveal className="rounded-xs border border-border p-4 md:p-8">
             <div className="mb-4 flex flex-wrap justify-between gap-2 text-[14px] font-medium text-text-muted">
-              <span>Karta zamówień dla jednej trasy</span>
-              <span>Dane przykładowe</span>
+              <span>{t.orderCard}</span>
+              <span>{t.sampleData}</span>
             </div>
-            <OrderTable columns={s.table.columns} rows={s.table.rows} />
+            <OrderTable columns={s.table.columns} rows={s.table.rows} dashLabel={t.dash} />
           </Reveal>
         )}
         {s.image && (
@@ -86,7 +94,7 @@ function Solution({ s }: { s: SolutionSection }) {
           </Reveal>
         )}
         <div>
-          <Reveal><h3 className="font-display text-[24px] font-bold leading-[1.15]">Moduły systemu</h3></Reveal>
+          <Reveal><h3 className="font-display text-[24px] font-bold leading-[1.15]">{t.modules}</h3></Reveal>
           <RevealGroup as="ul" className="mt-5 border-t border-ink">
             {s.modules.map((m, i) => (
               <RevealItem as="li" key={i} className="grid gap-1 border-b border-border py-4 md:grid-cols-[240px_minmax(0,1fr)] md:gap-8">
@@ -188,11 +196,12 @@ function Roadmap({ s }: { s: RoadmapSection }) {
   );
 }
 
-export function CaseSections({ sections }: { sections: CaseSection[] }) {
+export function CaseSections({ sections, lang }: { sections: CaseSection[]; lang: Lang }) {
+  const t = ui[lang].case;
   return sections.map((s, i) => {
     switch (s.type) {
       case "problem": return <Problem key={i} s={s} />;
-      case "solution": return <Solution key={i} s={s} />;
+      case "solution": return <Solution key={i} s={s} t={t} />;
       case "results": return <Results key={i} s={s} />;
       case "approach": return <Approach key={i} s={s} />;
       case "impact": return <Impact key={i} s={s} />;
@@ -201,18 +210,18 @@ export function CaseSections({ sections }: { sections: CaseSection[] }) {
   });
 }
 
-export function NextProject({ project }: { project: Project }) {
+export function NextProject({ project, lang }: { project: Project; lang: Lang }) {
   return (
     <section className={`bg-paper ${sectionY}`}>
       <div className={container}>
         <Reveal>
           <Link
-            href={`/projekty/${project.slug}/`}
+            href={localePath(lang, `/projekty/${project.slug}/`)}
             className="group grid gap-8 rounded-xs border border-border bg-white p-5 transition-colors duration-300 hover:border-ink md:grid-cols-[1fr_1.2fr] md:items-center md:p-8"
           >
             <div className="flex flex-col gap-4">
               <h2 className="text-[clamp(24px,3vw,30px)] font-extrabold leading-[120%]">
-                <span className="sr-only">Następny projekt: </span>
+                <span className="sr-only">{ui[lang].case.next} </span>
                 {project.title}{" "}
                 <Arrow className="transition-transform duration-200 group-hover:translate-x-1" />
               </h2>
