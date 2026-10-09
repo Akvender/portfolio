@@ -1,27 +1,35 @@
 @import "tailwindcss";
 
 @theme {
-  /* Kolory: czerń i biel. Akcent = czarne pola (mapa umiejętności, tło zdjęcia). */
-  --color-ink: #0a0a0a;
-  --color-ink-soft: #1c1c1c;
-  --color-ink-strong: #000000;
-  --color-paper: #ffffff;
-  /* Akcent na ciemnych pasach (wybrana umiejętność, przycisk kontaktu) i „znak” na jasnym tle (blok za zdjęciem, kropka). */
-  --color-accent: #ffffff;
-  --color-on-accent: #0a0a0a;
-  --color-mark: #0a0a0a;
-  --color-paper-soft: #f0f0f0;
-  --color-white: #f6f6f6;
+  /*
+   * Paleta z portretu: chłodny granat cienia (baza) + komplementarny ciepły pomarańcz
+   * światła na twarzy (akcent). Granat 217° ↔ pomarańcz 23°: para komplementarna.
+   * Kontrasty (WCAG): text-primary/paper 16.5:1 · text-muted/paper 5.9:1 ·
+   * text-on-dark/ink 15.9:1 · muted-on-dark/ink 7.4:1 · accent/ink 6.5:1 ·
+   * on-accent/accent 6.5:1 · accent-strong/paper 5.0:1.
+   * Pomarańcz na jasnym tle tylko jako wypełnienie (znaczniki, kropki), tekst = accent-strong.
+   */
+  --color-ink: #0e1726;
+  --color-ink-soft: #18243a;
+  --color-ink-strong: #080e18;
+  --color-paper: #f7f5f1;
+  --color-paper-soft: #ece8e0;
+  --color-white: #ffffff;
+  /* Akcent: znaczniki nagłówków, status, wybrana umiejętność, przycisk kontaktu, fokus na ciemnym. */
+  --color-accent: #f27a2e;
+  --color-accent-strong: #b04a12;
+  --color-on-accent: #0e1726;
+  --color-mark: #f27a2e;
   /* Nazwy historyczne — używane w case study. */
-  --color-accent-green: #0a0a0a;
-  --color-accent-green-dark: #000000;
-  --color-accent-amber: #ffffff;
-  --color-text-primary: #0a0a0a;
-  --color-text-on-dark: #f5f5f5;
-  --color-text-muted: #4d4d4d;
-  --color-text-muted-on-dark: #a6a6a6;
-  --color-border: #dedede;
-  --color-border-on-dark: #303030;
+  --color-accent-green: #0e1726;
+  --color-accent-green-dark: #080e18;
+  --color-accent-amber: #f27a2e;
+  --color-text-primary: #0e1726;
+  --color-text-on-dark: #f3f1ec;
+  --color-text-muted: #556070;
+  --color-text-muted-on-dark: #9ba7b9;
+  --color-border: #ded8cc;
+  --color-border-on-dark: #26344d;
 
   /* Typografia */
   --font-sans: var(--font-lato), ui-sans-serif, system-ui, sans-serif;
@@ -88,8 +96,8 @@ html.lenis body {
 }
 
 ::selection {
-  background: var(--color-ink);
-  color: var(--color-paper);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
 }
 
 :focus-visible {
@@ -97,9 +105,9 @@ html.lenis body {
   outline-offset: 3px;
   border-radius: 2px;
 }
-/* Na czarnych sekcjach obwódka fokusu jest biała. */
+/* Na ciemnych sekcjach obwódka fokusu jest w kolorze akcentu (6.5:1). */
 .bg-ink :focus-visible {
-  outline-color: var(--color-paper);
+  outline-color: var(--color-accent);
 }
 
 /* Linki w tekście: podkreślenie z odstępem, w kolorze atramentu. */
@@ -109,7 +117,7 @@ a {
 }
 
 html {
-  scrollbar-color: #bdbdbd var(--color-paper);
+  scrollbar-color: #b9b2a5 var(--color-paper);
 }
 
 /* Wejście hero / przejście stron w CSS — rusza od pierwszego malowania, bez hydracji (LCP). */
@@ -136,7 +144,7 @@ html {
 
 
 
-/* Znacznik przy nagłówkach sekcji: mały kwadrat w kolorze tekstu. */
+/* Znacznik przy nagłówkach sekcji: mały kwadrat w kolorze akcentu (sygnatura strony). */
 .mark-heading::before {
   content: "";
   display: inline-block;
@@ -144,5 +152,23 @@ html {
   height: 0.32em;
   margin-right: 0.35em;
   vertical-align: 0.18em;
-  background: currentColor;
+  background: var(--color-accent);
+}
+
+/* Strzałka „Przewiń dalej”: trzy delikatne kiwnięcia w dół, potem spokój. */
+@keyframes nudge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+
+/* Okno certyfikatu: wjazd z lekkim powiększeniem, tło przyciemnione granatem. */
+@keyframes dialog-in { from { opacity: 0; transform: translateY(12px) scale(0.98); } }
+@keyframes fade-in { from { opacity: 0; } }
+.cert-dialog[open] { animation: dialog-in 0.35s var(--ease-out-expo); }
+.cert-dialog::backdrop { background: rgb(14 23 38 / 0.72); backdrop-filter: blur(4px); animation: fade-in 0.3s ease; }
+
+/* Pas narzędzi w hero: pętla 40 s, pauza po najechaniu/fokusie; przy reduced motion stoi. */
+@keyframes marquee { to { transform: translateX(-50%); } }
+.marquee-track { animation: marquee 40s linear infinite; }
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none !important; }
 }

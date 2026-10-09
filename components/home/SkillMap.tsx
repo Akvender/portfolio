@@ -25,6 +25,8 @@ export function SkillMap({ projects }: { projects: SkillMapProject[] }) {
   const resultsRef = useRef<HTMLDivElement>(null);
   const used = new Set(projects.flatMap((p) => p.skills));
   const matches = active ? projects.filter((p) => p.skills.includes(active)) : projects;
+  const countOf = (id: SkillId) => projects.filter((p) => p.skills.includes(id)).length;
+  let wave = 0; // kolejność przycisków w jednorazowej „fali” podświetlenia
   const ordered = active ? [...matches, ...projects.filter((p) => !p.skills.includes(active))] : projects;
 
   const choose = (id: SkillId | null) => {
@@ -36,7 +38,7 @@ export function SkillMap({ projects }: { projects: SkillMapProject[] }) {
   };
 
   return (
-    <section id="umiejetnosci" className="scroll-mt-[104px] bg-ink text-text-on-dark">
+    <section id="umiejetnosci" className="scroll-mt-[104px] border-t border-border-on-dark bg-ink-soft text-text-on-dark">
       <div className={`${container} grid gap-12 py-16 md:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16 lg:py-28`}>
         <div className="flex flex-col gap-10">
           <div>
@@ -50,6 +52,10 @@ export function SkillMap({ projects }: { projects: SkillMapProject[] }) {
           </div>
 
           <div className="flex flex-col gap-7">
+            <p className="-mb-2 flex items-center gap-2 text-[14px] font-medium text-text-muted-on-dark">
+              <Icon name="pointer" className="size-[18px] text-accent" />
+              Wybierz umiejętność. Liczba obok to projekty, w których jej użyłem.
+            </p>
             {skillGroups.map((g) => (
               <fieldset key={g.title} className="flex flex-col gap-3">
                 <legend className="mb-3 flex items-center gap-2 text-[14px] font-semibold text-text-muted-on-dark">
@@ -59,20 +65,42 @@ export function SkillMap({ projects }: { projects: SkillMapProject[] }) {
                 <div className="flex flex-wrap gap-2">
                   {g.skills.filter((s) => used.has(s.id)).map((s) => {
                     const on = active === s.id;
+                    const order = wave++;
+                    const n = countOf(s.id);
                     return (
                       <button
                         key={s.id}
                         type="button"
                         aria-pressed={on}
                         aria-controls="lista-projektow"
+                        aria-label={`${s.label}: ${n} ${n === 1 ? "projekt" : "projekty"}`}
                         onClick={() => choose(on ? null : s.id)}
-                        className={`min-h-[40px] rounded-xs border px-3.5 text-[15px] font-medium transition-colors duration-200 ${
+                        className={`group/chip relative inline-flex min-h-[44px] cursor-pointer items-center gap-2.5 rounded-xs border pl-3.5 pr-2.5 text-[15px] font-medium transition-[background-color,border-color,color,transform] duration-200 active:scale-[0.97] ${
                           on
                             ? "border-accent bg-accent text-on-accent"
-                            : "border-white/30 hover:border-white hover:bg-white/10"
+                            : "border-white/25 hover:-translate-y-px hover:border-accent/70 hover:bg-white/[0.06]"
                         }`}
                       >
+                        {/* Jednorazowa fala obwódek, gdy sekcja wjeżdża w widok: subtelna podpowiedź, że to przyciski. */}
+                        {!reduce && (
+                          <motion.span
+                            aria-hidden="true"
+                            className="pointer-events-none absolute -inset-px rounded-xs border border-accent"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: [0, 1, 0] }}
+                            viewport={{ once: true, amount: 0.6 }}
+                            transition={{ duration: 0.9, delay: 0.4 + order * 0.07, ease: "easeInOut" }}
+                          />
+                        )}
                         {s.label}
+                        <span
+                          aria-hidden="true"
+                          className={`grid h-5 min-w-5 place-items-center rounded-[3px] px-1 text-[12px] font-semibold tabular-nums transition-colors ${
+                            on ? "bg-on-accent/15" : "bg-white/10 text-text-muted-on-dark group-hover/chip:text-text-on-dark"
+                          }`}
+                        >
+                          {on ? "✕" : n}
+                        </span>
                       </button>
                     );
                   })}
@@ -93,7 +121,7 @@ export function SkillMap({ projects }: { projects: SkillMapProject[] }) {
         </div>
 
         <div ref={resultsRef} className="flex scroll-mt-[120px] flex-col">
-          <div className="flex min-h-[44px] items-center justify-between gap-4 border-b border-white pb-3">
+          <div className="flex min-h-[44px] items-center justify-between gap-4 border-b border-white/60 pb-3 md:-mx-4 md:px-4">
             <p aria-live="polite" className="text-[15px] font-semibold">
               {active
                 ? matches.length > 0
@@ -105,7 +133,7 @@ export function SkillMap({ projects }: { projects: SkillMapProject[] }) {
               <button
                 type="button"
                 onClick={() => choose(null)}
-                className="min-h-[40px] shrink-0 text-[15px] font-medium underline decoration-white/40 underline-offset-4 hover:decoration-white"
+                className="min-h-[44px] shrink-0 cursor-pointer text-[15px] font-medium underline decoration-white/40 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
               >
                 Pokaż wszystkie
               </button>
@@ -120,14 +148,14 @@ export function SkillMap({ projects }: { projects: SkillMapProject[] }) {
                   key={p.slug}
                   layout={!reduce}
                   transition={{ duration: 0.45, ease: EASE_OUT }}
-                  className={`group relative grid gap-3 border-b border-white/20 py-6 transition-opacity duration-300 md:grid-cols-[minmax(0,1fr)_auto] md:items-start md:gap-8 ${
+                  className={`group relative grid gap-3 border-b border-white/15 py-6 md:-mx-4 md:rounded-xs md:px-4 transition-[opacity,background-color] duration-300 hover:bg-white/[0.04] focus-within:bg-white/[0.04] md:grid-cols-[minmax(0,1fr)_auto] md:items-start md:gap-8 ${
                     dim ? "opacity-50 hover:opacity-80" : "opacity-100"
                   }`}
                 >
                   <div className="flex flex-col gap-2">
                     <h3 className="font-display text-[22px] font-bold leading-[1.15] tracking-[-0.012em] text-balance md:text-[26px]">
                       {/* Link na tytule, klikalny cały wiersz przez ::after. */}
-                      <Link href={`/projekty/${p.slug}/`} className="after:absolute after:inset-0 after:content-['']">
+                      <Link href={`/projekty/${p.slug}/`} className="transition-colors after:absolute after:inset-0 after:content-[''] group-hover:text-accent">
                         {p.title}
                       </Link>
                     </h3>
@@ -138,11 +166,16 @@ export function SkillMap({ projects }: { projects: SkillMapProject[] }) {
                     </p>
                     {active && (
                       <p className="text-[13px] font-medium text-text-muted-on-dark">
-                        {p.skills.map((id) => labelOf.get(id)).join(" · ")}
+                        {p.skills.map((id, i) => (
+                          <span key={id}>
+                            {i > 0 && " · "}
+                            <span className={id === active ? "font-semibold text-accent" : undefined}>{labelOf.get(id)}</span>
+                          </span>
+                        ))}
                       </p>
                     )}
                   </div>
-                  <span aria-hidden="true" className="inline-flex items-center gap-2 text-[15px] font-semibold md:pt-1.5">
+                  <span aria-hidden="true" className="inline-flex items-center gap-2 text-[15px] font-semibold text-text-muted-on-dark transition-colors group-hover:text-accent md:pt-1.5">
                     Szczegóły
                     <Arrow className="transition-transform duration-200 group-hover:translate-x-1" />
                   </span>

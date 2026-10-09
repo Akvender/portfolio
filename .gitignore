@@ -6,3 +6,6 @@ next-env.d.ts
 .DS_Store
 .playwright-mcp
 
+
+# Surowe zdjęcia (źródła) — do repo trafia tylko wersja z public/images
+/*.png

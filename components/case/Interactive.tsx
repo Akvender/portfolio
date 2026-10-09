@@ -48,7 +48,7 @@ export function OrderTable({ columns, rows }: { columns: string[]; rows: string[
                     {cell === "—" ? (
                       <motion.span
                         className="-mx-1.5 rounded-xs px-1.5 py-0.5 font-bold"
-                        variants={{ hidden: { backgroundColor: "rgba(10,10,10,0)" }, visible: { backgroundColor: "rgba(10,10,10,0.1)", transition: { delay: 0.9, duration: 0.6 } } }}
+                        variants={{ hidden: { backgroundColor: "rgba(242,122,46,0)" }, visible: { backgroundColor: "rgba(242,122,46,0.25)", transition: { delay: 0.9, duration: 0.6 } } }}
                       >
                         <span aria-hidden="true">—</span>
                         <span className="sr-only">Sklep świadomie nie zamawia</span>
