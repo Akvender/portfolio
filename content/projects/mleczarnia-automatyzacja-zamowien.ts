@@ -17,8 +17,6 @@ export const mleczarnia: Project = {
   skills: ["llm", "erp", "api"],
   flow: ["Telefon i kartka", "Cyfrowa karta", "Produkcja", "WZ w Comarch"],
   featured: true,
-  cover: "/images/cover-mleczarnia.svg",
-  coverAlt: "Okładka projektu — cyfrowa karta zamówień dla mleczarni (placeholder)",
   meta: {
     client: "Mleczarnia, woj. łódzkie",
     role: "Analiza procesów, AI, wdrożenie",
@@ -47,7 +45,6 @@ export const mleczarnia: Project = {
       "Production",
       "WZ in Comarch"
     ],
-    coverAlt: "Project cover — digital order card for a dairy (placeholder)",
     meta: {
       client: "Dairy, Łódź region",
       role: "Process analysis, AI, deployment",

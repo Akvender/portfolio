@@ -12,8 +12,6 @@ export const projekt02: Project = {
   skills: ["imagegen", "llm", "python", "api"],
   flow: ["Dane produktu", "Model AI", "Gotowa grafika", "Sklep i reklamy"],
   featured: false,
-  cover: "/images/cover-projekt-02.svg",
-  coverAlt: "Generator grafik produktowych dla e‑commerce — okładka (placeholder)",
   meta: {
     client: "Nazwa klienta",
     role: "Rola zespołu",
@@ -41,7 +39,6 @@ export const projekt02: Project = {
       "Finished image",
       "Store and ads"
     ],
-    coverAlt: "Product image generator for e-commerce — cover (placeholder)",
     meta: {
       client: "Client name",
       role: "Role",

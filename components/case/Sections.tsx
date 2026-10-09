@@ -12,6 +12,7 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/site/Reveal";
 import { ScrollLine } from "@/components/site/ScrollLine";
 import { SectionHeader, Tags } from "@/components/home/Sections";
 import { OrderTable, ParallaxCover } from "./Interactive";
+import { FlowCover } from "./FlowCover";
 import { asset, container, h1, sectionLabel, sectionY } from "@/lib/ui";
 
 const d = (ms: number) => ({ "--d": `${ms}ms` }) as React.CSSProperties;
@@ -46,7 +47,13 @@ export function CaseHero({ project, lang }: { project: Project; lang: Lang }) {
             </div>
           ))}
         </dl>
-        <ParallaxCover src={project.cover} alt={project.coverAlt} />
+        {project.cover ? (
+          <ParallaxCover src={project.cover} alt={project.coverAlt ?? project.title} />
+        ) : (
+          <div className="intro-clip" style={d(350)}>
+            <FlowCover id={`hero-${project.slug}`} flow={project.flow} tags={project.tags} caption={t.flowCaption} label={`${t.flowCaption}: ${project.flow.join(" → ")}`} />
+          </div>
+        )}
       </div>
     </section>
   );
@@ -228,7 +235,13 @@ export function NextProject({ project, lang }: { project: Project; lang: Lang })
               <Tags tags={project.tags} />
             </div>
             <div className="overflow-hidden rounded-[2px]">
-              <Image src={asset(project.cover)} alt={project.coverAlt} width={1600} height={1000} sizes="(min-width: 768px) 640px, 100vw" className="aspect-[8/5] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]" />
+              {project.cover ? (
+                <Image src={asset(project.cover)} alt={project.coverAlt ?? project.title} width={1600} height={1000} sizes="(min-width: 768px) 640px, 100vw" className="aspect-[8/5] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]" />
+              ) : (
+                <div className="transition-transform duration-700 ease-out group-hover:scale-[1.02]">
+                  <FlowCover id={`next-${project.slug}`} flow={project.flow} tags={project.tags} caption={ui[lang].case.flowCaption} label={`${ui[lang].case.flowCaption}: ${project.flow.join(" → ")}`} />
+                </div>
+              )}
             </div>
           </Link>
         </Reveal>

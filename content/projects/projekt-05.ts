@@ -12,8 +12,6 @@ export const projekt05: Project = {
   skills: ["speech", "llm", "bots", "n8n"],
   flow: ["Rozmowa", "Transkrypcja", "Notatka AI", "Kolejne kroki"],
   featured: false,
-  cover: "/images/cover-projekt-05.svg",
-  coverAlt: "Call-center wspomagane transkrypcją i AI — okładka (placeholder)",
   meta: {
     client: "Nazwa klienta",
     role: "Rola zespołu",
@@ -41,7 +39,6 @@ export const projekt05: Project = {
       "AI note",
       "Next steps"
     ],
-    coverAlt: "Call center supported by transcription and AI — cover (placeholder)",
     meta: {
       client: "Client name",
       role: "Role",

@@ -12,8 +12,6 @@ export const projekt03: Project = {
   skills: ["crm", "n8n", "api"],
   flow: ["CRM", "Integracja", "Pozostałe systemy"],
   featured: false,
-  cover: "/images/cover-projekt-03.svg",
-  coverAlt: "Połączenie CRM-ów i integracje systemów — okładka (placeholder)",
   meta: {
     client: "Nazwa klienta",
     role: "Rola zespołu",
@@ -40,7 +38,6 @@ export const projekt03: Project = {
       "Integration",
       "Other systems"
     ],
-    coverAlt: "Connecting CRMs and integrating systems — cover (placeholder)",
     meta: {
       client: "Client name",
       role: "Role",
