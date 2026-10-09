@@ -11,6 +11,7 @@ export const projekt03: Project = {
   tags: ["Integracje", "CRM"],
   skills: ["crm", "n8n", "api"],
   flow: ["CRM", "Integracja", "Pozostałe systemy"],
+  flowIcons: ["users", "plug", "server"],
   featured: false,
   meta: {
     client: "Nazwa klienta",

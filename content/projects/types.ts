@@ -74,6 +74,7 @@ export type CaseSection =
   | RoadmapSection;
 
 import type { SkillId } from "../skills";
+import type { IconName } from "@/components/site/Icon";
 
 export type Project = {
   slug: string;
@@ -89,6 +90,8 @@ export type Project = {
   skills: SkillId[];
   /** Uproszczony przepływ (3–4 kroki) rysowany na liście projektów. */
   flow: string[];
+  /** Ikona dla każdego kroku `flow` (ta sama kolejność) — rysowana na okładce-schemacie. */
+  flowIcons: IconName[];
   featured: boolean;
   /** Prawdziwa okładka (zrzut, zdjęcie) pod public/. Brak = okładka rysowana ze schematu `flow`. */
   cover?: string;

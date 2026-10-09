@@ -51,7 +51,7 @@ export function CaseHero({ project, lang }: { project: Project; lang: Lang }) {
           <ParallaxCover src={project.cover} alt={project.coverAlt ?? project.title} />
         ) : (
           <div className="intro-clip" style={d(350)}>
-            <FlowCover id={`hero-${project.slug}`} flow={project.flow} tags={project.tags} caption={t.flowCaption} label={`${t.flowCaption}: ${project.flow.join(" → ")}`} />
+            <FlowCover id={`hero-${project.slug}`} flow={project.flow} icons={project.flowIcons} tags={project.tags} ends={[t.flowStart, t.flowEnd]} caption={t.flowCaption} label={`${t.flowCaption}: ${project.flow.join(" → ")}`} />
           </div>
         )}
       </div>
@@ -239,7 +239,7 @@ export function NextProject({ project, lang }: { project: Project; lang: Lang })
                 <Image src={asset(project.cover)} alt={project.coverAlt ?? project.title} width={1600} height={1000} sizes="(min-width: 768px) 640px, 100vw" className="aspect-[8/5] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]" />
               ) : (
                 <div className="transition-transform duration-700 ease-out group-hover:scale-[1.02]">
-                  <FlowCover id={`next-${project.slug}`} flow={project.flow} tags={project.tags} caption={ui[lang].case.flowCaption} label={`${ui[lang].case.flowCaption}: ${project.flow.join(" → ")}`} />
+                  <FlowCover id={`next-${project.slug}`} flow={project.flow} icons={project.flowIcons} tags={project.tags} ends={[ui[lang].case.flowStart, ui[lang].case.flowEnd]} caption={ui[lang].case.flowCaption} label={`${ui[lang].case.flowCaption}: ${project.flow.join(" → ")}`} />
                 </div>
               )}
             </div>
