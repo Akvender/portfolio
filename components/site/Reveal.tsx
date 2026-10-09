@@ -33,15 +33,20 @@ export function Reveal({
 }
 
 /** Rodzic ze staggerem dzieci (60–80 ms). Dzieci powinny być <RevealItem>. */
+type Tag = "div" | "ol" | "ul" | "li";
+
 export function RevealGroup({
   children,
   className,
+  as = "div",
 }: {
   children: ReactNode;
   className?: string;
+  as?: Tag;
 }) {
+  const M = motion[as];
   return (
-    <motion.div
+    <M
       className={className}
       variants={staggerParent}
       initial="hidden"
@@ -49,20 +54,23 @@ export function RevealGroup({
       viewport={inViewOptions}
     >
       {children}
-    </motion.div>
+    </M>
   );
 }
 
 export function RevealItem({
   children,
   className,
+  as = "div",
 }: {
   children: ReactNode;
   className?: string;
+  as?: Tag;
 }) {
+  const M = motion[as];
   return (
-    <motion.div className={className} variants={reveal}>
+    <M className={className} variants={reveal}>
       {children}
-    </motion.div>
+    </M>
   );
 }

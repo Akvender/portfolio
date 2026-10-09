@@ -73,6 +73,8 @@ export type CaseSection =
   | ImpactSection
   | RoadmapSection;
 
+import type { SkillId } from "../skills";
+
 export type Project = {
   slug: string;
   /** Numeracja w stylu Figmy: „01”, „02”, … */
@@ -83,6 +85,10 @@ export type Project = {
   lead: string;
   year: string;
   tags: string[];
+  /** Umiejętności użyte w projekcie — zasilają mapę umiejętności na stronie głównej. */
+  skills: SkillId[];
+  /** Uproszczony przepływ (3–4 kroki) rysowany na liście projektów. */
+  flow: string[];
   featured: boolean;
   /** Ścieżka pod public/ — łatwa do podmiany na finalną okładkę. */
   cover: string;

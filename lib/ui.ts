@@ -2,17 +2,17 @@
 
 export const container = "mx-auto w-full max-w-[1248px] px-6 md:px-8";
 
-/** Etykieta sekcji: IBM Plex Mono 500, 12–13 px, uppercase, letter-spacing 1.5 px. */
+/** Drobny opis nad treścią (case study): krótki, bez wersalików. */
 export const sectionLabel =
-  "font-mono text-[12.5px] font-medium uppercase tracking-[1.5px]";
+  "text-[14px] font-semibold";
 
 export const h1 =
-  "text-[clamp(34px,5vw,52px)] leading-[112%] font-extrabold tracking-[-0.01em]";
+  "font-display text-[clamp(38px,5.6vw,72px)] leading-[1.02] font-extrabold tracking-[-0.04em]";
 
 export const h2 =
-  "text-[clamp(26px,3.5vw,34px)] leading-[120%] font-extrabold tracking-[-0.01em]";
+  "font-display text-[clamp(30px,4vw,48px)] leading-[1.05] font-extrabold tracking-[-0.035em]";
 
-export const h3 = "text-[20px] md:text-[22px] leading-[130%] font-semibold";
+export const h3 = "text-[20px] md:text-[22px] leading-[125%] font-semibold tracking-[-0.025em]";
 
 export const body = "text-base leading-[155%]";
 

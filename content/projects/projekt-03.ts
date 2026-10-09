@@ -4,14 +4,17 @@ import type { Project } from "./types";
 export const projekt03: Project = {
   slug: "projekt-03",
   number: "03",
-  title: "Tytuł realizacji",
-  description: "Krótki opis realizacji — placeholder.",
-  lead: "Lead realizacji — placeholder. Jedno–dwa zdania o kontekście i zakresie prac.",
+  title: "Połączenie CRM-ów i integracje systemów",
+  description: "Dane klientów płyną między CRM-em a innymi systemami bez ręcznego przepisywania.",
+  lead: "Lead realizacji — placeholder. Jedno–dwa zdania o kontekście i zakresie prac.",
   year: "2024",
-  tags: ["Branża", "Typ systemu"],
+  tags: ["Integracje", "CRM"],
+  // Opis i przypisane umiejętności do potwierdzenia przez Roberta.
+  skills: ["crm", "n8n", "api"],
+  flow: ["CRM", "Integracja", "Pozostałe systemy"],
   featured: false,
   cover: "/images/cover-projekt-03.svg",
-  coverAlt: "Okładka projektu 03 (placeholder)",
+  coverAlt: "Połączenie CRM-ów i integracje systemów — okładka (placeholder)",
   meta: {
     client: "Nazwa klienta",
     role: "Rola zespołu",
@@ -29,8 +32,8 @@ export const projekt03: Project = {
       type: "problem",
       title: "Problem",
       steps: [
-        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
-        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
+        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
+        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
       ],
     },
     {

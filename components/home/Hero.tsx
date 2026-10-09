@@ -1,63 +1,65 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Arrow } from "@/components/site/Arrow";
 import { hero } from "@/content/site";
-import { asset, container, h1, sectionLabel } from "@/lib/ui";
+import { asset, container } from "@/lib/ui";
 
 /**
  * Hero — wejście w czystym CSS (klasy .intro-*), żeby animacja ruszała od pierwszego
- * malowania, bez czekania na hydrację (LCP). H1 słowo po słowie z maski.
+ * malowania, bez czekania na hydrację (LCP). Nagłówek na całą szerokość, pod nim
+ * lead z akcjami i zdjęcie na jasnoszarym polu.
  */
 export function Hero() {
-  const words = hero.title.split(" ");
+  const d = (ms: number) => ({ "--d": `${ms}ms` }) as React.CSSProperties;
   return (
-    <section className="bg-ink pt-[72px] text-text-on-dark">
-      <div className={`${container} grid items-center gap-12 py-16 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:py-24`}>
-        <div>
-          <p className={`${sectionLabel} intro-up text-accent-amber`} style={{ "--d": "0ms" } as React.CSSProperties}>
-            {hero.label}
-          </p>
-          <h1 className={`${h1} mt-5 max-w-[16ch]`}>
-            {words.map((w, i) => (
-              <span key={i} className="inline-block overflow-hidden pb-[0.08em] align-bottom">
-                <span className="intro-mask inline-block" style={{ "--d": `${120 + i * 50}ms` } as React.CSSProperties}>
-                  {w}
-                  {i < words.length - 1 ? " " : ""}
-                </span>
+    <section className="overflow-x-clip bg-paper pt-[104px]">
+      <div className={`${container} pb-16 pt-14 md:pt-20 lg:pb-24`}>
+        <h1
+          className="intro-up max-w-[17ch] font-display text-[clamp(38px,7.2vw,96px)] font-extrabold leading-[0.98] tracking-[-0.04em] text-balance"
+          style={d(60)}
+        >
+          {hero.title}
+        </h1>
+
+        <div className="mt-12 grid gap-10 lg:mt-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-center lg:gap-16">
+          <div className="intro-up flex flex-col gap-8" style={d(260)}>
+            <p className="max-w-[56ch] text-[17px] leading-[160%] text-text-primary/80 md:text-[18px]">{hero.lead}</p>
+            <div className="flex flex-wrap items-center gap-3">
+              <Link
+                href="/#kontakt"
+                className="group inline-flex min-h-[52px] items-center gap-3 rounded-xs bg-ink px-6 text-[16px] font-semibold text-text-on-dark transition-colors duration-200 hover:bg-ink-soft"
+              >
+                Napisz do mnie
+                <Arrow className="transition-transform duration-200 group-hover:translate-x-1" />
+              </Link>
+              <Link
+                href="/#umiejetnosci"
+                className="inline-flex min-h-[52px] items-center rounded-xs border border-ink/25 px-6 text-[16px] font-semibold transition-colors duration-200 hover:border-ink"
+              >
+                Zobacz, co potrafię
+              </Link>
+            </div>
+            <p className="flex items-center gap-3 text-[15px] font-medium">
+              <span aria-hidden="true" className="relative flex size-2.5">
+                <span className="absolute inset-0 animate-ping rounded-full bg-ink opacity-40 motion-reduce:hidden" />
+                <span className="relative size-2.5 rounded-full bg-ink" />
               </span>
-            ))}
-          </h1>
-          <p
-            className="intro-up mt-6 max-w-[52ch] text-[17px] leading-[160%] text-text-muted-on-dark"
-            style={{ "--d": "450ms" } as React.CSSProperties}
-          >
-            {hero.lead}
-          </p>
-          <div className="intro-up mt-10 flex flex-wrap gap-4" style={{ "--d": "560ms" } as React.CSSProperties}>
-            <Link
-              href="/#projekty"
-              className="group inline-flex min-h-[52px] items-center gap-2 rounded-full bg-accent-green px-7 text-[16px] font-semibold transition-colors duration-200 hover:bg-accent-green-dark"
-            >
-              Zobacz projekty
-              <span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">→</span>
-            </Link>
-            <Link
-              href="/#kontakt"
-              className="inline-flex min-h-[52px] items-center rounded-full border border-border-on-dark px-7 text-[16px] font-semibold transition-colors duration-200 hover:bg-ink-soft"
-            >
-              Napisz do nas
-            </Link>
+              {hero.status}
+            </p>
           </div>
-        </div>
-        <div className="intro-clip overflow-hidden rounded-lg" style={{ "--d": "300ms" } as React.CSSProperties}>
-          <Image
-            src={asset(hero.photo)}
-            alt={hero.photoAlt}
-            width={1200}
-            height={900}
-            priority
-            sizes="(min-width: 1024px) 560px, 100vw"
-            className="intro-zoom aspect-[4/3] w-full object-cover"
-          />
+
+          <div className="intro-clip relative pb-4 pr-4 md:pb-6 md:pr-6" style={d(380)}>
+            <div className="absolute bottom-0 left-4 right-0 top-4 rounded-xs bg-ink md:left-6 md:top-6" aria-hidden="true" />
+            <Image
+              src={asset(hero.photo)}
+              alt={hero.photoAlt}
+              width={1200}
+              height={900}
+              priority
+              sizes="(min-width: 1024px) 600px, 100vw"
+              className="relative aspect-[4/3] w-full rounded-xs object-cover"
+            />
+          </div>
         </div>
       </div>
     </section>

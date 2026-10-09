@@ -12,7 +12,7 @@ export function ScrollLine({ className = "" }: { className?: string }) {
   return (
     <div ref={ref} aria-hidden="true" className={`relative h-[2px] bg-border ${className}`}>
       <motion.div
-        className="absolute inset-0 origin-left bg-accent-amber"
+        className="absolute inset-0 origin-left bg-ink"
         style={{ scaleX: reduce ? 1 : scrollYProgress }}
       />
     </div>

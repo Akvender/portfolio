@@ -10,10 +10,13 @@ export const mleczarnia: Project = {
   number: "01",
   title: "Cyfrowa karta zamówień dla mleczarni",
   description:
-    "Jeden cyfrowy przepływ zamówienia: od telefonu, przez produkcję, do dokumentu WZ w Comarch Optima.",
-  lead: "Mała, lokalna mleczarnia z województwa łódzkiego. Zamówienie przechodziło przez telefon, kartkę, skan, wydruk i ręczny wpis do Comarch. Budujemy system, który zamienia to w jeden cyfrowy przepływ — bez zmieniania tego, co działa.",
+    "Jeden cyfrowy przepływ zamówienia: od telefonu, przez produkcję, do dokumentu WZ w Comarch Optima.",
+  lead: "Mała, lokalna mleczarnia z województwa łódzkiego. Zamówienie przechodziło przez telefon, kartkę, skan, wydruk i ręczny wpis do Comarch. Budujemy system, który zamienia to w jeden cyfrowy przepływ — bez zmieniania tego, co działa.",
   year: "2026",
   tags: ["Produkcja spożywcza", "Integracja ERP", "Aplikacja webowa"],
+  // Do potwierdzenia przez Roberta.
+  skills: ["llm", "erp", "api"],
+  flow: ["Telefon i kartka", "Cyfrowa karta", "Produkcja", "WZ w Comarch"],
   featured: true,
   cover: "/images/cover-mleczarnia.svg",
   coverAlt: "Okładka projektu — cyfrowa karta zamówień dla mleczarni (placeholder)",
@@ -26,7 +29,7 @@ export const mleczarnia: Project = {
   },
   metrics: [
     { value: 41, label: "dokumentów WZ przeanalizowanych" },
-    { value: 227, label: "sklepów w danych" },
+    { value: 227, label: "sklepów w danych" },
     { value: 14, label: "tras dostaw" },
   ],
   sections: [
@@ -40,7 +43,7 @@ export const mleczarnia: Project = {
         { title: "Kartka", text: "Biuro zapisuje je na papierowej karcie trasy." },
         { title: "Skan", text: "Karta jest skanowana." },
         { title: "Wydruk na produkcji", text: "Produkcja dostaje wydruk." },
-        { title: "Telefon z wagą do biura", text: "Wagi produktów wracają do biura telefonicznie." },
+        { title: "Telefon z wagą do biura", text: "Wagi produktów wracają do biura telefonicznie." },
         { title: "Ręczny wpis do Comarch Optima", text: "Biuro ręcznie wystawia dokumenty WZ." },
       ],
     },
@@ -48,7 +51,7 @@ export const mleczarnia: Project = {
       type: "solution",
       title: "Jeden cyfrowy przepływ. Ekran, który wygląda jak kartka, którą znają.",
       intro:
-        "Biuro wpisuje zamówienie na tablecie, produkcja widzi je od razu, dokumenty WZ trafiają do Comarch plikiem — bez przepisywania. Wiersze to sklepy jednej trasy, kolumny to produkty. Dane w tabeli są przykładowe.",
+        "Biuro wpisuje zamówienie na tablecie, produkcja widzi je od razu, dokumenty WZ trafiają do Comarch plikiem — bez przepisywania. Wiersze to sklepy jednej trasy, kolumny to produkty. Dane w tabeli są przykładowe.",
       table: {
         columns: ["Sklep / Produkt", "Mleko 2%", "Śmietana 18%", "Twaróg", "Jogurt nat."],
         rows: [
@@ -60,29 +63,29 @@ export const mleczarnia: Project = {
       },
       modules: [
         { title: "Biuro", text: "Wpisuje zamówienia, widzi status realizacji." },
-        { title: "Laboratorium", text: "Bilans masy — wstrzymany do walidacji z laborantką." },
-        { title: "Produkcja i magazyn", text: "Widzi zamówienia od razu, bez telefonów z wagą." },
+        { title: "Laboratorium", text: "Bilans masy — wstrzymany do walidacji z laborantką." },
+        { title: "Produkcja i magazyn", text: "Widzi zamówienia od razu, bez telefonów z wagą." },
         { title: "Zamówienia od dystrybutorów", text: "Osobny kanał wejścia danych do tego samego rdzenia." },
-        { title: "Administrator", text: "Nadzoruje reguły, produkty, trasy i uprawnienia." },
+        { title: "Administrator", text: "Nadzoruje reguły, produkty, trasy i uprawnienia." },
       ],
     },
     {
       type: "results",
       title: "Sprawdzone na realnym procesie, nie na slajdzie.",
       intro:
-        "Wspólnik na co dzień uczestniczy w zbieraniu i przetwarzaniu zamówień, więc słabe punkty obiegu wskazaliśmy z obserwacji i udziału w nim.",
+        "Wspólnik na co dzień uczestniczy w zbieraniu i przetwarzaniu zamówień, więc słabe punkty obiegu wskazaliśmy z obserwacji i udziału w nim.",
       metrics: [
         { value: 41, label: "realnych dokumentów WZ" },
-        { value: 22, suffix: "%", label: "WZ: płatnik i odbiorca to różne podmioty (ok.)" },
+        { value: 22, suffix: "%", label: "WZ: płatnik i odbiorca to różne podmioty (ok.)" },
         { value: 14, label: "tras dostaw" },
         { value: 227, label: "sklepów" },
-        { value: 34, label: "produkty, w tym 4 na wagę" },
+        { value: 34, label: "produkty, w tym 4 na wagę" },
       ],
       proofs: [
         "Import do Comarch Optima testowany na prawdziwych plikach, aż do skutku.",
         "Ceny tego samego produktu różnią się między klientami.",
-        "Fundament systemu działa i ma testy, aplikacja biura jest w budowie.",
-        "Zarząd chce zmiany, a pracownicy przyjęli pomysł z zaciekawieniem i chcą testować.",
+        "Fundament systemu działa i ma testy, aplikacja biura jest w budowie.",
+        "Zarząd chce zmiany, a pracownicy przyjęli pomysł z zaciekawieniem i chcą testować.",
         "Moduł laboratorium świadomie wstrzymany do potwierdzenia założeń przez laborantkę.",
       ],
       image: "/images/screen-wyniki.svg",
@@ -91,28 +94,28 @@ export const mleczarnia: Project = {
     {
       type: "approach",
       title: "Najpierw ludzie, potem technologia.",
-      quote: "Kreska w polu karty zamówień znaczy „ten sklep świadomie nie zamawia”.",
+      quote: "Kreska w polu karty zamówień znaczy „ten sklep świadomie nie zamawia”.",
       quoteAuthor:
-        "Dla pracowników kreska i puste pole znaczą co innego, więc system nie może tej różnicy zgubić.",
+        "Dla pracowników kreska i puste pole znaczą co innego, więc system nie może tej różnicy zgubić.",
       cards: [
-        { title: "Biuro", text: "Wiersz karty: sklep z trasy × produkty." },
+        { title: "Biuro", text: "Wiersz karty: sklep z trasy × produkty." },
         { title: "Księgowość", text: "Dokument WZ przyjmowany przez Comarch Optima bez ręcznych poprawek." },
         { title: "Dystrybucja", text: "Część trasy dostaw: jedna karta to jedna trasa." },
-        { title: "Technologia żywności", text: "Bilans masy: ile śmietanki i mleka chudego da partia mleka pod daną recepturę." },
+        { title: "Technologia żywności", text: "Bilans masy: ile śmietanki i mleka chudego da partia mleka pod daną recepturę." },
       ],
     },
     {
       type: "impact",
       title: "Ludzie nie muszą bać się AI.",
-      text: "Zmiana ma polegać na tym, że pracownik nadzoruje system, zamiast wykonywać powtarzalną pracę. Planujemy mini szkolenia z AI dla pracowników — na przykładach z ich własnej pracy.",
+      text: "Zmiana ma polegać na tym, że pracownik nadzoruje system, zamiast wykonywać powtarzalną pracę. Planujemy mini szkolenia z AI dla pracowników — na przykładach z ich własnej pracy.",
     },
     {
       type: "roadmap",
       title: "Co dalej",
       items: [
-        { title: "Etap 1 w mleczarni", text: "Karta zamówień, wysyłka na produkcję, eksport WZ do Comarch, zestawienia sprzedaży." },
-        { title: "Planowanie produkcji", text: "Moduł laboratorium i bilansu masy, po potwierdzeniu założeń przez laborantkę." },
-        { title: "Kolejne zakłady", text: "Przetwórstwo spożywcze z własną dystrybucją — mamy kontakt do kolejnej mleczarni." },
+        { title: "Etap 1 w mleczarni", text: "Karta zamówień, wysyłka na produkcję, eksport WZ do Comarch, zestawienia sprzedaży." },
+        { title: "Planowanie produkcji", text: "Moduł laboratorium i bilansu masy, po potwierdzeniu założeń przez laborantkę." },
+        { title: "Kolejne zakłady", text: "Przetwórstwo spożywcze z własną dystrybucją — mamy kontakt do kolejnej mleczarni." },
       ],
     },
   ],

@@ -4,14 +4,17 @@ import type { Project } from "./types";
 export const projekt05: Project = {
   slug: "projekt-05",
   number: "05",
-  title: "Tytuł realizacji",
-  description: "Krótki opis realizacji — placeholder.",
-  lead: "Lead realizacji — placeholder. Jedno–dwa zdania o kontekście i zakresie prac.",
+  title: "Call-center wspomagane transkrypcją i AI",
+  description: "Rozmowy są transkrybowane, a AI robi z nich notatki i wskazuje kolejne kroki.",
+  lead: "Lead realizacji — placeholder. Jedno–dwa zdania o kontekście i zakresie prac.",
   year: "2023",
-  tags: ["Branża", "Typ systemu"],
+  tags: ["Call-center", "AI"],
+  // Opis i przypisane umiejętności do potwierdzenia przez Roberta.
+  skills: ["speech", "llm", "bots", "n8n"],
+  flow: ["Rozmowa", "Transkrypcja", "Notatka AI", "Kolejne kroki"],
   featured: false,
   cover: "/images/cover-projekt-05.svg",
-  coverAlt: "Okładka projektu 05 (placeholder)",
+  coverAlt: "Call-center wspomagane transkrypcją i AI — okładka (placeholder)",
   meta: {
     client: "Nazwa klienta",
     role: "Rola zespołu",
@@ -29,8 +32,8 @@ export const projekt05: Project = {
       type: "problem",
       title: "Problem",
       steps: [
-        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
-        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
+        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
+        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
       ],
     },
     {

@@ -4,14 +4,17 @@ import type { Project } from "./types";
 export const projekt04: Project = {
   slug: "projekt-04",
   number: "04",
-  title: "Tytuł realizacji",
-  description: "Krótki opis realizacji — placeholder.",
-  lead: "Lead realizacji — placeholder. Jedno–dwa zdania o kontekście i zakresie prac.",
+  title: "Lejki leadów połączone z automatyzacjami",
+  description: "Lead z reklamy trafia do CRM, dostaje odpowiedź i zadanie dla handlowca automatycznie.",
+  lead: "Lead realizacji — placeholder. Jedno–dwa zdania o kontekście i zakresie prac.",
   year: "2024",
-  tags: ["Branża", "Typ systemu"],
+  tags: ["Marketing", "Automatyzacje"],
+  // Opis i przypisane umiejętności do potwierdzenia przez Roberta.
+  skills: ["leads", "n8n", "crm", "meta"],
+  flow: ["Reklama", "Formularz", "CRM", "Odpowiedź i zadanie"],
   featured: false,
   cover: "/images/cover-projekt-04.svg",
-  coverAlt: "Okładka projektu 04 (placeholder)",
+  coverAlt: "Lejki leadów połączone z automatyzacjami — okładka (placeholder)",
   meta: {
     client: "Nazwa klienta",
     role: "Rola zespołu",
@@ -29,8 +32,8 @@ export const projekt04: Project = {
       type: "problem",
       title: "Problem",
       steps: [
-        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
-        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
+        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
+        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
       ],
     },
     {
@@ -44,7 +47,7 @@ export const projekt04: Project = {
     {
       type: "approach",
       title: "Podejście",
-      quote: "Cytat placeholderowy — uzupełnij w pliku projektu.",
+      quote: "Cytat placeholderowy — uzupełnij w pliku projektu.",
       quoteAuthor: "Zespół projektowy (placeholder)",
       cards: [
         { title: "Karta", text: "Treść placeholderowa." },

@@ -1,7 +1,6 @@
 /** Wspólne wartości animacji — charakter: precyzyjny, inżynierski, spokojny. */
 
 export const EASE_OUT = [0.22, 1, 0.36, 1] as const;
-export const EASE_IN = [0.4, 0, 1, 1] as const;
 
 /** Czasy trwania (s): mikro 150–200 ms, elementy 500–700 ms, duże 800–1000 ms */
 export const DURATION = {
@@ -13,8 +12,9 @@ export const DURATION = {
 /** Stagger dzieci: 60–80 ms */
 export const STAGGER = 0.07;
 
+/** Treść jest widoczna od początku — ruch to tylko krótki wjazd, nigdy ukrywanie. */
 export const reveal = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 1, y: 16 },
   visible: {
     opacity: 1,
     y: 0,

@@ -5,58 +5,43 @@ export const site = {
   /** Pełny adres strony (sitemap, Open Graph). Ustaw NEXT_PUBLIC_SITE_URL przy buildzie. */
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.github.io",
   email: "robert.swieboda.dev@gmail.com",
-  /** Placeholder — podmień na profil. */
-  linkedin: "https://www.linkedin.com/",
-  /** Link do prezentacji PDF — placeholder. */
-  pdf: "#",
+  /** Adres profilu LinkedIn; pusty = przycisk ukryty. */
+  linkedin: "",
 } as const;
 
 export const hero = {
-  label: "AI & automatyzacje dla firm produkcyjnych",
-  title: "Nagłówek pozycjonujący zespół w jednym zdaniu.",
-  lead: "2–3 zdania: kim jesteśmy, dla kogo pracujemy i czym się różnimy.",
-  photo: "/images/hero-team.svg",
-  photoAlt: "Zdjęcie zespołu (placeholder)",
+  title: "Buduję rozwiązania AI, które pracują w prawdziwych firmach.",
+  lead: "Jestem AI developerem i freelancerem. Łączę modele językowe, agentów i automatyzacje z systemami, których firma już używa: CRM-em, ERP, telefonią, sklepem. Całą drogę przechodzę sam: od pomysłu, przez kod, po wdrożenie i utrzymanie.",
+  status: "Przyjmuję nowe projekty",
+  photo: "/images/portrait-placeholder.svg",
+  photoAlt: "Miejsce na zdjęcie portretowe Roberta Świebody",
 } as const;
 
-/** Placeholdery z Figmy („00”) — podmień na prawdziwe liczby. */
-export const highlights = [
-  { value: 0, suffix: "", label: "wdrożeń" },
-  { value: 0, suffix: "", label: "branż" },
-  { value: 0, suffix: "", label: "zautomatyzowanych procesów" },
-  { value: 0, suffix: "", label: "lat doświadczenia" },
-] as const;
+/** Sekcja „O mnie”. Fakty z dokumentu o kompetencjach (PRODUCT.md). */
+export const about = {
+  title: "Jeden człowiek na całą drogę: od pomysłu do działającego systemu.",
+  paragraphs: [
+    "Na co dzień buduję integracje z API OpenAI i Anthropic, agentów AI, chatboty i voiceboty, a do automatyzacji używam głównie n8n. Piszę w Pythonie, łączę systemy przez REST API i stawiam rozwiązania na własnych serwerach w Dockerze.",
+    "Samodzielnie zbudowałem i utrzymuję aplikację produkcyjną: od projektu, przez wdrożenie, po bieżącą opiekę, w około dwa miesiące. Rozumiem też stronę biznesową: wyceniam projekty, negocjuję i rozliczam się bezpośrednio z klientem.",
+  ],
+  steps: [
+    { title: "Rozmowa", text: "Poznaję proces i ustalam, co ma się zmienić i jak to zmierzymy." },
+    { title: "Prototyp", text: "Szybko buduję działającą wersję na Twoich danych, żeby było co ocenić." },
+    { title: "Wdrożenie", text: "Podłączam rozwiązanie do Twoich systemów i przekazuję je ludziom." },
+    { title: "Utrzymanie", text: "Monitoruję działanie, łapię błędy i rozwijam to, co już działa." },
+  ],
+} as const;
 
-export const services = [
-  { title: "Analiza procesów", text: "Opis usługi w 2–3 zdaniach.", items: ["narzędzie", "narzędzie", "narzędzie"] },
-  { title: "Automatyzacje i AI", text: "Opis usługi w 2–3 zdaniach.", items: ["narzędzie", "narzędzie", "narzędzie"] },
-  { title: "Systemy i integracje", text: "Opis usługi w 2–3 zdaniach.", items: ["narzędzie", "narzędzie", "narzędzie"] },
-] as const;
-
-export const processSteps = [
-  { title: "Obserwacja pracy", text: "Krótki opis kroku." },
-  { title: "Mapa procesu", text: "Krótki opis kroku." },
-  { title: "Dobór technologii", text: "Krótki opis kroku." },
-  { title: "Wdrożenie etapami", text: "Krótki opis kroku." },
-  { title: "Szkolenie zespołu", text: "Krótki opis kroku." },
-] as const;
-
-export const team = [
-  {
-    name: "Robert Świeboda",
-    role: "Biznes · procesy · automatyzacje i warstwa AI",
-    skills: ["n8n, Make, Python", "API OpenAI i Anthropic", "Wycena i negocjacje B2B"],
-    photo: "/images/team-01.svg",
-  },
-  {
-    name: "Mateusz Zarzycki",
-    role: "Full-stack · integracje ERP i IoT",
-    skills: ["Node.js / TypeScript, PWA", "Comarch ERP Optima (XML)", "Wagi przemysłowe (RS232, TCP/IP)"],
-    photo: "/images/team-02.svg",
-  },
-] as const;
-
+/** Certyfikaty i osiągnięcia. Nowy wpis = nowy obiekt w tablicy. */
 export const proofs = [
-  { src: "/images/proof-cert.svg", alt: "Certyfikat ukończenia szkolenia z AI (placeholder)" },
-  { src: "/images/proof-warsztat.svg", alt: "Zdjęcie z pracy (placeholder)" },
+  {
+    src: "/images/cert-aidevs4.webp",
+    width: 1600,
+    height: 1131,
+    alt: "Certyfikat ukończenia kursu AI_devs 4: Builders wystawiony dla Roberta Świebody, 1 października 2026",
+    title: "AI_devs 4: Builders",
+    meta: "Certyfikat ukończenia · 2026",
+    text: "5-tygodniowy kurs budowania produkcyjnych rozwiązań AI: LLM w kodzie, context engineering, ewaluacje i systemy wieloagentowe. W ramach kursu ponad 25 praktycznych zadań.",
+    badge: "/images/badge-aidevs4.webp",
+  },
 ] as const;

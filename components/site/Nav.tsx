@@ -8,14 +8,12 @@ import { container } from "@/lib/ui";
 import { site } from "@/content/site";
 
 const LINKS = [
-  { id: "projekty", label: "Projekty", href: "/#projekty" },
-  { id: "uslugi", label: "Usługi", href: "/#uslugi" },
-  { id: "proces", label: "Proces", href: "/#proces" },
-  { id: "zespol", label: "Zespół", href: "/#zespol" },
+  { id: "umiejetnosci", label: "Umiejętności i projekty", href: "/#umiejetnosci" },
+  { id: "o-mnie", label: "O mnie", href: "/#o-mnie" },
 ] as const;
 
 /**
- * Sticky nav: po przewinięciu tło z blur + cienka linia.
+ * Sticky nav na jasnym tle; po przewinięciu pojawia się cienka linia.
  * Aktywny link podkreślony przesuwanym wskaźnikiem (layoutId), scroll-spy na Home.
  * Mobile: pełnoekranowe menu (Esc zamyka, focus management).
  */
@@ -63,29 +61,37 @@ export function Nav() {
     };
     document.addEventListener("keydown", onKey);
     document.documentElement.style.overflow = "hidden";
+    // Treść pod menu jest nieaktywna, więc Tab nie ucieka za nakładkę.
+    const main = document.getElementById("main");
+    main?.setAttribute("inert", "");
     firstLinkRef.current?.focus();
     return () => {
       document.removeEventListener("keydown", onKey);
       document.documentElement.style.overflow = "";
+      main?.removeAttribute("inert");
       toggleRef.current?.focus();
     };
   }, [open]);
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-300 ${
         scrolled || open
-          ? "border-b border-border-on-dark bg-ink/80 backdrop-blur-md"
-          : "border-b border-transparent"
+          ? "border-b border-border bg-paper"
+          : "border-b border-transparent bg-paper"
       }`}
     >
+      {/* Tymczasowo: informacja, że strona jest w budowie. Usuń ten pasek i zmień 104px → 72px w sekcjach. */}
+      <p className="flex h-8 items-center justify-center bg-ink px-4 text-center text-[13px] font-medium text-text-on-dark">
+        Strona w budowie — część treści to jeszcze wypełniacze.
+      </p>
       <nav
         aria-label="Nawigacja główna"
         className={`${container} flex h-[72px] items-center justify-between`}
       >
         <Link
           href="/"
-          className="font-mono text-[14px] font-medium uppercase tracking-[1.5px] text-text-on-dark"
+          className="font-display text-[19px] font-extrabold tracking-[-0.03em] text-ink"
           onClick={() => setOpen(false)}
         >
           {site.name}
@@ -99,8 +105,8 @@ export function Nav() {
                 href={link.href}
                 className={`inline-flex min-h-[44px] items-center text-[15px] transition-colors duration-200 ${
                   active === link.id
-                    ? "text-text-on-dark"
-                    : "text-text-muted-on-dark hover:text-text-on-dark"
+                    ? "text-ink"
+                    : "text-text-muted hover:text-ink"
                 }`}
               >
                 {link.label}
@@ -108,7 +114,7 @@ export function Nav() {
               {active === link.id && (
                 <motion.span
                   layoutId="nav-indicator"
-                  className="absolute inset-x-0 bottom-[6px] h-[2px] bg-accent-amber"
+                  className="absolute inset-x-0 bottom-[6px] h-[2px] bg-ink"
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 />
               )}
@@ -117,14 +123,22 @@ export function Nav() {
           <li>
             <Link
               href="/#kontakt"
-              className="inline-flex min-h-[44px] items-center rounded-full bg-accent-green px-5 text-[15px] font-semibold text-text-on-dark transition-colors duration-200 hover:bg-accent-green-dark"
+              className="inline-flex min-h-[44px] items-center rounded-xs bg-ink px-5 text-[15px] font-semibold text-text-on-dark transition-colors duration-200 hover:bg-ink-soft"
             >
-              Kontakt
+              Napisz do mnie
             </Link>
           </li>
         </ul>
 
-        {/* Mobile toggle */}
+        {/* Mobile: przycisk kontaktu zawsze widoczny + przełącznik menu */}
+        <div className="flex items-center gap-1 md:hidden">
+        <Link
+          href="/#kontakt"
+          onClick={() => setOpen(false)}
+          className="inline-flex min-h-[40px] items-center rounded-xs bg-ink px-3.5 text-[14px] font-semibold text-text-on-dark"
+        >
+          Napisz
+        </Link>
         <button
           ref={toggleRef}
           type="button"
@@ -132,12 +146,13 @@ export function Nav() {
           aria-controls="menu-mobilne"
           aria-label={open ? "Zamknij menu" : "Otwórz menu"}
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-text-on-dark md:hidden"
+          className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-ink md:hidden"
         >
-          <span aria-hidden="true" className="font-mono text-[13px] uppercase tracking-[1.5px]">
+          <span aria-hidden="true" className="text-[15px] font-semibold">
             {open ? "Zamknij" : "Menu"}
           </span>
         </button>
+        </div>
       </nav>
 
       {/* Menu mobilne — pełnoekranowe */}
@@ -145,11 +160,14 @@ export function Nav() {
         {open && (
           <motion.div
             id="menu-mobilne"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 top-[72px] z-40 bg-ink md:hidden"
+            className="fixed inset-0 top-[104px] z-40 bg-paper md:hidden"
           >
             <ul className={`${container} flex flex-col gap-2 pt-8`}>
               {LINKS.map((link, i) => (
@@ -158,7 +176,7 @@ export function Nav() {
                     ref={i === 0 ? firstLinkRef : undefined}
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="flex min-h-[56px] items-center border-b border-border-on-dark text-[28px] font-bold text-text-on-dark"
+                    className="flex min-h-[56px] items-center border-b border-border font-display text-[28px] font-bold tracking-[-0.03em] text-ink"
                   >
                     {link.label}
                   </Link>
@@ -168,9 +186,9 @@ export function Nav() {
                 <Link
                   href="/#kontakt"
                   onClick={() => setOpen(false)}
-                  className="inline-flex min-h-[52px] w-full items-center justify-center rounded-full bg-accent-green px-5 text-[16px] font-semibold text-text-on-dark transition-colors duration-200 hover:bg-accent-green-dark"
+                  className="inline-flex min-h-[52px] w-full items-center justify-center rounded-xs bg-ink px-5 text-[16px] font-semibold text-text-on-dark transition-colors duration-200 hover:bg-ink-soft"
                 >
-                  Kontakt
+                  Napisz do mnie
                 </Link>
               </li>
             </ul>

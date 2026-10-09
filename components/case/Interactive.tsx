@@ -13,7 +13,7 @@ export function ParallaxCover({ src, alt }: { src: string; alt: string }) {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["-4%", "4%"]);
   return (
-    <div ref={ref} className="intro-clip overflow-hidden rounded-lg" style={{ "--d": "350ms" } as React.CSSProperties}>
+    <div ref={ref} className="intro-clip overflow-hidden rounded-xs" style={{ "--d": "350ms" } as React.CSSProperties}>
       <motion.div style={reduce ? undefined : { y }} className="lg:scale-[1.08] max-lg:!transform-none">
         <Image src={asset(src)} alt={alt} width={1600} height={1000} priority sizes="(min-width: 1280px) 1248px, 100vw" className="aspect-[16/9] w-full object-cover" />
       </motion.div>
@@ -25,7 +25,7 @@ export function ParallaxCover({ src, alt }: { src: string; alt: string }) {
 export function OrderTable({ columns, rows }: { columns: string[]; rows: string[][] }) {
   return (
     <div className="overflow-x-auto">
-      <table className="w-full min-w-[560px] border-collapse font-mono text-[13px]">
+      <table className="w-full min-w-[560px] border-collapse text-[14px] [&_td]:font-mono [&_td]:tabular-nums">
         <thead>
           <tr className="text-left text-text-muted">
             {columns.map((c) => (
@@ -47,11 +47,11 @@ export function OrderTable({ columns, rows }: { columns: string[]; rows: string[
                   <td key={c} className="border-b border-border px-3 py-2.5">
                     {cell === "—" ? (
                       <motion.span
-                        title="Sklep świadomie nie zamawia"
                         className="-mx-1.5 rounded-xs px-1.5 py-0.5 font-bold"
-                        variants={{ hidden: { backgroundColor: "rgba(201,123,61,0)" }, visible: { backgroundColor: "rgba(201,123,61,0.22)", transition: { delay: 0.9, duration: 0.6 } } }}
+                        variants={{ hidden: { backgroundColor: "rgba(10,10,10,0)" }, visible: { backgroundColor: "rgba(10,10,10,0.1)", transition: { delay: 0.9, duration: 0.6 } } }}
                       >
-                        —
+                        <span aria-hidden="true">—</span>
+                        <span className="sr-only">Sklep świadomie nie zamawia</span>
                       </motion.span>
                     ) : (
                       cell

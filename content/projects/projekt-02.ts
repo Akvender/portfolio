@@ -4,14 +4,17 @@ import type { Project } from "./types";
 export const projekt02: Project = {
   slug: "projekt-02",
   number: "02",
-  title: "Tytuł realizacji",
-  description: "Krótki opis realizacji — placeholder.",
-  lead: "Lead realizacji — placeholder. Jedno–dwa zdania o kontekście i zakresie prac.",
+  title: "Generator grafik produktowych dla e‑commerce",
+  description: "Narzędzie, które z danych produktu tworzy grafiki do sklepu i reklam.",
+  lead: "Lead realizacji — placeholder. Jedno–dwa zdania o kontekście i zakresie prac.",
   year: "2025",
-  tags: ["Branża", "Typ systemu"],
+  tags: ["E-commerce", "AI generatywne"],
+  // Opis i przypisane umiejętności do potwierdzenia przez Roberta.
+  skills: ["imagegen", "llm", "python", "api"],
+  flow: ["Dane produktu", "Model AI", "Gotowa grafika", "Sklep i reklamy"],
   featured: false,
   cover: "/images/cover-projekt-02.svg",
-  coverAlt: "Okładka projektu 02 (placeholder)",
+  coverAlt: "Generator grafik produktowych dla e‑commerce — okładka (placeholder)",
   meta: {
     client: "Nazwa klienta",
     role: "Rola zespołu",
@@ -29,9 +32,9 @@ export const projekt02: Project = {
       type: "problem",
       title: "Problem",
       steps: [
-        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
-        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
-        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
+        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
+        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
+        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
       ],
     },
     {

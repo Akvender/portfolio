@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-label="ZDJĘCIE Z WARSZTATU — 1200×800">
-  <rect width="1200" height="800" fill="#ECE5D4"/>
-  <rect x="1" y="1" width="1198" height="798" fill="none" stroke="#DDD6C4" stroke-width="2"/>
-  <line x1="0" y1="0" x2="1200" y2="800" stroke="#DDD6C4" stroke-width="2"/>
-  <line x1="1200" y1="0" x2="0" y2="800" stroke="#DDD6C4" stroke-width="2"/>
-  <text x="600" y="400" text-anchor="middle" dominant-baseline="middle" font-family="ui-monospace, monospace" font-size="30" letter-spacing="5" fill="#66645C">ZDJĘCIE Z WARSZTATU — 1200×800</text>
-</svg>

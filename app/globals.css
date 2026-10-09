@@ -1,24 +1,28 @@
 @import "tailwindcss";
 
 @theme {
-  /* Kolory (tokeny z Figmy) */
-  --color-ink: #14161a;
-  --color-ink-soft: #1f2226;
-  --color-paper: #f5f1e8;
-  --color-paper-soft: #ece5d4;
-  --color-accent-green: #4a6b57;
-  --color-accent-green-dark: #33473b;
-  --color-accent-amber: #c97b3d;
-  --color-text-primary: #1a1a1a;
-  --color-text-on-dark: #f5f1e8;
-  --color-text-muted: #66645c;
-  --color-text-muted-on-dark: #a3a79c;
-  --color-border: #ddd6c4;
-  --color-border-on-dark: #33363b;
+  /* Kolory: czerń i biel. Akcent = czarne pola (mapa umiejętności, tło zdjęcia). */
+  --color-ink: #0a0a0a;
+  --color-ink-soft: #1c1c1c;
+  --color-ink-strong: #000000;
+  --color-paper: #ffffff;
+  --color-paper-soft: #f0f0f0;
+  --color-white: #f6f6f6;
+  /* Nazwy historyczne — używane w case study. */
+  --color-accent-green: #0a0a0a;
+  --color-accent-green-dark: #000000;
+  --color-accent-amber: #ffffff;
+  --color-text-primary: #0a0a0a;
+  --color-text-on-dark: #f5f5f5;
+  --color-text-muted: #4d4d4d;
+  --color-text-muted-on-dark: #a6a6a6;
+  --color-border: #dedede;
+  --color-border-on-dark: #303030;
 
   /* Typografia */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
+  --font-display: var(--font-bricolage), var(--font-inter), ui-sans-serif, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 
   /* Spacing: 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 96 / 128 */
   --spacing-1: 4px;
@@ -46,6 +50,20 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Nagłówki: krój display z ciasnym odstępem liter. */
+h1,
+h2,
+h3,
+blockquote {
+  font-family: var(--font-display);
+  letter-spacing: -0.035em;
+}
+/* Mniejsze nagłówki: luźniejsze odstępy, żeby litery się nie zlewały. */
+h3,
+blockquote {
+  letter-spacing: -0.015em;
+}
+
 body {
   background-color: var(--color-paper);
   color: var(--color-text-primary);
@@ -66,26 +84,36 @@ html.lenis body {
 }
 
 ::selection {
-  background: var(--color-accent-amber);
-  color: var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-paper);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-accent-amber);
-  outline-offset: 2px;
+  outline: 2px solid var(--color-ink);
+  outline-offset: 3px;
   border-radius: 2px;
+}
+/* Na czarnych sekcjach obwódka fokusu jest biała. */
+.bg-ink :focus-visible {
+  outline-color: var(--color-paper);
+}
+
+/* Linki w tekście: podkreślenie z odstępem, w kolorze atramentu. */
+a {
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+html {
+  scrollbar-color: #bdbdbd var(--color-paper);
 }
 
 /* Wejście hero / przejście stron w CSS — rusza od pierwszego malowania, bez hydracji (LCP). */
 @keyframes intro-up { from { opacity: 0; transform: translateY(16px); } }
-@keyframes intro-mask { from { transform: translateY(105%); } }
 @keyframes intro-clip { from { clip-path: inset(15% 0 0 0); } }
 @keyframes page-enter { from { transform: translateY(16px); } }
-@keyframes intro-zoom { from { scale: 1.06; } }
 .intro-up { animation: intro-up 0.7s var(--ease-out-expo) var(--d, 0ms) both; }
-.intro-mask { animation: intro-mask 0.8s var(--ease-out-expo) var(--d, 0ms) both; }
 .intro-clip { animation: intro-clip 1s var(--ease-out-expo) var(--d, 0ms) both; }
-.intro-zoom { animation: intro-zoom 1.2s var(--ease-out-expo) var(--d, 0ms) both; }
 .page-enter { animation: page-enter 0.5s var(--ease-out-expo) both; }
 
 @media (prefers-reduced-motion: reduce) {
@@ -101,3 +129,4 @@ html.lenis body {
     transition-duration: 0.01ms !important;
   }
 }
+

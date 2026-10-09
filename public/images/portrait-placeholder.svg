@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Miejsce na zdjęcie portretowe">
+  <rect width="1200" height="900" fill="#efefef"/>
+  <g fill="none" stroke="#bdbdbd" stroke-width="6" stroke-linecap="round">
+    <circle cx="600" cy="370" r="120"/>
+    <path d="M360 760c40-140 140-210 240-210s200 70 240 210"/>
+  </g>
+  <text x="600" y="840" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" fill="#8a8a8a">Tu będzie zdjęcie portretowe</text>
+</svg>
