@@ -1,78 +1,57 @@
 import type { Project } from "./types";
 
-/** Projekt 04 — opis do uzupełnienia. */
 export const projekt04: Project = {
   slug: "projekt-04",
   number: "04",
-  title: "Lejki leadów połączone z automatyzacjami",
-  description: "Lead z reklamy trafia do CRM, dostaje odpowiedź i zadanie dla handlowca automatycznie.",
-  lead: "Lead realizacji — placeholder. Jedno–dwa zdania o kontekście i zakresie prac.",
-  year: "2024",
-  tags: ["Marketing", "Automatyzacje"],
-  skills: ["leads", "n8n", "crm", "meta"],
-  flow: ["Reklama", "Formularz", "CRM", "Odpowiedź i zadanie"],
-  flowIcons: ["megaphone", "form", "users", "chat"],
+  title: "Rezerwacje i płatności dla landing page'y sprzedażowych",
+  description: "Strony sprzedażowe połączone z systemem rezerwacji i płatnościami online.",
+  lead: "Landing page'e sprzedażowe potrzebowały czegoś więcej niż formularza. Połączyłem je z systemami rezerwacji i płatności, tak żeby klient mógł od razu zarezerwować termin i zapłacić.",
+  year: "",
+  tags: ["Integracje", "Sprzedaż online"],
+  skills: ["api", "n8n"],
+  flow: ["Landing page", "Rezerwacja", "Płatność", "Potwierdzenie"],
+  flowIcons: ["megaphone", "tasks", "cart", "check"],
   featured: false,
-  meta: {
-    client: "Nazwa klienta",
-    role: "Rola zespołu",
-    period: "00.0000–00.0000",
-    status: "Status",
-    stack: "Stack technologiczny",
-  },
-  metrics: [
-    { value: 0, label: "Metryka placeholderowa" },
-    { value: 0, label: "Metryka placeholderowa" },
-    { value: 0, label: "Metryka placeholderowa" },
-  ],
-  /** Wersja angielska: to, co widać na liście i w nagłówku. Szczegóły (sections) dojdą razem z opisami projektów. */
+  meta: {"client": "", "role": "", "period": "", "status": "", "stack": "Integracje API"},
+  metrics: [],
   en: {
-    title: "Lead funnels connected to automations",
-    description: "A lead from an ad lands in the CRM and gets a reply and a task for the sales rep automatically.",
-    lead: "Project lead — placeholder. One or two sentences about the context and scope.",
-    tags: [
-      "Marketing",
-      "Automations"
+    "title": "Bookings and payments for sales landing pages",
+    "description": "Sales pages connected to a booking system and online payments.",
+    "lead": "Sales landing pages needed more than a contact form. I connected them to booking and payment systems, so a customer can book a slot and pay right away.",
+    "tags": [
+      "Integrations",
+      "Online sales"
     ],
-    flow: [
-      "Ad",
-      "Form",
-      "CRM",
-      "Reply and task"
+    "flow": [
+      "Landing page",
+      "Booking",
+      "Payment",
+      "Confirmation"
     ],
-    meta: {
-      client: "Client name",
-      role: "Role",
-      status: "Status",
-      stack: "Tech stack"
-    }
+    "meta": {
+      "stack": "API integrations"
+    },
+    "sections": [
+      {
+        "type": "results",
+        "title": "What was built",
+        "metrics": [],
+        "proofs": [
+          "Sales landing pages connected to a booking system.",
+          "Online payments in the same flow."
+        ]
+      }
+    ]
   },
   sections: [
     {
-      type: "problem",
-      title: "Problem",
-      steps: [
-        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
-        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
-      ],
-    },
-    {
-      type: "solution",
-      title: "Rozwiązanie",
-      modules: [
-        { title: "Moduł", text: "Treść placeholderowa." },
-        { title: "Moduł", text: "Treść placeholderowa." },
-      ],
-    },
-    {
-      type: "approach",
-      title: "Podejście",
-      quote: "Cytat placeholderowy — uzupełnij w pliku projektu.",
-      quoteAuthor: "Zespół projektowy (placeholder)",
-      cards: [
-        { title: "Karta", text: "Treść placeholderowa." },
-        { title: "Karta", text: "Treść placeholderowa." },
-      ],
-    },
+      "type": "results",
+      "title": "Co powstało",
+      "metrics": [],
+      "proofs": [
+        "Połączenie landing page'y sprzedażowych z systemem rezerwacji.",
+        "Płatności online w tym samym przepływie."
+      ]
+    }
   ],
 };
