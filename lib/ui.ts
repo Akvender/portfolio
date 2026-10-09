@@ -1,4 +1,4 @@
-/** Wspólne klasy typograficzne (tokeny z Figmy). */
+/** Wspólne klasy typograficzne. */
 
 export const container = "mx-auto w-full max-w-[1248px] px-6 md:px-8";
 
@@ -7,10 +7,10 @@ export const sectionLabel =
   "text-[14px] font-semibold";
 
 export const h1 =
-  "font-display text-[clamp(38px,5.6vw,72px)] leading-[1.02] font-extrabold tracking-[-0.04em]";
+  "font-display text-[clamp(38px,5.6vw,72px)] leading-[1.02] font-extrabold tracking-[-0.025em]";
 
 export const h2 =
-  "font-display text-[clamp(30px,4vw,48px)] leading-[1.05] font-extrabold tracking-[-0.035em]";
+  "font-display text-[clamp(30px,4vw,48px)] leading-[1.05] font-extrabold tracking-[-0.02em]";
 
 export const h3 = "text-[20px] md:text-[22px] leading-[125%] font-semibold tracking-[-0.025em]";
 

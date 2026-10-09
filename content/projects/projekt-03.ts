@@ -1,6 +1,6 @@
 import type { Project } from "./types";
 
-/** Projekt 03 — placeholder zgodnie z Figmą („Tytuł realizacji”, „00”). */
+/** Projekt 03 — opis do uzupełnienia. */
 export const projekt03: Project = {
   slug: "projekt-03",
   number: "03",
@@ -9,7 +9,6 @@ export const projekt03: Project = {
   lead: "Lead realizacji — placeholder. Jedno–dwa zdania o kontekście i zakresie prac.",
   year: "2024",
   tags: ["Integracje", "CRM"],
-  // Opis i przypisane umiejętności do potwierdzenia przez Roberta.
   skills: ["crm", "n8n", "api"],
   flow: ["CRM", "Integracja", "Pozostałe systemy"],
   featured: false,

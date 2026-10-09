@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Inter, JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono, Lato, Rubik } from "next/font/google";
 import { Nav } from "@/components/site/Nav";
 import { Providers } from "@/components/site/Providers";
+import { SocialRail } from "@/components/site/SocialRail";
 import { site } from "@/content/site";
 import { container } from "@/lib/ui";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin", "latin-ext"], variable: "--font-inter", display: "swap" });
-const display = Bricolage_Grotesque({ subsets: ["latin", "latin-ext"], variable: "--font-bricolage", display: "swap" });
+// Nagłówki: Rubik, tekst: Lato (wybór Roberta z porównania fontów).
+const rubik = Rubik({ subsets: ["latin", "latin-ext"], variable: "--font-rubik", display: "swap" });
+const lato = Lato({ subsets: ["latin", "latin-ext"], weight: ["400", "700", "900"], variable: "--font-lato", display: "swap" });
 const mono = JetBrains_Mono({ subsets: ["latin", "latin-ext"], weight: ["400", "500"], variable: "--font-jetbrains-mono", display: "swap", preload: false });
 
 export const metadata: Metadata = {
@@ -19,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pl" className={`${inter.variable} ${display.variable} ${mono.variable}`}>
+    <html lang="pl" className={`${rubik.variable} ${lato.variable} ${mono.variable}`}>
       <head>
         {/* Bez JS: pokaż treść, którą motion renderuje z opacity 0 (stan startowy reveal). */}
         <noscript>
@@ -35,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
         <Providers>
           <Nav />
+          <SocialRail />
           <main id="main">{children}</main>
           <footer className="border-t border-border-on-dark bg-ink text-text-muted-on-dark">
             <div className={`${container} flex min-h-[72px] flex-wrap items-center justify-between gap-2 py-4 text-[14px]`}>

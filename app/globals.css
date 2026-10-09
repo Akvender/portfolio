@@ -6,6 +6,10 @@
   --color-ink-soft: #1c1c1c;
   --color-ink-strong: #000000;
   --color-paper: #ffffff;
+  /* Akcent na ciemnych pasach (wybrana umiejętność, przycisk kontaktu) i „znak” na jasnym tle (blok za zdjęciem, kropka). */
+  --color-accent: #ffffff;
+  --color-on-accent: #0a0a0a;
+  --color-mark: #0a0a0a;
   --color-paper-soft: #f0f0f0;
   --color-white: #f6f6f6;
   /* Nazwy historyczne — używane w case study. */
@@ -20,8 +24,8 @@
   --color-border-on-dark: #303030;
 
   /* Typografia */
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-bricolage), var(--font-inter), ui-sans-serif, sans-serif;
+  --font-sans: var(--font-lato), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-rubik), var(--font-lato), ui-sans-serif, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 
   /* Spacing: 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 96 / 128 */
@@ -56,7 +60,7 @@ h2,
 h3,
 blockquote {
   font-family: var(--font-display);
-  letter-spacing: -0.035em;
+  letter-spacing: -0.02em;
 }
 /* Mniejsze nagłówki: luźniejsze odstępy, żeby litery się nie zlewały. */
 h3,
@@ -130,3 +134,15 @@ html {
   }
 }
 
+
+
+/* Znacznik przy nagłówkach sekcji: mały kwadrat w kolorze tekstu. */
+.mark-heading::before {
+  content: "";
+  display: inline-block;
+  width: 0.32em;
+  height: 0.32em;
+  margin-right: 0.35em;
+  vertical-align: 0.18em;
+  background: currentColor;
+}

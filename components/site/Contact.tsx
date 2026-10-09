@@ -12,7 +12,7 @@ export function Contact() {
     <section id="kontakt" className="scroll-mt-[104px] bg-ink text-text-on-dark">
       <div className={`${container} ${sectionY}`}>
         <Reveal>
-          <h2 className="max-w-[18ch] font-display text-[clamp(36px,5.6vw,76px)] font-extrabold leading-[1.02] tracking-[-0.04em] text-balance">
+          <h2 className="max-w-[18ch] font-display text-[clamp(36px,5.6vw,76px)] font-extrabold leading-[1.02] tracking-[-0.025em] text-balance">
             Masz pomysł na AI w swojej firmie? Porozmawiajmy.
           </h2>
         </Reveal>
@@ -23,7 +23,7 @@ export function Contact() {
         </Reveal>
         <Reveal delay={0.1}>
           <div className="mt-10 flex flex-wrap gap-3">
-            <a href={`mailto:${site.email}`} className={`${btnBase} bg-paper text-ink hover:bg-paper-soft`}>
+            <a href={`mailto:${site.email}`} className={`${btnBase} bg-accent text-on-accent hover:opacity-90`}>
               {site.email}
               <Arrow className="transition-transform duration-200 group-hover:translate-x-1" />
             </a>

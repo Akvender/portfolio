@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Arrow } from "@/components/site/Arrow";
-import { hero } from "@/content/site";
+import { hero, tools } from "@/content/site";
 import { asset, container } from "@/lib/ui";
 
 /**
@@ -15,7 +15,7 @@ export function Hero() {
     <section className="overflow-x-clip bg-paper pt-[104px]">
       <div className={`${container} pb-16 pt-14 md:pt-20 lg:pb-24`}>
         <h1
-          className="intro-up max-w-[17ch] font-display text-[clamp(38px,7.2vw,96px)] font-extrabold leading-[0.98] tracking-[-0.04em] text-balance"
+          className="intro-up max-w-[17ch] font-display text-[clamp(38px,7.2vw,96px)] font-extrabold leading-[0.98] tracking-[-0.025em] text-balance"
           style={d(60)}
         >
           {hero.title}
@@ -41,15 +41,15 @@ export function Hero() {
             </div>
             <p className="flex items-center gap-3 text-[15px] font-medium">
               <span aria-hidden="true" className="relative flex size-2.5">
-                <span className="absolute inset-0 animate-ping rounded-full bg-ink opacity-40 motion-reduce:hidden" />
-                <span className="relative size-2.5 rounded-full bg-ink" />
+                <span className="absolute inset-0 animate-ping rounded-full bg-mark opacity-40 motion-reduce:hidden" />
+                <span className="relative size-2.5 rounded-full bg-mark" />
               </span>
               {hero.status}
             </p>
           </div>
 
           <div className="intro-clip relative pb-4 pr-4 md:pb-6 md:pr-6" style={d(380)}>
-            <div className="absolute bottom-0 left-4 right-0 top-4 rounded-xs bg-ink md:left-6 md:top-6" aria-hidden="true" />
+            <div className="absolute bottom-0 left-4 right-0 top-4 rounded-xs bg-mark md:left-6 md:top-6" aria-hidden="true" />
             <Image
               src={asset(hero.photo)}
               alt={hero.photoAlt}
@@ -60,6 +60,17 @@ export function Hero() {
               className="relative aspect-[4/3] w-full rounded-xs object-cover"
             />
           </div>
+        </div>
+
+        <div className="intro-up mt-16 flex flex-col gap-4 border-t border-border pt-6 md:flex-row md:items-center md:gap-10 lg:mt-20" style={d(480)}>
+          <p className="shrink-0 text-[14px] font-semibold text-text-muted">Na co dzień pracuję z</p>
+          <ul className="flex flex-wrap items-center gap-x-8 gap-y-3">
+            {tools.map((t) => (
+              <li key={t} className="font-display text-[20px] font-bold tracking-[-0.01em] text-ink/70">
+                {t}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

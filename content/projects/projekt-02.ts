@@ -1,6 +1,6 @@
 import type { Project } from "./types";
 
-/** Projekt 02 — placeholder zgodnie z Figmą („Tytuł realizacji”, „00”). */
+/** Projekt 02 — opis do uzupełnienia. */
 export const projekt02: Project = {
   slug: "projekt-02",
   number: "02",
@@ -9,7 +9,6 @@ export const projekt02: Project = {
   lead: "Lead realizacji — placeholder. Jedno–dwa zdania o kontekście i zakresie prac.",
   year: "2025",
   tags: ["E-commerce", "AI generatywne"],
-  // Opis i przypisane umiejętności do potwierdzenia przez Roberta.
   skills: ["imagegen", "llm", "python", "api"],
   flow: ["Dane produktu", "Model AI", "Gotowa grafika", "Sklep i reklamy"],
   featured: false,

@@ -2,7 +2,7 @@ import type { Project } from "./types";
 
 /**
  * Projekt 01 — cyfrowa karta zamówień dla mleczarni.
- * Liczby i fakty wyłącznie ze zgłoszenia / ramki case study w Figmie (23:2).
+ * Liczby i fakty z dokumentacji projektu.
  * Nazwy sklepów i ilości w tabeli są przykładowe.
  */
 export const mleczarnia: Project = {
@@ -14,7 +14,6 @@ export const mleczarnia: Project = {
   lead: "Mała, lokalna mleczarnia z województwa łódzkiego. Zamówienie przechodziło przez telefon, kartkę, skan, wydruk i ręczny wpis do Comarch. Budujemy system, który zamienia to w jeden cyfrowy przepływ — bez zmieniania tego, co działa.",
   year: "2026",
   tags: ["Produkcja spożywcza", "Integracja ERP", "Aplikacja webowa"],
-  // Do potwierdzenia przez Roberta.
   skills: ["llm", "erp", "api"],
   flow: ["Telefon i kartka", "Cyfrowa karta", "Produkcja", "WZ w Comarch"],
   featured: true,

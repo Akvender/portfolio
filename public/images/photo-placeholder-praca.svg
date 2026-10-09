@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1100" viewBox="0 0 1000 1100" role="img" aria-label="Miejsce na zdjęcie przy pracy">
+  <rect width="1000" height="1100" fill="#efefef"/>
+  <g fill="none" stroke="#bdbdbd" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="300" y="560" width="400" height="250" rx="8"/>
+    <path d="M240 830h520"/>
+    <circle cx="500" cy="360" r="95"/>
+  </g>
+  <text x="500" y="960" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="#8a8a8a">Tu będzie zdjęcie przy pracy</text>
+</svg>

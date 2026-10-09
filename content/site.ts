@@ -5,9 +5,13 @@ export const site = {
   /** Pełny adres strony (sitemap, Open Graph). Ustaw NEXT_PUBLIC_SITE_URL przy buildzie. */
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.github.io",
   email: "robert.swieboda.dev@gmail.com",
+  github: "https://github.com/Akvender",
   /** Adres profilu LinkedIn; pusty = przycisk ukryty. */
   linkedin: "",
 } as const;
+
+/** Narzędzia, z którymi pracuję na co dzień — pasek pod nagłówkiem (nazwy, nie logotypy). */
+export const tools = ["n8n", "OpenAI", "Anthropic", "Python", "Docker", "Make", "Zapier", "Meta CAPI"] as const;
 
 export const hero = {
   title: "Buduję rozwiązania AI, które pracują w prawdziwych firmach.",
@@ -17,8 +21,10 @@ export const hero = {
   photoAlt: "Miejsce na zdjęcie portretowe Roberta Świebody",
 } as const;
 
-/** Sekcja „O mnie”. Fakty z dokumentu o kompetencjach (PRODUCT.md). */
+/** Sekcja „O mnie”. */
 export const about = {
+  photo: "/images/photo-placeholder-praca.svg",
+  photoAlt: "Miejsce na zdjęcie Roberta przy pracy",
   title: "Jeden człowiek na całą drogę: od pomysłu do działającego systemu.",
   paragraphs: [
     "Na co dzień buduję integracje z API OpenAI i Anthropic, agentów AI, chatboty i voiceboty, a do automatyzacji używam głównie n8n. Piszę w Pythonie, łączę systemy przez REST API i stawiam rozwiązania na własnych serwerach w Dockerze.",

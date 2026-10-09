@@ -40,7 +40,7 @@ export function SkillMap({ projects }: { projects: SkillMapProject[] }) {
       <div className={`${container} grid gap-12 py-16 md:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16 lg:py-28`}>
         <div className="flex flex-col gap-10">
           <div>
-            <h2 className="font-display text-[clamp(32px,4.4vw,56px)] font-extrabold leading-[1.02] tracking-[-0.035em] text-balance">
+            <h2 className="mark-heading font-display text-[clamp(32px,4.4vw,56px)] font-extrabold leading-[1.02] tracking-[-0.035em] text-balance">
               Kliknij umiejętność. Pokażę, gdzie jej użyłem.
             </h2>
             <p className="mt-5 max-w-[48ch] text-[17px] leading-[155%] text-text-muted-on-dark">
@@ -68,7 +68,7 @@ export function SkillMap({ projects }: { projects: SkillMapProject[] }) {
                         onClick={() => choose(on ? null : s.id)}
                         className={`min-h-[40px] rounded-xs border px-3.5 text-[15px] font-medium transition-colors duration-200 ${
                           on
-                            ? "border-paper bg-paper text-ink"
+                            ? "border-accent bg-accent text-on-accent"
                             : "border-white/30 hover:border-white hover:bg-white/10"
                         }`}
                       >

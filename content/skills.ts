@@ -1,6 +1,6 @@
 /**
  * Słownik umiejętności do interaktywnej mapy na stronie głównej.
- * Źródło: dokument o kompetencjach (PRODUCT.md). Projekty wskazują umiejętności po `id`.
+ * Projekty wskazują umiejętności po `id`.
  */
 export const skillGroups = [
   {

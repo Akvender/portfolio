@@ -51,14 +51,14 @@ export type ApproachSection = {
   cards: { title: string; text: string }[];
 };
 
-/** Blok opcjonalny (ramka 23:307) — renderowany tylko, gdy case go ma. */
+/** Blok opcjonalny — renderowany tylko, gdy projekt go ma. */
 export type ImpactSection = {
   type: "impact";
   title: string;
   text: string;
 };
 
-/** Blok opcjonalny (ramka 23:307) — renderowany tylko, gdy case go ma. */
+/** Blok opcjonalny — renderowany tylko, gdy projekt go ma. */
 export type RoadmapSection = {
   type: "roadmap";
   title: string;
@@ -77,7 +77,7 @@ import type { SkillId } from "../skills";
 
 export type Project = {
   slug: string;
-  /** Numeracja w stylu Figmy: „01”, „02”, … */
+  /** Numer projektu: „01”, „02”, … */
   number: string;
   title: string;
   /** Krótki opis na kartę (1 zdanie). */

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
+import { Arrow } from "@/components/site/Arrow";
 import { container } from "@/lib/ui";
 import { site } from "@/content/site";
 
@@ -89,35 +90,43 @@ export function Nav() {
         aria-label="Nawigacja główna"
         className={`${container} flex h-[72px] items-center justify-between`}
       >
+        {/* Logo: imię i nazwisko złożone w dwie linie przy pionowej kresce. */}
         <Link
           href="/"
-          className="font-display text-[19px] font-extrabold tracking-[-0.03em] text-ink"
+          aria-label={`${site.name} — strona główna`}
+          className="flex items-stretch gap-2.5 text-ink"
           onClick={() => setOpen(false)}
         >
-          {site.name}
+          <span aria-hidden="true" className="w-[3px] bg-ink" />
+          <span aria-hidden="true" className="flex flex-col font-display text-[15px] font-bold uppercase leading-[1.05] tracking-[0.02em]">
+            <span>Robert</span>
+            <span>Świeboda</span>
+          </span>
         </Link>
 
         {/* Desktop */}
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="hidden items-center gap-6 md:flex">
           {LINKS.map((link) => (
             <li key={link.id} className="relative">
-              <Link
-                href={link.href}
-                className={`inline-flex min-h-[44px] items-center text-[15px] transition-colors duration-200 ${
-                  active === link.id
-                    ? "text-ink"
-                    : "text-text-muted hover:text-ink"
-                }`}
-              >
-                {link.label}
-              </Link>
+              {/* Kreska nad linkiem; aktywna sekcja ma ją czarną i grubszą. */}
+              <span aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-border" />
               {active === link.id && (
                 <motion.span
                   layoutId="nav-indicator"
-                  className="absolute inset-x-0 bottom-[6px] h-[2px] bg-ink"
+                  aria-hidden="true"
+                  className="absolute inset-x-0 top-0 h-[2px] bg-ink"
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 />
               )}
+              <Link
+                href={link.href}
+                className={`group flex min-h-[44px] min-w-[150px] items-center justify-between gap-4 pt-1 text-[15px] font-semibold transition-colors duration-200 ${
+                  active === link.id ? "text-ink" : "text-text-muted hover:text-ink"
+                }`}
+              >
+                {link.label}
+                <Arrow dir="up-right" className="w-3 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </Link>
             </li>
           ))}
           <li>

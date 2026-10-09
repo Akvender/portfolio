@@ -6,9 +6,3 @@ next-env.d.ts
 .DS_Store
 .playwright-mcp
 
-# Robocze pliki narzędzi
-.claude/
-.impeccable/review/
-.impeccable/mocks/
-.impeccable/decision/
-.impeccable/questions/

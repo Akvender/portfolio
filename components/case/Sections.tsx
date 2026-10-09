@@ -54,7 +54,7 @@ function Problem({ s }: { s: ProblemSection }) {
           <RevealGroup className="grid gap-4 sm:grid-cols-2 lg:grid-cols-6 lg:gap-0">
             {s.steps.map((step, i) => (
               <RevealItem key={i} className="rounded-xs border border-border bg-white p-5 lg:rounded-none lg:border-0 lg:bg-transparent lg:px-0 lg:pr-5 lg:pt-5">
-                <p className="font-display text-[28px] font-extrabold leading-none tracking-[-0.04em]">{i + 1}</p>
+                <p className="font-display text-[28px] font-extrabold leading-none tracking-[-0.025em]">{i + 1}</p>
                 <h3 className="mt-2 text-[16px] font-semibold leading-[135%]">{step.title}</h3>
                 <p className="mt-1 text-[14px] leading-[150%] text-text-muted">{step.text}</p>
               </RevealItem>
@@ -109,7 +109,7 @@ function Results({ s }: { s: ResultsSection }) {
         <RevealGroup as="ul" className="grid grid-cols-2 border-t border-border-on-dark md:grid-cols-[repeat(auto-fit,minmax(160px,1fr))]">
           {s.metrics.map((m, i) => (
             <RevealItem as="li" key={i} className="border-b border-border-on-dark py-5 pr-6 md:border-b-0 md:border-r md:pl-6 md:first:pl-0 md:last:border-r-0">
-              <Counter to={m.value} suffix={m.suffix} className="block text-[clamp(32px,4vw,44px)] font-display font-extrabold leading-[110%] tracking-[-0.035em]" />
+              <Counter to={m.value} suffix={m.suffix} className="block text-[clamp(32px,4vw,44px)] font-display font-extrabold leading-[110%] tracking-[-0.02em]" />
               <p className="mt-2 text-[14px] leading-[145%] text-text-muted-on-dark">{m.label}</p>
             </RevealItem>
           ))}
@@ -177,7 +177,7 @@ function Roadmap({ s }: { s: RoadmapSection }) {
         <RevealGroup as="ol" className="grid gap-4 md:grid-cols-3">
           {s.items.map((it, i) => (
             <RevealItem as="li" key={i} className="rounded-xs border border-border bg-paper p-7">
-              <span aria-hidden="true" className="font-display text-[40px] font-extrabold leading-none tracking-[-0.04em]">{i + 1}</span>
+              <span aria-hidden="true" className="font-display text-[40px] font-extrabold leading-none tracking-[-0.025em]">{i + 1}</span>
               <h3 className="mt-3 text-[20px] font-semibold leading-[130%]">{it.title}</h3>
               <p className="mt-2 text-[15px] leading-[150%] text-text-muted">{it.text}</p>
             </RevealItem>
