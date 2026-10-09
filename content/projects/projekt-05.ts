@@ -8,7 +8,7 @@ export const projekt05: Project = {
   lead: "Narzędzie do obsługi i analizy rozmów dla firmy z branży OZE. Rozmowy są transkrybowane, a modele językowe analizują ich treść i wyciągają wnioski. Prototyp powstał na Make i Twilio, wersja docelowa działa na n8n, Twilio i PostgreSQL, podzielona na serwisy w kontenerach Docker.",
   year: "",
   tags: ["Call-center", "AI"],
-  skills: ["speech", "llm", "twilio", "n8n", "make", "postgres", "docker", "api"],
+  skills: ["speech", "llm", "twilio", "n8n", "make", "postgres", "docker", "linux", "api"],
   flow: ["Rozmowa", "Transkrypcja", "Analiza AI", "Wnioski"],
   flowIcons: ["mic", "wave", "note", "tasks"],
   featured: false,
