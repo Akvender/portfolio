@@ -12,8 +12,6 @@ export const projekt04: Project = {
   skills: ["leads", "n8n", "crm", "meta"],
   flow: ["Reklama", "Formularz", "CRM", "Odpowiedź i zadanie"],
   featured: false,
-  cover: "/images/cover-projekt-04.svg",
-  coverAlt: "Lejki leadów połączone z automatyzacjami — okładka (placeholder)",
   meta: {
     client: "Nazwa klienta",
     role: "Rola zespołu",
@@ -41,7 +39,6 @@ export const projekt04: Project = {
       "CRM",
       "Reply and task"
     ],
-    coverAlt: "Lead funnels connected to automations — cover (placeholder)",
     meta: {
       client: "Client name",
       role: "Role",

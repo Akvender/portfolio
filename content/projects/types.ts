@@ -90,9 +90,9 @@ export type Project = {
   /** Uproszczony przepływ (3–4 kroki) rysowany na liście projektów. */
   flow: string[];
   featured: boolean;
-  /** Ścieżka pod public/ — łatwa do podmiany na finalną okładkę. */
-  cover: string;
-  coverAlt: string;
+  /** Prawdziwa okładka (zrzut, zdjęcie) pod public/. Brak = okładka rysowana ze schematu `flow`. */
+  cover?: string;
+  coverAlt?: string;
   meta: CaseMeta;
   /** 3 metryki na kartę wyróżnioną. */
   metrics: Metric[];
