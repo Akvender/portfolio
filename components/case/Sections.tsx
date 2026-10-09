@@ -22,7 +22,7 @@ export function CaseHero({ project, lang }: { project: Project; lang: Lang }) {
   const meta = [
     [t.client, project.meta.client], [t.role, project.meta.role], [t.period, project.meta.period],
     [t.status, project.meta.status], [t.stack, project.meta.stack],
-  ];
+  ].filter(([, v]) => v);
   return (
     <section className="bg-ink pt-[104px] text-text-on-dark">
       <div className={`${container} flex flex-col gap-10 py-12 lg:py-20`}>

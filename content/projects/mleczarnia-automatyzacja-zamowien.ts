@@ -14,13 +14,13 @@ export const mleczarnia: Project = {
   lead: "Mała, lokalna mleczarnia z województwa łódzkiego. Zamówienie przechodziło przez telefon, kartkę, skan, wydruk i ręczny wpis do Comarch. Budujemy system, który zamienia to w jeden cyfrowy przepływ — bez zmieniania tego, co działa.",
   year: "2026",
   tags: ["Produkcja spożywcza", "Integracja ERP", "Aplikacja webowa"],
-  skills: ["llm", "erp", "api"],
+  skills: ["erp", "api"],
   flow: ["Telefon i kartka", "Cyfrowa karta", "Produkcja", "WZ w Comarch"],
   flowIcons: ["phone", "tablet", "factory", "document"],
   featured: true,
   meta: {
     client: "Mleczarnia, woj. łódzkie",
-    role: "Analiza procesów, AI, wdrożenie",
+    role: "Analiza procesu i projekt systemu (we dwóch)",
     period: "2025–2026",
     status: "Prototyp",
     stack: "Node.js · TypeScript · Comarch Optima",
@@ -32,9 +32,9 @@ export const mleczarnia: Project = {
   ],
   /** Wersja angielska: to, co widać na liście i w nagłówku. Szczegóły (sections) dojdą razem z opisami projektów. */
   en: {
-    title: "Digital order card for a dairy",
+    title: "Digital order card for a dairy",
     description: "One digital order flow: from the phone call, through production, to the WZ delivery note in Comarch Optima.",
-    lead: "A small local dairy in the Łódź region. Orders went from a phone call to a paper card, a scan, a printout and manual entry in Comarch. We are building a system that turns this into one digital flow, without changing what already works.",
+    lead: "A small local dairy in the Łódź region. Orders went from a phone call to a paper card, a scan, a printout and manual entry in Comarch. We are building a system that turns this into one digital flow, without changing what already works.",
     tags: [
       "Food production",
       "ERP integration",
@@ -48,7 +48,7 @@ export const mleczarnia: Project = {
     ],
     meta: {
       client: "Dairy, Łódź region",
-      role: "Process analysis, AI, deployment",
+      role: "Process analysis and system design (team of two)",
       status: "Prototype"
     }
   },

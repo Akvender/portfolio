@@ -1,69 +1,72 @@
 import type { Project } from "./types";
 
-/** Projekt 05 — opis do uzupełnienia. */
 export const projekt05: Project = {
   slug: "projekt-05",
   number: "05",
-  title: "Call-center wspomagane transkrypcją i AI",
-  description: "Rozmowy są transkrybowane, a AI robi z nich notatki i wskazuje kolejne kroki.",
-  lead: "Lead realizacji — placeholder. Jedno–dwa zdania o kontekście i zakresie prac.",
-  year: "2023",
+  title: "Call-center z transkrypcją i analizą rozmów",
+  description: "Narzędzie call-center dla branży OZE: ponad 5000 przetworzonych rozmów z analizą treści i wnioskami.",
+  lead: "Narzędzie do obsługi i analizy rozmów dla firmy z branży OZE. Rozmowy są transkrybowane, a modele językowe analizują ich treść i wyciągają wnioski. Prototyp powstał na Make i Twilio, wersja docelowa działa na n8n, Twilio i PostgreSQL, podzielona na serwisy w kontenerach Docker.",
+  year: "",
   tags: ["Call-center", "AI"],
-  skills: ["speech", "llm", "bots", "n8n"],
-  flow: ["Rozmowa", "Transkrypcja", "Notatka AI", "Kolejne kroki"],
+  skills: ["speech", "llm", "n8n", "make", "docker", "api"],
+  flow: ["Rozmowa", "Transkrypcja", "Analiza AI", "Wnioski"],
   flowIcons: ["mic", "wave", "note", "tasks"],
   featured: false,
-  meta: {
-    client: "Nazwa klienta",
-    role: "Rola zespołu",
-    period: "00.0000–00.0000",
-    status: "Status",
-    stack: "Stack technologiczny",
-  },
-  metrics: [
-    { value: 0, label: "Metryka placeholderowa" },
-    { value: 0, label: "Metryka placeholderowa" },
-    { value: 0, label: "Metryka placeholderowa" },
-  ],
-  /** Wersja angielska: to, co widać na liście i w nagłówku. Szczegóły (sections) dojdą razem z opisami projektów. */
+  meta: {"client": "Firma z branży OZE", "role": "", "period": "", "status": "", "stack": "Twilio · n8n · PostgreSQL · Docker"},
+  metrics: [{"value": 5000, "suffix": "+", "label": "przetworzonych rozmów"}],
   en: {
-    title: "Call center supported by transcription and AI",
-    description: "Calls are transcribed, and AI turns them into notes and suggests the next steps.",
-    lead: "Project lead — placeholder. One or two sentences about the context and scope.",
-    tags: [
+    "title": "Call center with transcription and call analysis",
+    "description": "A call-center tool for a renewable-energy company: over 5,000 calls processed with content analysis and insights.",
+    "lead": "A tool for handling and analysing calls for a renewable-energy company. Calls are transcribed, and language models analyse what was said and draw conclusions. The prototype ran on Make and Twilio; the production version runs on n8n, Twilio and PostgreSQL, split into services in Docker containers.",
+    "tags": [
       "Call center",
       "AI"
     ],
-    flow: [
+    "flow": [
       "Call",
       "Transcription",
-      "AI note",
-      "Next steps"
+      "AI analysis",
+      "Insights"
     ],
-    meta: {
-      client: "Client name",
-      role: "Role",
-      status: "Status",
-      stack: "Tech stack"
-    }
+    "meta": {
+      "client": "Renewable-energy company",
+      "stack": "Twilio · n8n · PostgreSQL · Docker"
+    },
+    "sections": [
+      {
+        "type": "results",
+        "title": "What was built",
+        "metrics": [
+          {
+            "value": 5000,
+            "suffix": "+",
+            "label": "calls processed"
+          }
+        ],
+        "proofs": [
+          "Call transcription and content analysis by language models, with insights for follow-up work.",
+          "A prototype on Make and Twilio to validate the idea quickly.",
+          "The production version: n8n, Twilio, a server and a PostgreSQL database, each in its own Docker container."
+        ]
+      }
+    ]
   },
   sections: [
     {
-      type: "problem",
-      title: "Problem",
-      steps: [
-        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
-        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
+      "type": "results",
+      "title": "Co powstało",
+      "metrics": [
+        {
+          "value": 5000,
+          "suffix": "+",
+          "label": "przetworzonych rozmów"
+        }
       ],
-    },
-    {
-      type: "results",
-      title: "Wyniki",
-      metrics: [
-        { value: 0, label: "Metryka placeholderowa" },
-        { value: 0, label: "Metryka placeholderowa" },
-      ],
-      proofs: ["Dowód placeholderowy.", "Dowód placeholderowy."],
-    },
+      "proofs": [
+        "Transkrypcja rozmów i analiza ich treści przez modele językowe, z wnioskami do dalszej pracy.",
+        "Prototyp na Make i Twilio, który pozwolił szybko sprawdzić pomysł.",
+        "Wersja docelowa: n8n, Twilio, serwer i baza PostgreSQL, wszystko w osobnych kontenerach Docker."
+      ]
+    }
   ],
 };

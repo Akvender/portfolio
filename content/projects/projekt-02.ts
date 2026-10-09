@@ -1,86 +1,58 @@
 import type { Project } from "./types";
 
-/** Projekt 02 — opis do uzupełnienia. */
 export const projekt02: Project = {
   slug: "projekt-02",
   number: "02",
   title: "Generator grafik produktowych dla e‑commerce",
-  description: "Narzędzie, które z danych produktu tworzy grafiki do sklepu i reklam.",
-  lead: "Lead realizacji — placeholder. Jedno–dwa zdania o kontekście i zakresie prac.",
-  year: "2025",
-  tags: ["E-commerce", "AI generatywne"],
+  description: "Narzędzie, które z danych produktu tworzy grafiki do sklepu i reklam. Powstało nim kilkaset grafik.",
+  lead: "Sklep internetowy z wąskiej, specjalistycznej branży potrzebował dużej liczby spójnych grafik produktowych. Zbudowałem narzędzie, które tworzy je z danych produktu przy użyciu modeli do generowania obrazów.",
+  year: "",
+  tags: ["E‑commerce", "AI generatywne"],
   skills: ["imagegen", "llm", "python", "api"],
   flow: ["Dane produktu", "Model AI", "Gotowa grafika", "Sklep i reklamy"],
   flowIcons: ["box", "sparkles", "image", "cart"],
   featured: false,
-  meta: {
-    client: "Nazwa klienta",
-    role: "Rola zespołu",
-    period: "00.0000–00.0000",
-    status: "Status",
-    stack: "Stack technologiczny",
-  },
-  metrics: [
-    { value: 0, label: "Metryka placeholderowa" },
-    { value: 0, label: "Metryka placeholderowa" },
-    { value: 0, label: "Metryka placeholderowa" },
-  ],
-  /** Wersja angielska: to, co widać na liście i w nagłówku. Szczegóły (sections) dojdą razem z opisami projektów. */
+  meta: {"client": "Sklep internetowy", "role": "", "period": "", "status": "", "stack": "Python · API modeli obrazów"},
+  metrics: [],
   en: {
-    title: "Product image generator for e-commerce",
-    description: "A tool that turns product data into images for the store and for ads.",
-    lead: "Project lead — placeholder. One or two sentences about the context and scope.",
-    tags: [
-      "E-commerce",
+    "title": "Product image generator for e‑commerce",
+    "description": "A tool that turns product data into images for the store and ads. It has produced several hundred images.",
+    "lead": "An online store in a narrow, specialised niche needed a large number of consistent product images. I built a tool that creates them from product data using image-generation models.",
+    "tags": [
+      "E‑commerce",
       "Generative AI"
     ],
-    flow: [
+    "flow": [
       "Product data",
       "AI model",
       "Finished image",
       "Store and ads"
     ],
-    meta: {
-      client: "Client name",
-      role: "Role",
-      status: "Status",
-      stack: "Tech stack"
-    }
+    "meta": {
+      "client": "Online store",
+      "stack": "Python · image model APIs"
+    },
+    "sections": [
+      {
+        "type": "results",
+        "title": "What was built",
+        "metrics": [],
+        "proofs": [
+          "An image-generation tool tailored to one specific industry.",
+          "Several hundred finished images for the store and for ads."
+        ]
+      }
+    ]
   },
   sections: [
     {
-      type: "problem",
-      title: "Problem",
-      steps: [
-        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
-        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
-        { title: "Krok problemu", text: "Treść placeholderowa — uzupełnij w pliku projektu." },
-      ],
-    },
-    {
-      type: "solution",
-      title: "Rozwiązanie",
-      modules: [
-        { title: "Moduł", text: "Treść placeholderowa." },
-        { title: "Moduł", text: "Treść placeholderowa." },
-        { title: "Moduł", text: "Treść placeholderowa." },
-      ],
-    },
-    {
-      type: "results",
-      title: "Wyniki",
-      metrics: [
-        { value: 0, label: "Metryka placeholderowa" },
-        { value: 0, label: "Metryka placeholderowa" },
-        { value: 0, label: "Metryka placeholderowa" },
-        { value: 0, label: "Metryka placeholderowa" },
-      ],
-      proofs: ["Dowód placeholderowy.", "Dowód placeholderowy.", "Dowód placeholderowy."],
-    },
-    {
-      type: "impact",
-      title: "Wpływ",
-      text: "Blok opcjonalny — placeholder. Renderowany tylko, gdy projekt go zawiera.",
-    },
+      "type": "results",
+      "title": "Co powstało",
+      "metrics": [],
+      "proofs": [
+        "Narzędzie do generowania grafik produktowych dopasowane do jednej, specyficznej branży.",
+        "Kilkaset gotowych grafik do sklepu i materiałów reklamowych."
+      ]
+    }
   ],
 };
