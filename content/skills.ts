@@ -1,44 +1,44 @@
 /**
- * Słownik umiejętności do interaktywnej mapy na stronie głównej.
+ * Słownik umiejętności do interaktywnej mapy na stronie głównej (nazwy w obu językach).
  * Projekty wskazują umiejętności po `id`.
  */
 export const skillGroups = [
   {
-    title: "AI i modele językowe",
+    title: { pl: "AI i modele językowe", en: "AI and language models" },
     icon: "brain",
     skills: [
-      { id: "llm", label: "API OpenAI i Anthropic" },
-      { id: "agents", label: "Agenci AI" },
-      { id: "bots", label: "Chatboty i voiceboty" },
-      { id: "speech", label: "Transkrypcja rozmów" },
-      { id: "imagegen", label: "Generowanie grafik" },
+      { id: "llm", label: { pl: "API OpenAI i Anthropic", en: "OpenAI and Anthropic APIs" } },
+      { id: "agents", label: { pl: "Agenci AI", en: "AI agents" } },
+      { id: "bots", label: { pl: "Chatboty i voiceboty", en: "Chatbots and voicebots" } },
+      { id: "speech", label: { pl: "Transkrypcja rozmów", en: "Call transcription" } },
+      { id: "imagegen", label: { pl: "Generowanie grafik", en: "Image generation" } },
     ],
   },
   {
-    title: "Automatyzacje i integracje",
+    title: { pl: "Automatyzacje i integracje", en: "Automations and integrations" },
     icon: "cycle",
     skills: [
-      { id: "n8n", label: "n8n" },
-      { id: "make", label: "Make i Zapier" },
-      { id: "crm", label: "Integracje CRM" },
-      { id: "erp", label: "Integracje ERP" },
-      { id: "leads", label: "Lejki leadów" },
+      { id: "n8n", label: { pl: "n8n", en: "n8n" } },
+      { id: "make", label: { pl: "Make i Zapier", en: "Make and Zapier" } },
+      { id: "crm", label: { pl: "Integracje CRM", en: "CRM integrations" } },
+      { id: "erp", label: { pl: "Integracje ERP", en: "ERP integrations" } },
+      { id: "leads", label: { pl: "Lejki leadów", en: "Lead funnels" } },
     ],
   },
   {
-    title: "Kod i infrastruktura",
+    title: { pl: "Kod i infrastruktura", en: "Code and infrastructure" },
     icon: "code",
     skills: [
-      { id: "python", label: "Python" },
-      { id: "api", label: "REST API" },
-      { id: "docker", label: "Docker i serwery" },
-      { id: "monitoring", label: "Monitoring i obsługa błędów" },
+      { id: "python", label: { pl: "Python", en: "Python" } },
+      { id: "api", label: { pl: "REST API", en: "REST APIs" } },
+      { id: "docker", label: { pl: "Docker i serwery", en: "Docker and servers" } },
+      { id: "monitoring", label: { pl: "Monitoring i obsługa błędów", en: "Monitoring and error handling" } },
     ],
   },
   {
-    title: "Marketing techniczny",
+    title: { pl: "Marketing techniczny", en: "Technical marketing" },
     icon: "pulse",
-    skills: [{ id: "meta", label: "Meta Pixel i Conversions API" }],
+    skills: [{ id: "meta", label: { pl: "Meta Pixel i Conversions API", en: "Meta Pixel and Conversions API" } }],
   },
 ] as const;
 

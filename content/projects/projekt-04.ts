@@ -11,9 +11,8 @@ export const projekt04: Project = {
   tags: ["Marketing", "Automatyzacje"],
   skills: ["leads", "n8n", "crm", "meta"],
   flow: ["Reklama", "Formularz", "CRM", "Odpowiedź i zadanie"],
+  flowIcons: ["megaphone", "form", "users", "chat"],
   featured: false,
-  cover: "/images/cover-projekt-04.svg",
-  coverAlt: "Lejki leadów połączone z automatyzacjami — okładka (placeholder)",
   meta: {
     client: "Nazwa klienta",
     role: "Rola zespołu",
@@ -26,6 +25,28 @@ export const projekt04: Project = {
     { value: 0, label: "Metryka placeholderowa" },
     { value: 0, label: "Metryka placeholderowa" },
   ],
+  /** Wersja angielska: to, co widać na liście i w nagłówku. Szczegóły (sections) dojdą razem z opisami projektów. */
+  en: {
+    title: "Lead funnels connected to automations",
+    description: "A lead from an ad lands in the CRM and gets a reply and a task for the sales rep automatically.",
+    lead: "Project lead — placeholder. One or two sentences about the context and scope.",
+    tags: [
+      "Marketing",
+      "Automations"
+    ],
+    flow: [
+      "Ad",
+      "Form",
+      "CRM",
+      "Reply and task"
+    ],
+    meta: {
+      client: "Client name",
+      role: "Role",
+      status: "Status",
+      stack: "Tech stack"
+    }
+  },
   sections: [
     {
       type: "problem",

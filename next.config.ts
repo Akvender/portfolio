@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   basePath,
   assetPrefix: basePath || undefined,
+  // Dwa layouty językowe (app/(pl), app/(en)) — strona 404 ma własny <html>.
+  experimental: { globalNotFound: true },
 };
 
 export default nextConfig;

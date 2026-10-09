@@ -74,6 +74,7 @@ export type CaseSection =
   | RoadmapSection;
 
 import type { SkillId } from "../skills";
+import type { IconName } from "@/components/site/Icon";
 
 export type Project = {
   slug: string;
@@ -89,12 +90,22 @@ export type Project = {
   skills: SkillId[];
   /** Uproszczony przepływ (3–4 kroki) rysowany na liście projektów. */
   flow: string[];
+  /** Ikona dla każdego kroku `flow` (ta sama kolejność) — rysowana na okładce-schemacie. */
+  flowIcons: IconName[];
   featured: boolean;
-  /** Ścieżka pod public/ — łatwa do podmiany na finalną okładkę. */
-  cover: string;
-  coverAlt: string;
+  /** Prawdziwa okładka (zrzut, zdjęcie) pod public/. Brak = okładka rysowana ze schematu `flow`. */
+  cover?: string;
+  coverAlt?: string;
   meta: CaseMeta;
   /** 3 metryki na kartę wyróżnioną. */
   metrics: Metric[];
   sections: CaseSection[];
+  /** Wersja angielska; brakujące pola biorą się z polskiej. */
+  en?: ProjectText;
+};
+
+/** Pola projektu, które tłumaczymy. Bez `sections` szczegóły case study zostają po polsku. */
+export type ProjectText = Pick<Project, "title" | "description" | "lead" | "tags" | "flow" | "coverAlt"> & {
+  meta?: Partial<CaseMeta>;
+  sections?: CaseSection[];
 };

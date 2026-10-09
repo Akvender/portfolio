@@ -16,9 +16,8 @@ export const mleczarnia: Project = {
   tags: ["Produkcja spożywcza", "Integracja ERP", "Aplikacja webowa"],
   skills: ["llm", "erp", "api"],
   flow: ["Telefon i kartka", "Cyfrowa karta", "Produkcja", "WZ w Comarch"],
+  flowIcons: ["phone", "tablet", "factory", "document"],
   featured: true,
-  cover: "/images/cover-mleczarnia.svg",
-  coverAlt: "Okładka projektu — cyfrowa karta zamówień dla mleczarni (placeholder)",
   meta: {
     client: "Mleczarnia, woj. łódzkie",
     role: "Analiza procesów, AI, wdrożenie",
@@ -31,6 +30,28 @@ export const mleczarnia: Project = {
     { value: 227, label: "sklepów w danych" },
     { value: 14, label: "tras dostaw" },
   ],
+  /** Wersja angielska: to, co widać na liście i w nagłówku. Szczegóły (sections) dojdą razem z opisami projektów. */
+  en: {
+    title: "Digital order card for a dairy",
+    description: "One digital order flow: from the phone call, through production, to the WZ delivery note in Comarch Optima.",
+    lead: "A small local dairy in the Łódź region. Orders went from a phone call to a paper card, a scan, a printout and manual entry in Comarch. We are building a system that turns this into one digital flow, without changing what already works.",
+    tags: [
+      "Food production",
+      "ERP integration",
+      "Web app"
+    ],
+    flow: [
+      "Phone and paper card",
+      "Digital card",
+      "Production",
+      "WZ in Comarch"
+    ],
+    meta: {
+      client: "Dairy, Łódź region",
+      role: "Process analysis, AI, deployment",
+      status: "Prototype"
+    }
+  },
   sections: [
     {
       type: "problem",
