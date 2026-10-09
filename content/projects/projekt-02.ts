@@ -11,6 +11,7 @@ export const projekt02: Project = {
   tags: ["E-commerce", "AI generatywne"],
   skills: ["imagegen", "llm", "python", "api"],
   flow: ["Dane produktu", "Model AI", "Gotowa grafika", "Sklep i reklamy"],
+  flowIcons: ["box", "sparkles", "image", "cart"],
   featured: false,
   meta: {
     client: "Nazwa klienta",

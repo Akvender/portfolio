@@ -11,6 +11,7 @@ export const projekt05: Project = {
   tags: ["Call-center", "AI"],
   skills: ["speech", "llm", "bots", "n8n"],
   flow: ["Rozmowa", "Transkrypcja", "Notatka AI", "Kolejne kroki"],
+  flowIcons: ["mic", "wave", "note", "tasks"],
   featured: false,
   meta: {
     client: "Nazwa klienta",

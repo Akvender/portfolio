@@ -173,9 +173,7 @@ html {
   .marquee-track { animation: none !important; }
 }
 
-/* Okładki-schematy: przerywana linia „płynie” w strzałkach między krokami; przy reduced motion stoi. */
-@keyframes flow-dash { to { stroke-dashoffset: -52; } }
-.flow-dash { animation: flow-dash 1.6s linear infinite; }
+/* Okładki-schematy: „paczka danych” płynie po połączeniach (SVG animateMotion); przy reduced motion schowana. */
 @media (prefers-reduced-motion: reduce) {
-  .flow-dash { animation: none !important; }
+  .flow-dot { display: none; }
 }

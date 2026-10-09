@@ -11,6 +11,7 @@ export const projekt04: Project = {
   tags: ["Marketing", "Automatyzacje"],
   skills: ["leads", "n8n", "crm", "meta"],
   flow: ["Reklama", "Formularz", "CRM", "Odpowiedź i zadanie"],
+  flowIcons: ["megaphone", "form", "users", "chat"],
   featured: false,
   meta: {
     client: "Nazwa klienta",

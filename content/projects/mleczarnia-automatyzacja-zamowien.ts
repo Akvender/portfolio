@@ -16,6 +16,7 @@ export const mleczarnia: Project = {
   tags: ["Produkcja spożywcza", "Integracja ERP", "Aplikacja webowa"],
   skills: ["llm", "erp", "api"],
   flow: ["Telefon i kartka", "Cyfrowa karta", "Produkcja", "WZ w Comarch"],
+  flowIcons: ["phone", "tablet", "factory", "document"],
   featured: true,
   meta: {
     client: "Mleczarnia, woj. łódzkie",
