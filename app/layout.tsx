@@ -44,7 +44,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <p>
                 © {new Date().getFullYear()} {site.name}
               </p>
-              <p>AI developer · freelancer</p>
+              <a href="#main" className="inline-flex min-h-[44px] items-center gap-2 font-semibold transition-colors hover:text-accent">
+                Wróć na górę <span aria-hidden="true">↑</span>
+              </a>
             </div>
           </footer>
         </Providers>

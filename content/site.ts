@@ -10,15 +10,12 @@ export const site = {
   linkedin: "",
 } as const;
 
-/** Narzędzia, z którymi pracuję na co dzień — pasek pod nagłówkiem (nazwy, nie logotypy). */
-export const tools = ["n8n", "OpenAI", "Anthropic", "Python", "Docker", "Make", "Zapier", "Meta CAPI"] as const;
-
 export const hero = {
   title: "Buduję rozwiązania AI, które pracują w prawdziwych firmach.",
   lead: "Jestem AI developerem i freelancerem. Łączę modele językowe, agentów i automatyzacje z systemami, których firma już używa: CRM-em, ERP, telefonią, sklepem. Całą drogę przechodzę sam: od pomysłu, przez kod, po wdrożenie i utrzymanie.",
   status: "Przyjmuję nowe projekty",
-  photo: "/images/portrait-placeholder.svg",
-  photoAlt: "Miejsce na zdjęcie portretowe Roberta Świebody",
+  photo: "/images/portrait-robert.webp",
+  photoAlt: "Robert Świeboda — portret w ciepłym świetle na ciemnym tle",
 } as const;
 
 /** Sekcja „O mnie”. */

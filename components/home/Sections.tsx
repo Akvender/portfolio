@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { about, proofs } from "@/content/site";
+import { CertCard } from "@/components/home/CertCard";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/Reveal";
 import { asset, body, container, h2, sectionY } from "@/lib/ui";
 
@@ -62,7 +63,7 @@ export function About() {
             {about.steps.map((s, i) => (
               <RevealItem as="li" key={s.title} className="flex flex-col gap-4 lg:pr-8">
                 <div aria-hidden="true" className="flex items-center gap-3">
-                  <span className="size-3 shrink-0 bg-ink" />
+                  <span className="size-3 shrink-0 bg-accent" />
                   <span className="h-0 flex-1 border-t-2 border-dotted border-ink/30" />
                 </div>
                 <p className="text-[14px] font-semibold text-text-muted">Krok {i + 1}</p>
@@ -79,25 +80,8 @@ export function About() {
           </Reveal>
           <RevealGroup className="flex flex-col gap-6">
             {proofs.map((p) => (
-              <RevealItem
-                key={p.src}
-                className="grid gap-6 border-t border-ink pt-6 md:grid-cols-[minmax(0,0.75fr)_minmax(0,1fr)] md:items-start md:gap-10"
-              >
-                <a href={asset(p.src)} target="_blank" rel="noopener noreferrer" className="block" aria-label={`${p.title} — otwórz certyfikat w pełnym rozmiarze`}>
-                  <Image
-                    src={asset(p.src)}
-                    alt={p.alt}
-                    width={p.width}
-                    height={p.height}
-                    className="w-full rounded-[2px] border border-border"
-                  />
-                </a>
-                <div className="flex flex-col gap-3">
-                  {p.badge && <Image src={asset(p.badge)} alt="" width={192} height={192} className="size-20" />}
-                  <h4 className="font-display text-[28px] font-bold leading-[1.1] tracking-[-0.025em]">{p.title}</h4>
-                  <p className="text-[14px] font-medium text-text-muted">{p.meta}</p>
-                  {p.text && <p className="max-w-[56ch] text-[16px] leading-[160%] text-text-primary/85">{p.text}</p>}
-                </div>
+              <RevealItem key={p.src}>
+                <CertCard proof={p} />
               </RevealItem>
             ))}
           </RevealGroup>

@@ -12,9 +12,9 @@ export const DURATION = {
 /** Stagger dzieci: 60–80 ms */
 export const STAGGER = 0.07;
 
-/** Treść jest widoczna od początku — ruch to tylko krótki wjazd, nigdy ukrywanie. */
+/** Płynne pojawienie się przy przewijaniu: przenikanie + krótki wjazd. Bez JS treść jest widoczna (noscript w layout.tsx). */
 export const reveal = {
-  hidden: { opacity: 1, y: 16 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,

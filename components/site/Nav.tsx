@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion, useScroll } from "motion/react";
 import { Arrow } from "@/components/site/Arrow";
 import { container } from "@/lib/ui";
 import { site } from "@/content/site";
@@ -25,6 +25,8 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -78,12 +80,12 @@ export function Nav() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-300 ${
         scrolled || open
-          ? "border-b border-border bg-paper"
-          : "border-b border-transparent bg-paper"
+          ? "border-b border-border-on-dark bg-ink"
+          : "border-b border-transparent bg-ink"
       }`}
     >
       {/* Tymczasowo: informacja, że strona jest w budowie. Usuń ten pasek i zmień 104px → 72px w sekcjach. */}
-      <p className="flex h-8 items-center justify-center bg-ink px-4 text-center text-[13px] font-medium text-text-on-dark">
+      <p className="flex h-8 items-center justify-center bg-ink-strong px-4 text-center text-[13px] font-medium text-text-muted-on-dark">
         Strona w budowie — część treści to jeszcze wypełniacze.
       </p>
       <nav
@@ -94,10 +96,10 @@ export function Nav() {
         <Link
           href="/"
           aria-label={`${site.name} — strona główna`}
-          className="flex items-stretch gap-2.5 text-ink"
+          className="flex items-stretch gap-2.5 text-text-on-dark"
           onClick={() => setOpen(false)}
         >
-          <span aria-hidden="true" className="w-[3px] bg-ink" />
+          <span aria-hidden="true" className="w-[3px] bg-accent" />
           <span aria-hidden="true" className="flex flex-col font-display text-[15px] font-bold uppercase leading-[1.05] tracking-[0.02em]">
             <span>Robert</span>
             <span>Świeboda</span>
@@ -108,31 +110,31 @@ export function Nav() {
         <ul className="hidden items-center gap-6 md:flex">
           {LINKS.map((link) => (
             <li key={link.id} className="relative">
-              {/* Kreska nad linkiem; aktywna sekcja ma ją czarną i grubszą. */}
-              <span aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-border" />
+              {/* Kreska nad linkiem; aktywna sekcja ma ją w kolorze akcentu i grubszą. */}
+              <span aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-border-on-dark" />
               {active === link.id && (
                 <motion.span
                   layoutId="nav-indicator"
                   aria-hidden="true"
-                  className="absolute inset-x-0 top-0 h-[2px] bg-ink"
+                  className="absolute inset-x-0 top-0 h-[2px] bg-accent"
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 />
               )}
               <Link
                 href={link.href}
                 className={`group flex min-h-[44px] min-w-[150px] items-center justify-between gap-4 pt-1 text-[15px] font-semibold transition-colors duration-200 ${
-                  active === link.id ? "text-ink" : "text-text-muted hover:text-ink"
+                  active === link.id ? "text-text-on-dark" : "text-text-muted-on-dark hover:text-text-on-dark"
                 }`}
               >
                 {link.label}
-                <Arrow dir="up-right" className="w-3 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                <Arrow dir="down" className="w-3 transition-transform duration-200 group-hover:translate-y-0.5" />
               </Link>
             </li>
           ))}
           <li>
             <Link
               href="/#kontakt"
-              className="inline-flex min-h-[44px] items-center rounded-xs bg-ink px-5 text-[15px] font-semibold text-text-on-dark transition-colors duration-200 hover:bg-ink-soft"
+              className="inline-flex min-h-[44px] items-center rounded-xs border border-border-on-dark px-5 text-[15px] font-semibold text-text-on-dark transition-colors duration-200 hover:border-accent hover:text-accent"
             >
               Napisz do mnie
             </Link>
@@ -144,9 +146,9 @@ export function Nav() {
         <Link
           href="/#kontakt"
           onClick={() => setOpen(false)}
-          className="inline-flex min-h-[40px] items-center rounded-xs bg-ink px-3.5 text-[14px] font-semibold text-text-on-dark"
+          className="inline-flex min-h-[44px] items-center rounded-xs border border-border-on-dark px-3.5 text-[14px] font-semibold text-text-on-dark"
         >
-          Napisz
+          Kontakt
         </Link>
         <button
           ref={toggleRef}
@@ -155,7 +157,7 @@ export function Nav() {
           aria-controls="menu-mobilne"
           aria-label={open ? "Zamknij menu" : "Otwórz menu"}
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-ink md:hidden"
+          className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-text-on-dark md:hidden"
         >
           <span aria-hidden="true" className="text-[15px] font-semibold">
             {open ? "Zamknij" : "Menu"}
@@ -163,6 +165,11 @@ export function Nav() {
         </button>
         </div>
       </nav>
+
+      {/* Postęp przewijania: cienka linia w kolorze akcentu prowadzi wzrok przez stronę. */}
+      {!reduce && (
+        <motion.div aria-hidden="true" style={{ scaleX: scrollYProgress }} className="absolute inset-x-0 bottom-[-1px] h-[2px] origin-left bg-accent" />
+      )}
 
       {/* Menu mobilne — pełnoekranowe */}
       <AnimatePresence>
@@ -176,7 +183,7 @@ export function Nav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 top-[104px] z-40 bg-paper md:hidden"
+            className="fixed inset-0 top-[104px] z-40 bg-ink md:hidden"
           >
             <ul className={`${container} flex flex-col gap-2 pt-8`}>
               {LINKS.map((link, i) => (
@@ -185,7 +192,7 @@ export function Nav() {
                     ref={i === 0 ? firstLinkRef : undefined}
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="flex min-h-[56px] items-center border-b border-border font-display text-[28px] font-bold tracking-[-0.03em] text-ink"
+                    className="flex min-h-[56px] items-center border-b border-border-on-dark font-display text-[28px] font-bold tracking-[-0.03em] text-text-on-dark"
                   >
                     {link.label}
                   </Link>
@@ -195,7 +202,7 @@ export function Nav() {
                 <Link
                   href="/#kontakt"
                   onClick={() => setOpen(false)}
-                  className="inline-flex min-h-[52px] w-full items-center justify-center rounded-xs bg-ink px-5 text-[16px] font-semibold text-text-on-dark transition-colors duration-200 hover:bg-ink-soft"
+                  className="inline-flex min-h-[52px] w-full items-center justify-center rounded-xs bg-accent px-5 text-[16px] font-semibold text-on-accent transition-colors duration-200 hover:bg-[#ff8a3d]"
                 >
                   Napisz do mnie
                 </Link>
