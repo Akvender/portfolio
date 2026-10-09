@@ -26,6 +26,29 @@ export const projekt05: Project = {
     { value: 0, label: "Metryka placeholderowa" },
     { value: 0, label: "Metryka placeholderowa" },
   ],
+  /** Wersja angielska: to, co widać na liście i w nagłówku. Szczegóły (sections) dojdą razem z opisami projektów. */
+  en: {
+    title: "Call center supported by transcription and AI",
+    description: "Calls are transcribed, and AI turns them into notes and suggests the next steps.",
+    lead: "Project lead — placeholder. One or two sentences about the context and scope.",
+    tags: [
+      "Call center",
+      "AI"
+    ],
+    flow: [
+      "Call",
+      "Transcription",
+      "AI note",
+      "Next steps"
+    ],
+    coverAlt: "Call center supported by transcription and AI — cover (placeholder)",
+    meta: {
+      client: "Client name",
+      role: "Role",
+      status: "Status",
+      stack: "Tech stack"
+    }
+  },
   sections: [
     {
       type: "problem",

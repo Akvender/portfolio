@@ -26,6 +26,29 @@ export const projekt04: Project = {
     { value: 0, label: "Metryka placeholderowa" },
     { value: 0, label: "Metryka placeholderowa" },
   ],
+  /** Wersja angielska: to, co widać na liście i w nagłówku. Szczegóły (sections) dojdą razem z opisami projektów. */
+  en: {
+    title: "Lead funnels connected to automations",
+    description: "A lead from an ad lands in the CRM and gets a reply and a task for the sales rep automatically.",
+    lead: "Project lead — placeholder. One or two sentences about the context and scope.",
+    tags: [
+      "Marketing",
+      "Automations"
+    ],
+    flow: [
+      "Ad",
+      "Form",
+      "CRM",
+      "Reply and task"
+    ],
+    coverAlt: "Lead funnels connected to automations — cover (placeholder)",
+    meta: {
+      client: "Client name",
+      role: "Role",
+      status: "Status",
+      stack: "Tech stack"
+    }
+  },
   sections: [
     {
       type: "problem",

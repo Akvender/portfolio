@@ -26,6 +26,28 @@ export const projekt03: Project = {
     { value: 0, label: "Metryka placeholderowa" },
     { value: 0, label: "Metryka placeholderowa" },
   ],
+  /** Wersja angielska: to, co widać na liście i w nagłówku. Szczegóły (sections) dojdą razem z opisami projektów. */
+  en: {
+    title: "Connecting CRMs and integrating systems",
+    description: "Customer data flows between the CRM and other systems without manual re-typing.",
+    lead: "Project lead — placeholder. One or two sentences about the context and scope.",
+    tags: [
+      "Integrations",
+      "CRM"
+    ],
+    flow: [
+      "CRM",
+      "Integration",
+      "Other systems"
+    ],
+    coverAlt: "Connecting CRMs and integrating systems — cover (placeholder)",
+    meta: {
+      client: "Client name",
+      role: "Role",
+      status: "Status",
+      stack: "Tech stack"
+    }
+  },
   sections: [
     {
       type: "problem",

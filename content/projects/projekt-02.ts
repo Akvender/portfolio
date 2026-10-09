@@ -26,6 +26,29 @@ export const projekt02: Project = {
     { value: 0, label: "Metryka placeholderowa" },
     { value: 0, label: "Metryka placeholderowa" },
   ],
+  /** Wersja angielska: to, co widać na liście i w nagłówku. Szczegóły (sections) dojdą razem z opisami projektów. */
+  en: {
+    title: "Product image generator for e-commerce",
+    description: "A tool that turns product data into images for the store and for ads.",
+    lead: "Project lead — placeholder. One or two sentences about the context and scope.",
+    tags: [
+      "E-commerce",
+      "Generative AI"
+    ],
+    flow: [
+      "Product data",
+      "AI model",
+      "Finished image",
+      "Store and ads"
+    ],
+    coverAlt: "Product image generator for e-commerce — cover (placeholder)",
+    meta: {
+      client: "Client name",
+      role: "Role",
+      status: "Status",
+      stack: "Tech stack"
+    }
+  },
   sections: [
     {
       type: "problem",

@@ -22,7 +22,7 @@ export function ParallaxCover({ src, alt }: { src: string; alt: string }) {
 }
 
 /** Makieta karty zamówień: wiersze pojawiają się kolejno, „—” podświetla się bursztynem. */
-export function OrderTable({ columns, rows }: { columns: string[]; rows: string[][] }) {
+export function OrderTable({ columns, rows, dashLabel }: { columns: string[]; rows: string[][]; dashLabel: string }) {
   return (
     <div className="overflow-x-auto">
       <table className="w-full min-w-[560px] border-collapse text-[14px] [&_td]:font-mono [&_td]:tabular-nums">
@@ -51,7 +51,7 @@ export function OrderTable({ columns, rows }: { columns: string[]; rows: string[
                         variants={{ hidden: { backgroundColor: "rgba(242,122,46,0)" }, visible: { backgroundColor: "rgba(242,122,46,0.25)", transition: { delay: 0.9, duration: 0.6 } } }}
                       >
                         <span aria-hidden="true">—</span>
-                        <span className="sr-only">Sklep świadomie nie zamawia</span>
+                        <span className="sr-only">{dashLabel}</span>
                       </motion.span>
                     ) : (
                       cell

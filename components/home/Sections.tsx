@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
-import { about, proofs } from "@/content/site";
+import { type Lang, ui } from "@/content/i18n";
+import { getContent } from "@/content/site";
 import { CertCard } from "@/components/home/CertCard";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/Reveal";
 import { asset, body, container, h2, sectionY } from "@/lib/ui";
@@ -27,7 +28,9 @@ export function Tags({ tags }: { tags: readonly string[] }) {
   );
 }
 
-export function About() {
+export function About({ lang }: { lang: Lang }) {
+  const { about, proofs } = getContent(lang);
+  const t = ui[lang].about;
   return (
     <section id="o-mnie" className="scroll-mt-[104px] bg-paper">
       <div className={`${container} ${sectionY} flex flex-col gap-16 lg:gap-24`}>
@@ -56,7 +59,7 @@ export function About() {
 
         <div className="flex flex-col gap-6">
           <Reveal>
-            <h3 className="mark-heading font-display text-[26px] font-bold leading-[1.15]">Jak pracuję</h3>
+            <h3 className="mark-heading font-display text-[26px] font-bold leading-[1.15]">{t.howIWork}</h3>
           </Reveal>
           {/* Oś czasu: kwadratowy znacznik i kropkowana linia prowadząca do następnego kroku. */}
           <RevealGroup as="ol" className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
@@ -66,7 +69,7 @@ export function About() {
                   <span className="size-3 shrink-0 bg-accent" />
                   <span className="h-0 flex-1 border-t-2 border-dotted border-ink/30" />
                 </div>
-                <p className="text-[14px] font-semibold text-text-muted">Krok {i + 1}</p>
+                <p className="text-[14px] font-semibold text-text-muted">{t.step} {i + 1}</p>
                 <h4 className="-mt-2 font-display text-[22px] font-bold leading-[1.2]">{s.title}</h4>
                 <p className="text-[15px] leading-[160%] text-text-muted">{s.text}</p>
               </RevealItem>
@@ -76,12 +79,12 @@ export function About() {
 
         <div id="certyfikaty" className="flex scroll-mt-[120px] flex-col gap-6">
           <Reveal>
-            <h3 className="mark-heading font-display text-[26px] font-bold leading-[1.15]">Certyfikaty i osiągnięcia</h3>
+            <h3 className="mark-heading font-display text-[26px] font-bold leading-[1.15]">{t.certs}</h3>
           </Reveal>
           <RevealGroup className="flex flex-col gap-6">
             {proofs.map((p) => (
               <RevealItem key={p.src}>
-                <CertCard proof={p} />
+                <CertCard proof={p} t={ui[lang].cert} />
               </RevealItem>
             ))}
           </RevealGroup>

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { Icon } from "@/components/site/Icon";
+import type { UI } from "@/content/i18n";
 import { asset } from "@/lib/ui";
 
 type Proof = {
@@ -20,7 +21,7 @@ type Proof = {
  * Certyfikat: duży herb z ikonką powiększenia + opis. Kliknięcie otwiera natywny <dialog>
  * (Esc, fokus i tło obsługuje przeglądarka) z pełnym, czytelnym certyfikatem i szczegółami.
  */
-export function CertCard({ proof }: { proof: Proof }) {
+export function CertCard({ proof, t }: { proof: Proof; t: UI["cert"] }) {
   const ref = useRef<HTMLDialogElement>(null);
   const open = () => ref.current?.showModal();
   const close = () => ref.current?.close();
@@ -31,7 +32,7 @@ export function CertCard({ proof }: { proof: Proof }) {
       <button
         type="button"
         onClick={open}
-        aria-label={`${proof.title} — pokaż certyfikat i szczegóły`}
+        aria-label={`${proof.title} — ${t.open}`}
         className="group relative grid size-36 cursor-pointer place-items-center rounded-xs border border-border bg-white transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-accent hover:shadow-[0_16px_32px_-20px_rgba(14,23,38,0.5)] md:size-44"
       >
         {proof.badge && (
@@ -54,7 +55,7 @@ export function CertCard({ proof }: { proof: Proof }) {
           onClick={open}
           className="group mt-1 inline-flex min-h-[44px] w-fit cursor-pointer items-center gap-2 text-[15px] font-semibold text-accent-strong underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent"
         >
-          Zobacz certyfikat
+          {t.see}
           <Icon name="expand" className="size-4 transition-transform duration-200 group-hover:scale-110" />
         </button>
       </div>
@@ -78,7 +79,7 @@ export function CertCard({ proof }: { proof: Proof }) {
           <button
             type="button"
             onClick={close}
-            aria-label="Zamknij"
+            aria-label={t.close}
             autoFocus
             className="grid size-11 shrink-0 cursor-pointer place-items-center rounded-xs border border-border transition-colors hover:border-ink hover:bg-paper-soft"
           >
@@ -94,7 +95,7 @@ export function CertCard({ proof }: { proof: Proof }) {
             rel="noopener noreferrer"
             className="inline-flex min-h-[44px] w-fit items-center gap-2 text-[15px] font-semibold text-accent-strong underline decoration-accent/40 underline-offset-4 hover:decoration-accent"
           >
-            Otwórz w pełnej rozdzielczości
+            {t.full}
             <Icon name="expand" className="size-4" />
           </a>
         </div>
