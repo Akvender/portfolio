@@ -1,7 +1,7 @@
 import type { Project } from "./types";
 
 export const projekt06: Project = {
-  slug: "projekt-06",
+  slug: "agenci-ai",
   number: "06",
   title: "Agenci AI do pracy na co dzień",
   description: "Agenci, którzy z nagrań głosowych robią plan tygodnia, a ze zmian w kodzie piszą dokumentację.",
@@ -9,7 +9,7 @@ export const projekt06: Project = {
   year: "",
   tags: ["Agenci AI", "Narzędzia wewnętrzne"],
   skills: ["agents", "llm", "speech"],
-  flow: ["Nagranie lub zmiany w kodzie", "Agent AI", "Plan tygodnia lub dokumentacja"],
+  flow: ["Nagranie lub zmiany w kodzie", "Agent AI", "Plan tygodnia lub dokumentacja"],
   flowIcons: ["mic", "brain", "note"],
   featured: false,
   meta: { client: "", role: "", period: "", status: "Używane na co dzień", stack: "API modeli językowych · agenci AI" },

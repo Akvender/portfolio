@@ -49,7 +49,7 @@ const pl = {
   },
   skills: {
     title: "Co umiem i gdzie tego użyłem.",
-    lead: "Po lewej umiejętności, po prawej projekty. Kliknij umiejętność, a projekty, w których była potrzebna, przejdą na górę listy.",
+    lead: "Projekty i umiejętności, których w nich użyłem. Kliknij umiejętność, a projekty, w których była potrzebna, przejdą na górę listy.",
     hint: "Wybierz umiejętność. Liczba obok to projekty, w których jej użyłem.",
     also: "Pracuję też z:",
     all: (n: number) => `Wszystkie projekty (${n})`,
@@ -59,14 +59,19 @@ const pl = {
     flow: "Przepływ:",
     projects: (n: number): string => (n === 1 ? "projekt" : n < 5 ? "projekty" : "projektów"),
   },
-  about: { howIWork: "Jak pracuję", step: "Krok", certs: "Certyfikaty i osiągnięcia" },
+  about: { howIWork: "Jak pracuję", step: "Krok", certs: "Certyfikaty i kursy" },
   cert: { open: "pokaż certyfikat i szczegóły", see: "Zobacz certyfikat", close: "Zamknij", full: "Otwórz w pełnej rozdzielczości" },
   contact: {
     title: "Masz proces do usprawnienia albo szukasz AI developera do zespołu?",
-    lead: "Biorę zlecenia jako freelancer i chętnie dołączę do zespołu na zasadach B2B. Napisz kilka zdań o projekcie albo roli, a odpowiem i umówimy krótką rozmowę. Nie robię samych stron i landing page'y, chyba że są częścią większego systemu.",
+    lead: "Biorę zlecenia jako freelancer i chętnie dołączę do zespołu na zasadach B2B. Napisz kilka zdań o projekcie albo roli, a odpowiem i umówimy krótką rozmowę.",
     write: "Napisz wiadomość",
     copy: "Skopiuj adres",
     copied: "Skopiowano",
+    team: [
+      { label: "Forma współpracy", value: "Zlecenia freelance albo współpraca B2B w zespole" },
+      { label: "Najlepiej czuję się w", value: "automatyzacjach, integracjach systemów i stawianiu ich na serwerach" },
+      { label: "Nie biorę", value: "samych stron i landing page'y bez systemu za nimi" },
+    ],
     topicsLabel: "Albo wybierz, o co chodzi:",
     topics: [
       { label: "Projekt lub zlecenie", subject: "Projekt" },
@@ -132,7 +137,7 @@ const en: UI = {
   },
   skills: {
     title: "What I can do and where I've used it.",
-    lead: "Skills on the left, projects on the right. Pick a skill and the projects that needed it move to the top of the list.",
+    lead: "My projects and the skills behind them. Pick a skill and the projects that needed it move to the top of the list.",
     hint: "Pick a skill. The number shows how many projects use it.",
     also: "I also work with:",
     all: (n: number) => `All projects (${n})`,
@@ -142,14 +147,19 @@ const en: UI = {
     flow: "Flow:",
     projects: (n: number) => (n === 1 ? "project" : "projects"),
   },
-  about: { howIWork: "How I work", step: "Step", certs: "Certificates and achievements" },
+  about: { howIWork: "How I work", step: "Step", certs: "Certificates and courses" },
   cert: { open: "show certificate and details", see: "View certificate", close: "Close", full: "Open in full resolution" },
   contact: {
     title: "Got a process to improve, or looking for an AI developer for your team?",
-    lead: "I take on freelance work and I'm happy to join a team on a B2B basis. Write a few sentences about the project or the role, and I'll reply so we can set up a short call. I don't take on standalone websites or landing pages unless they're part of a bigger system.",
+    lead: "I take on freelance work and I'm happy to join a team on a B2B basis. Write a few sentences about the project or the role, and I'll reply so we can set up a short call.",
     write: "Write a message",
     copy: "Copy address",
     copied: "Copied",
+    team: [
+      { label: "How we can work", value: "Freelance contracts or B2B collaboration in your team" },
+      { label: "What I enjoy most", value: "Automations, system integrations and running them on servers" },
+      { label: "What I don't take on", value: "Standalone websites or landing pages with no system behind them" },
+    ],
     topicsLabel: "Or pick what it's about:",
     topics: [
       { label: "A project or a contract", subject: "Project" },

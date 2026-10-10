@@ -59,7 +59,7 @@ export function About({ lang }: { lang: Lang }) {
 
         <div className="flex flex-col gap-6">
           <Reveal>
-            <h3 className="mark-heading font-display text-[26px] font-bold leading-[1.15]">{t.howIWork}</h3>
+            <h3 className="font-display text-[26px] font-bold leading-[1.15]">{t.howIWork}</h3>
           </Reveal>
           {/* Oś czasu: kwadratowy znacznik i kropkowana linia prowadząca do następnego kroku. */}
           <RevealGroup as="ol" className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
@@ -79,9 +79,9 @@ export function About({ lang }: { lang: Lang }) {
 
         <div id="certyfikaty" className="flex scroll-mt-[120px] flex-col gap-6">
           <Reveal>
-            <h3 className="mark-heading font-display text-[26px] font-bold leading-[1.15]">{t.certs}</h3>
+            <h3 className="font-display text-[26px] font-bold leading-[1.15]">{t.certs}</h3>
           </Reveal>
-          <RevealGroup className="flex flex-col gap-6">
+          <RevealGroup className="grid gap-x-12 gap-y-6 lg:grid-cols-2">
             {proofs.map((p) => (
               <RevealItem key={p.src}>
                 <CertCard proof={p} t={ui[lang].cert} />

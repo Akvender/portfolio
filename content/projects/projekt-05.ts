@@ -1,7 +1,7 @@
 import type { Project } from "./types";
 
 export const projekt05: Project = {
-  slug: "projekt-05",
+  slug: "call-center-analiza-rozmow",
   number: "05",
   title: "Call-center z transkrypcją i analizą rozmów",
   description: "Narzędzie call-center dla branży OZE: ponad 5000 przetworzonych rozmów z analizą treści i wnioskami.",
@@ -9,8 +9,8 @@ export const projekt05: Project = {
   year: "",
   tags: ["Call-center", "AI"],
   skills: ["speech", "llm", "twilio", "n8n", "make", "postgres", "docker", "linux", "api"],
-  flow: ["Rozmowa", "Transkrypcja", "Analiza AI", "Wnioski"],
-  flowIcons: ["mic", "wave", "note", "tasks"],
+  flow: ["Rozmowa (Twilio)", "Transkrypcja", "PostgreSQL i analiza AI", "Wnioski"],
+  flowIcons: ["phone", "wave", "server", "tasks"],
   featured: false,
   meta: {"client": "Firma z branży OZE", "role": "", "period": "", "status": "", "stack": "Twilio · n8n · PostgreSQL · Docker"},
   metrics: [{"value": 5000, "suffix": "+", "label": "przetworzonych rozmów"}],
@@ -22,12 +22,7 @@ export const projekt05: Project = {
       "Call center",
       "AI"
     ],
-    "flow": [
-      "Call",
-      "Transcription",
-      "AI analysis",
-      "Insights"
-    ],
+    "flow": ["Call (Twilio)", "Transcription", "PostgreSQL and AI analysis", "Insights"],
     "meta": {
       "client": "Renewable-energy company",
       "stack": "Twilio · n8n · PostgreSQL · Docker"

@@ -25,9 +25,10 @@ export function SkillMap({ projects, lang }: { projects: SkillMapProject[]; lang
   const [active, setActive] = useState<SkillId | null>(null);
   const reduce = useReducedMotion();
   const resultsRef = useRef<HTMLDivElement>(null);
-  const used = new Set(projects.flatMap((p) => p.skills));
-  const matches = active ? projects.filter((p) => p.skills.includes(active)) : projects;
   const countOf = (id: SkillId) => projects.filter((p) => p.skills.includes(id)).length;
+  // Filtrem jest tylko umiejętność z co najmniej dwoma projektami — inaczej wybór nic nie zmienia.
+  const isFilter = (id: SkillId) => countOf(id) >= 2;
+  const matches = active ? projects.filter((p) => p.skills.includes(active)) : projects;
   let wave = 0; // kolejność przycisków w jednorazowej „fali” podświetlenia
   const ordered = active ? [...matches, ...projects.filter((p) => !p.skills.includes(active))] : projects;
 
@@ -41,9 +42,10 @@ export function SkillMap({ projects, lang }: { projects: SkillMapProject[]; lang
 
   return (
     <section id="umiejetnosci" className="scroll-mt-[104px] border-t border-border-on-dark bg-ink-soft text-text-on-dark">
-      <div className={`${container} grid gap-12 py-16 md:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16 lg:py-28`}>
-        <div className="flex flex-col gap-10">
-          <div>
+      <div className={`${container} grid gap-10 py-16 md:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-10 lg:py-28`}>
+        {/* Na telefonie kolejność: nagłówek → projekty → przyciski; na desktopie przyciski pod nagłówkiem, projekty obok. */}
+        <div className="contents">
+          <div className="order-1 lg:col-start-1 lg:row-start-1">
             <h2 className="mark-heading font-display text-[clamp(32px,4.4vw,56px)] font-extrabold leading-[1.02] tracking-[-0.035em] text-balance">
               {t.title}
             </h2>
@@ -52,19 +54,19 @@ export function SkillMap({ projects, lang }: { projects: SkillMapProject[]; lang
             </p>
           </div>
 
-          <div className="flex flex-col gap-7">
+          <div className="order-3 flex flex-col gap-7 lg:order-none lg:col-start-1 lg:row-start-2">
             <p className="-mb-2 flex items-center gap-2 text-[14px] font-medium text-text-muted-on-dark">
               <Icon name="pointer" className="size-[18px] text-accent" />
               {t.hint}
             </p>
-            {skillGroups.map((g) => (
+            {skillGroups.filter((g) => g.skills.some((s) => isFilter(s.id))).map((g) => (
               <fieldset key={g.title.pl} className="flex flex-col gap-3">
                 <legend className="mb-3 flex items-center gap-2 text-[14px] font-semibold text-text-muted-on-dark">
                   <Icon name={g.icon} className="size-[18px]" />
                   {g.title[lang]}
                 </legend>
                 <div className="flex flex-wrap gap-2">
-                  {g.skills.filter((s) => used.has(s.id)).map((s) => {
+                  {g.skills.filter((s) => isFilter(s.id)).map((s) => {
                     const on = active === s.id;
                     const order = wave++;
                     const n = countOf(s.id);
@@ -100,7 +102,7 @@ export function SkillMap({ projects, lang }: { projects: SkillMapProject[]; lang
                             on ? "bg-on-accent/15" : "bg-white/10 text-text-muted-on-dark group-hover/chip:text-text-on-dark"
                           }`}
                         >
-                          {on ? "✕" : n}
+                          {on ? <Icon name="close" className="size-3" /> : n}
                         </span>
                       </button>
                     );
@@ -110,7 +112,7 @@ export function SkillMap({ projects, lang }: { projects: SkillMapProject[]; lang
             ))}
             {/* Umiejętności bez opisanego tu projektu — informacja, nie przycisk. */}
             {(() => {
-              const other = skillGroups.flatMap((g) => [...g.skills] as { id: SkillId; label: { pl: string; en: string } }[]).filter((s) => !used.has(s.id));
+              const other = skillGroups.flatMap((g) => [...g.skills] as { id: SkillId; label: { pl: string; en: string } }[]).filter((s) => !isFilter(s.id));
               return other.length > 0 ? (
                 <p className="border-t border-white/20 pt-5 text-[15px] leading-[155%] text-text-muted-on-dark">
                   <span className="font-semibold text-text-on-dark">{t.also} </span>
@@ -121,7 +123,7 @@ export function SkillMap({ projects, lang }: { projects: SkillMapProject[]; lang
           </div>
         </div>
 
-        <div ref={resultsRef} className="flex scroll-mt-[120px] flex-col">
+        <div ref={resultsRef} className="order-2 flex scroll-mt-[120px] flex-col lg:order-none lg:col-start-2 lg:row-span-2 lg:row-start-1">
           <div className="flex min-h-[44px] items-center justify-between gap-4 border-b border-white/60 pb-3 md:-mx-4 md:px-4">
             <p aria-live="polite" className="text-[15px] font-semibold">
               {active
