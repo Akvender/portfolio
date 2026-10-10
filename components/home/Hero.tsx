@@ -100,7 +100,7 @@ export function Hero({ lang }: { lang: Lang }) {
       <div className={`${container} intro-up pb-8`} style={d(380)}>
         <div className="flex flex-col gap-4 border-t border-border-on-dark pt-6 md:flex-row md:items-center md:gap-10">
           <p className="shrink-0 text-[14px] font-semibold text-text-muted-on-dark">{t.toolsLabel}</p>
-          <ToolsMarquee pauseLabel={t.pause} resumeLabel={t.resume} />
+          <ToolsMarquee />
           <Link href={localePath(lang, "/#umiejetnosci")} className="group hidden min-h-[44px] shrink-0 items-center gap-2 text-[14px] font-semibold text-text-muted-on-dark hover:text-accent lg:inline-flex">
             {t.scroll}
             <Arrow dir="down" className="animate-[nudge_2.4s_ease-in-out_3] transition-transform duration-200 group-hover:translate-y-0.5 motion-reduce:animate-none" />

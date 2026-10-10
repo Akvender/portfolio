@@ -1,16 +1,16 @@
 import type { Project } from "./types";
 
 export const projekt02: Project = {
-  slug: "projekt-02",
+  slug: "generator-grafik-produktowych",
   number: "02",
   title: "Generator grafik produktowych dla e‑commerce",
   description: "Narzędzie, które z danych produktu tworzy grafiki do sklepu i reklam. Powstało nim kilkaset grafik.",
   lead: "Sklep internetowy z wąskiej, specjalistycznej branży potrzebował dużej liczby spójnych grafik produktowych. Zbudowałem narzędzie, które tworzy je z danych produktu przy użyciu modeli do generowania obrazów.",
   year: "",
   tags: ["E‑commerce", "AI generatywne"],
-  skills: ["imagegen", "llm", "python", "api"],
-  flow: ["Dane produktu", "Model AI", "Gotowa grafika", "Sklep i reklamy"],
-  flowIcons: ["box", "sparkles", "image", "cart"],
+  skills: ["imagegen", "llm", "python", "api", "docker"],
+  flow: ["Dane produktu", "Skrypt w Pythonie", "Model obrazów (API)", "Grafiki do sklepu"],
+  flowIcons: ["box", "code", "sparkles", "image"],
   featured: false,
   meta: {"client": "Sklep internetowy", "role": "", "period": "", "status": "", "stack": "Python · API modeli obrazów"},
   metrics: [],
@@ -22,12 +22,7 @@ export const projekt02: Project = {
       "E‑commerce",
       "Generative AI"
     ],
-    "flow": [
-      "Product data",
-      "AI model",
-      "Finished image",
-      "Store and ads"
-    ],
+    "flow": ["Product data", "Python script", "Image model (API)", "Store images"],
     "meta": {
       "client": "Online store",
       "stack": "Python · image model APIs"

@@ -1,15 +1,15 @@
 import type { Project } from "./types";
 
 export const projekt04: Project = {
-  slug: "projekt-04",
+  slug: "rezerwacje-i-platnosci",
   number: "04",
   title: "Rezerwacje i płatności dla landing page'y sprzedażowych",
   description: "Strony sprzedażowe połączone z systemem rezerwacji i płatnościami online.",
   lead: "Landing page'e sprzedażowe potrzebowały czegoś więcej niż formularza. Połączyłem je z systemami rezerwacji i płatności, tak żeby klient mógł od razu zarezerwować termin i zapłacić.",
   year: "",
   tags: ["Integracje", "Sprzedaż online"],
-  skills: ["api", "n8n"],
-  flow: ["Landing page", "Rezerwacja", "Płatność", "Potwierdzenie"],
+  skills: ["stripe", "wordpress", "meta", "email", "n8n", "api"],
+  flow: ["Landing page", "System rezerwacji", "Płatność online", "Potwierdzenie"],
   flowIcons: ["megaphone", "tasks", "cart", "check"],
   featured: false,
   meta: {"client": "", "role": "", "period": "", "status": "", "stack": "Integracje API"},
@@ -22,12 +22,7 @@ export const projekt04: Project = {
       "Integrations",
       "Online sales"
     ],
-    "flow": [
-      "Landing page",
-      "Booking",
-      "Payment",
-      "Confirmation"
-    ],
+    "flow": ["Landing page", "Booking system", "Online payment", "Confirmation"],
     "meta": {
       "stack": "API integrations"
     },

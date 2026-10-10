@@ -41,6 +41,14 @@ export function Contact({ lang }: { lang: Lang }) {
           </Reveal>
           <Reveal delay={0.05}>
             <p className="mt-6 max-w-[50ch] text-[18px] leading-[160%] text-text-muted-on-dark">{t.lead}</p>
+            <dl className="mt-8 grid max-w-[640px] gap-x-8 border-t border-border-on-dark sm:grid-cols-[max-content_minmax(0,1fr)]">
+              {t.team.map((row) => (
+                <div key={row.label} className="contents">
+                  <dt className="pt-4 text-[14px] font-semibold text-text-on-dark sm:border-b sm:border-border-on-dark sm:pb-4">{row.label}</dt>
+                  <dd className="border-b border-border-on-dark pb-4 pt-1 text-[15px] leading-[150%] text-text-muted-on-dark sm:pt-4">{row.value}</dd>
+                </div>
+              ))}
+            </dl>
           </Reveal>
           <Reveal delay={0.1}>
             <div className="mt-10 flex flex-wrap items-center gap-3">

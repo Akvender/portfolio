@@ -1,16 +1,16 @@
 import type { Project } from "./types";
 
 export const projekt03: Project = {
-  slug: "projekt-03",
+  slug: "formularze-crm-powiadomienia",
   number: "03",
   title: "Formularze, CRM i automatyczne powiadomienia",
   description: "Zgłoszenia z formularzy Meta i ze strony trafiają do CRM-u, a dalej same wysyłają SMS-y, maile i powiadomienia.",
   lead: "Aplikacja, którą zbudowałem samodzielnie w około dwa miesiące i którą nadal utrzymuję. Łączy formularze z reklam Meta i ze strony internetowej z CRM-em, wysyłkę SMS-ów przez SMSAPI, mailingi i powiadomienia. Pod spodem jest skonfigurowany VPS, monitoring i powiadomienia o błędach.",
   year: "",
   tags: ["Integracje", "CRM"],
-  skills: ["crm", "meta", "smsapi", "n8n", "api", "docker", "vps", "linux", "monitoring"],
-  flow: ["Formularz Meta / www", "CRM", "SMS i mailing", "Powiadomienia"],
-  flowIcons: ["form", "users", "mail", "bolt"],
+  skills: ["crm", "meta", "smsapi", "mailerlite", "email", "n8n", "make", "api", "docker", "vps", "linux", "monitoring"],
+  flow: ["Formularz Meta / www", "n8n i CRM", "SMSAPI i mailing", "Monitoring i alerty"],
+  flowIcons: ["form", "cycle", "mail", "pulse"],
   featured: false,
   meta: {"client": "", "role": "Projekt, wdrożenie i utrzymanie — samodzielnie", "period": "ok. 2 miesiące budowy", "status": "Działa, utrzymywane", "stack": "n8n · SMSAPI · CRM · VPS · Docker"},
   metrics: [],
@@ -22,12 +22,7 @@ export const projekt03: Project = {
       "Integrations",
       "CRM"
     ],
-    "flow": [
-      "Meta / web form",
-      "CRM",
-      "Texts and emails",
-      "Notifications"
-    ],
+    "flow": ["Meta / web form", "n8n and CRM", "SMSAPI and mailing", "Monitoring and alerts"],
     "meta": {
       "role": "Design, deployment and maintenance — solo",
       "period": "about 2 months to build",

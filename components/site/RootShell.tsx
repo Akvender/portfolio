@@ -3,7 +3,6 @@ import { JetBrains_Mono, Lato, Rubik } from "next/font/google";
 import { Analytics } from "@/components/site/Analytics";
 import { Nav } from "@/components/site/Nav";
 import { Providers } from "@/components/site/Providers";
-import { SocialRail } from "@/components/site/SocialRail";
 import { type Lang, localePath, ui } from "@/content/i18n";
 import { site } from "@/content/site";
 import { container } from "@/lib/ui";
@@ -53,7 +52,6 @@ export function RootShell({ lang, children }: { lang: Lang; children: React.Reac
         </a>
         <Providers>
           <Nav lang={lang} />
-          <SocialRail lang={lang} />
           <main id="main">{children}</main>
           <footer className="border-t border-border-on-dark bg-ink text-text-muted-on-dark">
             <div className={`${container} flex min-h-[72px] flex-wrap items-center justify-between gap-2 py-4 text-[14px]`}>

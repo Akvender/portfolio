@@ -7,7 +7,6 @@ import type {
 } from "@/content/projects/types";
 import { Arrow } from "@/components/site/Arrow";
 import { Icon } from "@/components/site/Icon";
-import { Counter } from "@/components/site/Counter";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/Reveal";
 import { ScrollLine } from "@/components/site/ScrollLine";
 import { SectionHeader, Tags } from "@/components/home/Sections";
@@ -124,7 +123,7 @@ function Results({ s }: { s: ResultsSection }) {
         <RevealGroup as="ul" className="grid grid-cols-2 border-t border-border-on-dark md:grid-cols-[repeat(auto-fit,minmax(160px,1fr))]">
           {s.metrics.map((m, i) => (
             <RevealItem as="li" key={i} className="border-b border-border-on-dark py-5 pr-6 md:border-b-0 md:border-r md:pl-6 md:first:pl-0 md:last:border-r-0">
-              <Counter to={m.value} suffix={m.suffix} className="block text-[clamp(32px,4vw,44px)] font-display font-extrabold leading-[110%] tracking-[-0.02em]" />
+              <span className="block font-display text-[clamp(32px,4vw,44px)] font-extrabold leading-[110%] tracking-[-0.02em] tabular-nums">{m.value.toLocaleString("pl-PL")}{m.suffix}</span>
               <p className="mt-2 text-[14px] leading-[145%] text-text-muted-on-dark">{m.label}</p>
             </RevealItem>
           ))}

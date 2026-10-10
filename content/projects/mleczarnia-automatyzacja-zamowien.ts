@@ -14,7 +14,7 @@ export const mleczarnia: Project = {
   lead: "Mała, lokalna mleczarnia z województwa łódzkiego. Zamówienie przechodziło przez telefon, kartkę, skan, wydruk i ręczny wpis do Comarch. Budujemy system, który zamienia to w jeden cyfrowy przepływ — bez zmieniania tego, co działa.",
   year: "2026",
   tags: ["Produkcja spożywcza", "Integracja ERP", "Aplikacja webowa"],
-  skills: ["erp", "api"],
+  skills: ["erp", "api", "postgres", "docker", "linux"],
   flow: ["Telefon i kartka", "Cyfrowa karta", "Produkcja", "WZ w Comarch"],
   flowIcons: ["phone", "tablet", "factory", "document"],
   featured: true,
