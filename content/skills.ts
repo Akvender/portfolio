@@ -53,7 +53,7 @@ export const skillGroups = [
       { id: "python", label: { pl: "Python", en: "Python" } },
       { id: "docker", label: { pl: "Docker", en: "Docker" } },
       { id: "vps", label: { pl: "Konfiguracja serwerów VPS", en: "VPS server setup" } },
-      { id: "linux", label: { pl: "Linux (system, na którym pracuję)", en: "Linux (my everyday system)" } },
+      { id: "linux", label: { pl: "Linux", en: "Linux" } },
       { id: "postgres", label: { pl: "PostgreSQL", en: "PostgreSQL" } },
       { id: "monitoring", label: { pl: "Monitoring: Prometheus i Grafana", en: "Monitoring: Prometheus and Grafana" } },
     ],
