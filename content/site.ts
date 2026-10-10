@@ -10,7 +10,7 @@ export const site = {
   /** Kod konta GoatCounter (np. „robertswieboda” z robertswieboda.goatcounter.com); pusty = licznik wyłączony. */
   goatcounter: "",
   /** Adres profilu LinkedIn; pusty = przycisk ukryty. */
-  linkedin: "",
+  linkedin: "https://www.linkedin.com/in/robertswieboda/",
 } as const;
 
 const photo = "/images/portrait-robert.webp";
@@ -33,7 +33,7 @@ const content = {
       paragraphs: [
         "Automatyzacjami zajmuję się od prawie pięciu lat. Zaczynałem, gdy Make nazywał się jeszcze Integromat: podstawowe integracje wyklikane z klocków, bez myślenia o serwerze. Potem doszły modele językowe, a dziś buduję własne serwery MCP, agentów AI i całe serwisy, które z nich korzystają.",
         "Najbardziej lubię spinać systemy i stawiać je na serwerach. Przykład: zgłoszenia z formularzy Meta i ze strony trafiają do CRM-u, a dalej same wysyłają SMS-y, maile i powiadomienia. Pod spodem jest VPS, monitoring i alerty o błędach, żeby wszystko działało także o północy. Tę aplikację zbudowałem sam w około dwa miesiące i nadal ją utrzymuję.",
-        "Rozwiązania zamykam w kontenerach Dockera, a tam, gdzie n8n nie wystarcza, piszę własny kod i API. Większość projektów prowadzę sam, część w zespole. Jeśli klient chce, zostaję przy projekcie i dbam o aktualizacje i poprawki.",
+        "Na co dzień pracuję na Linuksie, więc serwery i terminal to moje naturalne środowisko. Rozwiązania zamykam w kontenerach Dockera, a tam, gdzie n8n nie wystarcza, piszę własny kod i API. Większość projektów prowadzę sam, część w zespole. Jeśli klient chce, zostaję przy projekcie i dbam o aktualizacje i poprawki.",
       ],
       steps: [
         { title: "Analiza procesu", text: "Poznaję, jak dziś wygląda praca, i razem ustalamy, co ma się zmienić." },
@@ -49,6 +49,13 @@ const content = {
         title: "AI_devs 4: Builders",
         meta: "Certyfikat ukończenia · 2026",
         text: "5-tygodniowy kurs budowania produkcyjnych rozwiązań AI: LLM w kodzie, context engineering, ewaluacje i systemy wieloagentowe. W ramach kursu ponad 25 praktycznych zadań.",
+      },
+    ],
+    courses: [
+      {
+        title: "Zero2Junior — kurs Daniela Rozieckiego",
+        meta: "Kurs · 2022",
+        text: "Kurs wejścia do programowania, z osobnym modułem o automatyzacjach: Integromat (dziś Make), Airtable i formularze w Tally.",
       },
     ],
   },
@@ -67,7 +74,7 @@ const content = {
       paragraphs: [
         "I've been building automations for almost five years. I started when Make was still called Integromat: simple integrations clicked together from blocks, with no servers to worry about. Then language models arrived, and today I build my own MCP servers, AI agents and whole services around them.",
         "What I enjoy most is connecting systems and running them on servers. For example: leads from Meta and website forms land in the CRM, which then sends texts, emails and notifications by itself, on a VPS with monitoring and error alerts so it keeps working at midnight too. I built that application on my own in about two months and still maintain it.",
-        "I package my solutions in Docker containers, and where n8n isn't enough I write my own code and APIs. I run most projects on my own and some as part of a team. If the client wants, I stay on to handle updates and fixes.",
+        "I work on Linux every day, so servers and the terminal feel like home. I package my solutions in Docker containers, and where n8n isn't enough I write my own code and APIs. I run most projects on my own and some as part of a team. If the client wants, I stay on to handle updates and fixes.",
       ],
       steps: [
         { title: "Process analysis", text: "I learn how the work is done today and we agree on what should change." },
@@ -83,6 +90,13 @@ const content = {
         title: "AI_devs 4: Builders",
         meta: "Certificate of completion · 2026",
         text: "A 5-week course on building production-ready AI solutions: LLMs in code, context engineering, evaluations and multi-agent systems. Over 25 hands-on tasks along the way.",
+      },
+    ],
+    courses: [
+      {
+        title: "Zero2Junior — Daniel Roziecki's course",
+        meta: "Course · 2022",
+        text: "An entry-level programming course with a separate module on automation: Integromat (now Make), Airtable and Tally forms.",
       },
     ],
   },
