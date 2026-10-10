@@ -8,7 +8,7 @@ export const projekt06: Project = {
   lead: "Agentów AI używam tam, gdzie powtarzalna praca polega na czytaniu i porządkowaniu informacji. Jeden analizuje nagrania głosowe i układa z nich plan tygodnia. Drugi śledzi zmiany w kodzie i na ich podstawie tworzy dokumentację programistyczną.",
   year: "",
   tags: ["Agenci AI", "Narzędzia wewnętrzne"],
-  skills: ["agents", "llm", "speech"],
+  skills: ["agents", "llm", "speech", "python", "api"],
   flow: ["Nagranie lub zmiany w kodzie", "Agent AI", "Plan tygodnia lub dokumentacja"],
   flowIcons: ["mic", "brain", "note"],
   featured: false,

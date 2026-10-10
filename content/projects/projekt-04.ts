@@ -8,7 +8,7 @@ export const projekt04: Project = {
   lead: "Landing page'e sprzedażowe potrzebowały czegoś więcej niż formularza. Połączyłem je z systemami rezerwacji i płatności, tak żeby klient mógł od razu zarezerwować termin i zapłacić.",
   year: "",
   tags: ["Integracje", "Sprzedaż online"],
-  skills: ["api", "n8n"],
+  skills: ["stripe", "wordpress", "meta", "email", "n8n", "api"],
   flow: ["Landing page", "System rezerwacji", "Płatność online", "Potwierdzenie"],
   flowIcons: ["megaphone", "tasks", "cart", "check"],
   featured: false,

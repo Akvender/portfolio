@@ -8,7 +8,7 @@ export const projekt02: Project = {
   lead: "Sklep internetowy z wąskiej, specjalistycznej branży potrzebował dużej liczby spójnych grafik produktowych. Zbudowałem narzędzie, które tworzy je z danych produktu przy użyciu modeli do generowania obrazów.",
   year: "",
   tags: ["E‑commerce", "AI generatywne"],
-  skills: ["imagegen", "llm", "python", "api"],
+  skills: ["imagegen", "llm", "python", "api", "docker"],
   flow: ["Dane produktu", "Skrypt w Pythonie", "Model obrazów (API)", "Grafiki do sklepu"],
   flowIcons: ["box", "code", "sparkles", "image"],
   featured: false,

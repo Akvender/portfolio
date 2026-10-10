@@ -26,8 +26,8 @@ export function SkillMap({ projects, lang }: { projects: SkillMapProject[]; lang
   const reduce = useReducedMotion();
   const resultsRef = useRef<HTMLDivElement>(null);
   const countOf = (id: SkillId) => projects.filter((p) => p.skills.includes(id)).length;
-  // Filtrem jest tylko umiejętność z co najmniej dwoma projektami — inaczej wybór nic nie zmienia.
-  const isFilter = (id: SkillId) => countOf(id) >= 2;
+  // Klikalna jest każda umiejętność, która ma choć jeden projekt; reszta trafia do „Pracuję też z”.
+  const isFilter = (id: SkillId) => countOf(id) >= 1;
   const matches = active ? projects.filter((p) => p.skills.includes(active)) : projects;
   let wave = 0; // kolejność przycisków w jednorazowej „fali” podświetlenia
   const ordered = active ? [...matches, ...projects.filter((p) => !p.skills.includes(active))] : projects;
