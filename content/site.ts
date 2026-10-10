@@ -10,7 +10,7 @@ export const site = {
   /** Kod konta GoatCounter (np. „robertswieboda” z robertswieboda.goatcounter.com); pusty = licznik wyłączony. */
   goatcounter: "",
   /** Adres profilu LinkedIn; pusty = przycisk ukryty. */
-  linkedin: "https://www.linkedin.com/in/robert-%C5%9Bwieboda-687aa02a0/",
+  linkedin: "https://www.linkedin.com/in/robertswieboda/",
 } as const;
 
 const photo = "/images/portrait-robert.webp";
