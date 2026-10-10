@@ -20,6 +20,7 @@ export const skillGroups = [
     skills: [
       { id: "n8n", label: { pl: "n8n", en: "n8n" } },
       { id: "make", label: { pl: "Make i Zapier", en: "Make and Zapier" } },
+      { id: "airtable", label: { pl: "Airtable", en: "Airtable" } },
       { id: "crm", label: { pl: "Integracje CRM", en: "CRM integrations" } },
       { id: "erp", label: { pl: "Integracje ERP", en: "ERP integrations" } },
       { id: "api", label: { pl: "REST API", en: "REST APIs" } },

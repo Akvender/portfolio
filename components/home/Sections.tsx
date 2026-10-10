@@ -29,7 +29,7 @@ export function Tags({ tags }: { tags: readonly string[] }) {
 }
 
 export function About({ lang }: { lang: Lang }) {
-  const { about, proofs } = getContent(lang);
+  const { about, proofs, courses } = getContent(lang);
   const t = ui[lang].about;
   return (
     <section id="o-mnie" className="scroll-mt-[104px] bg-paper">
@@ -85,6 +85,14 @@ export function About({ lang }: { lang: Lang }) {
             {proofs.map((p) => (
               <RevealItem key={p.src}>
                 <CertCard proof={p} t={ui[lang].cert} />
+              </RevealItem>
+            ))}
+            {/* Kursy bez certyfikatu: sam opis. */}
+            {courses.map((c) => (
+              <RevealItem key={c.title} className="flex flex-col gap-3 border-t border-border pt-8">
+                <h4 className="font-display text-[24px] font-bold leading-[1.15] tracking-[-0.02em]">{c.title}</h4>
+                <p className="text-[14px] font-medium text-text-muted">{c.meta}</p>
+                <p className="max-w-[60ch] text-[16px] leading-[160%] text-text-primary/85">{c.text}</p>
               </RevealItem>
             ))}
           </RevealGroup>

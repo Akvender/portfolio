@@ -51,6 +51,13 @@ const content = {
         text: "5-tygodniowy kurs budowania produkcyjnych rozwiązań AI: LLM w kodzie, context engineering, ewaluacje i systemy wieloagentowe. W ramach kursu ponad 25 praktycznych zadań.",
       },
     ],
+    courses: [
+      {
+        title: "Zero2Junior — kurs Daniela Rozieckiego",
+        meta: "Kurs · 2022",
+        text: "Kurs wejścia do programowania, z osobnym modułem o automatyzacjach: Integromat (dziś Make), Airtable i formularze w Tally.",
+      },
+    ],
   },
   en: {
     hero: {
@@ -83,6 +90,13 @@ const content = {
         title: "AI_devs 4: Builders",
         meta: "Certificate of completion · 2026",
         text: "A 5-week course on building production-ready AI solutions: LLMs in code, context engineering, evaluations and multi-agent systems. Over 25 hands-on tasks along the way.",
+      },
+    ],
+    courses: [
+      {
+        title: "Zero2Junior — Daniel Roziecki's course",
+        meta: "Course · 2022",
+        text: "An entry-level programming course with a separate module on automation: Integromat (now Make), Airtable and Tally forms.",
       },
     ],
   },
