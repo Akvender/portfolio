@@ -99,12 +99,11 @@ export function Nav({ lang }: { lang: Lang }) {
         {/* Logo: imię i nazwisko złożone w dwie linie przy pionowej kresce. */}
         <Link
           href={localePath(lang, "/")}
-          aria-label={`${site.name} — ${t.home}`}
           className="flex items-stretch gap-2.5 text-text-on-dark"
           onClick={() => setOpen(false)}
         >
           <span aria-hidden="true" className="w-[3px] bg-accent" />
-          <span aria-hidden="true" className="flex flex-col font-display text-[15px] font-bold uppercase leading-[1.05] tracking-[0.02em]">
+          <span className="flex flex-col font-display text-[15px] font-bold uppercase leading-[1.05] tracking-[0.02em]">
             <span>Robert</span>
             <span>Świeboda</span>
           </span>
@@ -140,7 +139,7 @@ export function Nav({ lang }: { lang: Lang }) {
               href={switchPath(pathname, other)}
               hrefLang={other}
               lang={other}
-              aria-label={t.switchTo}
+              aria-label={`${other.toUpperCase()} — ${t.switchTo}`}
               className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xs text-[14px] font-bold tracking-[0.04em] text-text-muted-on-dark transition-colors duration-200 hover:text-accent"
             >
               {other.toUpperCase()}

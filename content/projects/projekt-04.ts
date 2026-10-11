@@ -26,6 +26,7 @@ export const projekt04: Project = {
     "meta": {
       "stack": "API integrations"
     },
+    architecture: {"columns": [{"title": "Input", "items": ["Sales landing page"]}, {"title": "Integrations", "items": ["Booking system", "Stripe payments"]}, {"title": "Output", "items": ["Email confirmation", "Calendar booking"]}]},
     "sections": [
       {
         "type": "results",
@@ -38,6 +39,7 @@ export const projekt04: Project = {
       }
     ]
   },
+  architecture: {"columns": [{"title": "Wejście", "items": ["Landing page sprzedażowy"]}, {"title": "Integracje", "items": ["System rezerwacji", "Płatności Stripe"]}, {"title": "Wynik", "items": ["Potwierdzenie e-mail", "Rezerwacja w kalendarzu"]}]},
   sections: [
     {
       "type": "results",

@@ -60,9 +60,9 @@ export function Hero({ lang }: { lang: Lang }) {
                   height={1200}
                   priority
                   sizes="(min-width: 1024px) 440px, 90vw"
-                  className={`${portrait} object-cover object-[50%_30%] mix-blend-screen`}
+                  className={`${portrait} object-cover object-[50%_25%]`}
                 />
-                {/* Screen na granacie: czerń zdjęcia staje się granatem karty, ciepłe tony twarzy zostają. */}
+                {/* Delikatne przejście zdjęcia w kolor karty u dołu. */}
                 <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink-soft to-transparent" />
               </div>
             ) : (

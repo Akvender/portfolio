@@ -27,6 +27,7 @@ export const projekt05: Project = {
       "client": "Renewable-energy company",
       "stack": "Twilio · n8n · PostgreSQL · Docker"
     },
+    architecture: {"columns": [{"title": "Input", "items": ["Phone calls (Twilio)"]}, {"title": "Automation", "items": ["n8n (prototype on Make first)", "Transcription"]}, {"title": "Data and AI", "items": ["PostgreSQL database", "Content analysis by a language model"]}, {"title": "Output", "items": ["Call insights", "Data in the CRM"]}], "infra": "separate services in Docker containers, VPS, Linux"},
     "sections": [
       {
         "type": "results",
@@ -46,6 +47,7 @@ export const projekt05: Project = {
       }
     ]
   },
+  architecture: {"columns": [{"title": "Wejście", "items": ["Rozmowy telefoniczne (Twilio)"]}, {"title": "Automatyzacja", "items": ["n8n (wcześniej prototyp na Make)", "Transkrypcja"]}, {"title": "Dane i AI", "items": ["Baza PostgreSQL", "Analiza treści przez model językowy"]}, {"title": "Wynik", "items": ["Wnioski z rozmów", "Dane w CRM"]}], "infra": "osobne serwisy w kontenerach Docker, VPS, Linux"},
   sections: [
     {
       "type": "results",

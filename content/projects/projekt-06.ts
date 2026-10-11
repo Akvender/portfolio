@@ -21,6 +21,7 @@ export const projekt06: Project = {
     tags: ["AI agents", "Internal tools"],
     flow: ["Recording or code changes", "AI agent", "Weekly plan or documentation"],
     meta: { status: "Used every day", stack: "Language-model APIs · AI agents" },
+    architecture: {"columns": [{"title": "Input", "items": ["Voice recordings", "Code changes"]}, {"title": "AI agent", "items": ["Transcription", "Language model (API)"]}, {"title": "Output", "items": ["Weekly plan", "Developer documentation"]}]},
     sections: [
       {
         type: "results",
@@ -33,6 +34,7 @@ export const projekt06: Project = {
       },
     ],
   },
+  architecture: {"columns": [{"title": "Wejście", "items": ["Nagrania głosowe", "Zmiany w kodzie"]}, {"title": "Agent AI", "items": ["Transkrypcja", "Model językowy (API)"]}, {"title": "Wynik", "items": ["Plan tygodnia", "Dokumentacja programistyczna"]}]},
   sections: [
     {
       type: "results",

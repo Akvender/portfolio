@@ -50,8 +50,10 @@ export const mleczarnia: Project = {
       client: "Dairy, Łódź region",
       role: "Process analysis and system design (team of two)",
       status: "Prototype"
-    }
+    },
+    architecture: {"columns": [{"title": "Input", "items": ["Phone orders", "Route card"]}, {"title": "Application", "items": ["Web app (Node.js, TypeScript)", "Modules: office, production, distribution"]}, {"title": "Output", "items": ["WZ import into Comarch Optima"]}], "infra": "server, Docker, Linux"},
   },
+  architecture: {"columns": [{"title": "Wejście", "items": ["Zamówienia telefoniczne", "Karta trasy"]}, {"title": "Aplikacja", "items": ["Aplikacja webowa (Node.js, TypeScript)", "Moduły: biuro, produkcja, dystrybucja"]}, {"title": "Wynik", "items": ["Import WZ do Comarch Optima"]}], "infra": "serwer, Docker, Linux"},
   sections: [
     {
       type: "problem",

@@ -1,11 +1,13 @@
 import { notFound } from "next/navigation";
+import { AutomationDemo } from "@/components/home/AutomationDemo";
 import { Hero } from "@/components/home/Hero";
 import { About } from "@/components/home/Sections";
 import { SkillMap } from "@/components/home/SkillMap";
+import { Architecture } from "@/components/case/Architecture";
 import { CaseHero, CaseSections, NextProject } from "@/components/case/Sections";
 import { Contact } from "@/components/site/Contact";
 import { pageMetadata } from "@/components/site/RootShell";
-import type { Lang } from "@/content/i18n";
+import { type Lang, ui } from "@/content/i18n";
 import { getNextProject, getProject, getProjects, projectSlugs } from "@/content/projects";
 
 /** Widoki stron wspólne dla obu języków; pliki w app/(pl) i app/(en) tylko podają język. */
@@ -16,6 +18,7 @@ export function HomeView({ lang }: { lang: Lang }) {
     <>
       <Hero lang={lang} />
       <SkillMap lang={lang} projects={projects} />
+      <AutomationDemo lang={lang} />
       <About lang={lang} />
       <Contact lang={lang} />
     </>
@@ -37,6 +40,7 @@ export function CaseView({ lang, slug }: { lang: Lang; slug: string }) {
   return (
     <>
       <CaseHero project={project} lang={lang} />
+      {project.architecture && <Architecture data={project.architecture} title={ui[lang].case.architecture} infraLabel={ui[lang].case.infra} />}
       <CaseSections sections={project.sections} lang={lang} />
       <NextProject project={getNextProject(lang, slug)} lang={lang} />
       <Contact lang={lang} />

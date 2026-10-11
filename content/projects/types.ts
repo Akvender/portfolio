@@ -76,6 +76,12 @@ export type CaseSection =
 import type { SkillId } from "../skills";
 import type { IconName } from "@/components/site/Icon";
 
+/** Schemat architektury: kolumny od wejścia do wyniku + pas infrastruktury. */
+export type Architecture = {
+  columns: { title: string; items: string[] }[];
+  infra?: string;
+};
+
 export type Project = {
   slug: string;
   /** Numer projektu: „01”, „02”, … */
@@ -100,6 +106,8 @@ export type Project = {
   /** 3 metryki na kartę wyróżnioną. */
   metrics: Metric[];
   sections: CaseSection[];
+  /** Schemat połączeń systemu na podstronie projektu. */
+  architecture?: Architecture;
   /** Wersja angielska; brakujące pola biorą się z polskiej. */
   en?: ProjectText;
 };
@@ -108,4 +116,5 @@ export type Project = {
 export type ProjectText = Pick<Project, "title" | "description" | "lead" | "tags" | "flow" | "coverAlt"> & {
   meta?: Partial<CaseMeta>;
   sections?: CaseSection[];
+  architecture?: Architecture;
 };
