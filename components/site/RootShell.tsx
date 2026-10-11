@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Lato, Rubik } from "next/font/google";
 import { Analytics } from "@/components/site/Analytics";
+import { ContactDialog } from "@/components/site/ContactDialog";
 import { Nav } from "@/components/site/Nav";
 import { Providers } from "@/components/site/Providers";
 import { type Lang, localePath, ui } from "@/content/i18n";
@@ -63,6 +64,7 @@ export function RootShell({ lang, children }: { lang: Lang; children: React.Reac
               </a>
             </div>
           </footer>
+          <ContactDialog lang={lang} />
         </Providers>
         <Analytics />
       </body>

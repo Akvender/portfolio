@@ -19,7 +19,11 @@ export function Providers({ children }: { children: ReactNode }) {
       raf = requestAnimationFrame(loop);
     };
     raf = requestAnimationFrame(loop);
+    // Okno kontaktu blokuje przewijanie strony pod spodem.
+    const lock = (e: Event) => ((e as CustomEvent<boolean>).detail ? lenis.stop() : lenis.start());
+    window.addEventListener("scroll-lock", lock);
     return () => {
+      window.removeEventListener("scroll-lock", lock);
       cancelAnimationFrame(raf);
       lenis.destroy();
     };

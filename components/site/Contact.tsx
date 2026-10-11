@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Arrow } from "@/components/site/Arrow";
+import { openContact } from "@/components/site/ContactDialog";
 import { Icon } from "@/components/site/Icon";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/Reveal";
 import { type Lang, ui } from "@/content/i18n";
@@ -52,7 +53,7 @@ export function Contact({ lang }: { lang: Lang }) {
           </Reveal>
           <Reveal delay={0.1}>
             <div className="mt-10 flex flex-wrap items-center gap-3">
-              <a href={mail()} className={`${btnBase} bg-accent text-on-accent hover:bg-[#ff8a3d]`}>
+              <a href={mail()} aria-haspopup="dialog" onClick={(e) => openContact() && e.preventDefault()} className={`${btnBase} bg-accent text-on-accent hover:bg-[#ff8a3d]`}>
                 {t.write}
                 <Arrow className="transition-transform duration-200 group-hover:translate-x-1" />
               </a>
@@ -99,10 +100,12 @@ export function Contact({ lang }: { lang: Lang }) {
             <p className="text-[14px] font-semibold text-text-muted-on-dark">{t.topicsLabel}</p>
           </Reveal>
           <RevealGroup as="ul" className="mt-4 flex flex-col border-t border-border-on-dark">
-            {t.topics.map((topic) => (
+            {t.topics.map((topic, i) => (
               <RevealItem as="li" key={topic.label}>
                 <a
                   href={mail(topic.subject)}
+                  aria-haspopup="dialog"
+                  onClick={(e) => openContact(i) && e.preventDefault()}
                   className="group flex min-h-[60px] items-center justify-between gap-4 border-b border-border-on-dark py-3 text-[17px] font-semibold transition-colors duration-200 hover:text-accent"
                 >
                   {topic.label}
