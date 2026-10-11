@@ -11,13 +11,13 @@ type Step = { id: string; icon: IconName; name: { pl: string; en: string } };
 type Event = { step: string; status: Status; log: { pl: string; en: string } };
 
 const STEPS: Step[] = [
-  { id: "form", icon: "form", name: { pl: "Formularz Meta", en: "Meta lead form" } },
-  { id: "n8n", icon: "cycle", name: { pl: "Webhook n8n", en: "n8n webhook" } },
+  { id: "form", icon: "form", name: { pl: "Formularz", en: "Lead form" } },
+  { id: "n8n", icon: "cycle", name: { pl: "Webhook", en: "Webhook" } },
   { id: "check", icon: "check", name: { pl: "Walidacja danych", en: "Data validation" } },
   { id: "crm", icon: "users", name: { pl: "CRM", en: "CRM" } },
-  { id: "sms", icon: "phone", name: { pl: "SMS przez SMSAPI", en: "Text via SMSAPI" } },
+  { id: "sms", icon: "phone", name: { pl: "SMS", en: "Text message" } },
   { id: "mail", icon: "mail", name: { pl: "E-mail powitalny", en: "Welcome email" } },
-  { id: "mon", icon: "pulse", name: { pl: "Monitoring (Grafana)", en: "Monitoring (Grafana)" } },
+  { id: "mon", icon: "pulse", name: { pl: "Monitoring", en: "Monitoring" } },
 ];
 
 /** Przebieg zwykły: lead przechodzi przez wszystkie kroki. Dane są przykładowe. */
