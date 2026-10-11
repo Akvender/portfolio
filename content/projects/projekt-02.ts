@@ -27,6 +27,7 @@ export const projekt02: Project = {
       "client": "Online store",
       "stack": "Python · image model APIs"
     },
+    architecture: {"columns": [{"title": "Input", "items": ["Product data from the store"]}, {"title": "Processing", "items": ["Python script"]}, {"title": "AI", "items": ["Image-generation model API"]}, {"title": "Output", "items": ["Store images", "Ad images"]}], "infra": "Docker"},
     "sections": [
       {
         "type": "results",
@@ -39,6 +40,7 @@ export const projekt02: Project = {
       }
     ]
   },
+  architecture: {"columns": [{"title": "Wejście", "items": ["Dane produktu ze sklepu"]}, {"title": "Przetwarzanie", "items": ["Skrypt w Pythonie"]}, {"title": "AI", "items": ["API modelu do generowania obrazów"]}, {"title": "Wynik", "items": ["Grafiki do sklepu", "Grafiki do reklam"]}], "infra": "Docker"},
   sections: [
     {
       "type": "results",

@@ -24,7 +24,7 @@ const content = {
       lead: "Jestem AI developerem i freelancerem. Pomagam, gdy w firmie dużo rzeczy robi się ręcznie, system czegoś nie potrafi albo kilka narzędzi trzeba spiąć w całość. Analizuję proces, buduję rozwiązanie i stawiam je na serwerze. Pracuję głównie w n8n, Pythonie i z API modeli językowych.",
       status: "Otwarty na zlecenia i współpracę B2B",
       photo,
-      photoAlt: "Robert Świeboda — portret w ciepłym świetle na ciemnym tle",
+      photoAlt: "Robert Świeboda — portret na ciemnym tle",
     },
     about: {
       photo: "/images/photo-placeholder-praca.svg",
@@ -65,7 +65,7 @@ const content = {
       lead: "I'm an AI developer and freelancer. I help when a lot of work is still done by hand, a system can't do something, or several tools need to work as one. I analyse the process, build the solution and run it on a server. I work mainly with n8n, Python and language-model APIs.",
       status: "Open to contracts and B2B collaboration",
       photo,
-      photoAlt: "Robert Świeboda — portrait in warm light on a dark background",
+      photoAlt: "Robert Świeboda — portrait on a dark background",
     },
     about: {
       photo: "/images/photo-placeholder-praca.svg",

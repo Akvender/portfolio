@@ -29,6 +29,7 @@ export const projekt03: Project = {
       "status": "Live, maintained",
       "stack": "n8n · SMSAPI · CRM · VPS · Docker"
     },
+    architecture: {"columns": [{"title": "Input", "items": ["Meta lead forms", "Website form"]}, {"title": "Automation", "items": ["n8n workflows"]}, {"title": "Systems", "items": ["CRM", "SMSAPI", "MailerLite / email"]}, {"title": "Monitoring", "items": ["Prometheus", "Grafana", "Error alerts"]}], "infra": "VPS, Docker, Linux"},
     "sections": [
       {
         "type": "results",
@@ -43,6 +44,7 @@ export const projekt03: Project = {
       }
     ]
   },
+  architecture: {"columns": [{"title": "Wejście", "items": ["Formularze Meta", "Formularz na stronie"]}, {"title": "Automatyzacja", "items": ["Workflowy n8n"]}, {"title": "Systemy", "items": ["CRM", "SMSAPI", "MailerLite / poczta"]}, {"title": "Nadzór", "items": ["Prometheus", "Grafana", "Alerty o błędach"]}], "infra": "VPS, Docker, Linux"},
   sections: [
     {
       "type": "results",
