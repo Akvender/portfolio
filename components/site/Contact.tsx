@@ -32,7 +32,7 @@ export function Contact({ lang }: { lang: Lang }) {
   };
 
   return (
-    <section id="kontakt" className="scroll-mt-[104px] bg-ink text-text-on-dark">
+    <section id="kontakt" className="scroll-mt-[72px] bg-ink text-text-on-dark">
       <div className={`${container} ${sectionY} grid gap-12 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:items-end lg:gap-20`}>
         <div>
           <Reveal>

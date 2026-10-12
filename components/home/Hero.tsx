@@ -21,7 +21,7 @@ export function Hero({ lang }: { lang: Lang }) {
   const portrait = "aspect-[4/3] w-full md:aspect-[4/5] md:max-h-[42svh]";
 
   return (
-    <section className="flex min-h-[100svh] flex-col overflow-x-clip bg-ink pt-[104px] text-text-on-dark">
+    <section className="flex min-h-[100svh] flex-col overflow-x-clip bg-ink pt-[72px] text-text-on-dark">
       <div className={`${container} grid flex-1 items-center gap-12 py-10 md:py-14 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-20`}>
         <div className="flex flex-col gap-7">
           <h1

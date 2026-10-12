@@ -89,10 +89,6 @@ export function Nav({ lang }: { lang: Lang }) {
           : "border-b border-transparent bg-ink"
       }`}
     >
-      {/* Tymczasowo: informacja, że strona jest w budowie. Usuń ten pasek i zmień 104px → 72px w sekcjach. */}
-      <p className="flex h-8 items-center justify-center bg-ink-strong px-4 text-center text-[13px] font-medium text-text-muted-on-dark">
-        {ui[lang].banner}
-      </p>
       <nav
         aria-label={t.label}
         className={`${container} flex h-[72px] items-center justify-between`}
@@ -100,6 +96,7 @@ export function Nav({ lang }: { lang: Lang }) {
         {/* Logo: imię i nazwisko złożone w dwie linie przy pionowej kresce. */}
         <Link
           href={localePath(lang, "/")}
+          aria-label={`${site.name}, ${t.home}`}
           className="flex items-stretch gap-2.5 text-text-on-dark"
           onClick={() => setOpen(false)}
         >
@@ -198,7 +195,7 @@ export function Nav({ lang }: { lang: Lang }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 top-[104px] z-40 bg-ink md:hidden"
+            className="fixed inset-0 top-[72px] z-40 bg-ink md:hidden"
           >
             <ul className={`${container} flex flex-col gap-2 pt-8`}>
               {LINKS.map((link, i) => (

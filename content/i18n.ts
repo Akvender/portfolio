@@ -18,12 +18,11 @@ const pl = {
   htmlLang: "pl",
   ogLocale: "pl_PL",
   meta: {
-    title: "AI developer i freelancer",
+    title: "AI developer i freelancer",
     description:
-      "Robert Świeboda, AI developer i freelancer: automatyzacje procesów, integracje systemów i narzędzia z AI. Projekty, umiejętności i kontakt.",
+      "Robert Świeboda, AI developer i freelancer: automatyzacje procesów, integracje systemów i narzędzia z AI. Projekty, umiejętności i kontakt.",
   },
   skipToContent: "Przejdź do treści",
-  banner: "Strona w budowie — część treści to jeszcze wypełniacze.",
   nav: {
     label: "Nawigacja główna",
     home: "strona główna",
@@ -55,7 +54,6 @@ const pl = {
     all: (n: number) => `Wszystkie projekty (${n})`,
     matching: (skill: string, n: number, total: number) => `${skill}: ${n} z ${total} projektów`,
     showAll: "Pokaż wszystkie",
-    details: "Szczegóły",
     flow: "Przepływ:",
     projects: (n: number): string => (n === 1 ? "projekt" : n < 5 ? "projekty" : "projektów"),
   },
@@ -128,7 +126,6 @@ const en: UI = {
       "Robert Świeboda, AI developer and freelancer: process automation, system integrations and AI-powered tools. Projects, skills and contact.",
   },
   skipToContent: "Skip to content",
-  banner: "Work in progress — some content is still placeholder.",
   nav: {
     label: "Main navigation",
     home: "home page",
@@ -160,7 +157,6 @@ const en: UI = {
     all: (n: number) => `All projects (${n})`,
     matching: (skill: string, n: number, total: number) => `${skill}: ${n} of ${total} projects`,
     showAll: "Show all",
-    details: "Details",
     flow: "Flow:",
     projects: (n: number) => (n === 1 ? "project" : "projects"),
   },
