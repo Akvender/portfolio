@@ -31,20 +31,24 @@ export function Tags({ tags }: { tags: readonly string[] }) {
 export function About({ lang }: { lang: Lang }) {
   const { about, proofs, courses } = getContent(lang);
   const t = ui[lang].about;
+  // Bez prawdziwego zdjęcia sekcja idzie w jednej kolumnie (zamiast pokazywać placeholder).
+  const hasPhoto = !about.photo.includes("placeholder");
   return (
-    <section id="o-mnie" className="scroll-mt-[104px] bg-paper">
+    <section id="o-mnie" className="scroll-mt-[72px] bg-paper">
       <div className={`${container} ${sectionY} flex flex-col gap-16 lg:gap-24`}>
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
-          <Reveal>
-            <Image
-              src={asset(about.photo)}
-              alt={about.photoAlt}
-              width={1000}
-              height={1100}
-              sizes="(min-width: 1024px) 520px, 100vw"
-              className="aspect-[10/11] w-full rounded-xs object-cover"
-            />
-          </Reveal>
+        <div className={hasPhoto ? "grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] lg:items-center lg:gap-16" : ""}>
+          {hasPhoto && (
+            <Reveal>
+              <Image
+                src={asset(about.photo)}
+                alt={about.photoAlt}
+                width={1000}
+                height={1100}
+                sizes="(min-width: 1024px) 520px, 100vw"
+                className="aspect-[10/11] w-full rounded-xs object-cover"
+              />
+            </Reveal>
+          )}
           <Reveal delay={0.05} className="flex flex-col gap-8">
             <h2 className={`${h2} mark-heading max-w-[18ch] text-balance`}>{about.title}</h2>
             <div className="flex flex-col gap-5">
@@ -77,7 +81,7 @@ export function About({ lang }: { lang: Lang }) {
           </RevealGroup>
         </div>
 
-        <div id="certyfikaty" className="flex scroll-mt-[120px] flex-col gap-6">
+        <div id="certyfikaty" className="flex scroll-mt-[88px] flex-col gap-6">
           <Reveal>
             <h3 className="font-display text-[26px] font-bold leading-[1.15]">{t.certs}</h3>
           </Reveal>

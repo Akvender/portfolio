@@ -78,7 +78,7 @@ export function SkillMap({ projects, lang }: { projects: SkillMapProject[]; lang
   };
 
   return (
-    <section id="umiejetnosci" className="scroll-mt-[104px] border-t border-border-on-dark bg-ink-soft text-text-on-dark">
+    <section id="umiejetnosci" className="scroll-mt-[72px] border-t border-border-on-dark bg-ink-soft text-text-on-dark">
       <div ref={gridRef} className={`${container} relative grid gap-10 py-16 md:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-10 lg:py-28`}>
         {/* Linie łączące wybraną umiejętność z projektami. */}
         <svg aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 hidden size-full overflow-visible lg:block">
@@ -177,7 +177,7 @@ export function SkillMap({ projects, lang }: { projects: SkillMapProject[]; lang
           </div>
         </div>
 
-        <div ref={resultsRef} className="order-2 flex scroll-mt-[120px] flex-col lg:order-none lg:col-start-2 lg:row-span-2 lg:row-start-1">
+        <div ref={resultsRef} className="order-2 flex scroll-mt-[88px] flex-col lg:order-none lg:col-start-2 lg:row-span-2 lg:row-start-1">
           <div className="flex min-h-[44px] items-center justify-between gap-4 border-b border-white/60 pb-3 md:-mx-4 md:px-4">
             <p aria-live="polite" className="text-[15px] font-semibold">
               {active
@@ -234,7 +234,6 @@ export function SkillMap({ projects, lang }: { projects: SkillMapProject[]; lang
                     )}
                   </div>
                   <span aria-hidden="true" className="inline-flex items-center gap-2 text-[15px] font-semibold text-text-muted-on-dark transition-colors group-hover:text-accent md:pt-1.5">
-                    {t.details}
                     <Arrow className="transition-transform duration-200 group-hover:translate-x-1" />
                   </span>
                 </motion.li>

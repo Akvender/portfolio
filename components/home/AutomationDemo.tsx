@@ -115,7 +115,7 @@ export function AutomationDemo({ lang }: { lang: Lang }) {
   };
 
   return (
-    <section id="demo" className="scroll-mt-[104px] bg-paper">
+    <section id="demo" className="scroll-mt-[72px] bg-paper">
       <div className={`${container} ${sectionY} grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16`}>
         <div className="flex flex-col gap-6">
           <h2 className={`${h2} mark-heading text-balance`}>{t.title}</h2>

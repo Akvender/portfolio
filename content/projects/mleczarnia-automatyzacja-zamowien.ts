@@ -110,8 +110,6 @@ export const mleczarnia: Project = {
         "Zarząd chce zmiany, a pracownicy przyjęli pomysł z zaciekawieniem i chcą testować.",
         "Moduł laboratorium świadomie wstrzymany do potwierdzenia założeń przez laborantkę.",
       ],
-      image: "/images/screen-wyniki.svg",
-      imageAlt: "Zrzut: udany import WZ do Comarch (placeholder)",
     },
     {
       type: "approach",
