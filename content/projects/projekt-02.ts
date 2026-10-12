@@ -4,7 +4,7 @@ export const projekt02: Project = {
   slug: "generator-grafik-produktowych",
   number: "02",
   title: "Generator grafik produktowych dla e‑commerce",
-  description: "Narzędzie, które z danych produktu tworzy grafiki do sklepu i reklam. Powstało nim kilkaset grafik.",
+  description: "Narzędzie, które z danych produktu tworzy grafiki do sklepu i reklam. Powstało nim 400 grafik.",
   lead: "Sklep internetowy z wąskiej, specjalistycznej branży potrzebował dużej liczby spójnych grafik produktowych. Zbudowałem narzędzie, które tworzy je z danych produktu przy użyciu modeli do generowania obrazów.",
   year: "",
   tags: ["E‑commerce", "AI generatywne"],
@@ -13,10 +13,10 @@ export const projekt02: Project = {
   flowIcons: ["box", "code", "sparkles", "image"],
   featured: false,
   meta: {"client": "Sklep internetowy", "role": "", "period": "", "status": "", "stack": "Python · API modeli obrazów"},
-  metrics: [],
+  metrics: [{"value": 400, "label": "grafik produktowych"}],
   en: {
     "title": "Product image generator for e‑commerce",
-    "description": "A tool that turns product data into images for the store and ads. It has produced several hundred images.",
+    "description": "A tool that turns product data into images for the store and ads. It has produced 400 images.",
     "lead": "An online store in a narrow, specialised niche needed a large number of consistent product images. I built a tool that creates them from product data using image-generation models.",
     "tags": [
       "E‑commerce",
@@ -32,10 +32,10 @@ export const projekt02: Project = {
       {
         "type": "results",
         "title": "What was built",
-        "metrics": [],
+        "metrics": [{"value": 400, "label": "product images"}],
         "proofs": [
           "An image-generation tool tailored to one specific industry.",
-          "Several hundred finished images for the store and for ads."
+          "400 finished images for the store and for ads."
         ]
       }
     ]
@@ -45,10 +45,10 @@ export const projekt02: Project = {
     {
       "type": "results",
       "title": "Co powstało",
-      "metrics": [],
+      "metrics": [{"value": 400, "label": "grafik produktowych"}],
       "proofs": [
         "Narzędzie do generowania grafik produktowych dopasowane do jednej, specyficznej branży.",
-        "Kilkaset gotowych grafik do sklepu i materiałów reklamowych."
+        "400 gotowych grafik do sklepu i materiałów reklamowych."
       ]
     }
   ],
