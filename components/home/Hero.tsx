@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Arrow } from "@/components/site/Arrow";
+import { ContactLink } from "@/components/site/ContactLink";
 import { ToolsMarquee } from "@/components/home/ToolsMarquee";
 import { type Lang, localePath, ui } from "@/content/i18n";
 import { getContent, site } from "@/content/site";
@@ -40,12 +41,12 @@ export function Hero({ lang }: { lang: Lang }) {
               {t.primary}
               <Arrow dir="down" className="transition-transform duration-200 group-hover:translate-y-0.5" />
             </Link>
-            <Link
+            <ContactLink
               href={localePath(lang, "/#kontakt")}
               className="inline-flex min-h-[52px] items-center rounded-xs border border-border-on-dark px-6 text-[16px] font-semibold transition-colors duration-200 hover:border-text-muted-on-dark active:bg-ink-soft"
             >
               {t.secondary}
-            </Link>
+            </ContactLink>
           </div>
         </div>
 

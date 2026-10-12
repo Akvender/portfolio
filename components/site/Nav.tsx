@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion, useScroll } from "motion/react";
 import { Arrow } from "@/components/site/Arrow";
+import { ContactLink } from "@/components/site/ContactLink";
 import { container } from "@/lib/ui";
 import { site } from "@/content/site";
 import { type Lang, localePath, switchPath, ui } from "@/content/i18n";
@@ -146,24 +147,24 @@ export function Nav({ lang }: { lang: Lang }) {
             </Link>
           </li>
           <li>
-            <Link
+            <ContactLink
               href={localePath(lang, "/#kontakt")}
               className="inline-flex min-h-[44px] items-center rounded-xs border border-border-on-dark px-5 text-[15px] font-semibold text-text-on-dark transition-colors duration-200 hover:border-accent hover:text-accent"
             >
               {t.contact}
-            </Link>
+            </ContactLink>
           </li>
         </ul>
 
         {/* Mobile: przycisk kontaktu zawsze widoczny + przełącznik menu */}
         <div className="flex items-center gap-3 md:hidden">
-        <Link
+        <ContactLink
           href={localePath(lang, "/#kontakt")}
-          onClick={() => setOpen(false)}
+          onOpen={() => setOpen(false)}
           className="inline-flex min-h-[44px] items-center rounded-xs border border-border-on-dark px-3.5 text-[14px] font-semibold text-text-on-dark"
         >
           {t.contactShort}
-        </Link>
+        </ContactLink>
         <button
           ref={toggleRef}
           type="button"
@@ -224,13 +225,13 @@ export function Nav({ lang }: { lang: Lang }) {
                 </Link>
               </li>
               <li className="pt-6">
-                <Link
+                <ContactLink
                   href={localePath(lang, "/#kontakt")}
-                  onClick={() => setOpen(false)}
+                  onOpen={() => setOpen(false)}
                   className="inline-flex min-h-[52px] w-full items-center justify-center rounded-xs bg-accent px-5 text-[16px] font-semibold text-on-accent transition-colors duration-200 hover:bg-[#ff8a3d]"
                 >
                   {t.contact}
-                </Link>
+                </ContactLink>
               </li>
             </ul>
           </motion.div>
