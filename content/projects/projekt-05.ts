@@ -56,7 +56,7 @@ export const projekt05: Project = {
         {
           "value": 5000,
           "suffix": "+",
-          "label": "rozmów w 3 miesiące"
+          "label": "rozmów w ciągu 3 miesięcy"
         }
       ],
       "proofs": [
