@@ -80,6 +80,12 @@ export function Contact({ lang }: { lang: Lang }) {
                   <Arrow dir="up-right" />
                 </a>
               )}
+              {site.tryhackme && (
+                <a href={site.tryhackme} target="_blank" rel="noopener noreferrer" className={`${btnBase} border border-border-on-dark text-text-on-dark hover:border-text-muted-on-dark`}>
+                  TryHackMe
+                  <Arrow dir="up-right" />
+                </a>
+              )}
               {site.github && (
                 <a
                   href={site.github}

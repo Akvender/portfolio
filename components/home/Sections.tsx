@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { type Lang, ui } from "@/content/i18n";
 import { getContent } from "@/content/site";
 import { CertCard } from "@/components/home/CertCard";
+import { Arrow } from "@/components/site/Arrow";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/Reveal";
 import { asset, body, container, h2, sectionY } from "@/lib/ui";
 
@@ -97,6 +98,25 @@ export function About({ lang }: { lang: Lang }) {
                 <h4 className="font-display text-[24px] font-bold leading-[1.15] tracking-[-0.02em]">{c.title}</h4>
                 <p className="text-[14px] font-medium text-text-muted">{c.meta}</p>
                 <p className="max-w-[60ch] text-[16px] leading-[160%] text-text-primary/85">{c.text}</p>
+                {c.details && c.link && (
+                  <details className="group">
+                    <summary className="inline-flex min-h-[44px] cursor-pointer list-none items-center gap-2 text-[15px] font-semibold [&::-webkit-details-marker]:hidden">
+                      {c.more}
+                      <Arrow dir="down" className="transition-transform duration-200 group-open:rotate-180" />
+                    </summary>
+                    <ul className="mt-2 flex flex-col gap-2 border-l-2 border-accent pl-4 text-[15px] leading-[150%] text-text-primary/85">
+                      {c.details.map((d) => (
+                        <li key={d}>{d}</li>
+                      ))}
+                      <li>
+                        <a href={c.link.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 font-semibold underline underline-offset-4 hover:text-accent-strong">
+                          {c.link.label}
+                          <Arrow dir="up-right" />
+                        </a>
+                      </li>
+                    </ul>
+                  </details>
+                )}
               </RevealItem>
             ))}
           </RevealGroup>
