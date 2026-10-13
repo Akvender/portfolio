@@ -152,7 +152,7 @@ const en: UI = {
   skills: {
     title: "What I can do and where I've used it.",
     lead: "My projects and the skills behind them. Pick a skill and the projects that needed it move to the top of the list.",
-    hint: "Pick a skill. The number shows how many projects use it.",
+    hint: "Pick a skill. The number shows how many of my projects use it.",
     also: "I also work with:",
     all: (n: number) => `All projects (${n})`,
     matching: (skill: string, n: number, total: number) => `${skill}: ${n} of ${total} projects`,
@@ -164,13 +164,13 @@ const en: UI = {
   cert: { open: "show certificate and details", see: "View certificate", close: "Close", full: "Open in full resolution" },
   contact: {
     title: "Got a process to improve, or looking for an AI developer for your team?",
-    lead: "I take on freelance work and I'm happy to join a team on a B2B basis. Write a few sentences about the project or the role, and I'll reply so we can set up a short call.",
+    lead: "I take on freelance work and I'm happy to join a team on a B2B basis. Write a few sentences about the project or role. I'll reply and we'll arrange a short call.",
     write: "Write a message",
     copy: "Copy address",
     copied: "Copied",
     team: [
-      { label: "How we can work", value: "Freelance contracts or B2B collaboration in your team" },
-      { label: "What I enjoy most", value: "Automations, system integrations and running them on servers" },
+      { label: "How we can work", value: "Freelance contracts or B2B work as part of your team" },
+      { label: "Where I do my best work", value: "Automations, system integrations and deploying them on servers" },
       { label: "What I don't take on", value: "Standalone websites or landing pages with no system behind them" },
     ],
     topicsLabel: "Or pick what it's about:",
@@ -182,7 +182,7 @@ const en: UI = {
   },
   contactForm: {
     title: "Get in touch",
-    lead: "A few sentences are enough. I'll turn them into a ready email, and we'll sort out the rest on a short call.",
+    lead: "A few sentences are enough. The site turns them into a ready-to-send email, and we'll sort out the rest on a short call.",
     topic: "What is it about?",
     message: "Message",
     name: "Name or company (optional)",

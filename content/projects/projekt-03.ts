@@ -16,8 +16,8 @@ export const projekt03: Project = {
   metrics: [{"value": 1000, "suffix": "+", "label": "zgłoszeń w CRM"}],
   en: {
     "title": "Forms, CRM and automatic notifications",
-    "description": "Over 1,000 leads from Meta and website forms have landed in the CRM. The customer gets a text right away, and emails and notifications go out on their own.",
-    "lead": "An application I built on my own in about two months and still maintain. It connects Meta lead ads and website forms with the CRM, sends text messages through SMSAPI, runs mailings and notifications, and sits on a configured VPS with monitoring and error alerts.",
+    "description": "Over 1,000 leads from Meta and website forms have landed in the CRM. The customer gets a text right away, and emails and notifications go out automatically.",
+    "lead": "An application I built on my own in about two months and still maintain. It connects Meta lead ads and website forms to the CRM, sends text messages through SMSAPI, and handles mailings and notifications. It runs on a VPS I configured, with monitoring and error alerts.",
     "tags": [
       "Integrations",
       "CRM"
@@ -37,9 +37,9 @@ export const projekt03: Project = {
         "metrics": [{"value": 1000, "suffix": "+", "label": "leads in the CRM"}],
         "proofs": [
           "Leads from Meta and website forms land in the CRM automatically, with no retyping.",
-          "A text message via SMSAPI goes out right after the form is sent, plus mailings and team notifications.",
+          "The customer gets a text via SMSAPI right after submitting the form. Mailings and team notifications follow.",
           "VPS setup, monitoring and error alerts, so it keeps running at night too.",
-          "The full cycle done solo: design, build, deployment and ongoing maintenance."
+          "The full cycle handled solo: design, build, deployment and ongoing maintenance."
         ]
       }
     ]

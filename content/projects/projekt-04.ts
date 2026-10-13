@@ -34,7 +34,7 @@ export const projekt04: Project = {
         "metrics": [],
         "proofs": [
           "Sales landing pages connected to a booking system.",
-          "Online payments in the same flow."
+          "Online payment in the same process as the booking."
         ]
       }
     ]

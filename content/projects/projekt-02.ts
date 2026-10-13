@@ -17,7 +17,7 @@ export const projekt02: Project = {
   en: {
     "title": "Product image generator for e‑commerce",
     "description": "A tool that turns product data into images for the store and ads. It has produced 400 images.",
-    "lead": "An online store in a narrow, specialised niche needed a large number of consistent product images. I built a tool that creates them from product data using image-generation models.",
+    "lead": "An online store in a narrow, specialized niche needed a large number of consistent product images. I built a tool that creates them from product data using image-generation models.",
     "tags": [
       "E‑commerce",
       "Generative AI"

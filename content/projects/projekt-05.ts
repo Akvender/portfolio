@@ -17,7 +17,7 @@ export const projekt05: Project = {
   en: {
     "title": "Call center with transcription and call analysis",
     "description": "A call-center tool for a renewable-energy company: over 5,000 calls in 3 months, with content analysis and insights.",
-    "lead": "A tool for handling and analysing calls for a renewable-energy company. Calls are transcribed, and language models analyse what was said and draw conclusions. The prototype ran on Make and Twilio; the production version runs on n8n, Twilio and PostgreSQL, split into services in Docker containers.",
+    "lead": "A tool for handling and analyzing calls for a renewable-energy company. Calls are transcribed, and language models analyze what was said and draw conclusions. The prototype ran on Make and Twilio. The production version runs on n8n, Twilio and PostgreSQL and is split into services in Docker containers.",
     "tags": [
       "Call center",
       "AI"
