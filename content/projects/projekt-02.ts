@@ -4,7 +4,7 @@ export const projekt02: Project = {
   slug: "generator-grafik-produktowych",
   number: "02",
   title: "Generator grafik produktowych dla e‑commerce",
-  description: "Narzędzie, które z danych produktu tworzy grafiki do sklepu i reklam. Powstało nim 400 grafik.",
+  description: "Narzędzie, które z danych produktu tworzy grafiki do sklepu i reklam. Powstało dzięki niemu 400 grafik.",
   lead: "Sklep internetowy z wąskiej, specjalistycznej branży potrzebował dużej liczby spójnych grafik produktowych. Zbudowałem narzędzie, które tworzy je z danych produktu przy użyciu modeli do generowania obrazów.",
   year: "",
   tags: ["E‑commerce", "AI generatywne"],

@@ -59,21 +59,21 @@ export const mleczarnia: Project = {
       type: "problem",
       title: "Jedno zamówienie, przepisywane kilka razy.",
       intro:
-        "Zamówienie przechodzi sześć kroków, zanim trafi do Comarch Optima. Te same dane są po drodze ręcznie przepisywane kilka razy.",
+        "Zamówienie przechodzi przez sześć etapów, zanim trafi do Comarch Optima. Te same dane są po drodze ręcznie przepisywane kilka razy.",
       steps: [
         { title: "Telefon", text: "Sklep dyktuje zamówienie do biura." },
         { title: "Kartka", text: "Biuro zapisuje je na papierowej karcie trasy." },
         { title: "Skan", text: "Karta jest skanowana." },
         { title: "Wydruk na produkcji", text: "Produkcja dostaje wydruk." },
-        { title: "Telefon z wagą do biura", text: "Wagi produktów wracają do biura telefonicznie." },
+        { title: "Telefon z wagami do biura", text: "Produkcja podaje biuru wagi produktów przez telefon." },
         { title: "Ręczny wpis do Comarch Optima", text: "Biuro ręcznie wystawia dokumenty WZ." },
       ],
     },
     {
       type: "solution",
-      title: "Jeden cyfrowy przepływ. Ekran, który wygląda jak kartka, którą znają.",
+      title: "Jeden cyfrowy przepływ. Na ekranie ta sama karta, którą pracownicy znają z papieru.",
       intro:
-        "Biuro wpisuje zamówienie na tablecie, produkcja widzi je od razu, dokumenty WZ trafiają do Comarch plikiem — bez przepisywania. Wiersze to sklepy jednej trasy, kolumny to produkty. Dane w tabeli są przykładowe.",
+        "Biuro wpisuje zamówienie na tablecie, produkcja widzi je od razu, a dokumenty WZ trafiają do Comarch Optima w pliku importu, bez przepisywania. Wiersze to sklepy jednej trasy, kolumny to produkty. Dane w tabeli są przykładowe.",
       table: {
         columns: ["Sklep / Produkt", "Mleko 2%", "Śmietana 18%", "Twaróg", "Jogurt nat."],
         rows: [
@@ -98,14 +98,14 @@ export const mleczarnia: Project = {
         "Wspólnik na co dzień uczestniczy w zbieraniu i przetwarzaniu zamówień, więc słabe punkty obiegu wskazaliśmy z obserwacji i udziału w nim.",
       metrics: [
         { value: 41, label: "realnych dokumentów WZ" },
-        { value: 22, suffix: "%", label: "WZ: płatnik i odbiorca to różne podmioty (ok.)" },
+        { value: 22, suffix: "%", label: "dokumentów WZ z różnym płatnikiem i odbiorcą (w przybliżeniu)" },
         { value: 14, label: "tras dostaw" },
         { value: 227, label: "sklepów" },
         { value: 34, label: "produkty, w tym 4 na wagę" },
       ],
       proofs: [
-        "Import do Comarch Optima testowany na prawdziwych plikach, aż do skutku.",
-        "Ceny tego samego produktu różnią się między klientami.",
+        "Import do Comarch Optima przetestowany na prawdziwych plikach, aż zadziałał bez błędów.",
+        "Ustaliliśmy, że ceny tego samego produktu różnią się między klientami, i system musi to uwzględniać.",
         "Fundament systemu działa i ma testy, aplikacja biura jest w budowie.",
         "Zarząd chce zmiany, a pracownicy przyjęli pomysł z zaciekawieniem i chcą testować.",
         "Moduł laboratorium świadomie wstrzymany do potwierdzenia założeń przez laborantkę.",
@@ -127,7 +127,7 @@ export const mleczarnia: Project = {
     {
       type: "impact",
       title: "Ludzie nie muszą bać się AI.",
-      text: "Zmiana ma polegać na tym, że pracownik nadzoruje system, zamiast wykonywać powtarzalną pracę. Planujemy mini szkolenia z AI dla pracowników — na przykładach z ich własnej pracy.",
+      text: "Zmiana ma polegać na tym, że pracownik nadzoruje system, zamiast wykonywać powtarzalną pracę. Planujemy krótkie szkolenia z AI dla pracowników, oparte na przykładach z ich własnej pracy.",
     },
     {
       type: "roadmap",

@@ -4,7 +4,7 @@ export const projekt06: Project = {
   slug: "agenci-ai",
   number: "06",
   title: "Agenci AI do pracy na co dzień",
-  description: "Agenci, którzy z nagrań głosowych robią plan tygodnia, a ze zmian w kodzie piszą dokumentację.",
+  description: "Agenci, którzy z nagrań głosowych układają plan tygodnia, a na podstawie zmian w kodzie piszą dokumentację.",
   lead: "Agentów AI używam tam, gdzie powtarzalna praca polega na czytaniu i porządkowaniu informacji. Jeden analizuje nagrania głosowe i układa z nich plan tygodnia. Drugi śledzi zmiany w kodzie i na ich podstawie tworzy dokumentację programistyczną.",
   year: "",
   tags: ["Agenci AI", "Narzędzia wewnętrzne"],

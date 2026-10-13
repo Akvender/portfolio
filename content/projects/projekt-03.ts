@@ -4,8 +4,8 @@ export const projekt03: Project = {
   slug: "formularze-crm-powiadomienia",
   number: "03",
   title: "Formularze, CRM i automatyczne powiadomienia",
-  description: "Ponad 1000 zgłoszeń z formularzy Meta i ze strony trafiło do CRM-u. SMS do klienta wychodzi od razu, a maile i powiadomienia idą same.",
-  lead: "Aplikacja, którą zbudowałem samodzielnie w około dwa miesiące i którą nadal utrzymuję. Łączy formularze z reklam Meta i ze strony internetowej z CRM-em, wysyłkę SMS-ów przez SMSAPI, mailingi i powiadomienia. Pod spodem jest skonfigurowany VPS, monitoring i powiadomienia o błędach.",
+  description: "Ponad 1000 zgłoszeń z formularzy Meta i ze strony trafiło do CRM-u. Klient od razu dostaje SMS, a maile i powiadomienia wysyłają się automatycznie.",
+  lead: "Aplikacja, którą zbudowałem samodzielnie w ciągu około dwóch miesięcy i nadal utrzymuję. Łączy formularze z reklam Meta i ze strony internetowej z CRM-em, wysyłkę SMS-ów przez SMSAPI, mailingi i powiadomienia. Działa na skonfigurowanym przeze mnie VPS-ie z monitoringiem i powiadomieniami o błędach.",
   year: "",
   tags: ["Integracje", "CRM"],
   skills: ["crm", "meta", "smsapi", "mailerlite", "email", "n8n", "make", "api", "docker", "vps", "linux", "monitoring"],
@@ -52,9 +52,9 @@ export const projekt03: Project = {
       "metrics": [{"value": 1000, "suffix": "+", "label": "zgłoszeń w CRM"}],
       "proofs": [
         "Zgłoszenia z formularzy Meta i ze strony trafiają prosto do CRM-u, bez przepisywania.",
-        "SMS przez SMSAPI wychodzi od razu po wysłaniu formularza, do tego mailingi i powiadomienia dla zespołu.",
+        "Zaraz po wysłaniu formularza klient dostaje SMS przez SMSAPI. Do tego dochodzą mailingi i powiadomienia dla zespołu.",
         "Konfiguracja VPS, monitoring i powiadomienia o błędach, żeby całość działała także w nocy.",
-        "Pełen cykl zrobiony samodzielnie: projekt, budowa, wdrożenie i bieżące utrzymanie."
+        "Cały cykl wykonany samodzielnie: projekt, budowa, wdrożenie i bieżące utrzymanie."
       ]
     }
   ],

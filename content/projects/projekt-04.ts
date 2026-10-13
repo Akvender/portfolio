@@ -5,7 +5,7 @@ export const projekt04: Project = {
   number: "04",
   title: "Rezerwacje i płatności dla landing page'y sprzedażowych",
   description: "Strony sprzedażowe połączone z systemem rezerwacji i płatnościami online.",
-  lead: "Landing page'e sprzedażowe potrzebowały czegoś więcej niż formularza. Połączyłem je z systemami rezerwacji i płatności, tak żeby klient mógł od razu zarezerwować termin i zapłacić.",
+  lead: "Landing page'e sprzedażowe potrzebowały czegoś więcej niż formularza. Połączyłem je z systemami rezerwacji i płatności, tak aby klient mógł od razu zarezerwować termin i zapłacić.",
   year: "",
   tags: ["Integracje", "Sprzedaż online"],
   skills: ["stripe", "wordpress", "meta", "email", "n8n", "api"],
@@ -46,8 +46,8 @@ export const projekt04: Project = {
       "title": "Co powstało",
       "metrics": [],
       "proofs": [
-        "Połączenie landing page'y sprzedażowych z systemem rezerwacji.",
-        "Płatności online w tym samym przepływie."
+        "Landing page'e sprzedażowe połączone z systemem rezerwacji.",
+        "Płatność online w tym samym procesie, bez przechodzenia na inną stronę."
       ]
     }
   ],

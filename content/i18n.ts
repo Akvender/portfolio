@@ -48,8 +48,8 @@ const pl = {
   },
   skills: {
     title: "Co umiem i gdzie tego użyłem.",
-    lead: "Projekty i umiejętności, których w nich użyłem. Kliknij umiejętność, a projekty, w których była potrzebna, przejdą na górę listy.",
-    hint: "Wybierz umiejętność. Liczba obok to projekty, w których jej użyłem.",
+    lead: "Moje projekty i umiejętności, których w nich użyłem. Kliknij umiejętność, a projekty, w których była potrzebna, przesuną się na górę listy.",
+    hint: "Wybierz umiejętność. Liczba obok oznacza, w ilu projektach jej użyłem.",
     also: "Pracuję też z:",
     all: (n: number) => `Wszystkie projekty (${n})`,
     matching: (skill: string, n: number, total: number) => `${skill}: ${n} z ${total} projektów`,
@@ -61,14 +61,14 @@ const pl = {
   cert: { open: "pokaż certyfikat i szczegóły", see: "Zobacz certyfikat", close: "Zamknij", full: "Otwórz w pełnej rozdzielczości" },
   contact: {
     title: "Masz proces do usprawnienia albo szukasz AI developera do zespołu?",
-    lead: "Biorę zlecenia jako freelancer i chętnie dołączę do zespołu na zasadach B2B. Napisz kilka zdań o projekcie albo roli, a odpowiem i umówimy krótką rozmowę.",
+    lead: "Biorę zlecenia jako freelancer i chętnie dołączę do zespołu na zasadach B2B. Napisz kilka zdań o projekcie lub roli. Odpowiem i umówimy się na krótką rozmowę.",
     write: "Napisz wiadomość",
     copy: "Skopiuj adres",
     copied: "Skopiowano",
     team: [
       { label: "Forma współpracy", value: "Zlecenia freelance albo współpraca B2B w zespole" },
-      { label: "Najlepiej czuję się w", value: "automatyzacjach, integracjach systemów i stawianiu ich na serwerach" },
-      { label: "Nie biorę", value: "samych stron i landing page'y bez systemu za nimi" },
+      { label: "W czym czuję się najlepiej", value: "Automatyzacje, integracje systemów i wdrażanie ich na serwerach" },
+      { label: "Czego nie robię", value: "Samych stron i landing page'y, za którymi nie stoi żaden system" },
     ],
     topicsLabel: "Albo wybierz, o co chodzi:",
     topics: [
@@ -79,7 +79,7 @@ const pl = {
   },
   contactForm: {
     title: "Napisz do mnie",
-    lead: "Kilka zdań wystarczy. Przygotuję z tego gotowy e-mail, a resztę ustalimy na krótkiej rozmowie.",
+    lead: "Kilka zdań wystarczy. Strona zamieni je w gotowy e-mail, a resztę ustalimy w krótkiej rozmowie.",
     topic: "O co chodzi?",
     message: "Wiadomość",
     name: "Imię lub firma (opcjonalnie)",

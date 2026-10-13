@@ -23,7 +23,7 @@ const content = {
   pl: {
     hero: {
       title: "Automatyzuję procesy, łączę systemy i buduję narzędzia z AI.",
-      lead: "Jestem AI developerem i freelancerem. Pomagam, gdy w firmie dużo rzeczy robi się ręcznie, system czegoś nie potrafi albo kilka narzędzi trzeba spiąć w całość. Analizuję proces, buduję rozwiązanie i stawiam je na serwerze. Pracuję głównie w n8n, Pythonie i z API modeli językowych.",
+      lead: "Jestem AI developerem i freelancerem. Pomagam firmom, w których wiele rzeczy robi się ręcznie, system czegoś nie potrafi albo kilka narzędzi trzeba połączyć w całość. Analizuję proces, buduję rozwiązanie i wdrażam je na serwerze. Pracuję głównie z n8n, Pythonem i API modeli językowych.",
       status: "Otwarty na zlecenia i współpracę B2B",
       photo,
       photoAlt: "Robert Świeboda — portret na ciemnym tle",
@@ -33,14 +33,14 @@ const content = {
       photoAlt: "Miejsce na zdjęcie Roberta przy pracy",
       title: "Od klocków w Integromacie do własnych agentów AI.",
       paragraphs: [
-        "Automatyzacjami zajmuję się od prawie pięciu lat. Zaczynałem, gdy Make nazywał się jeszcze Integromat: podstawowe integracje wyklikane z klocków, bez myślenia o serwerze. Potem doszły modele językowe, a dziś buduję własne serwery MCP, agentów AI i całe serwisy, które z nich korzystają.",
-        "Najbardziej lubię spinać systemy i stawiać je na serwerach. Przykład: zgłoszenia z formularzy Meta i ze strony trafiają do CRM-u, a dalej same wysyłają SMS-y, maile i powiadomienia. Pod spodem jest VPS, monitoring i alerty o błędach, żeby wszystko działało także o północy. Tę aplikację zbudowałem sam w około dwa miesiące i nadal ją utrzymuję.",
-        "Na co dzień pracuję na Linuksie, więc serwery i terminal to moje naturalne środowisko. Rozwiązania zamykam w kontenerach Dockera, a tam, gdzie n8n nie wystarcza, piszę własny kod i API. Większość projektów prowadzę sam, część w zespole. Jeśli klient chce, zostaję przy projekcie i dbam o aktualizacje i poprawki. Uczę się też bezpieczeństwa na TryHackMe, bo to, co buduję, działa na serwerach dostępnych z internetu.",
+        "Automatyzacjami zajmuję się od prawie pięciu lat. Zaczynałem, gdy Make nazywał się jeszcze Integromat: proste integracje składane z gotowych klocków, bez własnego serwera. Potem doszły modele językowe, a dziś buduję własne serwery MCP, agentów AI i całe serwisy, które z nich korzystają.",
+        "Najbardziej lubię spinać systemy i stawiać je na serwerach. Przykład: zgłoszenia z formularzy Meta i ze strony trafiają do CRM-u, a system sam wysyła SMS-y, maile i powiadomienia. Całość działa na VPS-ie z monitoringiem i alertami o błędach, więc nie zatrzymuje się także w nocy. Tę aplikację zbudowałem sam w ciągu około dwóch miesięcy i nadal ją utrzymuję.",
+        "Na co dzień pracuję na Linuksie, więc serwery i terminal to moje naturalne środowisko. Rozwiązania zamykam w kontenerach Dockera, a tam, gdzie n8n nie wystarcza, piszę własny kod i API. Większość projektów prowadzę sam, część w zespole. Jeśli klient chce, zostaję przy projekcie i zajmuję się aktualizacjami oraz poprawkami. Uczę się też bezpieczeństwa na TryHackMe, bo to, co buduję, działa na serwerach dostępnych z internetu.",
       ],
       steps: [
         { title: "Analiza procesu", text: "Poznaję, jak dziś wygląda praca, i razem ustalamy, co ma się zmienić." },
         { title: "Prototyp", text: "Buduję działającą wersję na prawdziwych danych, żeby było co ocenić." },
-        { title: "Wdrożenie", text: "Podłączam rozwiązanie do istniejących systemów, stawiam je na serwerze i przekazuję ludziom." },
+        { title: "Wdrożenie", text: "Podłączam rozwiązanie do istniejących systemów, wdrażam je na serwerze i przekazuję zespołowi." },
         { title: "Utrzymanie", text: "Jeśli chcesz, zostaję przy projekcie: monitoring, aktualizacje i poprawki." },
       ],
     },
@@ -50,14 +50,14 @@ const content = {
         alt: "Certyfikat ukończenia kursu AI_devs 4: Builders wystawiony dla Roberta Świebody, 1 października 2026",
         title: "AI_devs 4: Builders",
         meta: "Certyfikat ukończenia · 2026",
-        text: "5-tygodniowy kurs budowania produkcyjnych rozwiązań AI: LLM w kodzie, context engineering, ewaluacje i systemy wieloagentowe. W ramach kursu ponad 25 praktycznych zadań.",
+        text: "5-tygodniowy kurs budowania produkcyjnych rozwiązań AI: LLM w kodzie, context engineering, ewaluacje i systemy wieloagentowe. W trakcie kursu wykonałem ponad 25 praktycznych zadań.",
       },
     ],
     courses: [
       {
         title: "Zero2Junior — kurs Daniela Rozieckiego",
         meta: "Kurs · 2022",
-        text: "Kurs wejścia do programowania, z osobnym modułem o automatyzacjach: Integromat (dziś Make), Airtable i formularze w Tally.",
+        text: "Kurs wprowadzający do programowania z osobnym modułem o automatyzacjach: Integromat (dziś Make), Airtable i formularze w Tally.",
       },
       {
         title: "TryHackMe",
