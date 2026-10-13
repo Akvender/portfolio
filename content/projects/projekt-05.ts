@@ -4,8 +4,8 @@ export const projekt05: Project = {
   slug: "call-center-analiza-rozmow",
   number: "05",
   title: "Call-center z transkrypcją i analizą rozmów",
-  description: "Narzędzie call-center dla branży OZE: ponad 5000 rozmów w 3 miesiące, z analizą treści i wnioskami.",
-  lead: "Narzędzie do obsługi i analizy rozmów dla firmy z branży OZE. Rozmowy są transkrybowane, a modele językowe analizują ich treść i wyciągają wnioski. Prototyp powstał na Make i Twilio, wersja docelowa działa na n8n, Twilio i PostgreSQL, podzielona na serwisy w kontenerach Docker.",
+  description: "Narzędzie call-center dla branży OZE: ponad 5000 rozmów w ciągu 3 miesięcy, z analizą treści i wnioskami.",
+  lead: "Narzędzie do obsługi i analizy rozmów dla firmy z branży OZE. Rozmowy są transkrybowane, a modele językowe analizują ich treść i wyciągają wnioski. Prototyp powstał na Make i Twilio. Wersja docelowa działa na n8n, Twilio i PostgreSQL i jest podzielona na serwisy w kontenerach Docker.",
   year: "",
   tags: ["Call-center", "AI"],
   skills: ["speech", "llm", "agents", "twilio", "crm", "n8n", "make", "postgres", "docker", "vps", "linux", "monitoring", "api"],
@@ -13,11 +13,11 @@ export const projekt05: Project = {
   flowIcons: ["phone", "wave", "server", "tasks"],
   featured: false,
   meta: {"client": "Firma z branży OZE", "role": "", "period": "", "status": "", "stack": "Twilio · n8n · PostgreSQL · Docker"},
-  metrics: [{"value": 5000, "suffix": "+", "label": "rozmów w 3 miesiące"}],
+  metrics: [{"value": 5000, "suffix": "+", "label": "rozmów w ciągu 3 miesięcy"}],
   en: {
     "title": "Call center with transcription and call analysis",
     "description": "A call-center tool for a renewable-energy company: over 5,000 calls in 3 months, with content analysis and insights.",
-    "lead": "A tool for handling and analysing calls for a renewable-energy company. Calls are transcribed, and language models analyse what was said and draw conclusions. The prototype ran on Make and Twilio; the production version runs on n8n, Twilio and PostgreSQL, split into services in Docker containers.",
+    "lead": "A tool for handling and analyzing calls for a renewable-energy company. Calls are transcribed, and language models analyze what was said and draw conclusions. The prototype ran on Make and Twilio. The production version runs on n8n, Twilio and PostgreSQL and is split into services in Docker containers.",
     "tags": [
       "Call center",
       "AI"
@@ -56,7 +56,7 @@ export const projekt05: Project = {
         {
           "value": 5000,
           "suffix": "+",
-          "label": "rozmów w 3 miesiące"
+          "label": "rozmów w ciągu 3 miesięcy"
         }
       ],
       "proofs": [

@@ -4,8 +4,8 @@ export const projekt03: Project = {
   slug: "formularze-crm-powiadomienia",
   number: "03",
   title: "Formularze, CRM i automatyczne powiadomienia",
-  description: "Ponad 1000 zgłoszeń z formularzy Meta i ze strony trafiło do CRM-u. SMS do klienta wychodzi od razu, a maile i powiadomienia idą same.",
-  lead: "Aplikacja, którą zbudowałem samodzielnie w około dwa miesiące i którą nadal utrzymuję. Łączy formularze z reklam Meta i ze strony internetowej z CRM-em, wysyłkę SMS-ów przez SMSAPI, mailingi i powiadomienia. Pod spodem jest skonfigurowany VPS, monitoring i powiadomienia o błędach.",
+  description: "Ponad 1000 zgłoszeń z formularzy Meta i ze strony trafiło do CRM-u. Klient od razu dostaje SMS, a maile i powiadomienia wysyłają się automatycznie.",
+  lead: "Aplikacja, którą zbudowałem samodzielnie w ciągu około dwóch miesięcy i nadal utrzymuję. Łączy formularze z reklam Meta i ze strony internetowej z CRM-em, wysyłkę SMS-ów przez SMSAPI, mailingi i powiadomienia. Działa na skonfigurowanym przeze mnie VPS-ie z monitoringiem i powiadomieniami o błędach.",
   year: "",
   tags: ["Integracje", "CRM"],
   skills: ["crm", "meta", "smsapi", "mailerlite", "email", "n8n", "make", "api", "docker", "vps", "linux", "monitoring"],
@@ -16,8 +16,8 @@ export const projekt03: Project = {
   metrics: [{"value": 1000, "suffix": "+", "label": "zgłoszeń w CRM"}],
   en: {
     "title": "Forms, CRM and automatic notifications",
-    "description": "Over 1,000 leads from Meta and website forms have landed in the CRM. The customer gets a text right away, and emails and notifications go out on their own.",
-    "lead": "An application I built on my own in about two months and still maintain. It connects Meta lead ads and website forms with the CRM, sends text messages through SMSAPI, runs mailings and notifications, and sits on a configured VPS with monitoring and error alerts.",
+    "description": "Over 1,000 leads from Meta and website forms have landed in the CRM. The customer gets a text right away, and emails and notifications go out automatically.",
+    "lead": "An application I built on my own in about two months and still maintain. It connects Meta lead ads and website forms to the CRM, sends text messages through SMSAPI, and handles mailings and notifications. It runs on a VPS I configured, with monitoring and error alerts.",
     "tags": [
       "Integrations",
       "CRM"
@@ -37,9 +37,9 @@ export const projekt03: Project = {
         "metrics": [{"value": 1000, "suffix": "+", "label": "leads in the CRM"}],
         "proofs": [
           "Leads from Meta and website forms land in the CRM automatically, with no retyping.",
-          "A text message via SMSAPI goes out right after the form is sent, plus mailings and team notifications.",
+          "The customer gets a text via SMSAPI right after submitting the form. Mailings and team notifications follow.",
           "VPS setup, monitoring and error alerts, so it keeps running at night too.",
-          "The full cycle done solo: design, build, deployment and ongoing maintenance."
+          "The full cycle handled solo: design, build, deployment and ongoing maintenance."
         ]
       }
     ]
@@ -52,9 +52,9 @@ export const projekt03: Project = {
       "metrics": [{"value": 1000, "suffix": "+", "label": "zgłoszeń w CRM"}],
       "proofs": [
         "Zgłoszenia z formularzy Meta i ze strony trafiają prosto do CRM-u, bez przepisywania.",
-        "SMS przez SMSAPI wychodzi od razu po wysłaniu formularza, do tego mailingi i powiadomienia dla zespołu.",
+        "Zaraz po wysłaniu formularza klient dostaje SMS przez SMSAPI. Do tego dochodzą mailingi i powiadomienia dla zespołu.",
         "Konfiguracja VPS, monitoring i powiadomienia o błędach, żeby całość działała także w nocy.",
-        "Pełen cykl zrobiony samodzielnie: projekt, budowa, wdrożenie i bieżące utrzymanie."
+        "Cały cykl wykonany samodzielnie: projekt, budowa, wdrożenie i bieżące utrzymanie."
       ]
     }
   ],

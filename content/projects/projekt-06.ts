@@ -4,7 +4,7 @@ export const projekt06: Project = {
   slug: "agenci-ai",
   number: "06",
   title: "Agenci AI do pracy na co dzień",
-  description: "Agenci, którzy z nagrań głosowych robią plan tygodnia, a ze zmian w kodzie piszą dokumentację.",
+  description: "Agenci, którzy z nagrań głosowych układają plan tygodnia, a na podstawie zmian w kodzie piszą dokumentację.",
   lead: "Agentów AI używam tam, gdzie powtarzalna praca polega na czytaniu i porządkowaniu informacji. Jeden analizuje nagrania głosowe i układa z nich plan tygodnia. Drugi śledzi zmiany w kodzie i na ich podstawie tworzy dokumentację programistyczną.",
   year: "",
   tags: ["Agenci AI", "Narzędzia wewnętrzne"],
@@ -17,7 +17,7 @@ export const projekt06: Project = {
   en: {
     title: "AI agents for everyday work",
     description: "Agents that turn voice recordings into a weekly plan and code changes into documentation.",
-    lead: "I use AI agents where repetitive work means reading and organising information. One analyses voice recordings and builds a weekly plan from them. Another follows code changes and writes developer documentation based on them.",
+    lead: "I use AI agents where repetitive work means reading and organizing information. One analyzes voice recordings and builds a weekly plan from them. Another follows code changes and writes developer documentation based on them.",
     tags: ["AI agents", "Internal tools"],
     flow: ["Recording or code changes", "AI agent", "Weekly plan or documentation"],
     meta: { status: "Used every day", stack: "Language-model APIs · AI agents" },
@@ -28,7 +28,7 @@ export const projekt06: Project = {
         title: "What they do",
         metrics: [],
         proofs: [
-          "An agent that analyses voice recordings and turns them into a weekly plan.",
+          "An agent that analyzes voice recordings and turns them into a weekly plan.",
           "An agent that writes developer documentation from changes in the code.",
         ],
       },
