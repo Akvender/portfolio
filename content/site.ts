@@ -12,7 +12,7 @@ export const site = {
   /** Adres profilu LinkedIn; pusty = przycisk ukryty. */
   linkedin: "https://www.linkedin.com/in/robertswieboda/",
   /** Publiczny profil TryHackMe; pusty = link ukryty. */
-  tryhackme: "",
+  tryhackme: "https://tryhackme.com/p/akvenderyt",
 } as const;
 
 const photo = "/images/portrait-robert.webp";
@@ -59,6 +59,14 @@ const content = {
         meta: "Kurs · 2022",
         text: "Kurs wejścia do programowania, z osobnym modułem o automatyzacjach: Integromat (dziś Make), Airtable i formularze w Tally.",
       },
+      {
+        title: "TryHackMe",
+        meta: "Nauka bezpieczeństwa · od 2024",
+        text: "Ćwiczenia z bezpieczeństwa sieci, Linuksa i aplikacji webowych. Pomagają mi lepiej zabezpieczać serwery i integracje, które stawiam.",
+        more: "Szczegóły",
+        details: ["Ukończona ścieżka Pre Security", "Odznaki: OWASP Top 10, Wireshark, Networking Nerd, World Wide Web, cat linux.txt"],
+        link: { label: "Profil na TryHackMe", href: "https://tryhackme.com/p/akvenderyt" },
+      },
     ],
   },
   en: {
@@ -99,6 +107,14 @@ const content = {
         title: "Zero2Junior — Daniel Roziecki's course",
         meta: "Course · 2022",
         text: "An entry-level programming course with a separate module on automation: Integromat (now Make), Airtable and Tally forms.",
+      },
+      {
+        title: "TryHackMe",
+        meta: "Security training · since 2024",
+        text: "Hands-on exercises in network, Linux and web application security. They help me secure the servers and integrations I set up.",
+        more: "Details",
+        details: ["Completed the Pre Security path", "Badges: OWASP Top 10, Wireshark, Networking Nerd, World Wide Web, cat linux.txt"],
+        link: { label: "TryHackMe profile", href: "https://tryhackme.com/p/akvenderyt" },
       },
     ],
   },
