@@ -47,7 +47,7 @@ export const projekt04: Project = {
       "metrics": [],
       "proofs": [
         "Landing page'e sprzedażowe połączone z systemem rezerwacji.",
-        "Płatność online w tym samym procesie, bez przechodzenia na inną stronę."
+        "Płatność online w tym samym procesie co rezerwacja."
       ]
     }
   ],
