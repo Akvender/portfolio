@@ -209,6 +209,12 @@ export function ContactDialog({ lang }: { lang: Lang }) {
                 <Arrow dir="up-right" />
               </a>
             )}
+            {site.tryhackme && (
+              <a href={site.tryhackme} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[44px] items-center gap-2 transition-colors hover:text-accent">
+                TryHackMe
+                <Arrow dir="up-right" />
+              </a>
+            )}
           </div>
           <p aria-live="polite" className="sr-only">
             {copied ? t.copied : ""}
