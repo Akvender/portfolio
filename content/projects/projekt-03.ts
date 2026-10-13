@@ -4,7 +4,7 @@ export const projekt03: Project = {
   slug: "formularze-crm-powiadomienia",
   number: "03",
   title: "Formularze, CRM i automatyczne powiadomienia",
-  description: "Zgłoszenia z formularzy Meta i ze strony trafiają do CRM-u, a dalej same wysyłają SMS-y, maile i powiadomienia.",
+  description: "Ponad 1000 zgłoszeń z formularzy Meta i ze strony trafiło do CRM-u. SMS do klienta wychodzi od razu, a maile i powiadomienia idą same.",
   lead: "Aplikacja, którą zbudowałem samodzielnie w około dwa miesiące i którą nadal utrzymuję. Łączy formularze z reklam Meta i ze strony internetowej z CRM-em, wysyłkę SMS-ów przez SMSAPI, mailingi i powiadomienia. Pod spodem jest skonfigurowany VPS, monitoring i powiadomienia o błędach.",
   year: "",
   tags: ["Integracje", "CRM"],
@@ -13,10 +13,10 @@ export const projekt03: Project = {
   flowIcons: ["form", "cycle", "mail", "pulse"],
   featured: false,
   meta: {"client": "", "role": "Projekt, wdrożenie i utrzymanie — samodzielnie", "period": "ok. 2 miesiące budowy", "status": "Działa, utrzymywane", "stack": "n8n · SMSAPI · CRM · VPS · Docker"},
-  metrics: [],
+  metrics: [{"value": 1000, "suffix": "+", "label": "zgłoszeń w CRM"}],
   en: {
     "title": "Forms, CRM and automatic notifications",
-    "description": "Leads from Meta and website forms go straight into the CRM, which then sends texts, emails and notifications on its own.",
+    "description": "Over 1,000 leads from Meta and website forms have landed in the CRM. The customer gets a text right away, and emails and notifications go out on their own.",
     "lead": "An application I built on my own in about two months and still maintain. It connects Meta lead ads and website forms with the CRM, sends text messages through SMSAPI, runs mailings and notifications, and sits on a configured VPS with monitoring and error alerts.",
     "tags": [
       "Integrations",
@@ -34,10 +34,10 @@ export const projekt03: Project = {
       {
         "type": "results",
         "title": "What was built",
-        "metrics": [],
+        "metrics": [{"value": 1000, "suffix": "+", "label": "leads in the CRM"}],
         "proofs": [
           "Leads from Meta and website forms land in the CRM automatically, with no retyping.",
-          "Automatic text messages via SMSAPI, mailings and team notifications.",
+          "A text message via SMSAPI goes out right after the form is sent, plus mailings and team notifications.",
           "VPS setup, monitoring and error alerts, so it keeps running at night too.",
           "The full cycle done solo: design, build, deployment and ongoing maintenance."
         ]
@@ -49,10 +49,10 @@ export const projekt03: Project = {
     {
       "type": "results",
       "title": "Co powstało",
-      "metrics": [],
+      "metrics": [{"value": 1000, "suffix": "+", "label": "zgłoszeń w CRM"}],
       "proofs": [
         "Zgłoszenia z formularzy Meta i ze strony trafiają prosto do CRM-u, bez przepisywania.",
-        "Automatyczne SMS-y przez SMSAPI, mailingi i powiadomienia dla zespołu.",
+        "SMS przez SMSAPI wychodzi od razu po wysłaniu formularza, do tego mailingi i powiadomienia dla zespołu.",
         "Konfiguracja VPS, monitoring i powiadomienia o błędach, żeby całość działała także w nocy.",
         "Pełen cykl zrobiony samodzielnie: projekt, budowa, wdrożenie i bieżące utrzymanie."
       ]
