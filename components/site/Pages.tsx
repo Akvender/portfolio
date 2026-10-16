@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { AutomationDemo } from "@/components/home/AutomationDemo";
+import { Featured } from "@/components/home/Featured";
 import { Hero } from "@/components/home/Hero";
 import { About } from "@/components/home/Sections";
 import { SkillMap } from "@/components/home/SkillMap";
@@ -13,10 +14,14 @@ import { getNextProject, getProject, getProjects, projectSlugs } from "@/content
 /** Widoki stron wspólne dla obu języków; pliki w app/(pl) i app/(en) tylko podają język. */
 
 export function HomeView({ lang }: { lang: Lang }) {
-  const projects = getProjects(lang).map(({ slug, title, description, flow, skills }) => ({ slug, title, description, flow, skills }));
+  const all = getProjects(lang);
+  const projects = all.map(({ slug, title, description, flow, skills, meta }) => ({ slug, title, description, flow, skills, status: meta.status }));
+  // Wyróżnione realizacje (pole `featured`) pokazujemy osobno pod hero; pełna lista zostaje w mapie umiejętności.
+  const featured = all.filter((p) => p.featured).map(({ slug, title, description, meta }) => ({ slug, title, description, status: meta.status }));
   return (
     <>
       <Hero lang={lang} />
+      <Featured lang={lang} projects={featured} total={all.length} />
       <SkillMap lang={lang} projects={projects} />
       <AutomationDemo lang={lang} />
       <About lang={lang} />
@@ -39,11 +44,12 @@ export function CaseView({ lang, slug }: { lang: Lang; slug: string }) {
   if (!project) notFound();
   return (
     <>
-      <CaseHero project={project} lang={lang} />
+      {/* Gdy projekt ma schemat architektury, hero nie rysuje drugiego, podobnego schematu przepływu. */}
+      <CaseHero project={project} lang={lang} showFlow={!project.architecture} />
       {project.architecture && <Architecture data={project.architecture} title={ui[lang].case.architecture} infraLabel={ui[lang].case.infra} />}
       <CaseSections sections={project.sections} lang={lang} />
       <NextProject project={getNextProject(lang, slug)} lang={lang} />
-      <Contact lang={lang} />
+      <Contact lang={lang} compact />
     </>
   );
 }

@@ -1,61 +1,104 @@
 import type { Project } from "./types";
 
+/** Formularze → CRM → SMS i mailing. Wdrożony i utrzymywany; 1000+ zgłoszeń w około miesiąc. */
 export const projekt03: Project = {
   slug: "formularze-crm-powiadomienia",
-  number: "03",
+  number: "01",
   title: "Formularze, CRM i automatyczne powiadomienia",
-  description: "Ponad 1000 zgłoszeń z formularzy Meta i ze strony trafiło do CRM-u. Klient od razu dostaje SMS, a maile i powiadomienia wysyłają się automatycznie.",
-  lead: "Aplikacja, którą zbudowałem samodzielnie w ciągu około dwóch miesięcy i nadal utrzymuję. Łączy formularze z reklam Meta i ze strony internetowej z CRM-em, wysyłkę SMS-ów przez SMSAPI, mailingi i powiadomienia. Działa na skonfigurowanym przeze mnie VPS-ie z monitoringiem i powiadomieniami o błędach.",
+  description: "Wdrożony i utrzymywany system: zgłoszenia z formularzy Meta i ze strony trafiają do CRM-u, klient od razu dostaje SMS, a mailingi i powiadomienia wysyłają się automatycznie.",
+  lead: "System, który zbudowałem samodzielnie w około dwa miesiące i nadal utrzymuję. Zgłoszenia z reklam Meta i z formularza na stronie trafiają do CRM-u, a klient i zespół dostają automatyczne wiadomości.",
   year: "",
   tags: ["Integracje", "CRM"],
   skills: ["crm", "meta", "smsapi", "mailerlite", "email", "n8n", "make", "api", "docker", "vps", "linux", "monitoring"],
   flow: ["Formularz Meta / www", "n8n i CRM", "SMSAPI i mailing", "Monitoring i alerty"],
   flowIcons: ["form", "cycle", "mail", "pulse"],
-  featured: false,
-  meta: {"client": "", "role": "Projekt, wdrożenie i utrzymanie — samodzielnie", "period": "ok. 2 miesiące budowy", "status": "Działa, utrzymywane", "stack": "n8n · SMSAPI · CRM · VPS · Docker"},
-  metrics: [{"value": 1000, "suffix": "+", "label": "zgłoszeń w CRM"}],
-  en: {
-    "title": "Forms, CRM and automatic notifications",
-    "description": "Over 1,000 leads from Meta and website forms have landed in the CRM. The customer gets a text right away, and emails and notifications go out automatically.",
-    "lead": "An application I built on my own in about two months and still maintain. It connects Meta lead ads and website forms to the CRM, sends text messages through SMSAPI, and handles mailings and notifications. It runs on a VPS I configured, with monitoring and error alerts.",
-    "tags": [
-      "Integrations",
-      "CRM"
-    ],
-    "flow": ["Meta / web form", "n8n and CRM", "SMSAPI and mailing", "Monitoring and alerts"],
-    "meta": {
-      "role": "Design, deployment and maintenance — solo",
-      "period": "about 2 months to build",
-      "status": "Live, maintained",
-      "stack": "n8n · SMSAPI · CRM · VPS · Docker"
-    },
-    architecture: {"columns": [{"title": "Input", "items": ["Meta lead forms", "Website form"]}, {"title": "Automation", "items": ["n8n workflows"]}, {"title": "Systems", "items": ["CRM", "SMSAPI", "MailerLite / email"]}, {"title": "Monitoring", "items": ["Prometheus", "Grafana", "Error alerts"]}], "infra": "VPS, Docker, Linux"},
-    "sections": [
-      {
-        "type": "results",
-        "title": "What was built",
-        "metrics": [{"value": 1000, "suffix": "+", "label": "leads in the CRM"}],
-        "proofs": [
-          "Leads from Meta and website forms land in the CRM automatically, with no retyping.",
-          "The customer gets a text via SMSAPI right after submitting the form. Mailings and team notifications follow.",
-          "VPS setup, monitoring and error alerts, so it keeps running at night too.",
-          "The full cycle handled solo: design, build, deployment and ongoing maintenance."
-        ]
-      }
-    ]
+  featured: true,
+  meta: {
+    client: "",
+    role: "Projekt, budowa, wdrożenie i utrzymanie, samodzielnie",
+    period: "ok. 2 miesiące budowy, potem utrzymanie",
+    status: "Wdrożony, utrzymywany",
+    stack: "n8n · SMSAPI · CRM · VPS · Docker",
   },
-  architecture: {"columns": [{"title": "Wejście", "items": ["Formularze Meta", "Formularz na stronie"]}, {"title": "Automatyzacja", "items": ["Workflowy n8n"]}, {"title": "Systemy", "items": ["CRM", "SMSAPI", "MailerLite / poczta"]}, {"title": "Nadzór", "items": ["Prometheus", "Grafana", "Alerty o błędach"]}], "infra": "VPS, Docker, Linux"},
+  metrics: [{ value: 1000, suffix: "+", label: "zgłoszeń w CRM" }],
+  architecture: {
+    columns: [
+      { title: "Wejście", items: ["Formularze Meta", "Formularz na stronie"] },
+      { title: "Automatyzacja", items: ["Workflowy n8n"] },
+      { title: "Systemy", items: ["CRM", "SMSAPI", "MailerLite / poczta"] },
+      { title: "Nadzór", items: ["Prometheus", "Grafana", "Alerty o błędach"] },
+    ],
+    infra: "VPS, Docker, Linux",
+  },
   sections: [
     {
-      "type": "results",
-      "title": "Co powstało",
-      "metrics": [{"value": 1000, "suffix": "+", "label": "zgłoszeń w CRM"}],
-      "proofs": [
-        "Zgłoszenia z formularzy Meta i ze strony trafiają prosto do CRM-u, bez przepisywania.",
-        "Zaraz po wysłaniu formularza klient dostaje SMS przez SMSAPI. Do tego dochodzą mailingi i powiadomienia dla zespołu.",
-        "Konfiguracja VPS, monitoring i powiadomienia o błędach, żeby całość działała także w nocy.",
-        "Cały cykl wykonany samodzielnie: projekt, budowa, wdrożenie i bieżące utrzymanie."
-      ]
-    }
+      type: "impact",
+      title: "Najpierw proces, potem workflow.",
+      text: "Zanim zbudowałem pierwszy workflow, poznałem potrzeby klienta i ustaliłem, które procesy automatyzujemy. Workflowy ustawiłem pod sposób pracy pracowników klienta, a nie odwrotnie.",
+    },
+    {
+      type: "impact",
+      title: "Cały cykl po mojej stronie.",
+      text: "Projekt, budowa, konfiguracja serwera i wdrożenie zajęły mi około dwóch miesięcy. Od tego czasu utrzymuję system: serwer, monitoring i workflowy, które łączą formularze z CRM-em i wysyłką wiadomości.",
+    },
+    {
+      type: "results",
+      title: "Co działa dziś.",
+      intro: "Liczba zgłoszeń pokazuje skalę, w jakiej system pracuje. Nie jest miarą oszczędności ani sprzedaży.",
+      metrics: [{ value: 1000, suffix: "+", label: "zgłoszeń w CRM" }],
+      proofs: [
+        "Zgłoszenia z formularzy reklam Meta i ze strony trafiają do CRM-u bez ręcznego przepisywania.",
+        "Zaraz po wysłaniu formularza klient dostaje SMS przez SMSAPI. Mailingi i powiadomienia dla zespołu wysyłają się automatycznie.",
+        "Przy błędzie po drodze workflow ponawia próbę, a deduplikacja pilnuje, żeby to samo zgłoszenie nie trafiło do CRM-u dwa razy.",
+        "Monitoring i alerty pomagają wykrywać błędy również poza godzinami pracy.",
+      ],
+    },
   ],
+  // Wersja angielska
+  en: {
+    title: "Forms, CRM and automatic notifications",
+    description: "A live, maintained system: leads from Meta and website forms land in the CRM, the customer gets a text right away, and mailings and notifications go out automatically.",
+    lead: "A system I built on my own in about two months and still maintain. Leads from Meta ads and the website form land in the CRM, and both the customer and the team get automatic messages.",
+    tags: ["Integrations", "CRM"],
+    flow: ["Meta / web form", "n8n and CRM", "SMSAPI and mailing", "Monitoring and alerts"],
+    meta: {
+      role: "Design, build, deployment and maintenance, solo",
+      period: "about 2 months to build, then ongoing maintenance",
+      status: "Live, maintained",
+      stack: "n8n · SMSAPI · CRM · VPS · Docker",
+    },
+    architecture: {
+      columns: [
+        { title: "Input", items: ["Meta lead forms", "Website form"] },
+        { title: "Automation", items: ["n8n workflows"] },
+        { title: "Systems", items: ["CRM", "SMSAPI", "MailerLite / email"] },
+        { title: "Monitoring", items: ["Prometheus", "Grafana", "Error alerts"] },
+      ],
+      infra: "VPS, Docker, Linux",
+    },
+    sections: [
+      {
+        type: "impact",
+        title: "Process first, then the workflow.",
+        text: "Before building the first workflow, I learned what the client needed and worked out which processes to automate. I set up the workflows around how the client's staff actually work, not the other way round.",
+      },
+      {
+        type: "impact",
+        title: "The whole cycle on my side.",
+        text: "Design, build, server setup and deployment took me about two months. Since then I have been maintaining the system: the server, the monitoring and the workflows that connect the forms to the CRM and to outgoing messages.",
+      },
+      {
+        type: "results",
+        title: "What runs today.",
+        intro: "The number of leads shows the scale the system works at. It is not a measure of savings or sales.",
+        metrics: [{ value: 1000, suffix: "+", label: "leads in the CRM in about a month" }],
+        proofs: [
+          "Leads from Meta ad forms and the website land in the CRM with no retyping.",
+          "Right after submitting the form, the customer gets a text via SMSAPI. Mailings and team notifications go out automatically.",
+          "If a step fails, the workflow retries it, and deduplication keeps the same lead from landing in the CRM twice.",
+          "Monitoring and alerts help catch errors outside working hours too.",
+        ],
+      },
+    ],
+  },
 };

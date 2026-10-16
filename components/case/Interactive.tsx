@@ -22,9 +22,10 @@ export function ParallaxCover({ src, alt }: { src: string; alt: string }) {
 }
 
 /** Makieta karty zamówień: wiersze pojawiają się kolejno, „—” podświetla się bursztynem. */
-export function OrderTable({ columns, rows, dashLabel }: { columns: string[]; rows: string[][]; dashLabel: string }) {
+export function OrderTable({ columns, rows, dashLabel, label }: { columns: string[]; rows: string[][]; dashLabel: string; label?: string }) {
+  // Na wąskim ekranie tabela przewija się w poziomie; obszar przewijania jest dostępny z klawiatury.
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto" tabIndex={0} role="region" aria-label={label}>
       <table className="w-full min-w-[560px] border-collapse text-[14px] [&_td]:font-mono [&_td]:tabular-nums">
         <thead>
           <tr className="text-left text-text-muted">

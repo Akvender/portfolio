@@ -26,11 +26,11 @@ export function Architecture({ data, title, infraLabel }: { data: ArchitectureDa
                       </svg>
                     </div>
                   )}
-                  <div className="flex flex-1 flex-col gap-2 rounded-xs border border-border bg-white p-4">
+                  <div className="flex min-w-0 flex-1 flex-col gap-2 rounded-xs border border-border bg-white p-4">
                     <p className="text-[13px] font-semibold text-text-muted">{col.title}</p>
                     <ul className="flex flex-col gap-2">
                       {col.items.map((item) => (
-                        <li key={item} className="rounded-xs border border-ink/10 bg-paper px-3 py-2 text-[15px] font-semibold leading-[1.3]">
+                        <li key={item} className="rounded-xs border border-ink/10 bg-paper px-3 py-2 text-[15px] font-semibold leading-[1.3] [overflow-wrap:anywhere]">
                           {item}
                         </li>
                       ))}

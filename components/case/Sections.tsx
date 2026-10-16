@@ -12,15 +12,17 @@ import { ScrollLine } from "@/components/site/ScrollLine";
 import { SectionHeader, Tags } from "@/components/home/Sections";
 import { OrderTable, ParallaxCover } from "./Interactive";
 import { FlowCover } from "./FlowCover";
+import { StatusBadge } from "./Status";
 import { asset, container, h1, sectionLabel, sectionY } from "@/lib/ui";
 
 const d = (ms: number) => ({ "--d": `${ms}ms` }) as React.CSSProperties;
 
-export function CaseHero({ project, lang }: { project: Project; lang: Lang }) {
+/** `showFlow` = false, gdy pod hero jest schemat architektury (bez dwóch podobnych diagramów). */
+export function CaseHero({ project, lang, showFlow = true }: { project: Project; lang: Lang; showFlow?: boolean }) {
   const t = ui[lang].case;
+  // Status jest wyżej jako etykieta, więc w tabeli metadanych go nie powtarzamy.
   const meta = [
-    [t.client, project.meta.client], [t.role, project.meta.role], [t.period, project.meta.period],
-    [t.status, project.meta.status], [t.stack, project.meta.stack],
+    [t.client, project.meta.client], [t.role, project.meta.role], [t.period, project.meta.period], [t.stack, project.meta.stack],
   ].filter(([, v]) => v);
   return (
     <section className="bg-ink pt-[72px] text-text-on-dark">
@@ -29,7 +31,12 @@ export function CaseHero({ project, lang }: { project: Project; lang: Lang }) {
           <span aria-hidden="true">←</span> {t.back}
         </Link>
         <div>
-          <h1 className={`${h1} intro-up max-w-[22ch] text-balance`} style={d(120)}>{project.title}</h1>
+          {project.meta.status && (
+            <p className="intro-up mb-5" style={d(80)}>
+              <StatusBadge status={project.meta.status} label={t.status} dark />
+            </p>
+          )}
+          <h1 className={`${h1} intro-up max-w-[22ch] text-balance [overflow-wrap:anywhere]`} style={d(120)}>{project.title}</h1>
           <p className="intro-up mt-5 max-w-[62ch] text-[18px] leading-[160%] text-text-muted-on-dark" style={d(220)}>{project.lead}</p>
           {!project.translated && t.notTranslated && (
             <p className="intro-up mt-5 inline-flex max-w-[62ch] items-start gap-2 rounded-xs border border-border-on-dark px-4 py-3 text-[14px] leading-[150%] text-text-muted-on-dark" style={d(260)}>
@@ -38,17 +45,19 @@ export function CaseHero({ project, lang }: { project: Project; lang: Lang }) {
             </p>
           )}
         </div>
-        <dl className="intro-up grid grid-cols-2 overflow-hidden rounded-xs border border-border-on-dark md:grid-cols-5" style={d(300)}>
+        {meta.length > 0 && (
+        <dl className="intro-up grid grid-cols-2 overflow-hidden rounded-xs border border-border-on-dark md:grid-cols-none md:auto-cols-fr md:grid-flow-col" style={d(300)}>
           {meta.map(([k, v], i) => (
-            <div key={k} className={`border-border-on-dark px-5 py-4 md:px-6 ${i % 2 ? "border-l" : ""} ${i >= 2 ? "border-t md:border-t-0" : ""} md:border-l md:first:border-l-0 ${i === 4 ? "col-span-2 md:col-span-1" : ""}`}>
+            <div key={k} className={`min-w-0 border-border-on-dark px-5 py-4 md:px-6 ${i % 2 ? "border-l" : ""} ${i >= 2 ? "border-t md:border-t-0" : ""} md:border-l md:first:border-l-0 ${i === meta.length - 1 && i % 2 === 0 ? "col-span-2 md:col-span-1" : ""}`}>
               <dt className="text-[14px] font-medium text-text-muted-on-dark">{k}</dt>
               <dd className="mt-1.5 text-[15px] font-semibold leading-[140%]">{v}</dd>
             </div>
           ))}
         </dl>
+        )}
         {project.cover ? (
           <ParallaxCover src={project.cover} alt={project.coverAlt ?? project.title} />
-        ) : (
+        ) : showFlow && (
           <div className="intro-clip" style={d(350)}>
             <FlowCover id={`hero-${project.slug}`} flow={project.flow} icons={project.flowIcons} tags={project.tags} ends={[t.flowStart, t.flowEnd]} caption={t.flowCaption} label={`${t.flowCaption}: ${project.flow.join(" → ")}`} />
           </div>
@@ -91,7 +100,7 @@ function Solution({ s, t }: { s: SolutionSection; t: UI["case"] }) {
               <span>{t.orderCard}</span>
               <span>{t.sampleData}</span>
             </div>
-            <OrderTable columns={s.table.columns} rows={s.table.rows} dashLabel={t.dash} />
+            <OrderTable columns={s.table.columns} rows={s.table.rows} dashLabel={t.dash} label={t.orderCard} />
           </Reveal>
         )}
         {s.image && (
@@ -100,7 +109,7 @@ function Solution({ s, t }: { s: SolutionSection; t: UI["case"] }) {
           </Reveal>
         )}
         <div>
-          <Reveal><h3 className="font-display text-[24px] font-bold leading-[1.15]">{t.modules}</h3></Reveal>
+          <Reveal><h3 className="font-display text-[24px] font-bold leading-[1.15]">{s.modulesTitle ?? t.modules}</h3></Reveal>
           <RevealGroup as="ul" className="mt-5 border-t border-ink">
             {s.modules.map((m, i) => (
               <RevealItem as="li" key={i} className="grid gap-1 border-b border-border py-4 md:grid-cols-[240px_minmax(0,1fr)] md:gap-8">
@@ -154,7 +163,7 @@ function Approach({ s }: { s: ApproachSection }) {
       <div className={`${container} flex flex-col gap-12`}>
         <SectionHeader title={s.title} />
         <Reveal className="flex flex-col gap-4 rounded-xs border border-border bg-white p-8 md:flex-row md:items-center md:gap-10 md:p-10">
-          <span aria-hidden="true" className="text-[72px] font-extrabold leading-none text-ink md:text-[96px]">—</span>
+          <span aria-hidden="true" className="font-display text-[72px] font-extrabold leading-none text-ink md:text-[96px]">—</span>
           <figure>
             <blockquote className="text-[clamp(20px,2.4vw,26px)] font-extrabold leading-[130%]">{s.quote}</blockquote>
             {s.quoteAuthor && <figcaption className="mt-3 text-[16px] leading-[155%] text-text-muted">{s.quoteAuthor}</figcaption>}
@@ -217,31 +226,32 @@ export function CaseSections({ sections, lang }: { sections: CaseSection[]; lang
 }
 
 export function NextProject({ project, lang }: { project: Project; lang: Lang }) {
+  const t = ui[lang].case;
   return (
     <section className={`bg-paper ${sectionY}`}>
       <div className={container}>
         <Reveal>
           <Link
             href={localePath(lang, `/projekty/${project.slug}/`)}
-            className="group grid gap-8 rounded-xs border border-border bg-white p-5 transition-colors duration-300 hover:border-ink md:grid-cols-[1fr_1.2fr] md:items-center md:p-8"
+            className={`group grid gap-6 rounded-xs border border-border bg-white p-5 transition-colors duration-300 hover:border-ink md:p-8 ${project.cover ? "md:grid-cols-[1fr_1.2fr] md:items-center md:gap-8" : ""}`}
           >
-            <div className="flex flex-col gap-4">
-              <h2 className="text-[clamp(24px,3vw,30px)] font-extrabold leading-[120%]">
-                <span className="sr-only">{ui[lang].case.next} </span>
+            <div className="flex min-w-0 flex-col gap-4">
+              <p className="text-[14px] font-semibold text-text-muted">{t.next}</p>
+              <h2 className="text-[clamp(24px,3vw,30px)] font-extrabold leading-[120%] [overflow-wrap:anywhere]">
                 {project.title}{" "}
                 <Arrow className="transition-transform duration-200 group-hover:translate-x-1" />
               </h2>
-              <Tags tags={project.tags} />
+              <p className="max-w-[62ch] text-[15px] leading-[150%] text-text-muted">{project.description}</p>
+              <div className="flex flex-wrap items-center gap-3">
+                <StatusBadge status={project.meta.status} label={t.status} />
+                <Tags tags={project.tags} />
+              </div>
             </div>
-            <div className="overflow-hidden rounded-[2px]">
-              {project.cover ? (
+            {project.cover && (
+              <div className="overflow-hidden rounded-[2px]">
                 <Image src={asset(project.cover)} alt={project.coverAlt ?? project.title} width={1600} height={1000} sizes="(min-width: 768px) 640px, 100vw" className="aspect-[8/5] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]" />
-              ) : (
-                <div className="transition-transform duration-700 ease-out group-hover:scale-[1.02]">
-                  <FlowCover id={`next-${project.slug}`} flow={project.flow} icons={project.flowIcons} tags={project.tags} ends={[ui[lang].case.flowStart, ui[lang].case.flowEnd]} caption={ui[lang].case.flowCaption} label={`${ui[lang].case.flowCaption}: ${project.flow.join(" → ")}`} />
-                </div>
-              )}
-            </div>
+              </div>
+            )}
           </Link>
         </Reveal>
       </div>

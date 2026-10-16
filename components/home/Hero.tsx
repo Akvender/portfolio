@@ -10,7 +10,7 @@ import { asset, container } from "@/lib/ui";
 /**
  * Hero = wizytówka na granacie: po lewej co robię i dwie akcje, po prawej karta-identyfikator
  * (portret + imię, rola, status, e-mail). Mieści się na pierwszym ekranie 1440×900.
- * Jedyny pomarańczowy przycisk na ekranie to główna akcja (prowadzi do umiejętności).
+ * Jedyny pomarańczowy przycisk na ekranie to główna akcja (prowadzi do wybranych realizacji).
  * Wejście w czystym CSS (klasy .intro-*), bez czekania na hydrację (LCP).
  */
 export function Hero({ lang }: { lang: Lang }) {
@@ -35,7 +35,7 @@ export function Hero({ lang }: { lang: Lang }) {
           </p>
           <div className="intro-up flex flex-wrap items-center gap-3 pt-1" style={d(280)}>
             <Link
-              href={localePath(lang, "/#umiejetnosci")}
+              href={localePath(lang, "/#realizacje")}
               className="group inline-flex min-h-[52px] items-center gap-3 rounded-xs bg-accent px-6 text-[16px] font-semibold text-on-accent transition-[background-color,transform] duration-200 hover:bg-[#ff8a3d] active:scale-[0.98]"
             >
               {t.primary}
@@ -101,8 +101,8 @@ export function Hero({ lang }: { lang: Lang }) {
       <div className={`${container} intro-up pb-8`} style={d(380)}>
         <div className="flex flex-col gap-4 border-t border-border-on-dark pt-6 md:flex-row md:items-center md:gap-10">
           <p className="shrink-0 text-[14px] font-semibold text-text-muted-on-dark">{t.toolsLabel}</p>
-          <ToolsMarquee />
-          <Link href={localePath(lang, "/#umiejetnosci")} className="group hidden min-h-[44px] shrink-0 items-center gap-2 text-[14px] font-semibold text-text-muted-on-dark hover:text-accent lg:inline-flex">
+          <ToolsMarquee lang={lang} />
+          <Link href={localePath(lang, "/#realizacje")} className="group hidden min-h-[44px] shrink-0 items-center gap-2 text-[14px] font-semibold text-text-muted-on-dark hover:text-accent lg:inline-flex">
             {t.scroll}
             <Arrow dir="down" className="animate-[nudge_2.4s_ease-in-out_3] transition-transform duration-200 group-hover:translate-y-0.5 motion-reduce:animate-none" />
           </Link>

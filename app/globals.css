@@ -106,7 +106,9 @@ html.lenis body {
   border-radius: 2px;
 }
 /* Na ciemnych sekcjach obwódka fokusu jest w kolorze akcentu (6.5:1). */
-.bg-ink :focus-visible {
+.bg-ink :focus-visible,
+.bg-ink-soft :focus-visible,
+.bg-ink-strong :focus-visible {
   outline-color: var(--color-accent);
 }
 
