@@ -1,6 +1,6 @@
 import type { Project } from "./types";
 
-/** Formularze → CRM → SMS i mailing. Wdrożony i utrzymywany; liczba zgłoszeń bez potwierdzonego okresu pomiaru. */
+/** Formularze → CRM → SMS i mailing. Wdrożony i utrzymywany; 1000+ zgłoszeń w około miesiąc. */
 export const projekt03: Project = {
   slug: "formularze-crm-powiadomienia",
   number: "01",
@@ -33,6 +33,11 @@ export const projekt03: Project = {
   sections: [
     {
       type: "impact",
+      title: "Najpierw proces, potem workflow.",
+      text: "Zanim zbudowałem pierwszy workflow, poznałem potrzeby klienta i ustaliłem, które procesy automatyzujemy. Workflowy ustawiłem pod sposób pracy pracowników klienta, a nie odwrotnie.",
+    },
+    {
+      type: "impact",
       title: "Cały cykl po mojej stronie.",
       text: "Projekt, budowa, konfiguracja serwera i wdrożenie zajęły mi około dwóch miesięcy. Od tego czasu utrzymuję system: serwer, monitoring i workflowy, które łączą formularze z CRM-em i wysyłką wiadomości.",
     },
@@ -44,6 +49,7 @@ export const projekt03: Project = {
       proofs: [
         "Zgłoszenia z formularzy reklam Meta i ze strony trafiają do CRM-u bez ręcznego przepisywania.",
         "Zaraz po wysłaniu formularza klient dostaje SMS przez SMSAPI. Mailingi i powiadomienia dla zespołu wysyłają się automatycznie.",
+        "Przy błędzie po drodze workflow ponawia próbę, a deduplikacja pilnuje, żeby to samo zgłoszenie nie trafiło do CRM-u dwa razy.",
         "Monitoring i alerty pomagają wykrywać błędy również poza godzinami pracy.",
       ],
     },
@@ -73,6 +79,11 @@ export const projekt03: Project = {
     sections: [
       {
         type: "impact",
+        title: "Process first, then the workflow.",
+        text: "Before building the first workflow, I learned what the client needed and worked out which processes to automate. I set up the workflows around how the client's staff actually work, not the other way round.",
+      },
+      {
+        type: "impact",
         title: "The whole cycle on my side.",
         text: "Design, build, server setup and deployment took me about two months. Since then I have been maintaining the system: the server, the monitoring and the workflows that connect the forms to the CRM and to outgoing messages.",
       },
@@ -80,10 +91,11 @@ export const projekt03: Project = {
         type: "results",
         title: "What runs today.",
         intro: "The number of leads shows the scale the system works at. It is not a measure of savings or sales.",
-        metrics: [{ value: 1000, suffix: "+", label: "leads in the CRM" }],
+        metrics: [{ value: 1000, suffix: "+", label: "leads in the CRM in about a month" }],
         proofs: [
           "Leads from Meta ad forms and the website land in the CRM with no retyping.",
           "Right after submitting the form, the customer gets a text via SMSAPI. Mailings and team notifications go out automatically.",
+          "If a step fails, the workflow retries it, and deduplication keeps the same lead from landing in the CRM twice.",
           "Monitoring and alerts help catch errors outside working hours too.",
         ],
       },

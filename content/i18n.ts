@@ -18,9 +18,9 @@ const pl = {
   htmlLang: "pl",
   ogLocale: "pl_PL",
   meta: {
-    title: "AI developer i freelancer",
+    title: "AI developer od automatyzacji i integracji",
     description:
-      "Robert Świeboda, AI developer i freelancer: automatyzacje procesów, integracje systemów i narzędzia z AI. Projekty, umiejętności i kontakt.",
+      "Robert Świeboda, AI developer od automatyzacji i integracji: automatyzacje procesów, integracje systemów i narzędzia z AI. Projekty, umiejętności i kontakt.",
   },
   skipToContent: "Przejdź do treści",
   nav: {
@@ -40,7 +40,7 @@ const pl = {
   hero: {
     primary: "Zobacz projekty",
     secondary: "Porozmawiajmy o współpracy",
-    role: "AI developer · freelancer",
+    role: "AI developer od automatyzacji i integracji",
     toolsLabel: "Technologie i integracje, z których korzystam",
     scroll: "Przewiń dalej",
     pause: "Zatrzymaj przewijanie narzędzi",
@@ -121,9 +121,9 @@ const en: UI = {
   htmlLang: "en",
   ogLocale: "en_US",
   meta: {
-    title: "AI developer and freelancer",
+    title: "AI developer for automation and integrations",
     description:
-      "Robert Świeboda, AI developer and freelancer: process automation, system integrations and AI-powered tools. Projects, skills and contact.",
+      "Robert Świeboda, AI developer for automation and integrations: process automation, system integrations and AI-powered tools. Projects, skills and contact.",
   },
   skipToContent: "Skip to content",
   nav: {
@@ -143,7 +143,7 @@ const en: UI = {
   hero: {
     primary: "See projects",
     secondary: "Let's talk about working together",
-    role: "AI developer · freelancer",
+    role: "AI developer for automation and integrations",
     toolsLabel: "Technologies and integrations I work with",
     scroll: "Scroll down",
     pause: "Pause the tools ticker",

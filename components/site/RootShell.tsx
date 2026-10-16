@@ -60,7 +60,7 @@ export function profileJsonLd(lang: Lang) {
     mainEntity: {
       "@type": "Person",
       name: site.name,
-      jobTitle: "AI developer",
+      jobTitle: lang === "pl" ? "AI developer od automatyzacji i integracji" : "AI developer for automation and integrations",
       url,
       image: absoluteUrl("/images/portrait-robert.webp"),
       email: site.email,

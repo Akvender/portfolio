@@ -1,6 +1,6 @@
 import type { Project } from "./types";
 
-/** Call-center z transkrypcją i analizą rozmów (OZE). Zakres licznika rozmów i osobisty wkład do potwierdzenia. */
+/** Call-center z transkrypcją i analizą rozmów (OZE). Licznik obejmuje wszystkie rozmowy; osobisty wkład do potwierdzenia. */
 export const projekt05: Project = {
   slug: "call-center-analiza-rozmow",
   number: "02",
@@ -14,7 +14,7 @@ export const projekt05: Project = {
   flowIcons: ["phone", "wave", "server", "tasks"],
   featured: true,
   meta: { client: "Firma z branży OZE", role: "", period: "", status: "", stack: "Twilio · n8n · PostgreSQL · Docker" },
-  metrics: [{ value: 5000, suffix: "+", label: "rozmów w ciągu 3 miesięcy" }],
+  metrics: [{ value: 5000, suffix: "+", label: "wszystkich rozmów w ciągu 3 miesięcy" }],
   architecture: {
     columns: [
       { title: "Wejście", items: ["Rozmowy telefoniczne (Twilio)"] },
@@ -33,8 +33,8 @@ export const projekt05: Project = {
     {
       type: "results",
       title: "Skala.",
-      intro: "Licznik pokazuje skalę pracy narzędzia. Nie jest miarą jakości analizy ani wyników sprzedaży.",
-      metrics: [{ value: 5000, suffix: "+", label: "rozmów w ciągu 3 miesięcy" }],
+      intro: "Licznik obejmuje wszystkie rozmowy, które przeszły przez narzędzie. Pokazuje skalę, nie jakość analizy ani wyniki sprzedaży.",
+      metrics: [{ value: 5000, suffix: "+", label: "wszystkich rozmów w ciągu 3 miesięcy" }],
       proofs: [],
     },
   ],
@@ -64,8 +64,8 @@ export const projekt05: Project = {
       {
         type: "results",
         title: "Scale.",
-        intro: "The counter shows how much work the tool handles. It is not a measure of analysis quality or sales results.",
-        metrics: [{ value: 5000, suffix: "+", label: "calls in 3 months" }],
+        intro: "The counter covers every call that went through the tool. It shows scale, not analysis quality or sales results.",
+        metrics: [{ value: 5000, suffix: "+", label: "calls in total over 3 months" }],
         proofs: [],
       },
     ],
