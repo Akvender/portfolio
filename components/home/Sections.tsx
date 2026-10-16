@@ -109,7 +109,7 @@ export function About({ lang }: { lang: Lang }) {
                         <li key={d}>{d}</li>
                       ))}
                       <li>
-                        <a href={c.link.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 font-semibold underline underline-offset-4 hover:text-accent-strong">
+                        <a href={c.link.href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[44px] items-center gap-2 font-semibold underline underline-offset-4 hover:text-accent-strong">
                           {c.link.label}
                           <Arrow dir="up-right" />
                         </a>

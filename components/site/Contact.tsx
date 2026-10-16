@@ -2,23 +2,36 @@
 
 import { useState } from "react";
 import { Arrow } from "@/components/site/Arrow";
-import { openContact } from "@/components/site/ContactDialog";
+import { openContact, profiles } from "@/components/site/ContactDialog";
 import { Icon } from "@/components/site/Icon";
 import { Reveal, RevealGroup, RevealItem } from "@/components/site/Reveal";
 import { type Lang, ui } from "@/content/i18n";
+import { uiExtra } from "@/content/ui-extra";
 import { container, sectionY } from "@/lib/ui";
 import { site } from "@/content/site";
 
 const btnBase =
   "group inline-flex min-h-[56px] cursor-pointer items-center justify-center gap-3 rounded-xs px-7 text-[16px] font-semibold transition-[background-color,border-color,color,transform] duration-200 active:scale-[0.98]";
+const btnOutline = `${btnBase} border border-border-on-dark text-text-on-dark hover:border-text-muted-on-dark`;
 
 const mail = (subject?: string) => `mailto:${site.email}${subject ? `?subject=${encodeURIComponent(subject)}` : ""}`;
 
+/** Profile w stałej kolejności: LinkedIn, GitHub, TryHackMe. */
+function Profiles() {
+  return profiles.map((p) => (
+    <a key={p.name} href={p.href} target="_blank" rel="noopener noreferrer" className={btnOutline}>
+      {p.icon && <Icon name={p.icon} className="size-[18px]" />}
+      {p.name}
+      <Arrow dir="up-right" />
+    </a>
+  ));
+}
+
 /**
- * Sekcja Kontakt (ciemna). Ten sam komponent na Home i w case study; stopka jest w layout.
- * Dwie drogi: zlecenie freelance albo współpraca B2B. Tematy otwierają e-mail z wpisanym tematem.
+ * Sekcja Kontakt (ciemna). Na Home pełna: formy współpracy, tematy, kopiowanie adresu.
+ * W case study (`compact`) krótka: nagłówek, jedno zdanie, okno kontaktu i profile.
  */
-export function Contact({ lang }: { lang: Lang }) {
+export function Contact({ lang, compact = false }: { lang: Lang; compact?: boolean }) {
   const t = ui[lang].contact;
   const [copied, setCopied] = useState(false);
   const copy = async () => {
@@ -31,10 +44,36 @@ export function Contact({ lang }: { lang: Lang }) {
     }
   };
 
+  const write = (
+    <a href={mail()} aria-haspopup="dialog" onClick={(e) => openContact() && e.preventDefault()} className={`${btnBase} bg-accent text-on-accent hover:bg-[#ff8a3d]`}>
+      {t.write}
+      <Arrow className="transition-transform duration-200 group-hover:translate-x-1" />
+    </a>
+  );
+
+  if (compact) {
+    return (
+      <section id="kontakt" className="scroll-mt-[72px] bg-ink text-text-on-dark">
+        <div className={`${container} flex flex-col gap-8 py-12 md:py-16 xl:flex-row xl:items-end xl:justify-between xl:gap-16`}>
+          <Reveal>
+            <h2 className="mark-heading max-w-[22ch] font-display text-[clamp(28px,3.4vw,44px)] font-extrabold leading-[1.06] tracking-[-0.025em] text-balance">
+              {t.title}
+            </h2>
+            <p className="mt-4 max-w-[52ch] text-[17px] leading-[160%] text-text-muted-on-dark">{uiExtra[lang].contactCompact.lead}</p>
+          </Reveal>
+          <Reveal delay={0.05} className="flex min-w-0 flex-wrap items-center gap-3 xl:justify-end">
+            {write}
+            <Profiles />
+          </Reveal>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="kontakt" className="scroll-mt-[72px] bg-ink text-text-on-dark">
       <div className={`${container} ${sectionY} grid gap-12 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:items-end lg:gap-20`}>
-        <div>
+        <div className="min-w-0">
           <Reveal>
             <h2 className="mark-heading max-w-[18ch] font-display text-[clamp(34px,4.8vw,64px)] font-extrabold leading-[1.04] tracking-[-0.025em] text-balance">
               {t.title}
@@ -53,50 +92,15 @@ export function Contact({ lang }: { lang: Lang }) {
           </Reveal>
           <Reveal delay={0.1}>
             <div className="mt-10 flex flex-wrap items-center gap-3">
-              <a href={mail()} aria-haspopup="dialog" onClick={(e) => openContact() && e.preventDefault()} className={`${btnBase} bg-accent text-on-accent hover:bg-[#ff8a3d]`}>
-                {t.write}
-                <Arrow className="transition-transform duration-200 group-hover:translate-x-1" />
-              </a>
-              <button
-                type="button"
-                onClick={copy}
-                aria-label={`${t.copy}: ${site.email}`}
-                className={`${btnBase} border border-border-on-dark text-text-on-dark hover:border-text-muted-on-dark`}
-              >
-                <span className="text-[15px] font-medium">{site.email}</span>
-                <Icon name={copied ? "check" : "copy"} className={`size-[18px] ${copied ? "text-accent" : "text-text-muted-on-dark"}`} />
+              {write}
+              <button type="button" onClick={copy} aria-label={`${t.copy}: ${site.email}`} className={`${btnOutline} max-w-full`}>
+                <span className="min-w-0 text-[15px] font-medium [overflow-wrap:anywhere]">{site.email}</span>
+                <Icon name={copied ? "check" : "copy"} className={`size-[18px] shrink-0 ${copied ? "text-accent" : "text-text-muted-on-dark"}`} />
               </button>
-              <p aria-live="polite" className="text-[14px] font-semibold text-accent">
+              <p aria-live="polite" className="text-[14px] font-semibold text-accent empty:hidden">
                 {copied ? t.copied : ""}
               </p>
-              {site.linkedin && (
-                <a
-                  href={site.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`${btnBase} border border-border-on-dark text-text-on-dark hover:border-text-muted-on-dark`}
-                >
-                  LinkedIn
-                  <Arrow dir="up-right" />
-                </a>
-              )}
-              {site.tryhackme && (
-                <a href={site.tryhackme} target="_blank" rel="noopener noreferrer" className={`${btnBase} border border-border-on-dark text-text-on-dark hover:border-text-muted-on-dark`}>
-                  TryHackMe
-                  <Arrow dir="up-right" />
-                </a>
-              )}
-              {site.github && (
-                <a
-                  href={site.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`${btnBase} border border-border-on-dark text-text-on-dark hover:border-text-muted-on-dark`}
-                >
-                  <Icon name="github" className="size-[18px]" />
-                  GitHub
-                </a>
-              )}
+              <Profiles />
             </div>
           </Reveal>
         </div>

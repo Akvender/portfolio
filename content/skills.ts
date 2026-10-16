@@ -4,10 +4,10 @@
  */
 export const skillGroups = [
   {
-    title: { pl: "AI i modele językowe", en: "AI and language models" },
+    title: { pl: "AI i modele językowe", en: "AI and language models" },
     icon: "brain",
     skills: [
-      { id: "llm", label: { pl: "API OpenAI i Anthropic", en: "OpenAI and Anthropic APIs" } },
+      { id: "llm", label: { pl: "API modeli językowych", en: "Language-model APIs" } },
       { id: "agents", label: { pl: "Agenci AI", en: "AI agents" } },
       { id: "bots", label: { pl: "Chatboty i voiceboty", en: "Chatbots and voicebots" } },
       { id: "speech", label: { pl: "Transkrypcja rozmów", en: "Call transcription" } },
@@ -15,11 +15,11 @@ export const skillGroups = [
     ],
   },
   {
-    title: { pl: "Automatyzacje i integracje", en: "Automations and integrations" },
+    title: { pl: "Automatyzacje i integracje", en: "Automations and integrations" },
     icon: "cycle",
     skills: [
       { id: "n8n", label: { pl: "n8n", en: "n8n" } },
-      { id: "make", label: { pl: "Make i Zapier", en: "Make and Zapier" } },
+      { id: "make", label: { pl: "Make", en: "Make" } },
       { id: "airtable", label: { pl: "Airtable", en: "Airtable" } },
       { id: "crm", label: { pl: "Integracje CRM", en: "CRM integrations" } },
       { id: "erp", label: { pl: "Integracje ERP", en: "ERP integrations" } },
@@ -27,19 +27,19 @@ export const skillGroups = [
     ],
   },
   {
-    title: { pl: "Komunikacja i płatności", en: "Messaging and payments" },
+    title: { pl: "Komunikacja i płatności", en: "Messaging and payments" },
     icon: "chat",
     skills: [
       { id: "twilio", label: { pl: "Twilio", en: "Twilio" } },
       { id: "smsapi", label: { pl: "SMSAPI", en: "SMSAPI" } },
       { id: "whatsapp", label: { pl: "WhatsApp", en: "WhatsApp" } },
       { id: "mailerlite", label: { pl: "MailerLite", en: "MailerLite" } },
-      { id: "email", label: { pl: "Integracje z pocztą (SMTP, IMAP)", en: "Email server integrations (SMTP, IMAP)" } },
+      { id: "email", label: { pl: "Integracje z pocztą (SMTP, IMAP)", en: "Email server integrations (SMTP, IMAP)" } },
       { id: "stripe", label: { pl: "Stripe", en: "Stripe" } },
     ],
   },
   {
-    title: { pl: "Strony i marketing", en: "Web and marketing" },
+    title: { pl: "Strony i marketing", en: "Web and marketing" },
     icon: "pulse",
     skills: [
       { id: "meta", label: { pl: "Meta (formularze, Pixel, Conversions API)", en: "Meta (lead forms, Pixel, Conversions API)" } },
@@ -47,7 +47,7 @@ export const skillGroups = [
     ],
   },
   {
-    title: { pl: "Kod i infrastruktura", en: "Code and infrastructure" },
+    title: { pl: "Kod i infrastruktura", en: "Code and infrastructure" },
     icon: "code",
     skills: [
       { id: "python", label: { pl: "Python", en: "Python" } },

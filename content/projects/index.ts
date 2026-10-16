@@ -9,8 +9,8 @@ import { projekt06 } from "./projekt-06";
 
 export type { Project } from "./types";
 
-/** Kolejność = kolejność na stronie. Nowy projekt: nowy plik + jedna linia tutaj. */
-const projects: Project[] = [mleczarnia, projekt02, projekt03, projekt04, projekt05, projekt06];
+/** Kolejność = kolejność na stronie (pole `number` idzie za nią). Wyróżnione najpierw: CRM, call-center, mleczarnia. Nowy projekt: nowy plik + jedna linia tutaj. */
+const projects: Project[] = [projekt03, projekt05, mleczarnia, projekt02, projekt06, projekt04];
 
 /** Projekt w danym języku. `translated` = szczegóły case study są w tym języku. */
 export type LocalizedProject = Omit<Project, "en"> & { translated: boolean };

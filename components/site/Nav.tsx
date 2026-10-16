@@ -70,13 +70,13 @@ export function Nav({ lang }: { lang: Lang }) {
     document.addEventListener("keydown", onKey);
     document.documentElement.style.overflow = "hidden";
     // Treść pod menu jest nieaktywna, więc Tab nie ucieka za nakładkę.
-    const main = document.getElementById("main");
-    main?.setAttribute("inert", "");
+    const outside = Array.from(document.querySelectorAll<HTMLElement>("body > a, main, footer"));
+    outside.forEach((el) => el.setAttribute("inert", ""));
     firstLinkRef.current?.focus();
     return () => {
       document.removeEventListener("keydown", onKey);
       document.documentElement.style.overflow = "";
-      main?.removeAttribute("inert");
+      outside.forEach((el) => el.removeAttribute("inert"));
       toggleRef.current?.focus();
     };
   }, [open]);
@@ -102,7 +102,7 @@ export function Nav({ lang }: { lang: Lang }) {
         >
           <span aria-hidden="true" className="w-[3px] bg-accent" />
           <span className="flex flex-col font-display text-[15px] font-bold uppercase leading-[1.05] tracking-[0.02em]">
-            <span>Robert</span>
+            <span>Robert</span>{" "}
             <span>Świeboda</span>
           </span>
         </Link>

@@ -28,6 +28,8 @@ export type SolutionSection = {
   intro?: string;
   /** Makieta tabeli zamówień — wiersze pojawiają się kolejno, komórki „—” podświetlają się bursztynem. */
   table?: { columns: string[]; rows: string[][] };
+  /** Nagłówek listy `modules`. Brak = domyślny „Moduły systemu” z i18n. */
+  modulesTitle?: string;
   modules: { title: string; text: string }[];
   image?: string;
   imageAlt?: string;
@@ -98,6 +100,7 @@ export type Project = {
   flow: string[];
   /** Ikona dla każdego kroku `flow` (ta sama kolejność) — rysowana na okładce-schemacie. */
   flowIcons: IconName[];
+  /** Wyróżniona realizacja: pokazywana szerzej na liście projektów. */
   featured: boolean;
   /** Prawdziwa okładka (zrzut, zdjęcie) pod public/. Brak = okładka rysowana ze schematu `flow`. */
   cover?: string;

@@ -24,10 +24,10 @@ const STEPS: Step[] = [
 const HAPPY: Event[] = [
   { step: "form", status: "ok", log: { pl: "Nowe zgłoszenie: Anna K., tel. +48 *** *** 123", en: "New lead: Anna K., phone +48 *** *** 123" } },
   { step: "n8n", status: "ok", log: { pl: "Webhook odebrał zgłoszenie #4812", en: "Webhook received lead #4812" } },
-  { step: "check", status: "ok", log: { pl: "Telefon i e-mail poprawne, brak duplikatu", en: "Phone and email valid, no duplicate" } },
+  { step: "check", status: "ok", log: { pl: "Telefon i e-mail poprawne, brak duplikatu", en: "Phone and email valid, no duplicate" } },
   { step: "crm", status: "ok", log: { pl: "Kontakt utworzony, przypisany handlowiec", en: "Contact created, sales rep assigned" } },
   { step: "sms", status: "ok", log: { pl: "SMS wysłany: „Dziękujemy, oddzwonimy wkrótce”", en: "Text sent: “Thanks, we’ll call you back soon”" } },
-  { step: "mail", status: "ok", log: { pl: "E-mail powitalny w kolejce wysyłki", en: "Welcome email queued" } },
+  { step: "mail", status: "ok", log: { pl: "E-mail powitalny w kolejce wysyłki", en: "Welcome email queued" } },
   { step: "mon", status: "ok", log: { pl: "Metryka leads_total +1, wszystko działa", en: "leads_total +1, all good" } },
 ];
 
@@ -41,23 +41,23 @@ const FAILURE: Event[] = [
   { step: "crm", status: "ok", log: { pl: "Kontakt utworzony przy drugiej próbie", en: "Contact created on the second attempt" } },
   HAPPY[4],
   HAPPY[5],
-  { step: "mon", status: "ok", log: { pl: "Alert: chwilowa awaria CRM, obsłużona automatycznie", en: "Alert: brief CRM outage, handled automatically" } },
+  { step: "mon", status: "ok", log: { pl: "Alert: chwilowa awaria CRM, kontakt utworzony po ponowieniu", en: "Alert: brief CRM outage, contact created after a retry" } },
 ];
 
 const T = {
   pl: {
-    title: "Zobacz automatyzację w akcji",
-    lead: "Tak wygląda typowy przepływ, który buduję: zgłoszenie z formularza trafia do CRM-u, klient dostaje SMS i e-mail, a monitoring pilnuje, żeby nic się nie zgubiło. Kliknij i zobacz, co się dzieje krok po kroku, także wtedy, gdy coś po drodze padnie.",
+    title: "Zobacz automatyzację w akcji",
+    lead: "Przykładowy przepływ tego typu: zgłoszenie z formularza trafia do CRM-u, klient dostaje SMS i e-mail, a monitoring pomaga wychwycić błędy. Kliknij i zobacz, co się dzieje krok po kroku, także wtedy, gdy coś po drodze padnie.",
     run: "Wyślij zgłoszenie",
     fail: "Symuluj awarię CRM",
-    note: "Symulacja w przeglądarce, dane przykładowe.",
+    note: "Symulacja w przeglądarce, dane przykładowe.",
     log: "Dziennik",
     empty: "Kliknij przycisk, żeby uruchomić przepływ.",
     status: { idle: "czeka", running: "działa", ok: "gotowe", error: "błąd", retry: "ponawiam" },
   },
   en: {
     title: "See an automation in action",
-    lead: "This is a typical flow I build: a form lead lands in the CRM, the customer gets a text and an email, and monitoring makes sure nothing gets lost. Click to see what happens step by step, including when something fails along the way.",
+    lead: "An example of this kind of flow: a form lead lands in the CRM, the customer gets a text and an email, and monitoring helps catch errors. Click to see what happens step by step, including when something fails along the way.",
     run: "Send a lead",
     fail: "Simulate a CRM outage",
     note: "Runs in your browser, sample data.",
@@ -156,12 +156,12 @@ export function AutomationDemo({ lang }: { lang: Lang }) {
               );
             })}
           </ol>
-          <div className="flex min-h-[280px] flex-col rounded-xs bg-ink p-4 text-text-on-dark">
+          <div aria-live="polite" className="flex min-h-[280px] flex-col rounded-xs bg-ink p-4 text-text-on-dark">
             <p className="mb-3 text-[13px] font-semibold text-text-muted-on-dark">{t.log}</p>
             {log.length === 0 ? (
               <p className="text-[14px] text-text-muted-on-dark">{t.empty}</p>
             ) : (
-              <ol ref={logRef} aria-live="polite" className="flex max-h-[320px] flex-col gap-2 overflow-y-auto font-mono text-[12.5px] leading-[1.5]">
+              <ol ref={logRef} className="flex max-h-[320px] flex-col gap-2 overflow-y-auto font-mono text-[12.5px] leading-[1.5]">
                 {log.map((l, i) => (
                   <li key={i} className="flex gap-3">
                     <span className="shrink-0 tabular-nums text-text-muted-on-dark">{l.time}</span>

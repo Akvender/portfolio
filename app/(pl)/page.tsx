@@ -1,5 +1,11 @@
 import { HomeView } from "@/components/site/Pages";
+import { JsonLd, profileJsonLd } from "@/components/site/RootShell";
 
 export default function HomePage() {
-  return <HomeView lang="pl" />;
+  return (
+    <>
+      <JsonLd data={profileJsonLd("pl")} />
+      <HomeView lang="pl" />
+    </>
+  );
 }

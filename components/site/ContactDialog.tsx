@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import { Arrow } from "@/components/site/Arrow";
-import { Icon } from "@/components/site/Icon";
+import { Icon, type IconName } from "@/components/site/Icon";
 import { type Lang, ui } from "@/content/i18n";
 import { site } from "@/content/site";
 
@@ -14,6 +14,13 @@ export function openContact(topic?: number) {
   window.dispatchEvent(new CustomEvent(OPEN_EVENT, { detail: topic ?? null }));
   return true;
 }
+
+/** Profile w stałej kolejności: LinkedIn, GitHub, TryHackMe (puste adresy są pomijane). */
+export const profiles: { name: string; href: string; icon?: IconName }[] = [
+  { name: "LinkedIn", href: site.linkedin },
+  { name: "GitHub", href: site.github, icon: "github" as IconName },
+  { name: "TryHackMe", href: site.tryhackme },
+].filter((p) => p.href);
 
 const mailto = (subject: string, body: string) =>
   `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -28,6 +35,8 @@ export function ContactDialog({ lang }: { lang: Lang }) {
   const f = ui[lang].contactForm;
   const ref = useRef<HTMLDialogElement>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
+  const readyRef = useRef<HTMLHeadingElement>(null);
+  const openerRef = useRef<HTMLElement | null>(null);
   const [topic, setTopic] = useState(0);
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
@@ -46,12 +55,21 @@ export function ContactDialog({ lang }: { lang: Lang }) {
       if (detail !== null) setTopic(detail);
       setReady(false);
       setError(false);
+      // Zapamiętaj przycisk, który otworzył okno: po zamknięciu wraca na niego fokus.
+      openerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
       dialog.showModal();
       window.dispatchEvent(new CustomEvent("scroll-lock", { detail: true }));
       // Na telefonie nie wysuwaj od razu klawiatury.
       if (window.matchMedia("(min-width: 768px)").matches) messageRef.current?.focus();
     };
-    const onClose = () => window.dispatchEvent(new CustomEvent("scroll-lock", { detail: false }));
+    const onClose = () => {
+      window.dispatchEvent(new CustomEvent("scroll-lock", { detail: false }));
+      const opener = openerRef.current;
+      openerRef.current = null;
+      // Przycisk z menu mobilnego znika razem z menu: wtedy fokus wraca na przełącznik menu.
+      const target = opener?.isConnected && !opener.closest("#menu-mobilne") ? opener : document.querySelector<HTMLElement>('[aria-controls="menu-mobilne"]');
+      target?.focus({ preventScroll: true });
+    };
     window.addEventListener(OPEN_EVENT, onOpen);
     dialog.addEventListener("close", onClose);
     return () => {
@@ -82,8 +100,13 @@ export function ContactDialog({ lang }: { lang: Lang }) {
     setReady(true);
   };
 
+  // Po przygotowaniu wiadomości fokus na nagłówku stanu (przycisk wysyłki znika z widoku).
+  useEffect(() => {
+    if (ready) readyRef.current?.focus();
+  }, [ready]);
+
   const field =
-    "w-full rounded-xs border border-border-on-dark bg-ink-strong px-4 py-3 text-[16px] text-text-on-dark placeholder:text-text-muted-on-dark/70 transition-colors focus:border-accent focus:outline-none";
+    "w-full rounded-xs border border-border-on-dark bg-ink-strong px-4 py-3 text-[16px] text-text-on-dark placeholder:text-text-muted-on-dark/70 transition-colors focus:border-accent focus:outline-2 focus:outline-offset-2 focus:outline-accent";
 
   return (
     <dialog
@@ -96,7 +119,7 @@ export function ContactDialog({ lang }: { lang: Lang }) {
     >
       <div className="flex min-h-full flex-col gap-8 px-6 py-6 sm:px-10 sm:py-8">
         <div className="flex items-start justify-between gap-6">
-          <h2 id={ids.title} className="font-display text-[clamp(28px,4vw,40px)] font-extrabold leading-[1.05] tracking-[-0.025em]">
+          <h2 id={ids.title} ref={readyRef} tabIndex={-1} className="focus:outline-none font-display text-[clamp(28px,4vw,40px)] font-extrabold leading-[1.05] tracking-[-0.025em]">
             {ready ? f.readyTitle : f.title}
           </h2>
           <button
@@ -128,7 +151,10 @@ export function ContactDialog({ lang }: { lang: Lang }) {
               </button>
               <button
                 type="button"
-                onClick={() => setReady(false)}
+                onClick={() => {
+                  setReady(false);
+                  requestAnimationFrame(() => messageRef.current?.focus());
+                }}
                 className="inline-flex min-h-[52px] cursor-pointer items-center rounded-xs border border-border-on-dark px-6 text-[16px] font-semibold transition-colors hover:border-text-muted-on-dark"
               >
                 {f.edit}
@@ -203,18 +229,13 @@ export function ContactDialog({ lang }: { lang: Lang }) {
               <Icon name={copied === "email" ? "check" : "copy"} className="size-[18px] text-text-muted-on-dark" />
               {copied === "email" ? t.copied : t.copy}
             </button>
-            {site.linkedin && (
-              <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[44px] items-center gap-2 transition-colors hover:text-accent">
-                LinkedIn
+            {profiles.map((p) => (
+              <a key={p.name} href={p.href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[44px] items-center gap-2 transition-colors hover:text-accent">
+                {p.icon && <Icon name={p.icon} className="size-[18px]" />}
+                {p.name}
                 <Arrow dir="up-right" />
               </a>
-            )}
-            {site.tryhackme && (
-              <a href={site.tryhackme} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[44px] items-center gap-2 transition-colors hover:text-accent">
-                TryHackMe
-                <Arrow dir="up-right" />
-              </a>
-            )}
+            ))}
           </div>
           <p aria-live="polite" className="sr-only">
             {copied ? t.copied : ""}

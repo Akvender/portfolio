@@ -10,7 +10,7 @@ import { container } from "@/lib/ui";
 
 // Nagłówki: Rubik, tekst: Lato (wybór Roberta z porównania fontów).
 const rubik = Rubik({ subsets: ["latin", "latin-ext"], variable: "--font-rubik", display: "swap" });
-const lato = Lato({ subsets: ["latin", "latin-ext"], weight: ["400", "700", "900"], variable: "--font-lato", display: "swap" });
+const lato = Lato({ subsets: ["latin", "latin-ext"], weight: ["400", "700"], variable: "--font-lato", display: "swap" });
 const mono = JetBrains_Mono({ subsets: ["latin", "latin-ext"], weight: ["400", "500"], variable: "--font-jetbrains-mono", display: "swap", preload: false });
 
 export const fontClasses = `${rubik.variable} ${lato.variable} ${mono.variable}`;
@@ -29,8 +29,49 @@ export function pageMetadata(lang: Lang, path: string, title?: string, descripti
       canonical: absoluteUrl(localePath(lang, path)),
       languages: { pl: absoluteUrl(localePath("pl", path)), en: absoluteUrl(localePath("en", path)), "x-default": absoluteUrl(path) },
     },
-    openGraph: { type: "website", locale: t.ogLocale, siteName: site.name, url: absoluteUrl(localePath(lang, path)) },
+    openGraph: {
+      type: "website",
+      locale: t.ogLocale,
+      alternateLocale: ui[lang === "pl" ? "en" : "pl"].ogLocale,
+      siteName: site.name,
+      url: absoluteUrl(localePath(lang, path)),
+      title: title ?? `${site.name} — ${t.meta.title}`,
+      description: description ?? t.meta.description,
+      images: [ogImage(lang)],
+    },
+    // Tytuł i opis Twitter/X dziedziczy z openGraph.
+    twitter: { card: "summary_large_image", images: [ogImage(lang).url] },
   };
+}
+
+/** Grafika podglądu linku (1200×630) w danym języku, z pełnym adresem. */
+function ogImage(lang: Lang) {
+  return { url: absoluteUrl(`/images/og-${lang}.png`), width: 1200, height: 630, alt: `${site.name} — ${ui[lang].meta.title}` };
+}
+
+/** Dane strukturalne strony profilu (schema.org ProfilePage + Person); tylko potwierdzone dane. */
+export function profileJsonLd(lang: Lang) {
+  const url = absoluteUrl(localePath(lang, "/"));
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    url,
+    inLanguage: ui[lang].htmlLang,
+    mainEntity: {
+      "@type": "Person",
+      name: site.name,
+      jobTitle: "AI developer",
+      url,
+      image: absoluteUrl("/images/portrait-robert.webp"),
+      email: site.email,
+      sameAs: [site.linkedin, site.github, site.tryhackme].filter(Boolean),
+    },
+  };
+}
+
+/** Wstawia JSON-LD do HTML (znak „<” zamieniony, żeby treść nie zamknęła tagu script). */
+export function JsonLd({ data }: { data: object }) {
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\\u003c") }} />;
 }
 
 /** Wspólna ramka strony dla obu języków: <html lang>, menu, boczny pasek, stopka. */

@@ -5,22 +5,25 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { Arrow } from "@/components/site/Arrow";
 import { Icon } from "@/components/site/Icon";
+import { StatusBadge } from "@/components/case/Status";
 import type { Project } from "@/content/projects";
 import { type Lang, localePath, ui } from "@/content/i18n";
 import { skillGroups, type SkillId } from "@/content/skills";
+import { uiExtra } from "@/content/ui-extra";
 import { EASE_OUT } from "@/lib/motion";
 import { container } from "@/lib/ui";
 
 /** Tylko to, czego potrzebuje lista — reszta case study nie trafia do paczki strony głównej. */
-export type SkillMapProject = Pick<Project, "slug" | "title" | "description" | "flow" | "skills">;
+export type SkillMapProject = Pick<Project, "slug" | "title" | "description" | "flow" | "skills"> & { status: string };
 
 
 /**
- * Interaktywna mapa umiejętności na czarnym pasie: wybór umiejętności przenosi pasujące
- * projekty na górę listy, pozostałe zostają przygaszone.
+ * Interaktywna mapa umiejętności na czarnym pasie: wybór umiejętności przestawia listę (nie filtruje):
+ * pasujące projekty idą na górę, pozostałe zostają niżej, przygaszone, pod etykietą „Pozostałe projekty”.
  */
 export function SkillMap({ projects, lang }: { projects: SkillMapProject[]; lang: Lang }) {
   const t = ui[lang].skills;
+  const x = uiExtra[lang];
   const labelOf = new Map<string, string>(skillGroups.flatMap((g) => g.skills.map((s) => [s.id, s.label[lang]] as const)));
   const [active, setActive] = useState<SkillId | null>(null);
   const reduce = useReducedMotion();
@@ -152,8 +155,8 @@ export function SkillMap({ projects, lang }: { projects: SkillMapProject[]; lang
                         )}
                         {s.label[lang]}{" "}
                         <span
-                          className={`grid h-5 min-w-5 place-items-center rounded-[3px] px-1 text-[12px] font-semibold tabular-nums transition-colors ${
-                            on ? "bg-on-accent/15" : "bg-white/10 text-text-muted-on-dark group-hover/chip:text-text-on-dark"
+                          className={`grid h-5 min-w-4 place-items-center text-[12px] font-medium tabular-nums transition-colors ${
+                            on ? "" : "text-text-muted-on-dark/80 group-hover/chip:text-text-muted-on-dark"
                           }`}
                         >
                           {on ? <Icon name="close" className="size-3" /> : <span>{n}<span className="sr-only"> {t.projects(n)}</span></span>}
@@ -178,45 +181,56 @@ export function SkillMap({ projects, lang }: { projects: SkillMapProject[]; lang
         </div>
 
         <div ref={resultsRef} className="order-2 flex scroll-mt-[88px] flex-col lg:order-none lg:col-start-2 lg:row-span-2 lg:row-start-1">
-          <div className="flex min-h-[44px] items-center justify-between gap-4 border-b border-white/60 pb-3 md:-mx-4 md:px-4">
-            <p aria-live="polite" className="text-[15px] font-semibold">
-              {active
-                ? matches.length > 0
-                  ? t.matching(labelOf.get(active) ?? "", matches.length, projects.length)
-                  : labelOf.get(active)
-                : t.all(projects.length)}
-            </p>
+          <div className="flex min-h-[44px] flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-white/60 pb-3 md:-mx-4 md:px-4">
+            <div aria-live="polite" className="min-w-0">
+              <p className="text-[15px] font-semibold">
+                {active
+                  ? matches.length > 0
+                    ? t.matching(labelOf.get(active) ?? "", matches.length, projects.length)
+                    : labelOf.get(active)
+                  : t.all(projects.length)}
+              </p>
+              {active && <p className="mt-1 text-[14px] leading-[145%] text-text-muted-on-dark">{x.skills.reorder}</p>}
+            </div>
             {active && (
               <button
                 type="button"
                 onClick={() => choose(null)}
-                className="min-h-[44px] shrink-0 cursor-pointer text-[15px] font-medium underline decoration-white/40 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+                className="inline-flex min-h-[44px] shrink-0 cursor-pointer items-center gap-2 rounded-xs border border-white/40 px-4 text-[15px] font-semibold transition-colors hover:border-accent hover:text-accent"
               >
+                <Icon name="close" className="size-4" />
                 {t.showAll}
               </button>
             )}
           </div>
 
           <ul id="lista-projektow" className="flex flex-col">
-            {ordered.map((p) => {
+            {ordered.flatMap((p, idx) => {
               const dim = active !== null && !p.skills.includes(active);
-              return (
+              // Granica między pasującymi a pozostałymi projektami: lista jest przestawiona, nie przefiltrowana.
+              const divider = dim && idx === matches.length && (
+                <motion.li key="pozostale" layout={!reduce} aria-hidden="true" className="pt-6 pb-1 text-[13px] font-semibold text-text-muted-on-dark md:-mx-4 md:px-4">
+                  {x.skills.others}
+                </motion.li>
+              );
+              const item = (
                 <motion.li
                   key={p.slug}
                   data-project={p.slug}
                   layout={!reduce}
                   transition={{ duration: 0.45, ease: EASE_OUT }}
                   className={`group relative grid gap-3 border-b border-white/15 py-6 md:-mx-4 md:rounded-xs md:px-4 transition-[opacity,background-color] duration-300 hover:bg-white/[0.04] focus-within:bg-white/[0.04] md:grid-cols-[minmax(0,1fr)_auto] md:items-start md:gap-8 ${
-                    dim ? "opacity-50 hover:opacity-80" : "opacity-100"
+                    dim ? "opacity-70 hover:opacity-90" : "opacity-100"
                   }`}
                 >
                   <div className="flex flex-col gap-2">
-                    <h3 className="font-display text-[22px] font-bold leading-[1.15] tracking-[-0.012em] text-balance md:text-[26px]">
+                    <h3 className="font-display text-[22px] font-bold leading-[1.15] tracking-[-0.012em] text-balance [overflow-wrap:anywhere] md:text-[26px]">
                       {/* Link na tytule, klikalny cały wiersz przez ::after. */}
                       <Link href={localePath(lang, `/projekty/${p.slug}/`)} className="transition-colors after:absolute after:inset-0 after:content-[''] group-hover:text-accent">
                         {p.title}
                       </Link>
                     </h3>
+                    {p.status && <StatusBadge status={p.status} label={x.status} dark />}
                     <p className="max-w-[56ch] text-[15px] leading-[150%] text-text-muted-on-dark">{p.description}</p>
                     <p className="mt-1 text-[14px] font-medium text-white/85">
                       <span className="sr-only">{t.flow} </span>
@@ -238,6 +252,7 @@ export function SkillMap({ projects, lang }: { projects: SkillMapProject[]; lang
                   </span>
                 </motion.li>
               );
+              return divider ? [divider, item] : [item];
             })}
           </ul>
         </div>
