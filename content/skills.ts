@@ -7,7 +7,7 @@ export const skillGroups = [
     title: { pl: "AI i modele językowe", en: "AI and language models" },
     icon: "brain",
     skills: [
-      { id: "llm", label: { pl: "API modeli językowych", en: "Language-model APIs" } },
+      { id: "llm", label: { pl: "API OpenAI i Anthropic", en: "OpenAI and Anthropic APIs" } },
       { id: "agents", label: { pl: "Agenci AI", en: "AI agents" } },
       { id: "bots", label: { pl: "Chatboty i voiceboty", en: "Chatbots and voicebots" } },
       { id: "speech", label: { pl: "Transkrypcja rozmów", en: "Call transcription" } },

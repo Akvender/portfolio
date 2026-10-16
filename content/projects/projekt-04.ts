@@ -1,6 +1,6 @@
 import type { Project } from "./types";
 
-/** Krótka forma dodatkowej realizacji. Narzędzia rezerwacji i płatności, rola i status do potwierdzenia. */
+/** Krótka forma dodatkowej realizacji. Płatności Stripe, WordPress, Meta i n8n potwierdzone; narzędzie rezerwacji, rola i status do potwierdzenia. */
 export const projekt04: Project = {
   slug: "rezerwacje-i-platnosci",
   number: "06",
@@ -13,12 +13,12 @@ export const projekt04: Project = {
   flow: ["Strona sprzedażowa", "Rezerwacja terminu", "Płatność online"],
   flowIcons: ["megaphone", "tasks", "cart"],
   featured: false,
-  meta: { client: "", role: "", period: "", status: "", stack: "Integracje API" },
+  meta: { client: "", role: "", period: "", status: "", stack: "WordPress · Stripe · n8n" },
   metrics: [],
   architecture: {
     columns: [
-      { title: "Wejście", items: ["Strona sprzedażowa"] },
-      { title: "Integracje", items: ["System rezerwacji", "Płatności online"] },
+      { title: "Wejście", items: ["Strona sprzedażowa (WordPress)", "Ruch z reklam Meta"] },
+      { title: "Integracje", items: ["System rezerwacji", "Płatności Stripe", "Workflowy n8n"] },
       { title: "Wynik", items: ["Termin zarezerwowany i opłacony w jednym procesie"] },
     ],
   },
@@ -30,11 +30,11 @@ export const projekt04: Project = {
     lead: "The sales pages needed more than a contact form. I connected them to a booking system and online payments, so a visitor can book a slot and pay in one process.",
     tags: ["Integrations", "Online sales"],
     flow: ["Sales page", "Slot booking", "Online payment"],
-    meta: { stack: "API integrations" },
+    meta: { stack: "WordPress · Stripe · n8n" },
     architecture: {
       columns: [
-        { title: "Input", items: ["Sales page"] },
-        { title: "Integrations", items: ["Booking system", "Online payments"] },
+        { title: "Input", items: ["Sales page (WordPress)", "Traffic from Meta ads"] },
+        { title: "Integrations", items: ["Booking system", "Stripe payments", "n8n workflows"] },
         { title: "Output", items: ["A slot booked and paid for in one process"] },
       ],
     },

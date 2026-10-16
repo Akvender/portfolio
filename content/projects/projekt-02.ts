@@ -13,7 +13,7 @@ export const projekt02: Project = {
   flow: ["Dane produktu", "Skrypt w Pythonie", "Model obrazów (API)", "Grafiki do sklepu"],
   flowIcons: ["box", "code", "sparkles", "image"],
   featured: false,
-  meta: { client: "Sklep internetowy", role: "", period: "", status: "", stack: "Python · API modeli obrazów" },
+  meta: { client: "Sklep internetowy", role: "", period: "", status: "Zakończony, narzędzie nie jest już używane", stack: "Python · API modeli obrazów" },
   metrics: [{ value: 400, label: "grafik produktowych" }],
   architecture: {
     columns: [
@@ -40,7 +40,7 @@ export const projekt02: Project = {
     lead: "An online store in a narrow, specialized niche needed a large number of consistent product images. I built a tool that creates them from product data using image-generation models.",
     tags: ["E-commerce", "Generative AI"],
     flow: ["Product data", "Python script", "Image model (API)", "Store images"],
-    meta: { client: "Online store", stack: "Python · image model APIs" },
+    meta: { client: "Online store", status: "Completed, the tool is no longer in use", stack: "Python · image model APIs" },
     architecture: {
       columns: [
         { title: "Input", items: ["Product data from the store"] },

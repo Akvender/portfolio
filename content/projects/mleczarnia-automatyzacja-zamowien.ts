@@ -1,7 +1,7 @@
 import type { Project } from "./types";
 
 /**
- * Cyfrowa karta zamówień dla mleczarni. Projekt we dwóch, prototyp w rozwoju; opis w budowie.
+ * Cyfrowa karta zamówień dla mleczarni. Projekt we dwóch, zaczynamy wdrożenie; opis w budowie.
  * Liczby i fakty z dokumentacji projektu.
  * Nazwy sklepów i ilości w tabeli są przykładowe.
  */
@@ -21,7 +21,7 @@ export const mleczarnia: Project = {
     client: "Mleczarnia, woj. łódzkie",
     role: "Analiza procesu i projekt systemu (we dwóch)",
     period: "2025–2026",
-    status: "Prototyp w rozwoju",
+    status: "Zaczynamy wdrożenie",
     stack: "Node.js · TypeScript · Comarch Optima",
   },
   metrics: [
@@ -129,7 +129,7 @@ export const mleczarnia: Project = {
     meta: {
       client: "Dairy, Łódź region",
       role: "Process analysis and system design (team of two)",
-      status: "Prototype in development",
+      status: "Starting deployment",
     },
     architecture: {
       columns: [

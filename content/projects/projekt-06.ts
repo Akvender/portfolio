@@ -8,7 +8,7 @@ import type { Project } from "./types";
 export const projekt06: Project = {
   slug: "agenci-ai",
   number: "05",
-  title: "Agenci AI do pracy na co dzień",
+  title: "Agenci AI w mojej pracy",
   description: "Zestaw agentów, którzy piszą i sprawdzają dokumentację, pilnują serwerów, robią research i układają plan tygodnia z nagrań głosowych.",
   lead: "Agentów AI buduję tam, gdzie powtarzalna praca polega na czytaniu, sprawdzaniu i porządkowaniu informacji. Każdy agent ma jedno zadanie i tylko takie uprawnienia, jakich do niego potrzebuje. W dokumentacji zmian agent, który pisze, nie ocenia własnej pracy: robi to osobny agent.",
   year: "",
@@ -17,7 +17,7 @@ export const projekt06: Project = {
   flow: ["Zadanie lub zmiana w kodzie", "Agent z wąskimi uprawnieniami", "Raport, dokumentacja lub plan"],
   flowIcons: ["tasks", "brain", "note"],
   featured: false,
-  meta: { client: "", role: "", period: "", status: "Używane na co dzień", stack: "Claude Code · API modeli językowych · Linux" },
+  meta: { client: "", role: "", period: "", status: "Używane w mojej pracy", stack: "Claude Code · API modeli językowych · Linux" },
   metrics: [],
   architecture: {
     columns: [
@@ -61,12 +61,12 @@ export const projekt06: Project = {
   ],
   // Wersja angielska
   en: {
-    title: "AI agents for everyday work",
+    title: "AI agents in my work",
     description: "A set of agents that write and verify documentation, watch over servers, do research and turn voice recordings into a weekly plan.",
     lead: "I build AI agents where repetitive work means reading, checking and organizing information. Each agent has one job and only the permissions it needs for it. In the documentation workflow, the agent that writes never reviews its own output: a separate agent does that.",
     tags: ["AI agents", "Internal tools"],
     flow: ["Task or code change", "Agent with narrow permissions", "Report, documentation or plan"],
-    meta: { status: "Used every day", stack: "Claude Code · Language-model APIs · Linux" },
+    meta: { status: "Used in my work", stack: "Claude Code · Language-model APIs · Linux" },
     architecture: {
       columns: [
         { title: "Input", items: ["Code change (pull request)"] },
