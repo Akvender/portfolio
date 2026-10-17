@@ -23,7 +23,7 @@ const content = {
   pl: {
     hero: {
       title: "Automatyzuję procesy, łączę systemy i buduję narzędzia z AI.",
-      lead: "Pomagam firmom ograniczać ręczną pracę i łączyć narzędzia, które dziś działają osobno. Analizuję proces, buduję rozwiązanie i zajmuję się jego wdrożeniem. Pracuję głównie z n8n, Pythonem i API modeli językowych.",
+      lead: "Pomagam firmom ograniczać ręczną pracę i łączyć narzędzia, które dziś działają osobno. Analizuję proces, buduję rozwiązanie i zajmuję się jego wdrożeniem.",
       status: "Otwarty na zlecenia i współpracę B2B",
       photo,
       photoAlt: "Robert Świeboda — portret na ciemnym tle",
