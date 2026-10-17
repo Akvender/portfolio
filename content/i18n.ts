@@ -38,7 +38,7 @@ const pl = {
   },
   rail: { label: "Kontakt i profile", contact: "Kontakt" },
   hero: {
-    primary: "Zobacz projekty",
+    primary: "Zobacz, co już działa",
     secondary: "Porozmawiajmy o współpracy",
     role: "AI developer od automatyzacji i integracji",
     toolsLabel: "Technologie i integracje, z których korzystam",
