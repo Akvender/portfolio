@@ -36,7 +36,12 @@ export function CaseHero({ project, lang, showFlow = true }: { project: Project;
               <StatusBadge status={project.meta.status} label={t.status} dark />
             </p>
           )}
-          <h1 className={`${h1} intro-up max-w-[22ch] text-balance [overflow-wrap:anywhere]`} style={d(120)}>{project.title}</h1>
+          <h1
+            className={`${h1} intro-up max-w-[22ch] text-balance [overflow-wrap:anywhere]`}
+            style={{ ...d(120), viewTransitionName: `project-${project.slug}` } as React.CSSProperties}
+          >
+            {project.title}
+          </h1>
           <p className="intro-up mt-5 max-w-[62ch] text-[18px] leading-[160%] text-text-muted-on-dark" style={d(220)}>{project.lead}</p>
           {!project.translated && t.notTranslated && (
             <p className="intro-up mt-5 inline-flex max-w-[62ch] items-start gap-2 rounded-xs border border-border-on-dark px-4 py-3 text-[14px] leading-[150%] text-text-muted-on-dark" style={d(260)}>

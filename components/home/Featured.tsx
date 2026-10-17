@@ -34,11 +34,15 @@ export function Featured({ projects, total, lang }: { projects: FeaturedProject[
 
         <RevealGroup as="ul" className="grid gap-4 md:grid-cols-3">
           {projects.map((p) => (
-            <RevealItem as="li" key={p.slug} className="group relative flex min-w-0 flex-col gap-4 rounded-xs border border-border bg-white p-6 transition-colors duration-300 hover:border-ink focus-within:border-ink">
+            <RevealItem as="li" key={p.slug} className="group relative flex min-w-0 flex-col gap-4 rounded-xs border border-border bg-white p-6 transition-colors duration-200 hover:border-ink focus-within:border-ink">
               <StatusBadge status={p.status} label={t.status} />
               <h3 className="font-display text-[22px] font-bold leading-[1.15] tracking-[-0.012em] text-balance [overflow-wrap:anywhere]">
                 {/* Link na tytule, klikalna cała karta przez ::after. */}
-                <Link href={localePath(lang, `/projekty/${p.slug}/`)} className="after:absolute after:inset-0 after:content-['']">
+                <Link
+                  href={localePath(lang, `/projekty/${p.slug}/`)}
+                  className="after:absolute after:inset-0 after:content-['']"
+                  style={{ viewTransitionName: `project-${p.slug}` } as React.CSSProperties}
+                >
                   {p.title}
                 </Link>
               </h3>
