@@ -41,7 +41,7 @@ export function Hero({ lang }: { lang: Lang }) {
   return (
     <section className="overflow-x-clip bg-ink pt-20 text-text-on-dark lg:pt-24">
       <div className={`${container} grid items-center gap-8 py-8 lg:min-h-[800px] lg:grid-cols-[minmax(0,1.18fr)_minmax(0,0.82fr)] lg:gap-16 lg:py-12`}>
-        <figure style={d(220)} className="intro-clip relative mx-auto h-[340px] w-full max-w-[440px] overflow-hidden lg:order-2 lg:h-[580px] lg:max-w-[500px]">
+        <figure data-parallax="0.06" style={d(220)} className="intro-clip relative mx-auto h-[340px] w-full max-w-[440px] overflow-hidden lg:order-2 lg:h-[580px] lg:max-w-[500px]">
           <Image
             src={asset(hero.photo)}
             alt={hero.photoAlt}

@@ -124,7 +124,7 @@ export function AutomationDemo({ lang }: { lang: Lang }) {
     <section id="demo" className="scroll-mt-24 bg-paper-soft text-text-primary">
       <div className={`${container} py-16 md:py-20 lg:py-24`}>
         <p className="mb-4 font-mono text-[12px] font-medium uppercase tracking-[0.08em] text-text-muted">{uiExtra[lang].eyebrow.demo}</p>
-        <h2 className={`${h2} max-w-[22ch] text-balance`}>{t.title}</h2>
+        <h2 data-reveal="blur" className={`${h2} max-w-[22ch] text-balance`}>{t.title}</h2>
         <p className="mt-4 hidden max-w-[62ch] text-[17px] leading-[155%] text-text-muted lg:block">{t.lead}</p>
 
         <div className="mt-10 grid gap-5 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:gap-x-6">

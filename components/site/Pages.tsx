@@ -7,6 +7,7 @@ import { Hero } from "@/components/home/Hero";
 import { About } from "@/components/home/Sections";
 import { SkillMap } from "@/components/home/SkillMap";
 import { DemoStory } from "@/components/motion/DemoStory";
+import { MotionLayer } from "@/components/motion/MotionLayer";
 import { Contact } from "@/components/site/Contact";
 import { pageMetadata } from "@/components/site/RootShell";
 import { type Lang, ui } from "@/content/i18n";
@@ -19,6 +20,7 @@ export function HomeView({ lang }: { lang: Lang }) {
   const others = all.filter((project) => !project.featured);
   return (
     <>
+      <MotionLayer />
       <Hero lang={lang} />
       <Featured lang={lang} projects={featured} others={others} total={all.length} />
       <SkillMap lang={lang} projects={projects} />

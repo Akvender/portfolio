@@ -174,44 +174,35 @@ a {
 
 /* ===== Warstwa ruchu v2 (Claude, 18.10) =====
    Zasada jak w analizie Bombardiera: treść wchodzi wolno z długim hamowaniem, reakcje na kursor szybkie (0,2 s).
-   Wejścia przy przewijaniu w czystym CSS (animation-timeline: view()): bez JS i bez czekania na hydrację;
-   przeglądarki bez wsparcia pokazują treść od razu. Przy prefers-reduced-motion nic się nie rusza. */
+   Wejście hero i odliczanie liczb w CSS (bez czekania na hydrację); reszta sterowana przewijaniem przez MotionLayer.
+   Przy prefers-reduced-motion nic się nie rusza. */
 @property --num { syntax: "<integer>"; initial-value: 0; inherits: false; }
 @keyframes count-up { from { --num: 0; } to { --num: var(--to); } }
-@keyframes reveal-up { from { opacity: 0; transform: translateY(var(--rv-y, 36px)); } }
 @media (max-width: 767px) { :root { --rv-y: 20px; } }
-@keyframes reveal-clip { from { opacity: 0.4; clip-path: inset(18% 0 0 0 round 16px); transform: scale(1.04); } }
 @keyframes intro-zoom { from { transform: scale(1.08); } }
-@keyframes progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 
 .count-up { counter-reset: n var(--num); animation: count-up 1.6s cubic-bezier(0.1, 0.9, 0.1, 1) var(--d, 0ms) both; }
 .count-up::after { content: counter(n) attr(data-suffix); }
 .intro-zoom { animation: intro-zoom 1.4s cubic-bezier(0.1, 0.9, 0.1, 1) var(--d, 0ms) both; }
 
-[data-reveal]:nth-child(2) { --i: 1; }
-[data-reveal]:nth-child(3) { --i: 2; }
-[data-reveal]:nth-child(4) { --i: 3; }
-[data-reveal]:nth-child(5) { --i: 4; }
-[data-reveal]:nth-child(6) { --i: 5; }
 
-@media (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: view()) {
-    [data-reveal] {
-      animation: reveal-up linear both;
-      animation-timing-function: cubic-bezier(0.1, 0.9, 0.1, 1);
-      animation-timeline: view();
-      /* zakres w pikselach, nie w % wysokości: wysokie karty na telefonie nie zostają półprzezroczyste podczas czytania */
-      animation-range: entry calc(var(--i, 0) * 24px) entry calc(180px + var(--i, 0) * 24px);
-    }
-    [data-reveal="clip"] { animation-name: reveal-clip; }
-  }
-  @supports (animation-timeline: scroll()) {
-    .scroll-progress {
-      animation: progress linear both;
-      animation-timeline: scroll(root);
-    }
-  }
+/* Ruch sterowany przewijaniem: MotionLayer ustawia --p (0..1) i --py; klasa .ml-on tylko przy działającym JS i bez reduced motion.
+   (1 - p)² daje szybki start i długie hamowanie jak cubic-bezier(0.1, 0.9, 0.1, 1). */
+.ml-on [data-reveal] {
+  --q: calc((1 - var(--p, 1)) * (1 - var(--p, 1)));
+  opacity: var(--p, 1);
+  transform: translateY(calc(var(--q) * var(--rv-y, 36px)));
+  will-change: transform, opacity;
 }
+.ml-on [data-reveal="blur"] { filter: blur(calc(var(--q) * 14px)); }
+.ml-on [data-reveal="clip"] {
+  opacity: 1;
+  clip-path: inset(calc(var(--q) * 22%) 0 0 0 round 12px);
+  transform: scale(calc(1 + var(--q) * 0.06));
+}
+.ml-on [data-reveal="scale"] { transform: translateY(calc(var(--q) * var(--rv-y, 36px))) scale(calc(1 - var(--q) * 0.08)); }
+.ml-on [data-parallax] { transform: translateY(var(--py, 0px)); will-change: transform; }
+.ml-on .scroll-progress { transform: scaleX(var(--scroll, 0)); }
 @media (prefers-reduced-motion: reduce) {
   .scroll-progress { display: none; }
 }
