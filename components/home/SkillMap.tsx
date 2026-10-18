@@ -32,7 +32,7 @@ export function SkillMap({ projects, lang }: { projects: SkillMapProject[]; lang
     <section id="umiejetnosci" className="scroll-mt-24 bg-paper text-text-primary">
       <div className={`${container} py-16 md:py-20 lg:py-24`}>
         <p className="mb-4 font-mono text-[12px] font-medium uppercase tracking-[0.08em] text-text-muted">{x.eyebrow.skills}</p>
-        <h2 className={`${h2} max-w-[24ch] text-balance`}>{t.title}</h2>
+        <h2 data-reveal="" className={`${h2} max-w-[24ch] text-balance`}>{t.title}</h2>
         <p className="mt-4 max-w-[66ch] text-[17px] leading-[155%] text-text-muted">{x.skills.lead}</p>
 
         {/* Mobile: grupy rozwijane (pierwsza otwarta). Desktop: 4 kolumny zawsze widoczne. Zamknięty <details> chowa treść niezależnie od CSS, dlatego dwa układy. */}
@@ -50,7 +50,7 @@ export function SkillMap({ projects, lang }: { projects: SkillMapProject[]; lang
         </div>
         <div className="mt-10 hidden gap-x-6 lg:grid lg:grid-cols-4">
           {mainGroups.map((group) => (
-            <div key={group.title.pl} className="border-t-2 border-ink">
+            <div key={group.title.pl} data-reveal="" className="border-t-2 border-ink">
               <h3 className="flex min-h-[64px] items-center font-display text-[18px] font-bold leading-[1.2]">{group.title[lang]}</h3>
               {list(group)}
             </div>

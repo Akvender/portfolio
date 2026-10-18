@@ -96,6 +96,7 @@ export function RootShell({ lang, children }: { lang: Lang; children: React.Reac
         </a>
         <Providers>
           <Nav lang={lang} />
+          <div aria-hidden="true" className="scroll-progress pointer-events-none fixed inset-x-0 top-0 z-[60] h-[2px] origin-left scale-x-0 bg-accent" />
           <main id="main">{children}</main>
           <footer className="border-t border-border-on-dark bg-ink text-text-muted-on-dark">
             <div className={`${container} flex min-h-[80px] flex-col justify-between gap-3 py-5 text-[14px] sm:flex-row sm:flex-wrap sm:items-center`}>

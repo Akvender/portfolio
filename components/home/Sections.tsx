@@ -10,7 +10,7 @@ import { asset, body, container, h2 } from "@/lib/ui";
 export function SectionHeader({ title, dark = false, children }: { title: string; dark?: boolean; children?: ReactNode }) {
   return (
     <div className={children ? "grid gap-4 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:items-end lg:gap-16" : "max-w-[760px]"}>
-      <h2 className={`${h2} text-balance`}>{title}</h2>
+      <h2 data-reveal="" className={`${h2} text-balance`}>{title}</h2>
       {children && <div className={`${body} ${dark ? "text-text-muted-on-dark" : "text-text-muted"}`}>{children}</div>}
     </div>
   );
@@ -39,7 +39,7 @@ export function About({ lang }: { lang: Lang }) {
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-start lg:gap-16">
           <div>
             <p className="mb-4 font-mono text-[12px] font-medium uppercase tracking-[0.08em] text-text-muted">{x.eyebrow.about}</p>
-            <h2 className={`${h2} max-w-[20ch] text-balance`}>{about.title}</h2>
+            <h2 data-reveal="" className={`${h2} max-w-[20ch] text-balance`}>{about.title}</h2>
             <p className="mt-6 max-w-[60ch] text-[18px] leading-[165%] text-text-muted">{x.about.summary}</p>
           </div>
           {hasPhoto && (
@@ -56,7 +56,7 @@ export function About({ lang }: { lang: Lang }) {
 
         <ol className="grid gap-6 lg:grid-cols-4 lg:gap-6">
           {about.steps.map((step, index) => (
-            <li key={step.title} className="grid grid-cols-[32px_minmax(0,1fr)] gap-x-3 border-t border-border pt-4 lg:block">
+            <li key={step.title} data-reveal="" className="grid grid-cols-[32px_minmax(0,1fr)] gap-x-3 border-t border-border pt-4 lg:block">
               <p className="font-mono text-[12px] text-text-muted">{String(index + 1).padStart(2, "0")}</p>
               <div>
                 <h3 className="font-display text-[19px] font-bold leading-[1.2]">{step.title}</h3>
@@ -71,7 +71,7 @@ export function About({ lang }: { lang: Lang }) {
           <div className="grid gap-5 lg:grid-cols-3">
             {proofs.map((proof) => <CertCard key={proof.src} proof={proof} t={ui[lang].cert} />)}
             {[...courses].reverse().map((course) => (
-              <article key={course.title} className="flex h-full flex-col rounded-lg border border-border bg-white p-6">
+              <article key={course.title} data-reveal="" className="lift flex h-full flex-col rounded-lg border border-border bg-white p-6">
                 <h3 className="font-display text-[21px] font-bold leading-[1.15] tracking-[-0.015em]">{course.title}</h3>
                 <p className="mt-3 font-mono text-[11px] leading-[145%] text-text-muted">{course.meta}</p>
                 <p className="mt-4 text-[15px] leading-[160%] text-text-muted">{course.text}</p>

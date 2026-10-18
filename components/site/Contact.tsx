@@ -35,7 +35,7 @@ export function Contact({ lang, compact = false }: { lang: Lang; compact?: boole
       <section id="kontakt" className="scroll-mt-24 bg-ink text-text-on-dark">
         <div className={`${container} flex flex-col gap-8 py-16 xl:flex-row xl:items-end xl:justify-between xl:gap-16`}>
           <div>
-            <h2 className={`${h2} max-w-[22ch] text-balance`}>{t.title}</h2>
+            <h2 data-reveal="" className={`${h2} max-w-[22ch] text-balance`}>{t.title}</h2>
             <p className="mt-4 max-w-[52ch] text-[17px] leading-[160%] text-text-muted-on-dark">{x.contactCompact.lead}</p>
           </div>
           <div className="flex min-w-0 flex-wrap items-center gap-3 xl:justify-end">{write}<Profiles /></div>
@@ -49,7 +49,7 @@ export function Contact({ lang, compact = false }: { lang: Lang; compact?: boole
       <div className={`${container} grid gap-12 py-16 md:py-20 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-20 lg:py-24`}>
         <div className="min-w-0">
           <p className="mb-4 font-mono text-[12px] font-medium uppercase tracking-[0.08em] text-accent">{x.eyebrow.contact}</p>
-          <h2 className={`${h2} max-w-[18ch] text-balance`}>{t.title}</h2>
+          <h2 data-reveal="" className={`${h2} max-w-[18ch] text-balance`}>{t.title}</h2>
           <p className="mt-5 max-w-[50ch] text-[18px] leading-[160%] text-text-muted-on-dark">{x.contactCompact.lead}</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             {write}
@@ -64,7 +64,7 @@ export function Contact({ lang, compact = false }: { lang: Lang; compact?: boole
           <p className="text-[14px] font-semibold text-text-muted-on-dark">{t.topicsLabel}</p>
           <ul className="mt-4 flex flex-col border-t border-border-on-dark">
             {t.topics.map((topic, index) => (
-              <li key={topic.label}>
+              <li key={topic.label} data-reveal="">
                 <a
                   href={mail(topic.subject)}
                   aria-haspopup="dialog"

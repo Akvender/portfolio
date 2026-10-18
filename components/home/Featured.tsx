@@ -18,7 +18,7 @@ function ProjectCard({ project, lang, large = false }: { project: LocalizedProje
   const href = localePath(lang, `/projekty/${project.slug}/`);
 
   return (
-    <article className={`group relative flex min-w-0 flex-col gap-5 overflow-hidden rounded-lg bg-ink-soft p-4 md:p-6 ${large ? "lg:row-span-2" : ""}`}>
+    <article data-reveal="" className={`lift group relative flex min-w-0 flex-col gap-5 overflow-hidden rounded-lg bg-ink-soft p-4 md:p-6 ${large ? "lg:row-span-2" : ""}`}>
       <div className="overflow-hidden rounded-md border border-border-on-dark bg-ink">
         <FlowCover
           id={`featured-${project.slug}`}
@@ -72,7 +72,7 @@ export function Featured({ projects, others, total, lang }: { projects: Localize
         <div className="grid items-end gap-5 lg:grid-cols-[minmax(0,1fr)_auto]">
           <div>
             <p className="mb-4 font-mono text-[12px] font-medium uppercase tracking-[0.08em] text-accent">{t.eyebrow.work}</p>
-            <h2 id="realizacje-tytul" className={`${h2} max-w-[20ch] text-balance`}>{t.featured.title}</h2>
+            <h2 id="realizacje-tytul" data-reveal="" className={`${h2} max-w-[20ch] text-balance`}>{t.featured.title}</h2>
           </div>
           <Link href={localePath(lang, "/#umiejetnosci")} className="group inline-flex min-h-[48px] items-center gap-2 text-[15px] font-semibold">
             {t.featured.all(total)}
@@ -86,7 +86,7 @@ export function Featured({ projects, others, total, lang }: { projects: Localize
 
         <ul className="mt-4 flex flex-col border-t border-border-on-dark">
           {others.map((project) => (
-            <li key={project.slug} className="group relative border-b border-border-on-dark py-5">
+            <li key={project.slug} data-reveal="" className="group relative border-b border-border-on-dark py-5">
               <div className="grid gap-2 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-8">
                 <div>
                   <h3 className="font-display text-[20px] font-bold leading-[1.2] tracking-[-0.015em]">

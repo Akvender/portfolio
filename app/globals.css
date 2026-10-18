@@ -171,3 +171,50 @@ a {
     transition: opacity 150ms ease, overlay 150ms allow-discrete, display 150ms allow-discrete;
   }
 }
+
+/* ===== Warstwa ruchu v2 (Claude, 18.10) =====
+   Zasada jak w analizie Bombardiera: treść wchodzi wolno z długim hamowaniem, reakcje na kursor szybkie (0,2 s).
+   Wejścia przy przewijaniu w czystym CSS (animation-timeline: view()): bez JS i bez czekania na hydrację;
+   przeglądarki bez wsparcia pokazują treść od razu. Przy prefers-reduced-motion nic się nie rusza. */
+@property --num { syntax: "<integer>"; initial-value: 0; inherits: false; }
+@keyframes count-up { from { --num: 0; } to { --num: var(--to); } }
+@keyframes reveal-up { from { opacity: 0; transform: translateY(36px); } }
+@keyframes reveal-clip { from { opacity: 0.4; clip-path: inset(18% 0 0 0 round 16px); transform: scale(1.04); } }
+@keyframes intro-zoom { from { transform: scale(1.08); } }
+@keyframes progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+.count-up { counter-reset: n var(--num); animation: count-up 1.6s cubic-bezier(0.1, 0.9, 0.1, 1) var(--d, 0ms) both; }
+.count-up::after { content: counter(n) attr(data-suffix); }
+.intro-zoom { animation: intro-zoom 1.4s cubic-bezier(0.1, 0.9, 0.1, 1) var(--d, 0ms) both; }
+
+[data-reveal]:nth-child(2) { --i: 1; }
+[data-reveal]:nth-child(3) { --i: 2; }
+[data-reveal]:nth-child(4) { --i: 3; }
+[data-reveal]:nth-child(5) { --i: 4; }
+[data-reveal]:nth-child(6) { --i: 5; }
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    [data-reveal] {
+      animation: reveal-up linear both;
+      animation-timing-function: cubic-bezier(0.1, 0.9, 0.1, 1);
+      animation-timeline: view();
+      animation-range: entry calc(var(--i, 0) * 5%) entry calc(45% + var(--i, 0) * 5%);
+    }
+    [data-reveal="clip"] { animation-name: reveal-clip; }
+  }
+  @supports (animation-timeline: scroll()) {
+    .scroll-progress {
+      animation: progress linear both;
+      animation-timeline: scroll(root);
+    }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress { display: none; }
+}
+
+/* Karty i wiersze: podniesienie i strzałka przy najechaniu (0,2 s). */
+.lift { transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 200ms ease; }
+.lift:hover, .lift:focus-within { transform: translateY(-4px); box-shadow: 0 24px 48px -28px rgb(0 0 0 / 0.6); }
+@media (prefers-reduced-motion: reduce) { .lift:hover, .lift:focus-within { transform: none; } }
