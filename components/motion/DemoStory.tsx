@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "motion/react";
 import { Arrow } from "@/components/site/Arrow";
 import { type Lang, localePath } from "@/content/i18n";
@@ -23,9 +23,9 @@ const ease = (t: number) => {
 };
 
 const CARD_LAYOUT = [
-  { pos: "left-[5%] top-[42%] z-30 w-[62%] bg-accent text-ink", rotate: -6, depth: 0 },
-  { pos: "left-[24%] top-[25%] z-20 w-[58%] bg-white text-ink", rotate: 2, depth: -40 },
-  { pos: "left-[43%] top-[12%] z-10 w-[52%] bg-paper text-ink", rotate: 8, depth: -80 },
+  { pos: "left-[6%] top-[46%] z-30 w-[68%] md:left-[5%] md:top-[42%] md:w-[62%] bg-accent text-ink", rotate: -6, depth: 0 },
+  { pos: "left-[18%] top-[28%] z-20 w-[64%] md:left-[24%] md:top-[25%] md:w-[58%] bg-white text-ink", rotate: 2, depth: -40 },
+  { pos: "left-[30%] top-[10%] z-10 w-[60%] md:left-[43%] md:top-[12%] md:w-[52%] bg-paper text-ink", rotate: 8, depth: -80 },
 ];
 
 type StoryCard = { title: string; meta: string; text: string };
@@ -52,10 +52,10 @@ const reducedFinal = "motion-reduce:!opacity-100 motion-reduce:![filter:none]";
 
 const cardClass = "absolute rounded-xl p-5 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.25)]";
 
-function Card({ p, index, card }: { p: MotionValue<number>; index: number; card: StoryCard }) {
+function Card({ p, index, card, travel }: { p: MotionValue<number>; index: number; card: StoryCard; travel: number }) {
   const l = CARD_LAYOUT[index];
   const start = 0.18 + index * 0.08;
-  const y = useTransform(p, (v) => 140 * (1 - seg(v, start, start + 0.22, true)));
+  const y = useTransform(p, (v) => travel * (1 - seg(v, start, start + 0.22, true)));
   const rotateX = useTransform(p, (v) => 28 * (1 - seg(v, start, start + 0.22, true)));
   const opacity = useTransform(p, (v) => seg(v, start, start + 0.12));
   // wachlarz: karty najpierw leżą prosto, potem obracają się do pozycji końcowej i rozchodzą w głąb
@@ -85,10 +85,24 @@ function Word({ p, index, count, word }: { p: MotionValue<number>; index: number
   );
 }
 
+/** Wąski ekran (< 768 px): krótsza droga kart. Bez nasłuchu przy SSR. */
+function useNarrow() {
+  const [narrow, setNarrow] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const on = () => setNarrow(mq.matches);
+    on();
+    mq.addEventListener("change", on);
+    return () => mq.removeEventListener("change", on);
+  }, []);
+  return narrow;
+}
+
 export function DemoStory({ lang }: { lang: Lang }) {
   const t = uiExtra[lang].story;
   const ref = useRef<HTMLElement>(null);
   const still = !!useReducedMotion();
+  const narrow = useNarrow();
   const { scrollYProgress: p } = useScroll({ target: ref, offset: ["start start", "end end"] });
 
   const bgX = useTransform(p, (v) => `${10 - 32 * seg(v, 0, 1)}%`);
@@ -99,8 +113,8 @@ export function DemoStory({ lang }: { lang: Lang }) {
   const words = t.title.split(" ");
 
   return (
-    <section ref={ref} aria-labelledby="demo-story-title" className="relative h-[250vh] max-md:h-[200vh] motion-reduce:h-auto">
-      <div className="sticky top-0 h-screen overflow-hidden bg-paper-soft motion-reduce:relative motion-reduce:h-auto">
+    <section ref={ref} aria-labelledby="demo-story-title" className="relative h-[250vh] max-md:h-[170vh] motion-reduce:h-auto">
+      <div className="sticky top-0 h-svh overflow-hidden bg-paper-soft motion-reduce:relative motion-reduce:h-auto">
         <div className="grid h-full grid-rows-[minmax(0,1fr)_auto] lg:grid-cols-2 lg:grid-rows-1 motion-reduce:min-h-[720px]">
           <div className="relative min-h-0 overflow-hidden bg-ink">
             <motion.p
@@ -108,7 +122,7 @@ export function DemoStory({ lang }: { lang: Lang }) {
               data-anim="arc-title"
               data-anim-index="0"
               style={still ? undefined : { x: bgX }}
-              className="absolute inset-x-0 top-[12%] whitespace-nowrap text-center font-display text-[13vw] font-extrabold tracking-[-0.05em] text-text-on-dark/[0.04] lg:text-[7vw]"
+              className="absolute inset-x-0 top-[12%] whitespace-nowrap text-center font-display text-[16vw] font-extrabold tracking-[-0.05em] text-text-on-dark/[0.04] lg:text-[7vw]"
             >
               {t.backgroundWord}
             </motion.p>
@@ -119,7 +133,7 @@ export function DemoStory({ lang }: { lang: Lang }) {
               style={still ? undefined : { scale: glowScale, opacity: glowOpacity }}
               className="absolute bottom-[-12%] right-[-8%] size-[65%] rounded-full bg-accent/80 blur-[90px]"
             />
-            <div data-anim="card-stack" data-anim-index="0" className="absolute inset-0 mx-auto max-w-[620px] [perspective:1200px] [transform-style:preserve-3d]">
+            <div data-anim="card-stack" data-anim-index="0" className="absolute inset-x-0 bottom-0 top-16 mx-auto max-w-[620px] lg:top-20 [perspective:1200px] [transform-style:preserve-3d]">
               {t.cards.map((card, index) =>
                 still ? (
                   <article
@@ -132,7 +146,7 @@ export function DemoStory({ lang }: { lang: Lang }) {
                     <CardBody card={card} />
                   </article>
                 ) : (
-                  <Card key={card.title} p={p} index={index} card={card} />
+                  <Card key={card.title} p={p} index={index} card={card} travel={narrow ? 80 : 140} />
                 ),
               )}
             </div>
