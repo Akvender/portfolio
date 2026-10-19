@@ -1,29 +1,26 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
-import { type Lang, ui } from "@/content/i18n";
-import { getContent } from "@/content/site";
 import { CertCard } from "@/components/home/CertCard";
 import { Arrow } from "@/components/site/Arrow";
-import { Reveal, RevealGroup, RevealItem } from "@/components/site/Reveal";
-import { asset, body, container, h2, sectionY } from "@/lib/ui";
+import { type Lang, ui } from "@/content/i18n";
+import { getContent } from "@/content/site";
+import { uiExtra } from "@/content/ui-extra";
+import { asset, body, container, h2 } from "@/lib/ui";
 
-/** Nagłówek sekcji: tytuł po lewej, opis — na desktopie — w osobnej kolumnie po prawej. */
 export function SectionHeader({ title, dark = false, children }: { title: string; dark?: boolean; children?: ReactNode }) {
   return (
-    <Reveal className={children ? "grid gap-4 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:items-end lg:gap-16" : "max-w-[760px]"}>
-      <h2 className={`${h2} text-balance`}>{title}</h2>
+    <div className={children ? "grid gap-4 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:items-end lg:gap-16" : "max-w-[760px]"}>
+      <h2 data-reveal="blur" className={`${h2} text-balance`}>{title}</h2>
       {children && <div className={`${body} ${dark ? "text-text-muted-on-dark" : "text-text-muted"}`}>{children}</div>}
-    </Reveal>
+    </div>
   );
 }
 
 export function Tags({ tags }: { tags: readonly string[] }) {
   return (
     <ul className="flex flex-wrap gap-2">
-      {tags.map((t, i) => (
-        <li key={i} className="rounded-xs border border-border px-2.5 py-1 text-[13px] font-medium text-text-muted">
-          {t}
-        </li>
+      {tags.map((tag, index) => (
+        <li key={index} className="rounded-xs border border-border px-2.5 py-1 text-[13px] font-medium text-text-muted">{tag}</li>
       ))}
     </ul>
   );
@@ -34,92 +31,68 @@ export function About({ lang }: { lang: Lang }) {
   const t = ui[lang].about;
   // Bez zdjęcia sekcja idzie w jednej kolumnie.
   const hasPhoto = about.photo !== "";
+  const x = uiExtra[lang];
+
   return (
-    <section id="o-mnie" className="scroll-mt-[72px] bg-paper">
-      <div className={`${container} ${sectionY} flex flex-col gap-16 lg:gap-24`}>
-        <div className={hasPhoto ? "grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] lg:items-center lg:gap-16" : ""}>
+    <section id="o-mnie" className="scroll-mt-24 bg-paper text-text-primary">
+      <div className={`${container} flex flex-col gap-16 py-16 md:py-20 lg:gap-20 lg:py-24`}>
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-start lg:gap-16">
+          <div>
+            <p className="mb-4 font-mono text-[12px] font-medium uppercase tracking-[0.08em] text-text-muted">{x.eyebrow.about}</p>
+            <h2 data-reveal="blur" className={`${h2} max-w-[20ch] text-balance`}>{about.title}</h2>
+            <p className="mt-6 max-w-[60ch] text-[18px] leading-[165%] text-text-muted">{x.about.summary}</p>
+          </div>
           {hasPhoto && (
-            <Reveal>
-              <Image
-                src={asset(about.photo)}
-                alt={about.photoAlt}
-                width={1000}
-                height={1100}
-                sizes="(min-width: 1024px) 520px, 100vw"
-                className="aspect-[10/11] w-full rounded-xs object-cover"
-              />
-            </Reveal>
+            <Image
+              src={asset(about.photo)}
+              alt={about.photoAlt}
+              width={1000}
+              height={1100}
+              sizes="(min-width: 1024px) 520px, 100vw"
+              className="hidden aspect-[4/3] w-full rounded-lg bg-paper-soft object-cover lg:block"
+            />
           )}
-          <Reveal delay={0.05} className="flex flex-col gap-8">
-            <h2 className={`${h2} mark-heading max-w-[18ch] text-balance`}>{about.title}</h2>
-            <div className="flex flex-col gap-5">
-              {about.paragraphs.map((p, i) => (
-                <p key={i} className="max-w-[62ch] text-[17px] leading-[165%] text-text-primary/85">
-                  {p}
-                </p>
-              ))}
-            </div>
-          </Reveal>
         </div>
 
-        <div className="flex flex-col gap-6">
-          <Reveal>
-            <h3 className="font-display text-[26px] font-bold leading-[1.15]">{t.howIWork}</h3>
-          </Reveal>
-          {/* Oś czasu: kwadratowy znacznik i kropkowana linia prowadząca do następnego kroku. */}
-          <RevealGroup as="ol" className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
-            {about.steps.map((s, i) => (
-              <RevealItem as="li" key={s.title} className="flex flex-col gap-4 lg:pr-8">
-                <div aria-hidden="true" className="flex items-center gap-3">
-                  <span className="size-3 shrink-0 bg-accent" />
-                  <span className="h-0 flex-1 border-t-2 border-dotted border-ink/30" />
-                </div>
-                <p className="text-[14px] font-semibold text-text-muted">{t.step} {i + 1}</p>
-                <h4 className="-mt-2 font-display text-[22px] font-bold leading-[1.2]">{s.title}</h4>
-                <p className="text-[15px] leading-[160%] text-text-muted">{s.text}</p>
-              </RevealItem>
-            ))}
-          </RevealGroup>
-        </div>
+        <ol className="grid gap-6 lg:grid-cols-4 lg:gap-6">
+          {about.steps.map((step, index) => (
+            <li key={step.title} data-reveal="" className="grid grid-cols-[32px_minmax(0,1fr)] gap-x-3 border-t border-border pt-4 lg:block">
+              <p className="font-mono text-[12px] text-text-muted">{String(index + 1).padStart(2, "0")}</p>
+              <div>
+                <h3 className="font-display text-[19px] font-bold leading-[1.2]">{step.title}</h3>
+                <p className="mt-2 text-[15px] leading-[155%] text-text-muted">{step.text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
 
-        <div id="certyfikaty" className="flex scroll-mt-[88px] flex-col gap-6">
-          <Reveal>
-            <h3 className="font-display text-[26px] font-bold leading-[1.15]">{t.certs}</h3>
-          </Reveal>
-          <RevealGroup className="grid gap-x-12 gap-y-6 lg:grid-cols-2">
-            {proofs.map((p) => (
-              <RevealItem key={p.src}>
-                <CertCard proof={p} t={ui[lang].cert} />
-              </RevealItem>
-            ))}
-            {/* Kursy bez certyfikatu: sam opis. */}
-            {courses.map((c) => (
-              <RevealItem key={c.title} className="flex flex-col gap-3 border-t border-border pt-8">
-                <h4 className="font-display text-[24px] font-bold leading-[1.15] tracking-[-0.02em]">{c.title}</h4>
-                <p className="text-[14px] font-medium text-text-muted">{c.meta}</p>
-                <p className="max-w-[60ch] text-[16px] leading-[160%] text-text-primary/85">{c.text}</p>
-                {c.details && c.link && (
-                  <details className="group">
-                    <summary className="inline-flex min-h-[44px] cursor-pointer list-none items-center gap-2 text-[15px] font-semibold [&::-webkit-details-marker]:hidden">
-                      {c.more}
-                      <Arrow dir="down" className="transition-transform duration-200 group-open:rotate-180" />
+        <div id="certyfikaty" className="scroll-mt-24">
+          <p className="mb-5 font-mono text-[12px] font-medium uppercase tracking-[0.08em] text-text-muted">{t.certs}</p>
+          <div className="grid gap-5 lg:grid-cols-3">
+            {proofs.map((proof) => <CertCard key={proof.src} proof={proof} t={ui[lang].cert} />)}
+            {[...courses].reverse().map((course) => (
+              <article key={course.title} data-reveal="scale" className="lift flex h-full flex-col rounded-lg border border-border bg-white p-6">
+                <h3 className="font-display text-[21px] font-bold leading-[1.15] tracking-[-0.015em]">{course.title}</h3>
+                <p className="mt-3 font-mono text-[11px] leading-[145%] text-text-muted">{course.meta}</p>
+                <p className="mt-4 text-[15px] leading-[160%] text-text-muted">{course.text}</p>
+                {course.details && course.link && (
+                  <details className="group mt-auto pt-3">
+                    <summary className="inline-flex min-h-[48px] cursor-pointer list-none items-center gap-2 text-[15px] font-semibold [&::-webkit-details-marker]:hidden">
+                      {course.more}<Arrow dir="down" className="text-accent transition-transform duration-200 group-open:rotate-180" />
                     </summary>
-                    <ul className="mt-2 flex flex-col gap-2 border-l-2 border-accent pl-4 text-[15px] leading-[150%] text-text-primary/85">
-                      {c.details.map((d) => (
-                        <li key={d}>{d}</li>
-                      ))}
+                    <ul className="mt-2 flex flex-col gap-2 border-l border-border pl-4 text-[14px] leading-[150%] text-text-muted">
+                      {course.details.map((detail) => <li key={detail}>{detail}</li>)}
                       <li>
-                        <a href={c.link.href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[44px] items-center gap-2 font-semibold underline underline-offset-4 hover:text-accent-strong">
-                          {c.link.label}
-                          <Arrow dir="up-right" />
+                        <a href={course.link.href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[48px] items-center gap-2 font-semibold text-text-primary underline underline-offset-4">
+                          {course.link.label}<Arrow dir="up-right" className="text-accent" />
                         </a>
                       </li>
                     </ul>
                   </details>
                 )}
-              </RevealItem>
+              </article>
             ))}
-          </RevealGroup>
+          </div>
         </div>
       </div>
     </section>
