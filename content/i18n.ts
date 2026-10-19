@@ -18,9 +18,9 @@ const pl = {
   htmlLang: "pl",
   ogLocale: "pl_PL",
   meta: {
-    title: "AI developer od automatyzacji i integracji",
+    title: "Automatyzacje n8n i integracje z AI · Łódź / zdalnie",
     description:
-      "Robert Świeboda, AI developer od automatyzacji i integracji: automatyzacje procesów, integracje systemów i narzędzia z AI. Projekty, umiejętności i kontakt.",
+      "Robert Świeboda: wdrożenia n8n, integracje systemów (CRM, ERP, API) i narzędzia z AI dla firm. Łódź i zdalnie. Projekty, umiejętności i kontakt.",
   },
   skipToContent: "Przejdź do treści",
   nav: {
@@ -40,7 +40,7 @@ const pl = {
   hero: {
     primary: "Zobacz, co już działa",
     secondary: "Porozmawiajmy o współpracy",
-    role: "AI developer od automatyzacji i integracji",
+    role: "Automatyzacje i integracje z AI",
     toolsLabel: "Technologie i integracje, z których korzystam",
     scroll: "Przewiń dalej",
     pause: "Zatrzymaj przewijanie narzędzi",
@@ -121,9 +121,9 @@ const en: UI = {
   htmlLang: "en",
   ogLocale: "en_US",
   meta: {
-    title: "AI developer for automation and integrations",
+    title: "n8n automation and AI integrations · Łódź, Poland / remote",
     description:
-      "Robert Świeboda, AI developer for automation and integrations: process automation, system integrations and AI-powered tools. Projects, skills and contact.",
+      "Robert Świeboda: n8n implementations, system integrations (CRM, ERP, APIs) and AI-powered tools for businesses. Łódź, Poland and remote. Projects, skills and contact.",
   },
   skipToContent: "Skip to content",
   nav: {
@@ -143,7 +143,7 @@ const en: UI = {
   hero: {
     primary: "See projects",
     secondary: "Let's talk about working together",
-    role: "AI developer for automation and integrations",
+    role: "Automation and AI integrations",
     toolsLabel: "Technologies and integrations I work with",
     scroll: "Scroll down",
     pause: "Pause the tools ticker",

@@ -26,6 +26,8 @@ jobs:
       - id: pages
         uses: actions/configure-pages@v5
       - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
       # Repo <user>.github.io lub własna domena → base_path jest pusty.
       - run: npm run build
         env:

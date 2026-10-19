@@ -32,8 +32,8 @@ export function Tags({ tags }: { tags: readonly string[] }) {
 export function About({ lang }: { lang: Lang }) {
   const { about, proofs, courses } = getContent(lang);
   const t = ui[lang].about;
-  // Bez prawdziwego zdjęcia sekcja idzie w jednej kolumnie (zamiast pokazywać placeholder).
-  const hasPhoto = !about.photo.includes("placeholder");
+  // Bez zdjęcia sekcja idzie w jednej kolumnie.
+  const hasPhoto = about.photo !== "";
   return (
     <section id="o-mnie" className="scroll-mt-[72px] bg-paper">
       <div className={`${container} ${sectionY} flex flex-col gap-16 lg:gap-24`}>
