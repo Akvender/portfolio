@@ -60,10 +60,12 @@ export function profileJsonLd(lang: Lang) {
     mainEntity: {
       "@type": "Person",
       name: site.name,
-      jobTitle: lang === "pl" ? "AI developer od automatyzacji i integracji" : "AI developer for automation and integrations",
+      jobTitle: ui[lang].hero.role,
       url,
       image: absoluteUrl("/images/portrait-robert.webp"),
       email: site.email,
+      address: { "@type": "PostalAddress", addressLocality: "Łódź", addressCountry: "PL" },
+      knowsAbout: ["n8n", "Make", "Python", "TypeScript", "REST API", "LLM", "AI agents", "Docker", "PostgreSQL", "Comarch Optima"],
       sameAs: [site.linkedin, site.github, site.tryhackme].filter(Boolean),
     },
   };
