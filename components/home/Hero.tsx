@@ -1,115 +1,112 @@
-import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Arrow } from "@/components/site/Arrow";
 import { ContactLink } from "@/components/site/ContactLink";
-import { type Lang, localePath } from "@/content/i18n";
-import { getProjects } from "@/content/projects";
-import { getContent } from "@/content/site";
-import { uiExtra } from "@/content/ui-extra";
+import { ToolsMarquee } from "@/components/home/ToolsMarquee";
+import { type Lang, localePath, ui } from "@/content/i18n";
+import { getContent, site } from "@/content/site";
 import { asset, container } from "@/lib/ui";
 
-const d = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
-
-/** Liczba odliczana od zera w CSS (@property); czytnik ekranu dostaje gotową wartość. Wartości nieliczbowe bez animacji. */
-function CountUp({ value, delay }: { value: string; delay: number }) {
-  const m = /^(\d+)(.*)$/.exec(value);
-  if (!m) return <>{value}</>;
-  return (
-    <>
-      <span className="sr-only">{value}</span>
-      <span aria-hidden="true" className="count-up" data-suffix={m[2]} style={{ "--to": Number(m[1]), "--d": `${delay}ms` } as CSSProperties} />
-    </>
-  );
-}
-
+/**
+ * Hero = wizytówka na granacie: po lewej co robię i dwie akcje, po prawej karta-identyfikator
+ * (portret + imię, rola, status, e-mail). Mieści się na pierwszym ekranie 1440×900.
+ * Jedyny pomarańczowy przycisk na ekranie to główna akcja (prowadzi do wybranych realizacji).
+ * Wejście w czystym CSS (klasy .intro-*), bez czekania na hydrację (LCP).
+ */
 export function Hero({ lang }: { lang: Lang }) {
   const { hero } = getContent(lang);
-  const t = uiExtra[lang];
-  const projects = getProjects(lang);
-  const metric = (slug: string) => {
-    const value = projects.find((project) => project.slug === slug)?.metrics[0];
-    return value ? `${value.value}${value.suffix ?? ""}` : "—";
-  };
-  const stats = [
-    { value: metric("call-center-analiza-rozmow"), label: t.hero.stats.calls },
-    { value: metric("formularze-crm-powiadomienia"), label: t.hero.stats.leads },
-    { value: metric("generator-grafik-produktowych"), label: t.hero.stats.images },
-    { value: String(projects.length), label: t.hero.stats.projects },
-  ];
+  const t = ui[lang].hero;
+  const d = (ms: number) => ({ "--d": `${ms}ms` }) as React.CSSProperties;
+  const hasPhoto = !hero.photo.includes("placeholder");
+  const portrait = "aspect-[4/3] w-full md:aspect-[4/5] md:max-h-[42svh]";
 
   return (
-    <section className="overflow-x-clip bg-ink pt-20 text-text-on-dark lg:pt-24">
-      <div className={`${container} grid items-center gap-8 py-8 lg:min-h-[800px] lg:grid-cols-[minmax(0,1.18fr)_minmax(0,0.82fr)] lg:gap-16 lg:py-12`}>
-        <figure data-parallax="0.06" style={d(220)} className="intro-clip relative mx-auto h-[340px] w-full max-w-[440px] overflow-hidden lg:order-2 lg:h-[580px] lg:max-w-[500px]">
-          <Image
-            src={asset(hero.photo)}
-            alt={hero.photoAlt}
-            width={960}
-            height={1200}
-            priority
-            sizes="(min-width: 1024px) 500px, 100vw"
-            style={d(220)}
-            className="intro-zoom h-full w-full object-cover object-[50%_25%]"
-          />
-          <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink to-transparent" />
-        </figure>
-
-        <div className="flex min-w-0 flex-col items-start gap-6 lg:order-1">
-          <p className="intro-up font-mono text-[12px] font-medium uppercase tracking-[0.08em] text-accent">
-            {lang === "pl" ? "AI developer · Automatyzacje i integracje" : "AI developer · Automation and integrations"}
-          </p>
-          <h1 style={d(80)} className="intro-up max-w-[15ch] font-display text-[40px] font-extrabold leading-[1.02] tracking-[-0.025em] text-balance lg:text-[72px]">
+    <section className="flex min-h-[100svh] flex-col overflow-x-clip bg-ink pt-[72px] text-text-on-dark">
+      <div className={`${container} grid flex-1 items-center gap-12 py-10 md:py-14 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-20`}>
+        <div className="flex flex-col gap-7">
+          <h1
+            className="intro-up max-w-[18ch] font-display text-[clamp(40px,4.6vw,66px)] font-extrabold leading-[1] tracking-[-0.03em] text-balance"
+            style={d(60)}
+          >
             {hero.title}
           </h1>
-          <p style={d(180)} className="intro-up hidden max-w-[54ch] text-[20px] leading-[155%] text-text-muted-on-dark lg:block">
+          <p className="intro-up max-w-[52ch] text-[17px] leading-[160%] text-text-on-dark/80 md:text-[18px]" style={d(180)}>
             {hero.lead}
           </p>
-          <p style={d(180)} className="intro-up max-w-[48ch] text-[17px] leading-[155%] text-text-muted-on-dark lg:hidden">
-            {t.hero.leadShort}
-          </p>
-          <div style={d(280)} className="intro-up flex w-full flex-col gap-3 pt-1 sm:flex-row">
+          <div className="intro-up flex flex-wrap items-center gap-3 pt-1" style={d(280)}>
             <Link
               href={localePath(lang, "/#realizacje")}
-              className="group inline-flex min-h-[48px] items-center justify-center gap-3 rounded-full bg-accent px-[22px] py-[14px] text-[16px] font-semibold text-on-accent transition-colors duration-200 hover:bg-[#ff8a3d] sm:w-auto"
+              className="group inline-flex min-h-[52px] items-center gap-3 rounded-xs bg-accent px-6 text-[16px] font-semibold text-on-accent transition-[background-color,transform] duration-200 hover:bg-[#ff8a3d] active:scale-[0.98]"
             >
-              {t.hero.primary}
+              {t.primary}
               <Arrow dir="down" className="transition-transform duration-200 group-hover:translate-y-0.5" />
             </Link>
             <ContactLink
               href={localePath(lang, "/#kontakt")}
-              className="group inline-flex min-h-[48px] items-center justify-center gap-3 rounded-full border border-border-on-dark px-[22px] py-[14px] text-[16px] font-semibold text-text-on-dark transition-colors duration-200 hover:border-text-muted-on-dark sm:w-auto"
+              className="inline-flex min-h-[52px] items-center rounded-xs border border-border-on-dark px-6 text-[16px] font-semibold transition-colors duration-200 hover:border-text-muted-on-dark active:bg-ink-soft"
             >
-              {t.hero.secondary}
-              <Arrow className="transition-transform duration-200 group-hover:translate-x-1" />
+              {t.secondary}
             </ContactLink>
           </div>
-          <p style={d(360)} className="intro-up inline-flex items-center gap-2 rounded-full bg-ink-soft px-3 py-2 text-[13px] font-semibold text-text-on-dark">
-            <span aria-hidden="true" className="relative size-2">
-              <span className="absolute inset-0 animate-ping rounded-full bg-ok opacity-60 [animation-iteration-count:3] motion-reduce:hidden" />
-              <span className="absolute inset-0 rounded-full bg-ok" />
-            </span>
-            <span className="hidden sm:inline">{hero.status}</span>
-            <span className="sm:hidden">{t.hero.statusShort}</span>
-          </p>
         </div>
+
+        <figure className="intro-clip mx-auto w-full max-w-[440px] lg:mx-0 lg:justify-self-end" style={d(220)}>
+          <div className="overflow-hidden rounded-xs border border-border-on-dark bg-ink-soft shadow-[0_40px_80px_-40px_rgba(0,0,0,0.7)]">
+            {hasPhoto ? (
+              <div className="relative isolate bg-ink-soft">
+                <Image
+                  src={asset(hero.photo)}
+                  alt={hero.photoAlt}
+                  width={960}
+                  height={1200}
+                  priority
+                  sizes="(min-width: 1024px) 440px, 90vw"
+                  className={`${portrait} object-cover object-[50%_25%]`}
+                />
+                {/* Delikatne przejście zdjęcia w kolor karty u dołu. */}
+                <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink-soft to-transparent" />
+              </div>
+            ) : (
+              <div
+                role="img"
+                aria-label={hero.photoAlt}
+                className={`${portrait} flex items-center justify-center font-display text-[clamp(88px,11vw,152px)] font-extrabold tracking-[-0.05em] text-text-on-dark/90`}
+              >
+                RŚ
+              </div>
+            )}
+            <figcaption className="flex flex-col gap-4 p-6">
+              <div>
+                <p className="font-display text-[24px] font-extrabold leading-tight tracking-[-0.02em]">{site.name}</p>
+                <p className="mt-1 text-[15px] text-text-muted-on-dark">{t.role}</p>
+              </div>
+              <p className="flex items-center gap-2.5 text-[15px] font-semibold">
+                <span aria-hidden="true" className="relative flex size-2.5">
+                  <span className="absolute inset-0 animate-ping rounded-full bg-accent opacity-60 [animation-iteration-count:3] motion-reduce:hidden" />
+                  <span className="relative size-2.5 rounded-full bg-accent" />
+                </span>
+                {hero.status}
+              </p>
+              <a
+                href={`mailto:${site.email}`}
+                className="-mb-2 inline-flex min-h-[44px] items-center border-t border-border-on-dark pt-2 text-[15px] text-text-muted-on-dark transition-colors hover:text-accent"
+              >
+                {site.email}
+              </a>
+            </figcaption>
+          </div>
+        </figure>
       </div>
 
-      <div className={`${container} pb-16 lg:pb-20`}>
-        <dl className="grid grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat, index) => (
-            <div
-              key={stat.label}
-              style={d(420 + index * 80)}
-              className={`intro-up flex min-w-0 flex-col border-t border-border-on-dark py-6 pr-4 lg:border-t-0 lg:border-l lg:px-6 lg:py-2 ${index === 0 ? "lg:border-l-0 lg:pl-0" : ""}`}
-            >
-              <dt className="order-2 mt-2 text-[14px] leading-[145%] text-text-muted-on-dark">{stat.label}</dt>
-              <dd className="order-1 font-display text-[36px] font-extrabold leading-none tracking-[-0.02em] text-accent lg:text-[44px]">
-                <CountUp value={stat.value} delay={600 + index * 120} />
-              </dd>
-            </div>
-          ))}
-        </dl>
+      <div className={`${container} intro-up pb-8`} style={d(380)}>
+        <div className="flex flex-col gap-4 border-t border-border-on-dark pt-6 md:flex-row md:items-center md:gap-10">
+          <p className="shrink-0 text-[14px] font-semibold text-text-muted-on-dark">{t.toolsLabel}</p>
+          <ToolsMarquee lang={lang} />
+          <Link href={localePath(lang, "/#realizacje")} className="group hidden min-h-[44px] shrink-0 items-center gap-2 text-[14px] font-semibold text-text-muted-on-dark hover:text-accent lg:inline-flex">
+            {t.scroll}
+            <Arrow dir="down" className="animate-[nudge_2.4s_ease-in-out_3] transition-transform duration-200 group-hover:translate-y-0.5 motion-reduce:animate-none" />
+          </Link>
+        </div>
       </div>
     </section>
   );

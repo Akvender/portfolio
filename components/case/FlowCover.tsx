@@ -131,12 +131,13 @@ function Canvas({ id, flow, icons, caption, tags, ends, L }: { id: string; flow:
   );
 }
 
-export function FlowCover({ id, flow, icons, caption, label, ends, tags = [], forceHorizontal = false }: {
-  id: string; flow: string[]; icons: IconName[]; caption: string; label: string; ends: [string, string]; tags?: string[]; forceHorizontal?: boolean;
+export function FlowCover({ id, flow, icons, caption, label, ends, tags = [] }: {
+  id: string; flow: string[]; icons: IconName[]; caption: string; label: string; ends: [string, string]; tags?: string[];
 }) {
   const n = flow.length;
   const tagLine = tags.join("  ·  ");
 
+  // Poziomo (16:9): węzły w jednym rzędzie, podpisy pod spodem.
   const W = 1600, H = 900, S = 170, m = 150;
   const step = (W - 2 * m - S) / Math.max(n - 1, 1);
   const horizontal: Layout = {
@@ -145,6 +146,7 @@ export function FlowCover({ id, flow, icons, caption, label, ends, tags = [], fo
     font: 34, maxChars: Math.floor((step - 40) / 19),
   };
 
+  // Pionowo (telefon): węzły jeden pod drugim, podpisy z prawej.
   const VS = 150, vgap = 90, top = 130;
   const vertical: Layout = {
     W: 900, H: top + n * VS + (n - 1) * vgap + 120, S: VS, vertical: true,
@@ -154,14 +156,12 @@ export function FlowCover({ id, flow, icons, caption, label, ends, tags = [], fo
 
   return (
     <div role="img" aria-label={label} className="overflow-hidden rounded-xs">
-      <div className={forceHorizontal ? "block" : "hidden md:block"}>
+      <div className="hidden md:block">
         <Canvas id={`${id}-h`} flow={flow} icons={icons} caption={caption} tags={tagLine} ends={ends} L={horizontal} />
       </div>
-      {!forceHorizontal && (
-        <div className="md:hidden">
-          <Canvas id={`${id}-v`} flow={flow} icons={icons} caption={caption} tags={tagLine} ends={ends} L={vertical} />
-        </div>
-      )}
+      <div className="md:hidden">
+        <Canvas id={`${id}-v`} flow={flow} icons={icons} caption={caption} tags={tagLine} ends={ends} L={vertical} />
+      </div>
     </div>
   );
 }
