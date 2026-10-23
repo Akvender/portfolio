@@ -23,7 +23,7 @@ const content = {
   pl: {
     hero: {
       title: "Automatyzuję procesy, łączę systemy i buduję narzędzia z AI.",
-      lead: "Pomagam firmom ograniczać ręczną pracę i łączyć narzędzia, które dziś działają osobno. Analizuję proces, buduję rozwiązanie i zajmuję się jego wdrożeniem.",
+      lead: "Pomagam firmom ograniczać ręczną pracę i łączyć narzędzia, które dziś działają osobno. Analizuję proces, buduję rozwiązanie i zajmuję się jego wdrożeniem. Pracuję głównie z n8n, Pythonem i API modeli językowych. Łódź lub zdalnie.",
       status: "Otwarty na pracę (UoP, UZ, B2B) i zlecenia",
       photo,
       photoAlt: "Robert Świeboda — portret na ciemnym tle",
@@ -35,7 +35,7 @@ const content = {
       title: "Od klocków w Integromacie do własnych agentów AI.",
       paragraphs: [
         "Zaczynałem od automatyzacji w czasach, gdy Make nazywał się jeszcze Integromat: proste integracje składane z gotowych klocków, bez własnego serwera. Potem doszły modele językowe, a dziś buduję też własne serwery MCP i agentów AI.",
-        "Najlepiej czuję się w projektach, w których trzeba połączyć kilka systemów i doprowadzić rozwiązanie do działania na serwerze. Buduję automatyzacje w n8n, a gdy gotowe integracje nie wystarczają, piszę własny kod i API. Większość projektów prowadzę samodzielnie, część w zespole. Od 2026 r. współprowadzę też dwuosobową firmę IT, która łączy systemy w firmach produkcyjnych, m.in. z Comarch Optima. Po wdrożeniu mogę zajmować się utrzymaniem i rozwojem rozwiązania.",
+        "Najlepiej czuję się w projektach, w których trzeba połączyć kilka systemów i doprowadzić rozwiązanie do działania na serwerze. Buduję automatyzacje w n8n, a gdy gotowe integracje nie wystarczają, piszę własny kod i API. Większość projektów prowadzę samodzielnie, część w zespole. W ramach działalności freelance łączę też systemy w firmach produkcyjnych, m.in. z Comarch Optima. Po wdrożeniu mogę zajmować się utrzymaniem i rozwojem rozwiązania.",
         "Na co dzień pracuję na Linuksie, a rozwiązania zamykam w kontenerach Dockera. Przykładem jest system formularzy i CRM opisany w projektach: działa na VPS-ie, a monitoring i alerty pomagają wykrywać błędy również poza godzinami pracy. Uczę się też bezpieczeństwa na TryHackMe, bo to, co buduję, działa na serwerach dostępnych z internetu.",
       ],
       steps: [
@@ -73,8 +73,8 @@ const content = {
   en: {
     hero: {
       title: "I automate processes, connect systems and build AI-powered tools.",
-      lead: "I help companies cut down on manual work and connect tools that currently run separately. I analyze the process, build the solution and take care of deploying it. I work mainly with n8n, Python and language-model APIs.",
-      status: "Open to employment and contract work",
+      lead: "I help companies cut down on manual work and connect tools that currently run separately. I analyze the process, build the solution and take care of deploying it. I work mainly with n8n, Python and language-model APIs. Based in Łódź, Poland, open to remote work.",
+      status: "Open to work (employment, contract, B2B) and freelance projects",
       photo,
       photoAlt: "Robert Świeboda — portrait on a dark background",
     },
@@ -84,7 +84,7 @@ const content = {
       title: "From drag-and-drop blocks in Integromat to my own AI agents.",
       paragraphs: [
         "I started with automation back when Make was still called Integromat: simple integrations clicked together from ready-made blocks, with no server of my own. Then language models arrived, and today I also build my own MCP servers and AI agents.",
-        "I do my best work on projects that need several systems connected and a solution taken all the way to running on a server. I build automations in n8n, and when off-the-shelf integrations aren't enough, I write my own code and APIs. I run most projects on my own and some as part of a team. Since 2026 I have also co-run a two-person IT company that connects systems for manufacturing businesses, including Comarch Optima. After deployment, I can stay on to maintain and develop the solution.",
+        "I do my best work on projects that need several systems connected and a solution taken all the way to running on a server. I build automations in n8n, and when off-the-shelf integrations aren't enough, I write my own code and APIs. I run most projects on my own and some as part of a team. As a freelancer, I also connect systems for manufacturing businesses, including Comarch Optima. After deployment, I can stay on to maintain and develop the solution.",
         "I work on Linux every day and package my solutions in Docker containers. One example is the forms and CRM system in my projects: it runs on a VPS, and monitoring and alerts help catch errors outside working hours too. I'm also learning security on TryHackMe, because the systems I build run on internet-facing servers.",
       ],
       steps: [

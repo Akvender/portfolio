@@ -66,14 +66,14 @@ const pl = {
     copy: "Skopiuj adres",
     copied: "Skopiowano",
     team: [
-      { label: "Formy współpracy", value: "Realizacja projektu albo dołączenie do zespołu na zasadach B2B" },
+      { label: "Formy współpracy", value: "Realizacja projektu albo dołączenie do zespołu: umowa o pracę, umowa zlecenie lub B2B" },
       { label: "Zakres", value: "Automatyzacje, integracje i aplikacje wspierające procesy w firmie" },
       { label: "Czego nie robię", value: "Samych stron i landing page'y, za którymi nie stoi żaden system" },
     ],
     topicsLabel: "Albo wybierz, o co chodzi:",
     topics: [
       { label: "Realizacja projektu", subject: "Realizacja projektu", hint: "Co chcesz usprawnić? Jakie systemy już działają i co ma się dziać automatycznie?" },
-      { label: "Dołączenie do zespołu", subject: "Dołączenie do zespołu (B2B)", hint: "Jaka rola, jaki zespół i od kiedy?" },
+      { label: "Dołączenie do zespołu", subject: "Dołączenie do zespołu", hint: "Jaka rola, jaki zespół i od kiedy?" },
       { label: "Pytanie o jeden z projektów", subject: "Pytanie o projekt", hint: "Który projekt i co chcesz o nim wiedzieć?" },
     ],
   },
@@ -169,14 +169,14 @@ const en: UI = {
     copy: "Copy address",
     copied: "Copied",
     team: [
-      { label: "How we can work", value: "Project delivery, or joining your team on a B2B contract basis" },
+      { label: "How we can work", value: "Project delivery, or joining your team: employment, contract or B2B" },
       { label: "Scope", value: "Automations, integrations and applications that support business processes" },
       { label: "What I don't take on", value: "Standalone websites or landing pages with no system behind them" },
     ],
     topicsLabel: "Or pick what it's about:",
     topics: [
       { label: "Project delivery", subject: "Project delivery", hint: "What would you like to improve? Which systems are already in place and what should happen automatically?" },
-      { label: "Joining your team (B2B contract)", subject: "Joining your team (B2B contract)", hint: "What role, what team and from when?" },
+      { label: "Joining your team", subject: "Joining your team", hint: "What role, what team and from when?" },
       { label: "A question about one of the projects", subject: "Question about a project", hint: "Which project, and what would you like to know?" },
     ],
   },

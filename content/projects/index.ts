@@ -3,14 +3,13 @@ import type { Project } from "./types";
 import { mleczarnia } from "./mleczarnia-automatyzacja-zamowien";
 import { projekt02 } from "./projekt-02";
 import { projekt03 } from "./projekt-03";
-import { projekt04 } from "./projekt-04";
 import { projekt05 } from "./projekt-05";
 import { projekt06 } from "./projekt-06";
 
 export type { Project } from "./types";
 
 /** Kolejność = kolejność na stronie (pole `number` idzie za nią). Wyróżnione najpierw: CRM, call-center, mleczarnia. Nowy projekt: nowy plik + jedna linia tutaj. */
-const projects: Project[] = [projekt03, projekt05, mleczarnia, projekt02, projekt06, projekt04];
+const projects: Project[] = [projekt03, projekt05, mleczarnia, projekt02, projekt06];
 
 /** Projekt w danym języku. `translated` = szczegóły case study są w tym języku. */
 export type LocalizedProject = Omit<Project, "en"> & { translated: boolean };

@@ -60,6 +60,7 @@ export function profileJsonLd(lang: Lang) {
     mainEntity: {
       "@type": "Person",
       name: site.name,
+      alternateName: "Robert Swieboda",
       jobTitle: ui[lang].hero.role,
       url,
       image: absoluteUrl("/images/portrait-robert.webp"),

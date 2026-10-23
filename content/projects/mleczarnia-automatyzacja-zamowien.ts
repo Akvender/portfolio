@@ -76,7 +76,7 @@ export const mleczarnia: Project = {
     {
       type: "results",
       title: "Co już sprawdziliśmy na realnym procesie.",
-      intro: "Wspólnik na co dzień uczestniczy w zbieraniu i przetwarzaniu zamówień, więc słabe punkty obiegu wskazaliśmy z obserwacji i udziału w nim. Liczby opisują dane, na których pracujemy, a nie efekty wdrożenia.",
+      intro: "Drugi programista w projekcie na co dzień uczestniczy w zbieraniu i przetwarzaniu zamówień, więc słabe punkty obiegu wskazaliśmy z obserwacji i udziału w nim. Liczby opisują dane, na których pracujemy, a nie efekty wdrożenia.",
       metrics: [
         { value: 41, label: "realnych dokumentów WZ" },
         { value: 22, suffix: "%", label: "dokumentów WZ z różnym płatnikiem i odbiorcą (w przybliżeniu)" },
