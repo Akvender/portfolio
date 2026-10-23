@@ -41,6 +41,8 @@ export function pageMetadata(lang: Lang, path: string, title?: string, descripti
     },
     // Tytuł i opis Twitter/X dziedziczy z openGraph.
     twitter: { card: "summary_large_image", images: [ogImage(lang).url] },
+    // Weryfikacja w Google Search Console (usługa z prefiksem URL /portfolio/).
+    verification: { google: "-IpzjN2ytYiOnXmOSaxvfga-AztQuy-pS_xrmYrN5fs" },
   };
 }
 
