@@ -14,7 +14,7 @@ import { EASE_OUT } from "@/lib/motion";
 import { container } from "@/lib/ui";
 
 /** Tylko to, czego potrzebuje lista — reszta case study nie trafia do paczki strony głównej. */
-export type SkillMapProject = Pick<Project, "slug" | "title" | "description" | "flow" | "skills"> & { status: string };
+export type SkillMapProject = Pick<Project, "slug" | "title" | "description" | "skills"> & { status: string };
 
 
 /**
@@ -232,10 +232,6 @@ export function SkillMap({ projects, lang }: { projects: SkillMapProject[]; lang
                     </h3>
                     {p.status && <StatusBadge status={p.status} label={x.status} dark />}
                     <p className="max-w-[56ch] text-[15px] leading-[150%] text-text-muted-on-dark">{p.description}</p>
-                    <p className="mt-1 text-[14px] font-medium text-white/85">
-                      <span className="sr-only">{t.flow} </span>
-                      {p.flow.join("  →  ")}
-                    </p>
                     {active && (
                       <p className="text-[13px] font-medium text-text-muted-on-dark">
                         {p.skills.map((id, i) => (

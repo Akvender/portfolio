@@ -15,7 +15,7 @@ import { getNextProject, getProject, getProjects, projectSlugs } from "@/content
 
 export function HomeView({ lang }: { lang: Lang }) {
   const all = getProjects(lang);
-  const projects = all.map(({ slug, title, description, flow, skills, meta }) => ({ slug, title, description, flow, skills, status: meta.status }));
+  const projects = all.map(({ slug, title, description, skills, meta }) => ({ slug, title, description, skills, status: meta.status }));
   // Wyróżnione realizacje (pole `featured`) pokazujemy osobno pod hero; pełna lista zostaje w mapie umiejętności.
   const featured = all.filter((p) => p.featured).map(({ slug, title, description, meta }) => ({ slug, title, description, status: meta.status }));
   return (
