@@ -25,7 +25,7 @@ export function CaseHero({ project, lang, showFlow = true }: { project: Project;
     [t.client, project.meta.client], [t.role, project.meta.role], [t.period, project.meta.period], [t.stack, project.meta.stack],
   ].filter(([, v]) => v);
   return (
-    <section className="bg-ink pt-20 text-text-on-dark lg:pt-24">
+    <section className="bg-ink pt-[72px] text-text-on-dark">
       <div className={`${container} flex flex-col gap-10 py-12 lg:py-20`}>
         <Link href={localePath(lang, "/#umiejetnosci")} className="intro-up inline-flex min-h-[44px] w-fit items-center gap-2 text-[15px] font-semibold text-text-muted-on-dark hover:text-text-on-dark" style={d(0)}>
           <span aria-hidden="true">←</span> {t.back}

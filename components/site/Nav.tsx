@@ -3,62 +3,132 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { AnimatePresence, motion, useReducedMotion, useScroll } from "motion/react";
 import { Arrow } from "@/components/site/Arrow";
 import { ContactLink } from "@/components/site/ContactLink";
-import { type Lang, localePath, switchPath, ui } from "@/content/i18n";
-import { site } from "@/content/site";
-import { uiExtra } from "@/content/ui-extra";
 import { container } from "@/lib/ui";
+import { site } from "@/content/site";
+import { type Lang, localePath, switchPath, ui } from "@/content/i18n";
 
+/**
+ * Sticky nav na jasnym tle; po przewinięciu pojawia się cienka linia.
+ * Aktywny link podkreślony przesuwanym wskaźnikiem (layoutId), scroll-spy na Home.
+ * Mobile: pełnoekranowe menu (Esc zamyka, focus management).
+ */
 export function Nav({ lang }: { lang: Lang }) {
   const t = ui[lang].nav;
-  const x = uiExtra[lang].nav;
   const other: Lang = lang === "pl" ? "en" : "pl";
-  const links = [
-    { id: "realizacje", label: x.work, href: localePath(lang, "/#realizacje") },
-    { id: "umiejetnosci", label: x.skills, href: localePath(lang, "/#umiejetnosci") },
-    { id: "o-mnie", label: x.about, href: localePath(lang, "/#o-mnie") },
+  const LINKS = [
+    { id: "umiejetnosci", label: t.skills, href: localePath(lang, "/#umiejetnosci") },
+    { id: "o-mnie", label: t.about, href: localePath(lang, "/#o-mnie") },
   ];
   const pathname = usePathname();
+  const isHome = pathname === "/" || pathname === "/en" || pathname === "/en/";
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Scroll-spy tylko na stronie głównej.
+  useEffect(() => {
+    if (!isHome) {
+      setActive(null);
+      return;
+    }
+    const sections = LINKS.map((l) => document.getElementById(l.id)).filter(
+      (el): el is HTMLElement => el !== null,
+    );
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        }
+      },
+      { rootMargin: "-40% 0px -55% 0px" },
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- LINKS zależy tylko od języka
+  }, [pathname, isHome]);
+
+  // Menu mobilne: Esc zamyka, blokada scrolla, focus management.
+  useEffect(() => {
     if (!open) return;
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
     };
     document.addEventListener("keydown", onKey);
     document.documentElement.style.overflow = "hidden";
+    // Treść pod menu jest nieaktywna, więc Tab nie ucieka za nakładkę.
     const outside = Array.from(document.querySelectorAll<HTMLElement>("body > a, main, footer"));
-    outside.forEach((element) => element.setAttribute("inert", ""));
+    outside.forEach((el) => el.setAttribute("inert", ""));
     firstLinkRef.current?.focus();
     return () => {
       document.removeEventListener("keydown", onKey);
       document.documentElement.style.overflow = "";
-      outside.forEach((element) => element.removeAttribute("inert"));
+      outside.forEach((el) => el.removeAttribute("inert"));
       toggleRef.current?.focus();
     };
   }, [open]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-border-on-dark bg-ink">
-      <nav aria-label={t.label} className={`${container} flex h-20 items-center justify-between lg:h-24`}>
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-300 ${
+        scrolled || open
+          ? "border-b border-border-on-dark bg-ink"
+          : "border-b border-transparent bg-ink"
+      }`}
+    >
+      <nav
+        aria-label={t.label}
+        className={`${container} flex h-[72px] items-center justify-between`}
+      >
+        {/* Logo: imię i nazwisko złożone w dwie linie przy pionowej kresce. */}
         <Link
           href={localePath(lang, "/")}
           aria-label={`${site.name}, ${t.home}`}
-          className="flex min-h-[48px] items-center font-display text-[18px] font-bold tracking-[-0.015em] text-text-on-dark"
+          className="flex items-stretch gap-2.5 text-text-on-dark"
           onClick={() => setOpen(false)}
         >
-          {site.name}
+          <span aria-hidden="true" className="w-[3px] bg-accent" />
+          <span className="flex flex-col font-display text-[15px] font-bold uppercase leading-[1.05] tracking-[0.02em]">
+            <span>Robert</span>{" "}
+            <span>Świeboda</span>
+          </span>
         </Link>
 
-        <ul className="hidden items-center gap-8 lg:flex">
-          {links.map((link) => (
-            <li key={link.id}>
-              <Link href={link.href} className="inline-flex min-h-[48px] items-center text-[15px] font-semibold text-text-on-dark transition-colors duration-200 hover:text-text-muted-on-dark">
+        {/* Desktop */}
+        <ul className="hidden items-center gap-6 md:flex">
+          {LINKS.map((link) => (
+            <li key={link.id} className="relative">
+              {/* Kreska nad linkiem; aktywna sekcja ma ją w kolorze akcentu i grubszą. */}
+              <span aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-border-on-dark" />
+              {active === link.id && (
+                <motion.span
+                  layoutId="nav-indicator"
+                  aria-hidden="true"
+                  className="absolute inset-x-0 top-0 h-[2px] bg-accent"
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                />
+              )}
+              <Link
+                href={link.href}
+                className={`group flex min-h-[44px] min-w-[150px] items-center justify-between gap-4 pt-1 text-[15px] font-semibold transition-colors duration-200 ${
+                  active === link.id ? "text-text-on-dark" : "text-text-muted-on-dark hover:text-text-on-dark"
+                }`}
+              >
                 {link.label}
+                <Arrow dir="down" className="w-3 transition-transform duration-200 group-hover:translate-y-0.5" />
               </Link>
             </li>
           ))}
@@ -68,7 +138,7 @@ export function Nav({ lang }: { lang: Lang }) {
               hrefLang={other}
               lang={other}
               aria-label={`${other.toUpperCase()} — ${t.switchTo}`}
-              className="inline-flex min-h-[48px] min-w-[48px] items-center justify-center text-[14px] font-semibold text-text-muted-on-dark transition-colors duration-200 hover:text-text-on-dark"
+              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xs text-[14px] font-bold tracking-[0.04em] text-text-muted-on-dark transition-colors duration-200 hover:text-accent"
             >
               {other.toUpperCase()}
             </Link>
@@ -76,68 +146,94 @@ export function Nav({ lang }: { lang: Lang }) {
           <li>
             <ContactLink
               href={localePath(lang, "/#kontakt")}
-              className="group inline-flex min-h-[48px] items-center gap-3 rounded-full border border-border-on-dark px-[22px] py-[14px] text-[15px] font-semibold text-text-on-dark transition-colors duration-200 hover:border-text-muted-on-dark"
+              className="inline-flex min-h-[44px] items-center rounded-xs border border-border-on-dark px-5 text-[15px] font-semibold text-text-on-dark transition-colors duration-200 hover:border-accent hover:text-accent"
             >
-              {t.contact}<Arrow className="text-accent transition-transform duration-200 group-hover:translate-x-1" />
+              {t.contact}
             </ContactLink>
           </li>
         </ul>
 
+        {/* Mobile: przycisk kontaktu zawsze widoczny + przełącznik menu */}
+        <div className="flex items-center gap-3 md:hidden">
+        <ContactLink
+          href={localePath(lang, "/#kontakt")}
+          onOpen={() => setOpen(false)}
+          className="inline-flex min-h-[44px] items-center rounded-xs border border-border-on-dark px-3.5 text-[14px] font-semibold text-text-on-dark"
+        >
+          {t.contactShort}
+        </ContactLink>
         <button
           ref={toggleRef}
           type="button"
           aria-expanded={open}
           aria-controls="menu-mobilne"
           aria-label={open ? t.menuClose : t.menuOpen}
-          onClick={() => setOpen((value) => !value)}
-          className="grid size-12 cursor-pointer place-items-center rounded-full border border-border-on-dark text-text-on-dark lg:hidden"
+          onClick={() => setOpen((v) => !v)}
+          className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-text-on-dark md:hidden"
         >
-          <span aria-hidden="true" className="flex w-5 flex-col gap-[5px]">
-            <span className={`h-px bg-current transition-transform duration-200 ${open ? "translate-y-[6px] rotate-45" : ""}`} />
-            <span className={`h-px bg-current transition-opacity duration-200 ${open ? "opacity-0" : ""}`} />
-            <span className={`h-px bg-current transition-transform duration-200 ${open ? "-translate-y-[6px] -rotate-45" : ""}`} />
+          <span aria-hidden="true" className="text-[15px] font-semibold">
+            {open ? t.close : t.menu}
           </span>
         </button>
+        </div>
       </nav>
 
-      {open && (
-        <div id="menu-mobilne" role="dialog" aria-modal="true" aria-label={t.menu} className="fixed inset-0 top-20 z-40 bg-ink lg:hidden">
-          <ul className={`${container} flex flex-col pt-6`}>
-            {links.map((link, index) => (
-              <li key={link.id}>
+      {/* Postęp przewijania: cienka linia w kolorze akcentu prowadzi wzrok przez stronę. */}
+      {!reduce && (
+        <motion.div aria-hidden="true" style={{ scaleX: scrollYProgress }} className="absolute inset-x-0 bottom-[-1px] h-[2px] origin-left bg-accent" />
+      )}
+
+      {/* Menu mobilne — pełnoekranowe */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            id="menu-mobilne"
+            role="dialog"
+            aria-modal="true"
+            aria-label={t.menu}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 top-[72px] z-40 bg-ink md:hidden"
+          >
+            <ul className={`${container} flex flex-col gap-2 pt-8`}>
+              {LINKS.map((link, i) => (
+                <li key={link.id}>
+                  <Link
+                    ref={i === 0 ? firstLinkRef : undefined}
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="flex min-h-[56px] items-center border-b border-border-on-dark font-display text-[28px] font-bold tracking-[-0.03em] text-text-on-dark"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
                 <Link
-                  ref={index === 0 ? firstLinkRef : undefined}
-                  href={link.href}
+                  href={switchPath(pathname, other)}
+                  hrefLang={other}
+                  lang={other}
                   onClick={() => setOpen(false)}
-                  className="flex min-h-[64px] items-center border-b border-border-on-dark font-display text-[28px] font-bold tracking-[-0.02em] text-text-on-dark"
+                  className="flex min-h-[56px] items-center border-b border-border-on-dark text-[18px] font-semibold text-text-muted-on-dark"
                 >
-                  {link.label}
+                  {t.switchTo}
                 </Link>
               </li>
-            ))}
-            <li>
-              <Link
-                href={switchPath(pathname, other)}
-                hrefLang={other}
-                lang={other}
-                onClick={() => setOpen(false)}
-                className="flex min-h-[56px] items-center border-b border-border-on-dark text-[18px] font-semibold text-text-muted-on-dark"
-              >
-                {t.switchTo}
-              </Link>
-            </li>
-            <li className="pt-6">
-              <ContactLink
-                href={localePath(lang, "/#kontakt")}
-                onOpen={() => setOpen(false)}
-                className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-accent px-[22px] py-[14px] text-[16px] font-semibold text-on-accent"
-              >
-                {t.contact}<Arrow />
-              </ContactLink>
-            </li>
-          </ul>
-        </div>
-      )}
+              <li className="pt-6">
+                <ContactLink
+                  href={localePath(lang, "/#kontakt")}
+                  onOpen={() => setOpen(false)}
+                  className="inline-flex min-h-[52px] w-full items-center justify-center rounded-xs bg-accent px-5 text-[16px] font-semibold text-on-accent transition-colors duration-200 hover:bg-[#ff8a3d]"
+                >
+                  {t.contact}
+                </ContactLink>
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

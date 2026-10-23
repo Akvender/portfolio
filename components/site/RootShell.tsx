@@ -96,22 +96,15 @@ export function RootShell({ lang, children }: { lang: Lang; children: React.Reac
         </a>
         <Providers>
           <Nav lang={lang} />
-          <div aria-hidden="true" className="scroll-progress pointer-events-none fixed inset-x-0 top-0 z-[60] h-[2px] origin-left scale-x-0 bg-accent" />
           <main id="main">{children}</main>
           <footer className="border-t border-border-on-dark bg-ink text-text-muted-on-dark">
-            <div className={`${container} flex min-h-[80px] flex-col justify-between gap-3 py-5 text-[14px] sm:flex-row sm:flex-wrap sm:items-center`}>
-              <p>© {new Date().getFullYear()} {site.name}</p>
-              <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[48px] items-center transition-colors hover:text-text-on-dark">LinkedIn</a>
-                <span aria-hidden="true">·</span>
-                <a href={site.github} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[48px] items-center transition-colors hover:text-text-on-dark">GitHub</a>
-                <span aria-hidden="true">·</span>
-                <a href={site.tryhackme} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[48px] items-center transition-colors hover:text-text-on-dark">TryHackMe</a>
-                <span aria-hidden="true">·</span>
-                <a href="#main" className="inline-flex min-h-[48px] items-center gap-2 font-semibold transition-colors hover:text-text-on-dark">
-                  {t.footer.top}<span aria-hidden="true" className="text-accent">↑</span>
-                </a>
-              </div>
+            <div className={`${container} flex min-h-[72px] flex-wrap items-center justify-between gap-2 py-4 text-[14px]`}>
+              <p>
+                © {new Date().getFullYear()} {site.name}
+              </p>
+              <a href="#main" className="inline-flex min-h-[44px] items-center gap-2 font-semibold transition-colors hover:text-accent">
+                {t.footer.top} <span aria-hidden="true">↑</span>
+              </a>
             </div>
           </footer>
           <ContactDialog lang={lang} />
