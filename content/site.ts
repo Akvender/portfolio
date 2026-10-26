@@ -56,6 +56,11 @@ const content = {
     ],
     courses: [
       {
+        title: "Wyróżnienie w konkursie „Dziś Uczeń – Jutro Student”",
+        meta: "Politechnika Świętokrzyska · 2024",
+        text: "Kategoria Informatyka.",
+      },
+      {
         title: "Zero2Junior — kurs Daniela Rozieckiego",
         meta: "Kurs · 2022",
         text: "Kurs wprowadzający do programowania z osobnym modułem o automatyzacjach: Integromat (dziś Make), Airtable i formularze w Tally.",
@@ -104,6 +109,11 @@ const content = {
       },
     ],
     courses: [
+      {
+        title: "Honorable mention in the “Dziś Uczeń – Jutro Student” competition",
+        meta: "Kielce University of Technology · 2024",
+        text: "Computer science category.",
+      },
       {
         title: "Zero2Junior — Daniel Roziecki's course",
         meta: "Course · 2022",
