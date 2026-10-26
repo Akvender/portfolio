@@ -13,7 +13,7 @@ export const mleczarnia: Project = {
   lead: "Mała, lokalna mleczarnia z województwa łódzkiego. Zamówienie przechodzi przez telefon, kartkę, skan, wydruk i ręczny wpis do Comarch. Budujemy system, który zamienia to w jeden cyfrowy obieg, bez zmieniania tego, co działa.",
   year: "2026",
   tags: ["Produkcja spożywcza", "Integracja ERP", "Aplikacja webowa"],
-  skills: ["erp", "postgres", "docker", "linux"],
+  skills: ["erp", "node", "typescript", "postgres", "docker", "linux"],
   flow: ["Telefon i kartka", "Cyfrowa karta", "Produkcja", "WZ w Comarch"],
   flowIcons: ["phone", "tablet", "factory", "document"],
   featured: true,
@@ -98,7 +98,7 @@ export const mleczarnia: Project = {
     },
     {
       type: "approach",
-      title: "Najpierw ludzie, potem technologia.",
+      title: "Co znaczy kreska na karcie.",
       quote: "Kreska w polu karty zamówień znaczy „ten sklep świadomie nie zamawia”.",
       quoteAuthor: "Dla pracowników kreska i puste pole znaczą co innego, więc system nie może tej różnicy zgubić.",
       cards: [
@@ -115,7 +115,7 @@ export const mleczarnia: Project = {
         { title: "Etap 1 w mleczarni", text: "Karta zamówień, wysyłka na produkcję, plik importu WZ do Comarch Optima, zestawienia sprzedaży." },
         { title: "Planowanie produkcji", text: "Moduł laboratorium i bilansu masy, po potwierdzeniu założeń przez laborantkę." },
         { title: "Kolejne zakłady", text: "Przetwórstwo spożywcze z własną dystrybucją. Mamy kontakt do kolejnej mleczarni." },
-        { title: "Krótkie szkolenia z AI", text: "Dla pracowników, na przykładach z ich własnej pracy. Pracownik ma nadzorować system, a nie wykonywać powtarzalną pracę." },
+        { title: "Krótkie szkolenia z AI", text: "Dla pracowników, na przykładach z ich własnej pracy. Tak, żeby pracownik nadzorował system, który przejmuje od niego powtarzalną część pracy." },
       ],
     },
   ],

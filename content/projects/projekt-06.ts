@@ -53,7 +53,7 @@ export const projekt06: Project = {
         "Strażnik serwerów sprawdza zasoby, usługi, kopie zapasowe i aktualizacje, a wynik podaje w tabeli. Ma dostęp tylko do odczytu.",
         "Agent research przegląda źródła w internecie i zapisuje raport ze źródłami, oceną ich wiarygodności i rekomendacją.",
         "Agent zakupowy porównuje oferty z wielu sklepów i liczy koszt całkowity. Nigdy nie kupuje i nie podaje danych płatniczych.",
-        "Agent, który analizuje nagrania głosowe i układa z nich plan tygodnia.",
+        "Agent analizuje moje nagrania głosowe i układa z nich plan tygodnia.",
         "Poranny brief ma w kilku linijkach podsumowywać stan serwerów, zmiany w repozytoriach z ostatniej doby i nowe raporty. Czeka na wybór kanału powiadomień.",
         "Treści ze stron i logów agenci traktują jako dane, a nie polecenia. Ograniczone uprawnienia i oddzielenie treści od instrukcji zmniejszają ryzyko prompt injection.",
       ],

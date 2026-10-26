@@ -47,7 +47,7 @@ const pl = {
     resume: "Wznów przewijanie narzędzi",
   },
   skills: {
-    title: "Co umiem i gdzie tego użyłem.",
+    title: "Umiejętności i projekty.",
     lead: "Moje projekty i umiejętności, których w nich użyłem. Kliknij umiejętność, a projekty, w których była potrzebna, przesuną się na górę listy.",
     hint: "Wybierz umiejętność. Liczba obok oznacza, w ilu projektach jej użyłem.",
     also: "Pracuję też z:",
@@ -149,7 +149,7 @@ const en: UI = {
     resume: "Resume the tools ticker",
   },
   skills: {
-    title: "What I can do and where I've used it.",
+    title: "Skills and projects.",
     lead: "My projects and the skills behind them. Pick a skill and the projects that needed it move to the top of the list.",
     hint: "Pick a skill. The number shows how many of my projects use it.",
     also: "I also work with:",

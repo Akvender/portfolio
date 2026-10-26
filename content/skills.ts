@@ -9,7 +9,6 @@ export const skillGroups = [
     skills: [
       { id: "llm", label: { pl: "API OpenAI i Anthropic", en: "OpenAI and Anthropic APIs" } },
       { id: "agents", label: { pl: "Agenci AI", en: "AI agents" } },
-      { id: "bots", label: { pl: "Chatboty i voiceboty", en: "Chatbots and voicebots" } },
       { id: "speech", label: { pl: "Transkrypcja rozmów", en: "Call transcription" } },
       { id: "imagegen", label: { pl: "Generowanie grafik", en: "Image generation" } },
     ],
@@ -51,6 +50,8 @@ export const skillGroups = [
     icon: "code",
     skills: [
       { id: "python", label: { pl: "Python", en: "Python" } },
+      { id: "node", label: { pl: "Node.js", en: "Node.js" } },
+      { id: "typescript", label: { pl: "TypeScript", en: "TypeScript" } },
       { id: "docker", label: { pl: "Docker", en: "Docker" } },
       { id: "vps", label: { pl: "Konfiguracja serwerów VPS", en: "VPS server setup" } },
       { id: "linux", label: { pl: "Linux", en: "Linux" } },
