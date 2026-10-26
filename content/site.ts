@@ -22,8 +22,8 @@ const cert = { src: "/images/cert-aidevs4.webp", width: 1600, height: 1131, badg
 const content = {
   pl: {
     hero: {
-      title: "Automatyzuję procesy, łączę systemy i buduję narzędzia z AI.",
-      lead: "Pomagam firmom ograniczać ręczną pracę i łączyć narzędzia, które dziś działają osobno. Analizuję proces, buduję rozwiązanie i zajmuję się jego wdrożeniem. Pracuję głównie z n8n, Pythonem i API modeli językowych. Łódź lub zdalnie.",
+      title: "Buduję automatyzacje i integracje, a potem je utrzymuję.",
+      lead: "Zgłoszenia z reklam Meta, które same trafiają do CRM-u. Analiza ponad 5000 rozmów w call center. Cyfrowa karta zamówień dla mleczarni, z której dokumenty WZ trafią do Comarch Optima bez przepisywania. Najczęściej pracuję w n8n, a gdy to nie wystarcza, piszę w TypeScripcie albo Pythonie. Łódź lub zdalnie.",
       status: "Otwarty na pracę (UoP, UZ, B2B) i zlecenia",
       photo,
       photoAlt: "Robert Świeboda — portret na ciemnym tle",
@@ -32,17 +32,17 @@ const content = {
       /** Zdjęcie przy pracy; pusty = sekcja w jednej kolumnie. */
       photo: "",
       photoAlt: "",
-      title: "Od klocków w Integromacie do własnych agentów AI.",
+      title: "Student informatyki, wdrożenia od 2025 roku.",
       paragraphs: [
-        "Zaczynałem od automatyzacji w czasach, gdy Make nazywał się jeszcze Integromat: proste integracje składane z gotowych klocków, bez własnego serwera. Potem doszły modele językowe, a dziś buduję też własne serwery MCP i agentów AI.",
-        "Najlepiej czuję się w projektach, w których trzeba połączyć kilka systemów i doprowadzić rozwiązanie do działania na serwerze. Buduję automatyzacje w n8n, a gdy gotowe integracje nie wystarczają, piszę własny kod i API. Większość projektów prowadzę samodzielnie, część w zespole. W ramach działalności freelance łączę też systemy w firmach produkcyjnych, m.in. z Comarch Optima. Po wdrożeniu mogę zajmować się utrzymaniem i rozwojem rozwiązania.",
-        "Na co dzień pracuję na Linuksie, a rozwiązania zamykam w kontenerach Dockera. Przykładem jest system formularzy i CRM opisany w projektach: działa na VPS-ie, a monitoring i alerty pomagają wykrywać błędy również poza godzinami pracy. Uczę się też bezpieczeństwa na TryHackMe, bo to, co buduję, działa na serwerach dostępnych z internetu.",
+        "Pierwsze automatyzacje składałem w 2022 roku na kursie Zero2Junior, jeszcze w Integromacie (dziś Make). Komercyjnie pracuję od 2025 roku: najpierw ponad rok w call center, gdzie budowałem transkrypcję i analizę rozmów, od lipca 2026 roku w agencji marketingowej, a obok mam własne zlecenia. Równolegle studiuję informatykę na Politechnice Łódzkiej.",
+        "Najwięcej nauczył mnie jeden błąd. W systemie dla klinik dentystycznych, który utrzymuję, SMS-y follow-up przez trzy miesiące nie wychodziły i nikt tego nie widział. Dziś przy każdym wdrożeniu od razu planuję, jak sprawdzę, że system naprawdę robi swoje.",
+        "Z agentami AI pracuję codziennie, ale na krótkiej smyczy: kolejne instancje systemu dla klinik odtwarzają na stagingu, a produkcję uruchamiam sam. Kod pisany z Claude Code traktuję jak własny: każda zmiana przechodzi przez pull request i osobny przegląd. Serwery stawiam na Linuksie i w Dockerze, a bezpieczeństwa uczę się na TryHackMe, bo wszystko, co wdrażam, jest dostępne z internetu.",
       ],
       steps: [
-        { title: "Analiza procesu", text: "Poznaję, jak dziś wygląda praca, i razem ustalamy, co ma się zmienić." },
-        { title: "Prototyp", text: "Buduję działającą wersję na prawdziwych danych, żeby było co ocenić." },
-        { title: "Wdrożenie", text: "Podłączam rozwiązanie do istniejących systemów, wdrażam je na serwerze i przekazuję zespołowi." },
-        { title: "Utrzymanie", text: "Jeśli chcesz, zostaję przy projekcie: monitoring, aktualizacje i poprawki." },
+        { title: "Analiza procesu", text: "Zaczynam od prawdziwych dokumentów. W mleczarni pierwszym krokiem była analiza 41 dokumentów WZ." },
+        { title: "Prototyp", text: "Pierwsza wersja ma szybko sprawdzić pomysł. W call center powstała na Make i Twilio, wersja docelowa już na n8n i PostgreSQL." },
+        { title: "Wdrożenie", text: "Własny VPS i Docker. Workflow ponawia nieudane kroki, a deduplikacja pilnuje, żeby to samo zgłoszenie nie trafiło do CRM-u dwa razy." },
+        { title: "Utrzymanie", text: "Prometheus, Grafana i alerty o błędach. System dla klinik dentystycznych utrzymuję od startu." },
       ],
     },
     proofs: [
@@ -72,8 +72,8 @@ const content = {
   },
   en: {
     hero: {
-      title: "I automate processes, connect systems and build AI-powered tools.",
-      lead: "I help companies cut down on manual work and connect tools that currently run separately. I analyze the process, build the solution and take care of deploying it. I work mainly with n8n, Python and language-model APIs. Based in Łódź, Poland, open to remote work.",
+      title: "I build automations and integrations, then keep them running.",
+      lead: "Leads from Meta ads that land in the CRM on their own. Analysis of over 5,000 call-center calls. A digital order card for a dairy that will send delivery notes to Comarch Optima with no retyping. I mostly work in n8n, and when that's not enough, I write TypeScript or Python. Based in Łódź, Poland, open to remote work.",
       status: "Open to work (employment, contract, B2B) and freelance projects",
       photo,
       photoAlt: "Robert Świeboda — portrait on a dark background",
@@ -81,17 +81,17 @@ const content = {
     about: {
       photo: "",
       photoAlt: "",
-      title: "From drag-and-drop blocks in Integromat to my own AI agents.",
+      title: "Computer science student, shipping since 2025.",
       paragraphs: [
-        "I started with automation back when Make was still called Integromat: simple integrations clicked together from ready-made blocks, with no server of my own. Then language models arrived, and today I also build my own MCP servers and AI agents.",
-        "I do my best work on projects that need several systems connected and a solution taken all the way to running on a server. I build automations in n8n, and when off-the-shelf integrations aren't enough, I write my own code and APIs. I run most projects on my own and some as part of a team. As a freelancer, I also connect systems for manufacturing businesses, including Comarch Optima. After deployment, I can stay on to maintain and develop the solution.",
-        "I work on Linux every day and package my solutions in Docker containers. One example is the forms and CRM system in my projects: it runs on a VPS, and monitoring and alerts help catch errors outside working hours too. I'm also learning security on TryHackMe, because the systems I build run on internet-facing servers.",
+        "I put together my first automations in 2022 on the Zero2Junior course, still in Integromat (now Make). I've worked commercially since 2025: first for over a year at a call center, where I built call transcription and analysis, since July 2026 at a marketing agency, plus my own freelance projects. I'm also studying computer science at Lodz University of Technology.",
+        "One bug taught me the most. In the dental-clinic system I maintain, follow-up texts didn't go out for three months and nobody noticed. Now, on every deployment, I plan from the start how I'll check that the system actually does its job.",
+        "I work with AI agents every day, but on a short leash: they recreate new instances of the clinic system on staging, and I launch production myself. I treat code written with Claude Code as my own: every change goes through a pull request and a separate review. I run servers on Linux and Docker, and I'm learning security on TryHackMe, because everything I deploy is reachable from the internet.",
       ],
       steps: [
-        { title: "Process analysis", text: "I learn how the work is done today and we agree on what should change." },
-        { title: "Prototype", text: "I build a working version on real data, so there's something to evaluate." },
-        { title: "Deployment", text: "I connect it to existing systems, deploy it on a server and hand it over to your team." },
-        { title: "Maintenance", text: "If you want, I stay on: monitoring, updates and fixes." },
+        { title: "Process analysis", text: "I start with real documents. At the dairy, the first step was analyzing 41 delivery notes." },
+        { title: "Prototype", text: "The first version is there to test the idea quickly. At the call center it ran on Make and Twilio; the final version moved to n8n and PostgreSQL." },
+        { title: "Deployment", text: "My own VPS and Docker. The workflow retries failed steps, and deduplication keeps the same lead from landing in the CRM twice." },
+        { title: "Maintenance", text: "Prometheus, Grafana and error alerts. I've maintained the dental-clinic system since launch." },
       ],
     },
     proofs: [

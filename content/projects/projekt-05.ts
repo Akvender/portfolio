@@ -6,14 +6,14 @@ export const projekt05: Project = {
   number: "02",
   title: "Transkrypcja i analiza rozmów dla firmy z branży OZE",
   description: "Narzędzie call-center: rozmowy są transkrybowane, a modele językowe analizują ich treść. Skala: ponad 5000 rozmów w ciągu 3 miesięcy.",
-  lead: "Call-center dla firmy z branży OZE, uruchomione na czas konkretnej, okresowej oferty. Rozmowy są transkrybowane, a agent AI analizuje ich treść semantycznie i wyciąga z niej wnioski do dalszej pracy.",
+  lead: "Call-center dla firmy z branży OZE, uruchomione na czas konkretnej, okresowej oferty. Rozmowy są transkrybowane, model językowy analizuje ich treść, a wyniki trafiają do bazy PostgreSQL.",
   year: "",
   tags: ["Call-center", "AI"],
   skills: ["speech", "llm", "agents", "twilio", "crm", "n8n", "make", "postgres", "docker", "vps", "linux", "monitoring", "api"],
   flow: ["Rozmowa (Twilio)", "Transkrypcja", "PostgreSQL i analiza AI", "Wnioski"],
   flowIcons: ["phone", "wave", "server", "tasks"],
   featured: true,
-  meta: { client: "Firma z branży OZE", role: "Agent AI do analizy semantycznej, integracja z Twilio i całe zaplecze DevOps", period: "", status: "Zakończony (projekt okresowy)", stack: "Twilio · n8n · PostgreSQL · Docker" },
+  meta: { client: "Firma z branży OZE", role: "Analiza rozmów przez model językowy, integracja z Twilio, serwer i wdrożenie", period: "", status: "Zakończony (projekt okresowy)", stack: "Twilio · n8n · PostgreSQL · Docker" },
   metrics: [{ value: 5000, suffix: "+", label: "wszystkich rozmów w ciągu 3 miesięcy" }],
   architecture: {
     columns: [
@@ -28,7 +28,7 @@ export const projekt05: Project = {
     {
       type: "impact",
       title: "Mój zakres.",
-      text: "Zbudowałem agenta AI do analizy semantycznej rozmów, zintegrowałem rozwiązanie z Twilio i przygotowałem całe zaplecze DevOps: serwer, kontenery i wdrożenie.",
+      text: "Zbudowałem analizę rozmów opartą na modelu językowym, zintegrowałem rozwiązanie z Twilio i postawiłem całe zaplecze: serwer, kontenery i wdrożenie.",
     },
     {
       type: "impact",
@@ -47,10 +47,10 @@ export const projekt05: Project = {
   en: {
     title: "Call transcription and analysis for a renewable-energy company",
     description: "A call-center tool: calls are transcribed and language models analyze what was said. Scale: over 5,000 calls in 3 months.",
-    lead: "A call center for a renewable-energy company, set up for a specific, time-limited offer. Calls are transcribed, and an AI agent runs a semantic analysis of what was said and draws conclusions for follow-up work.",
+    lead: "A call center for a renewable-energy company, set up for a specific, time-limited offer. Calls are transcribed, a language model analyzes what was said, and the results go into a PostgreSQL database.",
     tags: ["Call center", "AI"],
     flow: ["Call (Twilio)", "Transcription", "PostgreSQL and AI analysis", "Insights"],
-    meta: { client: "Renewable-energy company", role: "AI agent for semantic analysis, Twilio integration and the entire DevOps setup", status: "Completed (time-limited project)", stack: "Twilio · n8n · PostgreSQL · Docker" },
+    meta: { client: "Renewable-energy company", role: "Call analysis with a language model, Twilio integration, server and deployment", status: "Completed (time-limited project)", stack: "Twilio · n8n · PostgreSQL · Docker" },
     architecture: {
       columns: [
         { title: "Input", items: ["Phone calls (Twilio)"] },
@@ -64,7 +64,7 @@ export const projekt05: Project = {
       {
         type: "impact",
         title: "My part.",
-        text: "I built the AI agent for semantic call analysis, integrated the solution with Twilio and set up the entire DevOps side: the server, the containers and the deployment.",
+        text: "I built the call analysis on top of a language model, integrated the solution with Twilio and set up everything behind it: the server, the containers and the deployment.",
       },
       {
         type: "impact",
