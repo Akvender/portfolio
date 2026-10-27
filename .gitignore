@@ -9,3 +9,6 @@ next-env.d.ts
 
 # Surowe zdjęcia (źródła) — do repo trafia tylko wersja z public/images
 /*.png
+
+# graphify — wygenerowany graf wiedzy (moze zawierac fragmenty tresci)
+graphify-out/
