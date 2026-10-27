@@ -22,8 +22,8 @@ const cert = { src: "/images/cert-aidevs4.webp", width: 1600, height: 1131, badg
 const content = {
   pl: {
     hero: {
-      title: "Buduję automatyzacje i integracje, a potem je utrzymuję.",
-      lead: "Zgłoszenia z reklam Meta, które same trafiają do CRM-u. Analiza ponad 5000 rozmów w call center. Cyfrowa karta zamówień dla mleczarni, z której dokumenty WZ trafią do Comarch Optima bez przepisywania. Najczęściej pracuję w n8n, a gdy to nie wystarcza, piszę w TypeScripcie albo Pythonie. Łódź lub zdalnie.",
+      title: "Od rozpisanego procesu do działającego systemu.",
+      lead: "Zgłoszenia z reklam, które same trafiają do CRM-u. Analiza ponad 5000 rozmów w call center. Cyfrowa karta zamówień dla mleczarni, dzięki której dokumenty nie będą przepisywane ręcznie. Najpierw sprawdzam, jak wygląda praca, potem buduję rozwiązanie i zostaję przy nim po wdrożeniu. Łódź lub zdalnie.",
       status: "Otwarty na pracę (UoP, UZ, B2B) i zlecenia",
       photo,
       photoAlt: "Robert Świeboda — portret na ciemnym tle",
@@ -77,8 +77,8 @@ const content = {
   },
   en: {
     hero: {
-      title: "I build automations and integrations, then keep them running.",
-      lead: "Leads from Meta ads that land in the CRM on their own. Analysis of over 5,000 call-center calls. A digital order card for a dairy that will send delivery notes to Comarch Optima with no retyping. I mostly work in n8n, and when that's not enough, I write TypeScript or Python. Based in Łódź, Poland, open to remote work.",
+      title: "From a mapped-out process to a working system.",
+      lead: "Leads from ads that land in the CRM on their own. Analysis of over 5,000 call-center calls. A digital order card for a dairy, so documents will no longer be retyped by hand. First I look at how the work is done today, then I build the solution and stay with it after launch. Based in Łódź, Poland, open to remote work.",
       status: "Open to work (employment, contract, B2B) and freelance projects",
       photo,
       photoAlt: "Robert Świeboda — portrait on a dark background",
