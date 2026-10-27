@@ -12,3 +12,25 @@ next-env.d.ts
 
 # graphify — wygenerowany graf wiedzy (moze zawierac fragmenty tresci)
 graphify-out/
+
+# === Setup pracy z AI (2026-10-27): wewnetrzny, NIGDY do repo ani na gita ===
+CLAUDE.md
+CLAUDE.local.md
+AGENTS.md
+AGENTS.override.md
+GEMINI.md
+.claude/
+.mcp.json
+.cursor/
+.cursorrules
+.cursorignore
+.codex/
+.gemini/
+.windsurf/
+.windsurfrules
+.aider*
+.clinerules
+.kiro/
+.opencode/
+.github/copilot-instructions.md
+.github/instructions/
