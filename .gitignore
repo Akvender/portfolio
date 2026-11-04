@@ -34,3 +34,11 @@ GEMINI.md
 .opencode/
 .github/copilot-instructions.md
 .github/instructions/
+
+# Sekrety lokalne: nigdy do repo
+.env
+.env.*
+!.env.example
+
+# CV zawiera telefon i zdjecie: nigdy do publicznego repo
+/CV-Robert/
