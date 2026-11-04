@@ -5,6 +5,7 @@ import { Hero } from "@/components/home/Hero";
 import { About } from "@/components/home/Sections";
 import { SkillMap } from "@/components/home/SkillMap";
 import { Architecture } from "@/components/case/Architecture";
+import { CaseVideo } from "@/components/case/CaseVideo";
 import { CaseHero, CaseSections, NextProject } from "@/components/case/Sections";
 import { Contact } from "@/components/site/Contact";
 import { pageMetadata } from "@/components/site/RootShell";
@@ -47,6 +48,7 @@ export function CaseView({ lang, slug }: { lang: Lang; slug: string }) {
       {/* Gdy projekt ma schemat architektury, hero nie rysuje drugiego, podobnego schematu przepływu. */}
       <CaseHero project={project} lang={lang} showFlow={!project.architecture} />
       {project.architecture && <Architecture data={project.architecture} title={ui[lang].case.architecture} infraLabel={ui[lang].case.infra} />}
+      {project.video && <CaseVideo data={project.video} title={ui[lang].case.flowCaption} />}
       <CaseSections sections={project.sections} lang={lang} />
       <NextProject project={getNextProject(lang, slug)} lang={lang} />
       <Contact lang={lang} compact />

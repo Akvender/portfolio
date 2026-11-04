@@ -30,6 +30,11 @@ export const projekt03: Project = {
     ],
     infra: "VPS, Docker, Linux",
   },
+  video: {
+    src: "/media/kliniki/kliniki-pl",
+    poster: "/media/kliniki/kliniki-pl-poster.webp",
+    label: "Animacja, około 50 sekund: jak zgłoszenie z reklamy, strony albo telefonu przechodzi przez n8n do CRM-u, systemu kliniki i powiadomień, a informacja o pacjencie wraca do Meta.",
+  },
   sections: [
     {
       type: "impact",
@@ -80,6 +85,11 @@ export const projekt03: Project = {
         { title: "Monitoring", items: ["Prometheus", "Grafana", "Error alerts"] },
       ],
       infra: "VPS, Docker, Linux",
+    },
+    video: {
+      src: "/media/kliniki/kliniki-en",
+      poster: "/media/kliniki/kliniki-en-poster.webp",
+      label: "About 50-second animation: how a lead from an ad, the website or a phone call goes through n8n to the CRM, the clinic's system and notifications, and how patient feedback goes back to Meta.",
     },
     sections: [
       {

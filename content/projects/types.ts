@@ -84,6 +84,14 @@ export type Architecture = {
   infra?: string;
 };
 
+/** Film o projekcie pod public/. `src` bez rozszerzenia: obok leżą `.webm` i `.mp4`. */
+export type CaseVideo = {
+  src: string;
+  poster: string;
+  /** Opis filmu dla czytników ekranu. */
+  label: string;
+};
+
 export type Project = {
   slug: string;
   /** Numer projektu: „01”, „02”, … */
@@ -111,6 +119,8 @@ export type Project = {
   sections: CaseSection[];
   /** Schemat połączeń systemu na podstronie projektu. */
   architecture?: Architecture;
+  /** Film „jak to działa”, pokazywany pod schematem architektury. */
+  video?: CaseVideo;
   /** Wersja angielska; brakujące pola biorą się z polskiej. */
   en?: ProjectText;
 };
@@ -120,4 +130,5 @@ export type ProjectText = Pick<Project, "title" | "description" | "lead" | "tags
   meta?: Partial<CaseMeta>;
   sections?: CaseSection[];
   architecture?: Architecture;
+  video?: CaseVideo;
 };
